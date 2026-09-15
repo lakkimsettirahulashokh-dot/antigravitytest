@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <!-- Primary SEO Meta Tags -->
+    <title>AI Copilot — Engineering AI Workspace & Multimodal Problem Solver | TechPath</title>
+    <meta name="title" content="AI Copilot — Engineering AI Workspace & Multimodal Problem Solver | TechPath">
+    <meta name="description" content="Ask anything, solve engineering doubts, upload question photos, diagrams, circuits, and code for instant step-by-step derivations with AI Copilot.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://TechPath.ai/copilot.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="TechPath">
+    <meta property="og:url" content="https://TechPath.ai/copilot.html">
+    <meta property="og:title" content="AI Copilot — Engineering AI Workspace & Multimodal Problem Solver | TechPath">
+    <meta property="og:description" content="Ask anything, solve engineering doubts, upload question photos, diagrams, circuits, and code for instant step-by-step derivations with AI Copilot.">
+    <meta property="og:image" content="https://TechPath.ai/assets/branding/techpath-og.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="TechPath — Learn. Build. Prepare. Grow.">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://TechPath.ai/copilot.html">
+    <meta name="twitter:title" content="AI Copilot — Engineering AI Workspace & Multimodal Problem Solver | TechPath">
+    <meta name="twitter:description" content="Ask anything, solve engineering doubts, upload question photos, diagrams, circuits, and code for instant step-by-step derivations with AI Copilot.">
+    <meta name="twitter:image" content="https://TechPath.ai/assets/branding/techpath-og.png">
+    <meta name="twitter:image:alt" content="TechPath — Learn. Build. Prepare. Grow.">
+
+    <!-- Favicon & App Icons -->
+    <link rel="icon" type="image/svg+xml" href="assets/branding/favicon.svg">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/branding/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/branding/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/branding/apple-touch-icon.png">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#0B0F19">
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <link rel="stylesheet" href="css/tailwind.output.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="css/custom.css"/>
+    <link rel="stylesheet" href="css/motion.css"/>
+    <style>
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; height: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #454655; border-radius: 9999px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #5865f2; }
+        .glass-panel {
+            background: rgba(31, 31, 39, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        @keyframes pulseLaser {
+            0% { transform: translateY(0); opacity: 0.8; }
+            50% { transform: translateY(180px); opacity: 1; }
+            100% { transform: translateY(0); opacity: 0.8; }
+        }
+        .laser-scanner-beam {
+            position: absolute;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #3cddc7, #5865f2, #3cddc7, transparent);
+            box-shadow: 0 0 12px #3cddc7, 0 0 24px #5865f2;
+            animation: pulseLaser 2.2s infinite ease-in-out;
+        }
+    </style>
+
+    <script src="js/seo-metadata.js" defer></script>
+</head>
+<body class="bg-background text-on-surface h-screen flex flex-col antialiased selection:bg-primary-container selection:text-white overflow-hidden font-body-md">
+
+    <div class="bg-ambient-glow"></div>
+
+    <!-- Header Navigation -->
+    <header class="h-16 px-4 sm:px-6 bg-surface-container-lowest border-b border-outline-variant/60 flex items-center justify-between shrink-0 z-30">
+        <div class="flex items-center gap-3 sm:gap-4">
+            <a href="dashboard.html" class="flex items-center gap-1.5 text-primary hover:text-white transition-colors" title="Back to Dashboard">
+                <span class="material-symbols-outlined text-xl sm:text-2xl">arrow_back</span>
+                <span class="font-bold text-xs sm:text-sm text-white hidden sm:inline">Dashboard</span>
+            </a>
+            <div class="h-4 w-px bg-outline-variant"></div>
+            <a href="index.html" class="flex items-center py-1" aria-label="TechPath Home">
+                <img src="assets/branding/techpath-emblem.png" alt="TechPath" class="h-6 w-auto object-contain" />
+            </a>
+            <div class="h-4 w-px bg-outline-variant hidden sm:block"></div>
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 rounded-lg bg-tertiary-container/30 border border-tertiary/50 flex items-center justify-center text-tertiary">
+                    <span class="material-symbols-outlined text-lg">psychology</span>
+                </div>
+                <div>
+                    <div class="flex items-center gap-2">
+                        <span class="font-bold text-xs sm:text-sm text-white">AI Copilot</span>
+                        <span class="px-2 py-0.5 rounded text-[9px] font-bold bg-tertiary-container/30 text-tertiary border border-tertiary/40">MULTIMODAL ACTIVE</span>
+                    </div>
+                    <span id="student-context-badge" class="text-[10px] text-on-surface-variant font-mono hidden sm:inline">Personalized: Alex Rivera (CSE / Sem 4)</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex items-center gap-2">
+            <!-- Mode Selector -->
+            <select id="mode-select" onchange="onModeChange(this.value)" class="bg-surface-container border border-outline-variant rounded-xl px-2.5 py-1.5 text-xs text-on-surface outline-none focus:border-primary">
+                <option value="Solve My Doubt" selected>⚡ Solve My Doubt</option>
+                <option value="Ask Anything">💬 Ask Anything</option>
+                <option value="Explain Diagram">📐 Explain Diagram / Circuit</option>
+                <option value="Explain Code">💻 Explain Code / Error</option>
+                <option value="Solve MCQ">🎯 Solve MCQ & Options</option>
+                <option value="Solve Numerical">🔢 Solve Numerical</option>
+                <option value="Step-by-Step Solution">📝 Step-by-Step Derivation</option>
+            </select>
+
+            <button onclick="startNewThread()" class="px-3 py-1.5 rounded-xl bg-surface-container hover:bg-surface-container-high border border-outline-variant text-xs font-semibold text-white flex items-center gap-1.5 transition-colors">
+                <span class="material-symbols-outlined text-sm text-primary">add</span>
+                <span class="hidden md:inline">New Session</span>
+            </button>
+
+            <button onclick="toggleHistoryDrawer()" class="px-3 py-1.5 rounded-xl bg-surface-container hover:bg-surface-container-high border border-outline-variant text-xs font-semibold text-white flex items-center gap-1.5 transition-colors">
+                <span class="material-symbols-outlined text-sm text-tertiary">history</span>
+                <span class="hidden md:inline">History</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Copilot Chat & Doubt Solving Area -->
+    <div class="flex-1 flex overflow-hidden max-w-6xl w-full mx-auto p-3 sm:p-6 gap-6">
+        
+        <main class="flex-1 flex flex-col bg-surface-container-low rounded-3xl border border-outline-variant/60 shadow-2xl overflow-hidden p-4 sm:p-6 relative">
+            
+            <!-- Quick Suggestion Pills -->
+            <div class="flex items-center gap-2 overflow-x-auto pb-2 shrink-0 text-xs no-scrollbar border-b border-outline-variant/40 mb-3">
+                <button onclick="askPrompt('Find the Thevenin equivalent resistance and voltage of a bridge circuit with R1=10Ω, R2=20Ω, R3=30Ω, R4=40Ω across a 50V DC source.')" class="px-3 py-1.5 rounded-xl bg-surface-container hover:bg-surface-container-high border border-outline-variant text-on-surface-variant hover:text-white whitespace-nowrap transition-colors flex items-center gap-1.5">
+                    <span class="material-symbols-outlined text-xs text-tertiary">bolt</span>
+                    <span>Thevenin Bridge Circuit</span>
+                </button>
+                <button onclick="askPrompt('Why does Dijkstra algorithm fail with negative edge weights? Provide counter-example and alternative.')" class="px-3 py-1.5 rounded-xl bg-surface-container hover:bg-surface-container-high border border-outline-variant text-on-surface-variant hover:text-white whitespace-nowrap transition-colors flex items-center gap-1.5">
+                    <span class="material-symbols-outlined text-xs text-primary">account_tree</span>
+                    <span>Dijkstra Negative Edges</span>
+                </button>
+                <button onclick="askPrompt('A 10kg mass is attached to a spring with k=250 N/m and damping c=10 Ns/m. Determine damping ratio and natural frequency.')" class="px-3 py-1.5 rounded-xl bg-surface-container hover:bg-surface-container-high border border-outline-variant text-on-surface-variant hover:text-white whitespace-nowrap transition-colors flex items-center gap-1.5">
+                    <span class="material-symbols-outlined text-xs text-secondary">tune</span>
+                    <span>Spring Damped Oscillator</span>
+                </button>
+                <button onclick="askPrompt('What are my weak concepts from recent quizzes and how should I revise them?')" class="px-3 py-1.5 rounded-xl bg-surface-container hover:bg-surface-container-high border border-outline-variant text-on-surface-variant hover:text-white whitespace-nowrap transition-colors flex items-center gap-1.5">
+                    <span class="material-symbols-outlined text-xs text-amber-400">warning</span>
+                    <span>Analyze My Weak Topics</span>
+                </button>
+            </div>
+
+            <!-- Messages Stream Area -->
+            <div id="chat-messages" class="flex-1 overflow-y-auto space-y-4 pr-2 custom-scrollbar">
+                
+                <!-- Welcome Card -->
+                <div class="flex items-start gap-3.5">
+                    <div class="w-9 h-9 rounded-xl bg-tertiary-container/30 border border-tertiary/50 flex items-center justify-center text-tertiary shrink-0">
+                        <span class="material-symbols-outlined text-xl">smart_toy</span>
+                    </div>
+                    <div class="max-w-2xl bg-surface-container rounded-2xl p-5 border border-outline-variant shadow-lg text-xs leading-relaxed space-y-3">
+                        <div class="font-bold text-sm text-white flex items-center gap-2">
+                            <span>TechPath Copilot Workspace</span>
+                            <span class="px-2 py-0.5 rounded text-[10px] bg-tertiary/20 text-tertiary font-mono">READY</span>
+                        </div>
+                        <p class="text-on-surface-variant">
+                            I am your <strong>multimodal engineering copilot</strong>. Ask me anything, or solve doubts by uploading photos of questions, diagrams, circuits, math proofs, or code screenshots.
+                        </p>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1 text-xs">
+                            <div class="p-3 rounded-xl bg-surface-container-low border border-outline-variant/60 flex items-start gap-2.5">
+                                <span class="material-symbols-outlined text-primary text-lg shrink-0">edit_note</span>
+                                <div>
+                                    <strong class="text-white block">Text Mode</strong>
+                                    <span class="text-[11px] text-outline">Type questions, numerical problems, or academic strategy.</span>
+                                </div>
+                            </div>
+                            <div class="p-3 rounded-xl bg-surface-container-low border border-outline-variant/60 flex items-start gap-2.5">
+                                <span class="material-symbols-outlined text-tertiary text-lg shrink-0">photo_camera</span>
+                                <div>
+                                    <strong class="text-white block">Vision Mode</strong>
+                                    <span class="text-[11px] text-outline">Upload textbook photos, handwritten math, circuits, code, or graphs.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Processing Card with Laser Beam Animation -->
+                <div id="processing-card" class="hidden flex items-start gap-3.5">
+                    <div class="w-9 h-9 rounded-xl bg-tertiary-container/30 border border-tertiary/50 flex items-center justify-center text-tertiary shrink-0">
+                        <span class="material-symbols-outlined text-xl animate-spin">refresh</span>
+                    </div>
+                    <div class="max-w-xl w-full bg-surface-container rounded-2xl p-5 border border-tertiary/50 shadow-2xl relative overflow-hidden">
+                        <div class="laser-scanner-beam"></div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span id="processing-status" class="text-xs font-bold text-tertiary uppercase tracking-wider">Reading Image & Neural Vision Pipeline...</span>
+                            <span class="text-[10px] text-outline font-mono">STEP <span id="processing-step-num">1</span> OF 4</span>
+                        </div>
+                        <div class="w-full bg-surface-container-lowest h-1.5 rounded-full overflow-hidden mb-3">
+                            <div id="processing-progress-bar" class="bg-gradient-to-r from-primary via-tertiary to-primary h-full w-1/4 transition-all duration-300"></div>
+                        </div>
+                        <p id="processing-detail" class="text-[11px] text-on-surface-variant leading-relaxed">
+                            Parsing image pixels, identifying symbols, mathematical expressions, labels, or circuit topology...
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Bottom Multimodal Input Section -->
+            <div class="pt-3 border-t border-outline-variant/60 shrink-0">
+                
+                <!-- Image Preview Tray -->
+                <div id="image-preview-tray" class="hidden mb-3 p-3 rounded-xl bg-surface-container border border-primary/40 flex items-center justify-between gap-3 shadow-lg">
+                    <div class="flex items-center gap-3 overflow-hidden">
+                        <div class="relative w-14 h-14 rounded-lg overflow-hidden border border-primary/50 bg-black shrink-0 cursor-pointer" onclick="openImageModal()">
+                            <img id="preview-thumbnail" src="" alt="Uploaded Question" class="w-full h-full object-cover"/>
+                            <div class="absolute inset-0 bg-black/30 hover:bg-transparent transition-colors flex items-center justify-center">
+                                <span class="material-symbols-outlined text-white text-sm">zoom_in</span>
+                            </div>
+                        </div>
+                        <div class="overflow-hidden">
+                            <div class="flex items-center gap-2">
+                                <span id="preview-filename" class="text-xs font-bold text-white truncate max-w-[200px] sm:max-w-xs">question.png</span>
+                                <span id="preview-filesize" class="text-[10px] px-1.5 py-0.5 rounded bg-primary/20 text-primary font-mono">142 KB</span>
+                            </div>
+                            <span class="text-[11px] text-tertiary flex items-center gap-1 mt-0.5">
+                                <span class="material-symbols-outlined text-sm">check_circle</span>
+                                <span>Image ready for Multimodal AI Analysis</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2 shrink-0">
+                        <button type="button" onclick="triggerFileInput()" class="px-2.5 py-1.5 rounded-lg bg-surface-container-high border border-outline-variant hover:border-primary text-[11px] text-on-surface flex items-center gap-1 transition-colors">
+                            <span class="material-symbols-outlined text-sm">cached</span>
+                            <span class="hidden sm:inline">Replace</span>
+                        </button>
+                        <button type="button" onclick="clearStagedImage()" class="px-2.5 py-1.5 rounded-lg bg-rose-900/30 hover:bg-rose-900/50 border border-rose-500/40 text-[11px] text-rose-300 flex items-center gap-1 transition-colors">
+                            <span class="material-symbols-outlined text-sm">close</span>
+                            <span class="hidden sm:inline">Remove</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Input Form -->
+                <form id="copilot-form" onsubmit="handleSendCopilot(event)" class="space-y-2">
+                    <div class="relative flex items-center bg-surface-container rounded-2xl border border-outline-variant/60 focus-within:border-primary/80 shadow-md transition-all">
+                        
+                        <!-- Attach / Camera Options Button -->
+                        <div class="flex items-center pl-2 sm:pl-3 gap-1">
+                            <!-- File Upload Picker -->
+                            <button type="button" onclick="triggerFileInput()" class="p-2 rounded-xl text-outline hover:text-tertiary hover:bg-surface-container-high transition-colors" title="Upload Image / Screenshot (JPG, PNG, WEBP, HEIC)">
+                                <span class="material-symbols-outlined text-xl">add_photo_alternate</span>
+                            </button>
+
+                            <!-- Mobile Camera Button -->
+                            <button type="button" onclick="triggerCameraInput()" class="p-2 rounded-xl text-outline hover:text-primary hover:bg-surface-container-high transition-colors" title="Take Photo of Question (Textbook or Handwritten)">
+                                <span class="material-symbols-outlined text-xl">photo_camera</span>
+                            </button>
+                        </div>
+
+                        <!-- Hidden File Inputs -->
+                        <input id="image-file-input" type="file" accept="image/jpeg,image/png,image/webp,image/heic,image/gif" class="hidden" onchange="handleFileSelected(event)"/>
+                        <input id="camera-file-input" type="file" accept="image/*" capture="environment" class="hidden" onchange="handleFileSelected(event)"/>
+
+                        <!-- Text Query Input -->
+                        <input id="copilot-input" type="text" placeholder="Type question, or upload photo & add instructions (e.g., 'Solve step-by-step', 'Explain this circuit')..." class="bg-transparent border-0 focus:ring-0 text-xs sm:text-sm text-on-surface placeholder:text-outline w-full px-2 py-3.5 outline-none"/>
+
+                        <!-- Submit Button -->
+                        <div class="pr-2 sm:pr-3 shrink-0">
+                            <button type="submit" id="submit-btn" class="btn-primary-gradient px-4 py-2 rounded-xl text-xs font-bold flex items-center gap-1.5 shadow-md hover:scale-[1.02] active:scale-[0.98] transition-transform">
+                                <span>Solve / Ask</span>
+                                <span class="material-symbols-outlined text-sm">auto_fix_high</span>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+
+                <!-- Footer Hints -->
+                <div class="flex items-center justify-between text-[11px] text-outline mt-2 px-1">
+                    <span class="flex items-center gap-1.5">
+                        <span class="material-symbols-outlined text-xs text-tertiary">content_paste</span>
+                        <span>Paste screenshots with <kbd class="px-1 py-0.5 rounded bg-surface-container border border-outline-variant font-mono text-[10px]">Ctrl+V</kbd></span>
+                    </span>
+                    <span class="hidden sm:inline">Multimodal Vision Engine • Step-by-Step Derivation • Zero Fake AI</span>
+                </div>
+            </div>
+        </main>
+
+        <!-- Right: Slide-out Doubt & Copilot History Drawer -->
+        <aside id="history-drawer" class="hidden fixed inset-y-0 right-0 w-80 sm:w-96 bg-surface-container border-l border-outline-variant/60 shadow-2xl z-40 flex flex-col transition-transform duration-300">
+            <div class="h-16 px-4 border-b border-outline-variant/60 flex items-center justify-between shrink-0">
+                <div class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-primary text-xl">history_edu</span>
+                    <span class="font-bold text-sm text-white">Copilot & Doubt History</span>
+                </div>
+                <button onclick="toggleHistoryDrawer()" class="p-1.5 rounded-lg text-outline hover:text-white hover:bg-surface-container-high transition-colors">
+                    <span class="material-symbols-outlined text-xl">close</span>
+                </button>
+            </div>
+            
+            <div id="history-list" class="flex-1 overflow-y-auto p-4 space-y-3 custom-scrollbar">
+                <div class="text-center py-10 text-outline text-xs">
+                    Loading your saved sessions...
+                </div>
+            </div>
+
+            <div class="p-4 border-t border-outline-variant/60 text-center">
+                <button onclick="clearAllUserHistory()" class="w-full py-2 rounded-lg bg-surface-container-high hover:bg-rose-900/30 text-rose-300 border border-outline-variant hover:border-rose-500/40 text-xs font-semibold transition-colors">
+                    Clear History
+                </button>
+            </div>
+        </aside>
+
+    </div>
+
+    <!-- Modal for Zooming Uploaded Image -->
+    <div id="image-modal" class="hidden fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4" onclick="closeImageModal()">
+        <div class="relative max-w-3xl w-full bg-surface-container rounded-2xl p-4 border border-outline-variant shadow-2xl" onclick="event.stopPropagation()">
+            <div class="flex items-center justify-between pb-3 border-b border-outline-variant">
+                <span class="text-xs font-bold text-white">Attached Problem Image</span>
+                <button onclick="closeImageModal()" class="text-outline hover:text-white">
+                    <span class="material-symbols-outlined text-xl">close</span>
+                </button>
+            </div>
+            <div class="py-4 flex items-center justify-center max-h-[75vh] overflow-auto">
+                <img id="modal-image-display" src="" alt="Zoomed Problem" class="max-w-full max-h-[70vh] rounded-lg object-contain shadow-lg"/>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/supabase.min.js"></script>
+    <script src="js/supabase-client.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/study-tracker.js"></script>
+    <script src="js/motion.js"></script>
+    <script>
+        // State Management
+        let currentStagedImage = null;
+        let currentConversationId = 'copilot_' + Date.now();
+        let currentChatHistory = [];
+        let isProcessing = false;
+        let currentStudentProfile = { id: 'alex.rivera@TechPath.ai', name: 'Alex Rivera', department: 'CSE', semester: 4, target_role: 'Software Engineer' };
+
+        document.addEventListener('DOMContentLoaded', async () => {
+            if (typeof AuthManager !== 'undefined') {
+                const isAuthorized = await AuthManager.requireAuth({
+                    onReady: (user, profile) => {
+                        if (profile) {
+                            currentStudentProfile = {
+                                id: user.id || profile.id,
+                                name: profile.full_name || profile.name || 'Student',
+                                department: profile.department_id || profile.branch || 'CSE',
+                                semester: parseInt(profile.semester || profile.semester_id || 4, 10),
+                                target_role: profile.target_role || 'Software Engineer'
+                            };
+                            const badge = document.getElementById('student-context-badge');
+                            if (badge) {
+                                badge.textContent = `Personalized: ${currentStudentProfile.name} (${currentStudentProfile.department} / Sem ${currentStudentProfile.semester})`;
+                            }
+                        }
+                    }
+                });
+                if (!isAuthorized) return;
+            }
+
+            // Real-time Profile Personalization Sync
+            window.addEventListener('btech:profile-updated', (e) => {
+                const profile = e.detail;
+                if (profile) {
+                    currentStudentProfile = {
+                        id: profile.id || currentStudentProfile.id,
+                        name: profile.full_name || profile.name || currentStudentProfile.name,
+                        department: profile.department_id || profile.branch || 'CSE',
+                        semester: parseInt(profile.semester || 4, 10),
+                        target_role: profile.target_role || profile.targetCareer || 'Software Engineer',
+                        skills: profile.skills || []
+                    };
+                    const badge = document.getElementById('student-context-badge');
+                    if (badge) {
+                        badge.textContent = `Personalized: ${currentStudentProfile.name} (${currentStudentProfile.department} / Sem ${currentStudentProfile.semester})`;
+                    }
+                }
+            });
+
+            // Check URL parameters for initial topic / subject / doubt trigger
+            const params = new URLSearchParams(window.location.search);
+            const querySubject = params.get('subject');
+            const queryTopic = params.get('topic');
+            const queryQ = params.get('q');
+
+            if (queryQ) {
+                askPrompt(queryQ);
+            } else if (querySubject || queryTopic) {
+                askPrompt(`Explain ${queryTopic || querySubject} in detail with derivations, examples, and exam points.`);
+            }
+
+            loadHistoryList();
+        });
+
+        // Clipboard Paste Listener (Ctrl+V Image Upload)
+        window.addEventListener('paste', (e) => {
+            const items = (e.clipboardData || window.clipboardData).items;
+            for (let i = 0; i < items.length; i++) {
+                if (items[i].type.indexOf('image') !== -1) {
+                    const blob = items[i].getAsFile();
+                    if (blob) stageImageFile(blob);
+                    break;
+                }
+            }
+        });
+
+        function triggerFileInput() {
+            document.getElementById('image-file-input').click();
+        }
+
+        function triggerCameraInput() {
+            document.getElementById('camera-file-input').click();
+        }
+
+        function handleFileSelected(event) {
+            const file = event.target.files && event.target.files[0];
+            if (file) stageImageFile(file);
+            event.target.value = '';
+        }
+
+        function stageImageFile(file) {
+            const allowedTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp', 'image/heic', 'image/gif'];
+            if (!allowedTypes.includes(file.type.toLowerCase()) && !file.name.match(/\.(jpg|jpeg|png|webp|heic|gif)$/i)) {
+                if (window.AuthManager) AuthManager.showToast('Please upload a valid image (JPG, PNG, WEBP, HEIC)', 'error');
+                return;
+            }
+
+            if (file.size > 12 * 1024 * 1024) {
+                if (window.AuthManager) AuthManager.showToast('Image exceeds 12MB limit.', 'error');
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const base64 = e.target.result;
+                currentStagedImage = {
+                    data: base64,
+                    mimeType: file.type || 'image/jpeg',
+                    name: file.name || 'question.jpg',
+                    size: file.size
+                };
+
+                document.getElementById('preview-thumbnail').src = base64;
+                document.getElementById('preview-filename').textContent = currentStagedImage.name;
+                document.getElementById('preview-filesize').textContent = Math.round(currentStagedImage.size / 1024) + ' KB';
+                document.getElementById('image-preview-tray').classList.remove('hidden');
+
+                if (window.AuthManager) AuthManager.showToast('Image attached. Type optional questions or click Solve.', 'success');
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function clearStagedImage() {
+            currentStagedImage = null;
+            document.getElementById('image-preview-tray').classList.add('hidden');
+            document.getElementById('preview-thumbnail').src = '';
+        }
+
+        function openImageModal() {
+            if (currentStagedImage) {
+                document.getElementById('modal-image-display').src = currentStagedImage.data;
+                document.getElementById('image-modal').classList.remove('hidden');
+            }
+        }
+
+        function closeImageModal() {
+            document.getElementById('image-modal').classList.add('hidden');
+        }
+
+        function toggleHistoryDrawer() {
+            const drawer = document.getElementById('history-drawer');
+            drawer.classList.toggle('hidden');
+        }
+
+        function askPrompt(text) {
+            const input = document.getElementById('copilot-input');
+            input.value = text;
+            handleSendCopilot();
+        }
+
+        function onModeChange(mode) {
+            const input = document.getElementById('copilot-input');
+            if (mode === 'Explain Diagram') {
+                input.placeholder = "Upload diagram/circuit photo or describe the architectural schematic...";
+            } else if (mode === 'Explain Code') {
+                input.placeholder = "Paste code, compiler error log, or upload screenshot...";
+            } else if (mode === 'Solve MCQ') {
+                input.placeholder = "Enter MCQ with options (A, B, C, D) or upload question photo...";
+            } else if (mode === 'Solve Numerical') {
+                input.placeholder = "Enter problem statement with given values, or upload formula/problem photo...";
+            } else {
+                input.placeholder = "Type question, or upload photo & add instructions...";
+            }
+        }
+
+        function startNewThread() {
+            currentConversationId = 'copilot_' + Date.now();
+            currentChatHistory = [];
+            clearStagedImage();
+
+            const chat = document.getElementById('chat-messages');
+            chat.innerHTML = `
+                <div class="flex items-start gap-3.5">
+                    <div class="w-9 h-9 rounded-xl bg-tertiary-container/30 border border-tertiary/50 flex items-center justify-center text-tertiary shrink-0">
+                        <span class="material-symbols-outlined text-xl">smart_toy</span>
+                    </div>
+                    <div class="max-w-2xl bg-surface-container rounded-2xl p-5 border border-outline-variant shadow-lg text-xs leading-relaxed space-y-3">
+                        <div class="font-bold text-sm text-white flex items-center gap-2">
+                            <span>TechPath Copilot Workspace</span>
+                            <span class="px-2 py-0.5 rounded text-[10px] bg-tertiary/20 text-tertiary font-mono">NEW SESSION</span>
+                        </div>
+                        <p class="text-on-surface-variant">
+                            New session initialized! Type a question, ask for exam guidance, or attach an image to solve step-by-step.
+                        </p>
+                    </div>
+                </div>
+                <div id="processing-card" class="hidden flex items-start gap-3.5">
+                    <div class="w-9 h-9 rounded-xl bg-tertiary-container/30 border border-tertiary/50 flex items-center justify-center text-tertiary shrink-0">
+                        <span class="material-symbols-outlined text-xl animate-spin">refresh</span>
+                    </div>
+                    <div class="max-w-xl w-full bg-surface-container rounded-2xl p-5 border border-tertiary/50 shadow-2xl relative overflow-hidden">
+                        <div class="laser-scanner-beam"></div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span id="processing-status" class="text-xs font-bold text-tertiary uppercase tracking-wider">Reading Image & Neural Vision Pipeline...</span>
+                            <span class="text-[10px] text-outline font-mono">STEP <span id="processing-step-num">1</span> OF 4</span>
+                        </div>
+                        <div class="w-full bg-surface-container-lowest h-1.5 rounded-full overflow-hidden mb-3">
+                            <div id="processing-progress-bar" class="bg-gradient-to-r from-primary via-tertiary to-primary h-full w-1/4 transition-all duration-300"></div>
+                        </div>
+                        <p id="processing-detail" class="text-[11px] text-on-surface-variant leading-relaxed">
+                            Parsing question, identifying mathematical expressions, code, or circuits...
+                        </p>
+                    </div>
+                </div>
+            `;
+            if (window.AuthManager) AuthManager.showToast('Started fresh AI Copilot session.', 'info');
+        }
+
+        function runProcessingAnimation(hasImage) {
+            const card = document.getElementById('processing-card');
+            const status = document.getElementById('processing-status');
+            const stepNum = document.getElementById('processing-step-num');
+            const progressBar = document.getElementById('processing-progress-bar');
+            const detail = document.getElementById('processing-detail');
+            const chat = document.getElementById('chat-messages');
+
+            card.classList.remove('hidden');
+            chat.scrollTop = chat.scrollHeight;
+
+            const stages = hasImage ? [
+                { status: "Uploading & Validating Image...", step: "1", width: "25%", detail: "Verifying MIME bounds and routing to neural vision endpoint..." },
+                { status: "Deep Neural Vision Processing...", step: "2", width: "50%", detail: "Deep vision inspection: parsing handwritten math, textbook diagrams, circuits, code, or charts..." },
+                { status: "Checking Image Sharpness & Expressions...", step: "3", width: "75%", detail: "Checking image clarity and extracting mathematical invariants..." },
+                { status: "Synthesizing Step-by-Step Derivation...", step: "4", width: "95%", detail: "Formulating proofs, calculations, boundary checks, and exam scoring notes..." }
+            ] : [
+                { status: "Analyzing Engineering Query...", step: "1", width: "33%", detail: "Mapping problem domain against core branch principles and syllabus standards..." },
+                { status: "Formulating Mathematical Derivation...", step: "2", width: "66%", detail: "Constructing step-by-step proofs, state equations, and edge cases..." },
+                { status: "Finalizing Verified Solution...", step: "3", width: "95%", detail: "Compiling final answer, common exam pitfalls, and practice challenge..." }
+            ];
+
+            let stageIdx = 0;
+            const timer = setInterval(() => {
+                stageIdx++;
+                if (stageIdx < stages.length) {
+                    const s = stages[stageIdx];
+                    status.textContent = s.status;
+                    stepNum.textContent = s.step;
+                    progressBar.style.width = s.width;
+                    detail.textContent = s.detail;
+                    chat.scrollTop = chat.scrollHeight;
+                }
+            }, 1100);
+
+            return () => {
+                clearInterval(timer);
+                card.classList.add('hidden');
+            };
+        }
+
+        async function handleSendCopilot(e) {
+            if (e) e.preventDefault();
+            if (isProcessing) return;
+
+            const input = document.getElementById('copilot-input');
+            const query = input.value.trim();
+            const imageToSubmit = currentStagedImage;
+
+            if (!query && !imageToSubmit) {
+                if (window.AuthManager) AuthManager.showToast('Please type a question or attach an image.', 'warning');
+                return;
+            }
+
+            isProcessing = true;
+            const submitBtn = document.getElementById('submit-btn');
+            submitBtn.disabled = true;
+            submitBtn.classList.add('opacity-50');
+
+            const chat = document.getElementById('chat-messages');
+
+            // Render User's Submission
+            const userCard = document.createElement('div');
+            userCard.className = 'flex items-start gap-3.5 justify-end';
+            userCard.innerHTML = `
+                <div class="max-w-xl bg-primary-container text-white rounded-2xl p-4 shadow-lg text-xs leading-relaxed space-y-2.5">
+                    ${imageToSubmit ? `
+                        <div class="rounded-xl overflow-hidden border border-white/20 max-w-sm bg-black/40">
+                            <img src="${imageToSubmit.data}" alt="Uploaded question" class="w-full max-h-56 object-contain"/>
+                            <div class="px-2.5 py-1 text-[10px] bg-black/50 text-white/80 font-mono flex items-center justify-between">
+                                <span>${imageToSubmit.name}</span>
+                                <span>${Math.round(imageToSubmit.size / 1024)} KB</span>
+                            </div>
+                        </div>
+                    ` : ''}
+                    ${query ? `<p class="font-medium">${query}</p>` : `<p class="italic text-white/80">[Submitted Image Problem for AI Analysis]</p>`}
+                </div>
+                <div class="w-8 h-8 rounded-lg bg-surface-container border border-primary/40 flex items-center justify-center text-primary shrink-0 font-bold text-xs">
+                    ME
+                </div>
+            `;
+            chat.appendChild(userCard);
+            input.value = '';
+            clearStagedImage();
+            chat.scrollTop = chat.scrollHeight;
+
+            const stopAnimation = runProcessingAnimation(Boolean(imageToSubmit));
+
+            try {
+                const mode = document.getElementById('mode-select').value;
+                const payload = {
+                    question: query,
+                    image: imageToSubmit ? {
+                        data: imageToSubmit.data,
+                        mimeType: imageToSubmit.mimeType,
+                        name: imageToSubmit.name,
+                        size: imageToSubmit.size
+                    } : null,
+                    mode: mode,
+                    branch: currentStudentProfile.department || 'CSE',
+                    semester: currentStudentProfile.semester || 4,
+                    targetRole: currentStudentProfile.target_role || 'Software Engineer',
+                    userEmail: currentStudentProfile.id,
+                    conversationId: currentConversationId,
+                    chatHistory: currentChatHistory
+                };
+
+                const res = await fetch('/api/ai/doubt', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                const data = await res.json();
+                stopAnimation();
+
+                if (!res.ok || !data.success) {
+                    throw new Error(data.error || 'Server error while processing response.');
+                }
+
+                renderSolutionCard(data, query, imageToSubmit, mode);
+
+                currentChatHistory.push(
+                    { role: 'user', content: query || `[Image: ${imageToSubmit?.name}]` },
+                    { role: 'assistant', content: data.solution || data.structuredAnswer?.finalAnswer || 'Solved' }
+                );
+
+                loadHistoryList();
+
+            } catch (err) {
+                stopAnimation();
+                console.error('[Copilot Error]:', err);
+                const errDiv = document.createElement('div');
+                errDiv.className = 'flex items-start gap-3.5';
+                errDiv.innerHTML = `
+                    <div class="w-9 h-9 rounded-xl bg-rose-900/40 border border-rose-500/50 flex items-center justify-center text-rose-300 shrink-0">
+                        <span class="material-symbols-outlined text-xl">error</span>
+                    </div>
+                    <div class="max-w-xl bg-surface-container rounded-2xl p-4 border border-rose-500/40 text-xs text-rose-200 space-y-2">
+                        <div class="font-bold flex items-center gap-1.5 text-white">
+                            <span>Problem Solving Interrupted</span>
+                        </div>
+                        <p>${err.message || 'Could not connect to AI Copilot. Please verify the server is running.'}</p>
+                        <button onclick="handleSendCopilot(null)" class="px-3 py-1 rounded bg-rose-900/50 hover:bg-rose-900 border border-rose-400 text-[11px] text-white">
+                            Retry
+                        </button>
+                    </div>
+                `;
+                chat.appendChild(errDiv);
+                chat.scrollTop = chat.scrollHeight;
+            } finally {
+                isProcessing = false;
+                submitBtn.disabled = false;
+                submitBtn.classList.remove('opacity-50');
+            }
+        }
+
+        function renderSolutionCard(data, originalQuery, originalImage, selectedMode) {
+            const chat = document.getElementById('chat-messages');
+            const ans = data.structuredAnswer || {};
+            const isLive = Boolean(data.isLiveAI);
+            const badgeColor = isLive ? 'bg-tertiary/20 text-tertiary border-tertiary/40' : 'bg-amber-500/20 text-amber-300 border-amber-500/40';
+            const badgeText = isLive ? `${data.source || 'LIVE VISION AI'}`.toUpperCase() : 'COGNITIVE ENGINE';
+
+            const cardDiv = document.createElement('div');
+            cardDiv.className = 'flex items-start gap-3.5';
+
+            const isLowConfidence = data.confidence === 'low_unclear' || Boolean(data.clarityWarning);
+
+            let stepsHtml = '';
+            if (Array.isArray(ans.stepByStepSolution) && ans.stepByStepSolution.length > 0) {
+                stepsHtml = ans.stepByStepSolution.map((s, idx) => `
+                    <div class="p-3 rounded-xl bg-surface-container-low border border-outline-variant/60 space-y-1">
+                        <div class="text-[10px] font-bold text-primary font-mono uppercase tracking-wider">Step ${idx + 1}</div>
+                        <p class="text-xs text-on-surface leading-relaxed">${escapeHtml(s)}</p>
+                    </div>
+                `).join('');
+            } else {
+                stepsHtml = `
+                    <div class="p-3 rounded-xl bg-surface-container-low border border-outline-variant/60 text-xs text-on-surface whitespace-pre-line leading-relaxed">
+                        ${escapeHtml(data.solution || ans.finalAnswer || 'Derivation complete.')}
+                    </div>
+                `;
+            }
+
+            let mistakesHtml = '';
+            if (Array.isArray(ans.commonMistakes) && ans.commonMistakes.length > 0) {
+                mistakesHtml = `
+                    <div class="p-3.5 rounded-xl bg-rose-950/30 border border-rose-500/30 text-xs space-y-1.5">
+                        <div class="font-bold text-rose-300 flex items-center gap-1.5">
+                            <span class="material-symbols-outlined text-base">warning</span>
+                            <span>Common Exam Pitfalls & Errors</span>
+                        </div>
+                        <ul class="list-disc pl-4 space-y-1 text-rose-200/90 text-[11px]">
+                            ${ans.commonMistakes.map(m => `<li>${escapeHtml(m)}</li>`).join('')}
+                        </ul>
+                    </div>
+                `;
+            }
+
+            let numericalBlock = '';
+            if (ans.given || ans.formulaUsed || ans.substitution) {
+                numericalBlock = `
+                    <div class="p-3.5 rounded-xl bg-surface-container-low border border-tertiary/40 text-xs space-y-2 font-mono">
+                        ${ans.given ? `<div><strong class="text-tertiary">Given Data:</strong> <span class="text-on-surface">${escapeHtml(ans.given)}</span></div>` : ''}
+                        ${ans.formulaUsed ? `<div><strong class="text-rose-gold">Governing Formula:</strong> <span class="text-white">${escapeHtml(ans.formulaUsed)}</span></div>` : ''}
+                        ${ans.substitution ? `<div><strong class="text-primary">Substitution:</strong> <span class="text-on-surface">${escapeHtml(ans.substitution)}</span></div>` : ''}
+                    </div>
+                `;
+            }
+
+            let mcqBlock = '';
+            if (ans.mcqAnalysis || ans.whyOtherOptionsIncorrect) {
+                mcqBlock = `
+                    <div class="p-3.5 rounded-xl bg-surface-container-low border border-primary/40 text-xs space-y-2">
+                        <strong class="text-primary font-bold block">Option-by-Option Justification:</strong>
+                        <p class="text-on-surface leading-relaxed">${escapeHtml(ans.whyOtherOptionsIncorrect || ans.mcqAnalysis)}</p>
+                    </div>
+                `;
+            }
+
+            cardDiv.innerHTML = `
+                <div class="w-9 h-9 rounded-xl bg-tertiary-container/30 border border-tertiary/50 flex items-center justify-center text-tertiary shrink-0">
+                    <span class="material-symbols-outlined text-xl">psychology</span>
+                </div>
+                <div class="max-w-2xl bg-surface-container rounded-2xl p-5 border border-outline-variant shadow-xl text-xs space-y-4">
+                    
+                    <!-- Header Meta & Badges -->
+                    <div class="flex items-center justify-between border-b border-outline-variant/60 pb-3">
+                        <div class="flex items-center gap-2">
+                            <span class="px-2 py-0.5 rounded text-[10px] font-bold border font-mono ${badgeColor}">
+                                ${badgeText}
+                            </span>
+                            <span class="text-[10px] text-outline font-mono uppercase">${escapeHtml(selectedMode || 'Step-by-Step')}</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <button onclick="readAloud(this)" class="p-1 rounded text-outline hover:text-white" title="Read Aloud">
+                                <span class="material-symbols-outlined text-sm">volume_up</span>
+                            </button>
+                            <button onclick="copySolution(this)" class="p-1 rounded text-outline hover:text-white" title="Copy Solution">
+                                <span class="material-symbols-outlined text-sm">content_copy</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    ${isLowConfidence ? `
+                        <div class="p-3.5 rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-200 text-xs flex items-center gap-2.5">
+                            <span class="material-symbols-outlined text-amber-300 text-lg shrink-0">image_not_supported</span>
+                            <div>
+                                <strong class="text-white block font-semibold">Image Clarity Warning:</strong>
+                                <span>The image is unclear. Please upload a clearer image for verified accuracy.</span>
+                            </div>
+                        </div>
+                    ` : ''}
+
+                    <!-- 1. Problem Understanding / Core Concept -->
+                    ${ans.conceptOrPrinciple ? `
+                        <div class="space-y-1">
+                            <span class="text-[10px] font-bold text-tertiary uppercase tracking-wider font-mono">1. Understanding & Paradigm</span>
+                            <p class="text-xs text-on-surface leading-relaxed">${escapeHtml(ans.conceptOrPrinciple)}</p>
+                        </div>
+                    ` : ''}
+
+                    <!-- 2. Numerical Formulation Block (if applicable) -->
+                    ${numericalBlock}
+
+                    <!-- 3. MCQ Justification (if applicable) -->
+                    ${mcqBlock}
+
+                    <!-- 4. Step-by-Step Derivation / Solution -->
+                    <div class="space-y-2">
+                        <span class="text-[10px] font-bold text-primary uppercase tracking-wider font-mono">2. Step-by-Step Solution</span>
+                        <div class="space-y-2">
+                            ${stepsHtml}
+                        </div>
+                    </div>
+
+                    <!-- 5. Final Verified Answer Box -->
+                    <div class="p-3.5 rounded-xl bg-tertiary/10 border border-tertiary/40 text-xs space-y-1">
+                        <span class="text-[10px] font-bold text-tertiary uppercase tracking-wider font-mono block">3. Final Answer</span>
+                        <div class="text-sm font-bold text-white font-mono leading-relaxed">
+                            ${escapeHtml(ans.finalAnswer || data.solution || 'Solution finalized.')}
+                        </div>
+                    </div>
+
+                    <!-- 6. Pitfalls & Common Mistakes -->
+                    ${mistakesHtml}
+
+                    <!-- 7. Exam Practice Recommendation -->
+                    ${ans.practiceProblem ? `
+                        <div class="p-3 rounded-xl bg-surface-container-low border border-outline-variant/60 space-y-1 text-[11px]">
+                            <strong class="text-secondary font-semibold">Recommended Practice Follow-up:</strong>
+                            <p class="text-on-surface-variant">${escapeHtml(ans.practiceProblem)}</p>
+                        </div>
+                    ` : ''}
+
+                </div>
+            `;
+
+            chat.appendChild(cardDiv);
+            chat.scrollTop = chat.scrollHeight;
+        }
+
+        async function loadHistoryList() {
+            const list = document.getElementById('history-list');
+            try {
+                const res = await fetch(`/api/ai/doubt/history?userId=${encodeURIComponent(currentStudentProfile.id)}`);
+                if (res.ok) {
+                    const data = await res.json();
+                    const doubts = data.doubts || [];
+                    if (doubts.length === 0) {
+                        list.innerHTML = '<div class="text-center py-10 text-outline text-xs">No saved copilot sessions found.</div>';
+                        return;
+                    }
+                    list.innerHTML = doubts.map(d => `
+                        <div onclick="reopenHistoryDoubt('${d.id}')" class="p-3 rounded-xl bg-surface-container-high border border-outline-variant hover:border-primary cursor-pointer transition-all space-y-1.5">
+                            <div class="flex items-center justify-between text-[10px] font-mono">
+                                <span class="text-tertiary">${new Date(d.created_at).toLocaleDateString()}</span>
+                                <span class="text-outline uppercase">${d.mode || 'DOUBT'}</span>
+                            </div>
+                            <div class="text-xs font-bold text-white line-clamp-2">${escapeHtml(d.question || d.detected_question || 'Image Problem')}</div>
+                        </div>
+                    `).join('');
+                }
+            } catch (e) {
+                console.warn('[History Error]:', e.message);
+            }
+        }
+
+        async function reopenHistoryDoubt(id) {
+            try {
+                const res = await fetch(`/api/ai/doubt/history?userId=${encodeURIComponent(currentStudentProfile.id)}`);
+                if (res.ok) {
+                    const data = await res.json();
+                    const item = (data.doubts || []).find(d => d.id === id);
+                    if (item) {
+                        toggleHistoryDrawer();
+                        renderSolutionCard({
+                            structuredAnswer: item.structured_answer || {},
+                            solution: item.solution,
+                            confidence: item.confidence,
+                            isLiveAI: true,
+                            source: item.source || 'AI Copilot'
+                        }, item.question, null, item.mode);
+                    }
+                }
+            } catch (e) {}
+        }
+
+        async function clearAllUserHistory() {
+            if (!confirm('Are you sure you want to clear your AI Copilot history?')) return;
+            try {
+                await fetch(`/api/ai/doubt/history?userId=${encodeURIComponent(currentStudentProfile.id)}`, { method: 'DELETE' });
+                loadHistoryList();
+                if (window.AuthManager) AuthManager.showToast('Copilot history cleared.', 'info');
+            } catch (e) {}
+        }
+
+        function readAloud(btn) {
+            const card = btn.closest('.bg-surface-container');
+            if (!card) return;
+            const text = card.innerText.replace(/volume_up|content_copy/g, '');
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const utter = new SpeechSynthesisUtterance(text);
+                utter.rate = 1.0;
+                window.speechSynthesis.speak(utter);
+            }
+        }
+
+        function copySolution(btn) {
+            const card = btn.closest('.bg-surface-container');
+            if (!card) return;
+            const text = card.innerText.replace(/volume_up|content_copy/g, '');
+            navigator.clipboard.writeText(text);
+            if (window.AuthManager) AuthManager.showToast('Solution copied to clipboard!', 'success');
+        }
+
+        function escapeHtml(str) {
+            if (!str) return '';
+            return String(str)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;');
+        }
+    </script>
+</body>
+</html>

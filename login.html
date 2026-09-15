@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <!-- Primary SEO Meta Tags -->
+    <title>Sign In | TechPath</title>
+    <meta name="title" content="Sign In | TechPath">
+    <meta name="description" content="Sign in to TechPath to continue your personalized engineering learning and career journey.">
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="canonical" href="https://TechPath.ai/login.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="TechPath">
+    <meta property="og:url" content="https://TechPath.ai/login.html">
+    <meta property="og:title" content="Sign In | TechPath">
+    <meta property="og:description" content="Sign in to TechPath to continue your personalized engineering learning and career journey.">
+    <meta property="og:image" content="https://TechPath.ai/assets/branding/techpath-og.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="TechPath — Learn. Build. Prepare. Grow.">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://TechPath.ai/login.html">
+    <meta name="twitter:title" content="Sign In | TechPath">
+    <meta name="twitter:description" content="Sign in to TechPath to continue your personalized engineering learning and career journey.">
+    <meta name="twitter:image" content="https://TechPath.ai/assets/branding/techpath-og.png">
+    <meta name="twitter:image:alt" content="TechPath — Learn. Build. Prepare. Grow.">
+
+    <!-- Favicon & App Icons -->
+    <link rel="icon" type="image/svg+xml" href="assets/branding/favicon.svg">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/branding/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/branding/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/branding/apple-touch-icon.png">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#0B0F19">
+    <!-- Primary SEO Meta Tags -->
+    <!-- Open Graph / Facebook -->
+    <!-- Twitter Card -->
+    <!-- Favicon & App Icons -->
+    <!-- Primary SEO Meta Tags -->
+    <!-- Open Graph / Facebook -->
+    <!-- Twitter Card -->
+    <!-- Favicon & App Icons -->
+    <!-- Primary SEO Meta Tags -->
+    <!-- Open Graph / Facebook -->
+    <!-- Twitter Card -->
+    <!-- Favicon & App Icons -->
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <!-- Tailwind CSS -->
+    <link rel="stylesheet" href="css/tailwind.output.css">
+    
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="css/custom.css"/>
+    <link rel="stylesheet" href="css/motion.css"/>
+    <link rel="stylesheet" href="css/husky-door-auth.css"/>
+
+    <script src="js/seo-metadata.js" defer></script>
+</head>
+<body class="bg-[#0B0F19] text-[#F5F7FA] min-h-screen flex flex-col justify-between relative selection:bg-indigo-brand selection:text-white overflow-x-hidden">
+
+    <!-- Top Minimal Navigation -->
+    <header class="w-full max-w-5xl mx-auto px-6 py-6 flex items-center justify-between relative z-30">
+        <a href="index.html" class="flex items-center gap-2.5 group py-1" aria-label="TechPath Home">
+            <img src="assets/branding/techpath-logo-horizontal.png" alt="TechPath" class="h-8 md:h-9 w-auto object-contain hidden sm:block transition-transform duration-200 group-hover:scale-[1.02]" />
+            <img src="assets/branding/techpath-emblem.png" alt="TechPath" class="h-7 w-auto object-contain sm:hidden" />
+        </a>
+
+        <a href="index.html" class="text-xs text-slate-400 hover:text-white flex items-center gap-1.5 transition-colors font-medium">
+            <span class="material-symbols-outlined text-sm">west</span>
+            <span>Back to Home</span>
+        </a>
+    </header>
+
+    <!-- Main Authentication Stage with Husky & 3D Door -->
+    <main class="flex-1 flex items-center justify-center px-4 py-8 relative z-20">
+        <div class="auth-stage-container">
+            
+            <!-- 1. HUSKY GUARDIAN MASCOT (Sitting atop card with paws over edge) -->
+            <div class="husky-wrapper">
+                <svg id="husky-mascot-svg" class="husky-svg" viewBox="0 0 160 120">
+                    <defs>
+                        <!-- Coat Shading -->
+                        <linearGradient id="huskyCoat" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#334155"/>
+                            <stop offset="60%" stop-color="#1E293B"/>
+                            <stop offset="100%" stop-color="#0F172A"/>
+                        </linearGradient>
+                        <linearGradient id="huskyEarInner" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" stop-color="#FDA4AF"/>
+                            <stop offset="100%" stop-color="#F43F5E"/>
+                        </linearGradient>
+                    </defs>
+
+                    <!-- Animated Head Group -->
+                    <g id="husky-head-group" class="husky-head">
+                        <!-- Left Ear -->
+                        <polygon points="36,18 20,54 54,46" fill="url(#huskyCoat)"/>
+                        <polygon points="34,24 24,50 48,44" fill="url(#huskyEarInner)" opacity="0.85"/>
+
+                        <!-- Right Ear -->
+                        <polygon points="124,18 106,46 140,54" fill="url(#huskyCoat)"/>
+                        <polygon points="126,24 112,44 136,50" fill="url(#huskyEarInner)" opacity="0.85"/>
+
+                        <!-- Main Head Shell (Dark Coat) -->
+                        <ellipse cx="80" cy="58" rx="46" ry="38" fill="url(#huskyCoat)"/>
+
+                        <!-- White Facial Mask (Cheeks, Forehead blaze, Muzzle) -->
+                        <path d="M 40,58 C 40,78 60,92 80,92 C 100,92 120,78 120,58 C 120,44 104,42 94,48 C 88,52 84,40 80,40 C 76,40 72,52 66,48 C 56,42 40,44 40,58 Z" fill="#F8FAFC"/>
+
+                        <!-- Eyebrows (Husky Markings) -->
+                        <ellipse cx="64" cy="44" rx="4" ry="2" fill="#E2E8F0" opacity="0.9"/>
+                        <ellipse cx="96" cy="44" rx="4" ry="2" fill="#E2E8F0" opacity="0.9"/>
+
+                        <!-- Left Eye Group -->
+                        <g class="husky-eye husky-eye-left">
+                            <g class="husky-eye-open">
+                                <circle cx="64" cy="56" r="6.5" fill="#0F172A"/>
+                                <g id="husky-pupil-left" class="husky-pupil">
+                                    <circle cx="64" cy="56" r="4.5" fill="#38BDF8"/>
+                                    <circle cx="65.5" cy="54.5" r="1.5" fill="#FFFFFF"/>
+                                </g>
+                            </g>
+                            <!-- Closed Eye Arc (Password / Squint) -->
+                            <path class="husky-eye-closed" d="M 58,58 Q 64,52 70,58" fill="none" stroke="#0F172A" stroke-width="2.5" stroke-linecap="round"/>
+                        </g>
+
+                        <!-- Right Eye Group -->
+                        <g class="husky-eye husky-eye-right">
+                            <g class="husky-eye-open">
+                                <circle cx="96" cy="56" r="6.5" fill="#0F172A"/>
+                                <g id="husky-pupil-right" class="husky-pupil">
+                                    <circle cx="96" cy="56" r="4.5" fill="#38BDF8"/>
+                                    <circle cx="97.5" cy="54.5" r="1.5" fill="#FFFFFF"/>
+                                </g>
+                            </g>
+                            <!-- Closed Eye Arc (Password / Squint) -->
+                            <path class="husky-eye-closed" d="M 90,58 Q 96,52 102,58" fill="none" stroke="#0F172A" stroke-width="2.5" stroke-linecap="round"/>
+                        </g>
+
+                        <!-- Snout & Nose -->
+                        <ellipse cx="80" cy="71" rx="14" ry="9" fill="#FFFFFF"/>
+                        <path d="M 76,68 Q 80,66 84,68 Q 80,75 76,68 Z" fill="#0F172A"/>
+
+                        <!-- Cheek Blush -->
+                        <circle cx="48" cy="68" r="4.5" fill="#FDA4AF" opacity="0.5"/>
+                        <circle cx="112" cy="68" r="4.5" fill="#FDA4AF" opacity="0.5"/>
+
+                        <!-- Mouth: Normal vs Happy Smile -->
+                        <g class="husky-smile-normal">
+                            <path d="M 76,73 Q 80,76 84,73" fill="none" stroke="#0F172A" stroke-width="1.8" stroke-linecap="round"/>
+                        </g>
+                        <g class="husky-smile-happy">
+                            <path d="M 74,72 Q 80,82 86,72" fill="#F43F5E" stroke="#0F172A" stroke-width="1.8" stroke-linecap="round"/>
+                            <ellipse cx="80" cy="77" rx="3.5" ry="4.5" fill="#FB7185"/>
+                        </g>
+                    </g>
+
+                    <!-- 2. Paws Resting Over the Top Edge of Card -->
+                    <g class="husky-paws">
+                        <!-- Left Paw -->
+                        <g class="husky-paw husky-paw--left" transform="translate(48, 86)">
+                            <ellipse cx="0" cy="0" rx="13" ry="11" fill="url(#huskyCoat)"/>
+                            <ellipse cx="0" cy="1" rx="10.5" ry="8.5" fill="#F8FAFC"/>
+                            <!-- Toe Beans -->
+                            <circle cx="-5" cy="-2" r="2.2" fill="#334155"/>
+                            <circle cx="0" cy="-4" r="2.2" fill="#334155"/>
+                            <circle cx="5" cy="-2" r="2.2" fill="#334155"/>
+                            <ellipse cx="0" cy="3" rx="4.5" ry="3.5" fill="#334155"/>
+                        </g>
+
+                        <!-- Right Paw -->
+                        <g class="husky-paw husky-paw--right" transform="translate(112, 86)">
+                            <ellipse cx="0" cy="0" rx="13" ry="11" fill="url(#huskyCoat)"/>
+                            <ellipse cx="0" cy="1" rx="10.5" ry="8.5" fill="#F8FAFC"/>
+                            <!-- Toe Beans -->
+                            <circle cx="-5" cy="-2" r="2.2" fill="#334155"/>
+                            <circle cx="0" cy="-4" r="2.2" fill="#334155"/>
+                            <circle cx="5" cy="-2" r="2.2" fill="#334155"/>
+                            <ellipse cx="0" cy="3" rx="4.5" ry="3.5" fill="#334155"/>
+                        </g>
+                    </g>
+                </svg>
+            </div>
+
+            <!-- 2. THE AUTHENTICATION CARD -->
+            <div class="husky-auth-card">
+                
+                <!-- Headline & Guardian Notice -->
+                <div class="text-center mb-6">
+                    <h1 class="text-2xl font-extrabold text-white tracking-tight">Den</h1>
+                    <p class="text-xs text-slate-400 mt-1 font-medium">Welcome back. Your husky's keeping watch.</p>
+                </div>
+
+                <!-- Main Form -->
+                <form id="husky-auth-form" class="space-y-4">
+                    
+                    <!-- Identifier Field (Email) -->
+                    <div>
+                        <label id="auth-identifier-label" for="auth-identifier" class="husky-input-label">Institutional / Personal Email</label>
+                        <div class="relative flex items-center">
+                            <input 
+                                id="auth-identifier" 
+                                type="email" 
+                                required
+                                autocomplete="username"
+                                placeholder="student@example.com" 
+                                class="husky-input-field husky-track-input font-mono text-xs"
+                            />
+                        </div>
+                    </div>
+
+                    <!-- Password Field (With Show/Hide & Eye Mascot Hook) -->
+                    <div>
+                        <div class="flex items-center justify-between mb-1.5">
+                            <label for="auth-password" class="husky-input-label !mb-0">Password</label>
+                        </div>
+                        <div class="relative flex items-center">
+                            <input 
+                                id="auth-password" 
+                                type="password" 
+                                required
+                                autocomplete="current-password"
+                                placeholder="••••••••" 
+                                class="husky-input-field pr-11 font-mono text-xs"
+                            />
+                            <button 
+                                type="button" 
+                                id="toggle-password-visibility" 
+                                class="absolute right-3 text-slate-400 hover:text-white transition-colors focus:outline-none"
+                                aria-label="Toggle password visibility"
+                            >
+                                <span class="material-symbols-outlined text-lg">visibility</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Options Row -->
+                    <div class="flex items-center justify-between text-xs pt-1">
+                        <label for="remember-me-checkbox" class="flex items-center gap-2 cursor-pointer text-slate-400 hover:text-slate-300">
+                            <input id="remember-me-checkbox" type="checkbox" checked class="w-3.5 h-3.5 rounded bg-slate-900 border-slate-700 text-indigo-brand focus:ring-0 focus:ring-offset-0"/>
+                            <span>Remember me</span>
+                        </label>
+                        <a href="javascript:void(0)" onclick="if (window.AuthManager) { window.AuthManager.openForgotPasswordModal(document.getElementById('auth-identifier')?.value); }" class="text-indigo-400 hover:text-indigo-300 font-medium">
+                            Forgot password?
+                        </a>
+                    </div>
+
+                    <!-- 3. THE 3D DOOR WALK-THROUGH BUTTON ("Sign in is a door") -->
+                    <div class="pt-2">
+                        <button type="submit" id="door-submit-btn" class="doorbtn" aria-label="Sign in">
+                            <span class="doorbtn__label">Sign in</span>
+                            
+                            <!-- 3D Door & Walking Figure Assembly -->
+                            <span class="dooric">
+                                <span class="dooric__frame"></span>
+                                <span class="dooric__glow"></span>
+                                <span class="dooric__panel"></span>
+                                <span class="dooric__person">
+                                    <svg viewBox="0 0 20 32" fill="none">
+                                        <circle cx="10" cy="5" r="3.5" stroke="#FFFFFF" stroke-width="2"/>
+                                        <line x1="10" y1="8.5" x2="10" y2="19" stroke="#FFFFFF" stroke-width="2"/>
+                                        <line class="leg leg--front" x1="10" y1="19" x2="5" y2="29" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
+                                        <line class="leg leg--back" x1="10" y1="19" x2="15" y2="29" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
+                                        <line x1="10" y1="11" x2="4" y2="17" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
+                                        <line x1="10" y1="11" x2="16" y2="17" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
+                                    </svg>
+                                </span>
+                            </span>
+                        </button>
+                    </div>
+                </form>
+
+                <!-- Social Sign In Divider -->
+                <div class="relative my-6 text-center">
+                    <div class="absolute inset-0 flex items-center">
+                        <div class="w-full border-t border-slate-800"></div>
+                    </div>
+                    <span class="relative px-3 bg-[#121826] text-[11px] font-medium text-slate-500 uppercase tracking-wider">
+                        or continue with
+                    </span>
+                </div>
+
+                <!-- Google SSO Button -->
+                <div>
+                    <button 
+                        type="button" 
+                        id="google-sso-btn"
+                        onclick="if(window.AuthManager) window.AuthManager.handleGoogleSSO();" 
+                        class="w-full py-2.5 px-4 rounded-xl bg-slate-900/90 hover:bg-slate-800 border border-slate-800 text-xs font-semibold text-slate-200 flex items-center justify-center gap-2 transition-all active:scale-95"
+                    >
+                        <svg class="w-4 h-4" viewBox="0 0 24 24">
+                            <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17Z"/>
+                            <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.26 21.36 7.33 24 12 24Z"/>
+                            <path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.25C.45 8.18 0 9.99 0 12s.45 3.82 1.25 5.42l4.03-3.15Z"/>
+                            <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.33 0 3.26 2.64 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98Z"/>
+                        </svg>
+                        <span>Continue with Google</span>
+                    </button>
+                </div>
+
+                <!-- Footer Switcher Link -->
+                <div class="text-center mt-6 text-xs text-slate-400">
+                    <span>New to Den? </span>
+                    <a href="signup.html" class="text-indigo-400 hover:text-indigo-300 font-bold hover:underline">Create account</a>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Quiet Footer -->
+    <footer class="w-full max-w-5xl mx-auto px-6 py-6 text-center text-xs text-slate-500 relative z-20">
+        <p>TechPath • Secured by Cryptographic Identity & Real-Time RLS</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/supabase.min.js"></script>
+    <script src="js/supabase-client.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/db.js"></script>
+    <script src="js/btech-bg3d.js"></script>
+    <script src="js/husky-door-auth.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const hasAuthParams = window.location.search.includes('code=') || 
+                                  window.location.search.includes('token_hash=') || 
+                                  window.location.hash.includes('access_token=');
+            if (hasAuthParams) {
+                window.location.replace('auth-callback.html' + window.location.search + window.location.hash);
+                return;
+            }
+            if (window.AuthManager) {
+                window.AuthManager.redirectIfAuthenticated();
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <!-- Primary SEO Meta Tags -->
+    <title>Student Dashboard | TechPath</title>
+    <meta name="title" content="Student Dashboard | TechPath">
+    <meta name="description" content="Access your unified engineering dashboard with active study sessions, upcoming exam countdowns, and skill progress.">
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="canonical" href="https://TechPath.ai/dashboard.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="TechPath">
+    <meta property="og:url" content="https://TechPath.ai/dashboard.html">
+    <meta property="og:title" content="Student Dashboard | TechPath">
+    <meta property="og:description" content="Access your unified engineering dashboard with active study sessions, upcoming exam countdowns, and skill progress.">
+    <meta property="og:image" content="https://TechPath.ai/assets/branding/techpath-og.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="TechPath — Learn. Build. Prepare. Grow.">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://TechPath.ai/dashboard.html">
+    <meta name="twitter:title" content="Student Dashboard | TechPath">
+    <meta name="twitter:description" content="Access your unified engineering dashboard with active study sessions, upcoming exam countdowns, and skill progress.">
+    <meta name="twitter:image" content="https://TechPath.ai/assets/branding/techpath-og.png">
+    <meta name="twitter:image:alt" content="TechPath — Learn. Build. Prepare. Grow.">
+
+    <!-- Favicon & App Icons -->
+    <link rel="icon" type="image/svg+xml" href="assets/branding/favicon.svg">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/branding/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/branding/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/branding/apple-touch-icon.png">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#0B0F19">
+    <!-- Primary SEO Meta Tags -->
+    <!-- Open Graph / Facebook -->
+    <!-- Twitter Card -->
+    <!-- Favicon & App Icons -->
+    <!-- Primary SEO Meta Tags -->
+    <!-- Open Graph / Facebook -->
+    <!-- Twitter Card -->
+    <!-- Favicon & App Icons -->
+    <!-- Primary SEO Meta Tags -->
+    <!-- Open Graph / Facebook -->
+    <!-- Twitter Card -->
+    <!-- Favicon & App Icons -->
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <link rel="stylesheet" href="css/tailwind.output.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="css/custom.css"/>
+    <link rel="stylesheet" href="css/motion.css"/>
+
+    <script src="js/seo-metadata.js" defer></script>
+</head>
+<body class="bg-deep-twilight text-warm-ivory min-h-screen flex antialiased selection:bg-indigo-brand selection:text-white">
+
+    <div class="bg-ambient-glow"></div>
+
+    <!-- SIDEBAR NAVIGATION -->
+    <aside id="main-sidebar" class="w-64 bg-deep-twilight border-r border-subtle flex flex-col justify-between shrink-0 z-40 fixed md:static inset-y-0 left-0 -translate-x-full md:translate-x-0 transition-transform duration-300">
+        <div>
+            <!-- Header Logo -->
+            <div class="h-20 px-6 flex items-center justify-between border-b border-subtle">
+                <a href="index.html" class="flex items-center gap-3 group py-1" aria-label="TechPath Home">
+                    <img src="assets/branding/techpath-logo-horizontal.png" alt="TechPath" class="sidebar-logo-full h-8 w-auto object-contain transition-transform duration-200 group-hover:scale-[1.02]" />
+                    <img src="assets/branding/techpath-emblem.png" alt="TechPath" class="sidebar-logo-compact h-8 w-auto object-contain hidden" />
+                </a>
+            </div>
+
+            <!-- Nav Links -->
+            <div class="p-4 space-y-1 text-sm font-medium">
+                <div class="px-3 py-2 text-[11px] font-bold uppercase tracking-wider text-muted-gray">Student Workspace</div>
+                
+                <a href="dashboard.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl bg-elevated text-warm-ivory border border-subtle font-semibold">
+                    <span class="material-symbols-outlined text-xl text-indigo-brand" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+                    <span>Command Center</span>
+                </a>
+
+                <a href="study.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-muted-gray hover:text-warm-ivory hover:bg-elevated transition-colors">
+                    <span class="material-symbols-outlined text-xl">timer</span>
+                    <span>Study System</span>
+                </a>
+
+                <a href="learn.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-muted-gray hover:text-warm-ivory hover:bg-elevated transition-colors">
+                    <span class="material-symbols-outlined text-xl">menu_book</span>
+                    <span>Learn Hub</span>
+                </a>
+
+                <a href="branch-learning.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-muted-gray hover:text-warm-ivory hover:bg-elevated transition-colors">
+                    <span class="material-symbols-outlined text-xl text-indigo-400">psychology_alt</span>
+                    <span>Branch Learning</span>
+                </a>
+
+                <a href="ide.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-muted-gray hover:text-warm-ivory hover:bg-elevated transition-colors">
+                    <span class="material-symbols-outlined text-xl text-emerald-400">code_blocks</span>
+                    <span>Code Studio</span>
+                </a>
+
+                <a href="skills.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-muted-gray hover:text-warm-ivory hover:bg-elevated transition-colors">
+                    <span class="material-symbols-outlined text-xl">code</span>
+                    <span>Skill Architecture</span>
+                </a>
+
+                <a href="quiz.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-muted-gray hover:text-warm-ivory hover:bg-elevated transition-colors">
+                    <span class="material-symbols-outlined text-xl">quiz</span>
+                    <span>AI Quizzes</span>
+                </a>
+
+                <a href="ai-notes.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-muted-gray hover:text-warm-ivory hover:bg-elevated transition-colors">
+                    <span class="material-symbols-outlined text-xl text-teal-brand">auto_stories</span>
+                    <span>AI Notes</span>
+                </a>
+
+                <a href="planner.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-muted-gray hover:text-warm-ivory hover:bg-elevated transition-colors">
+                    <span class="material-symbols-outlined text-xl">calendar_today</span>
+                    <span>Daily Planner</span>
+                </a>
+
+                <a href="exams.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-muted-gray hover:text-warm-ivory hover:bg-elevated transition-colors">
+                    <span class="material-symbols-outlined text-xl">event_note</span>
+                    <span>Exam Tracker</span>
+                </a>
+
+                <a href="projects.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-muted-gray hover:text-warm-ivory hover:bg-elevated transition-colors">
+                    <span class="material-symbols-outlined text-xl">terminal</span>
+                    <span>Project Hub</span>
+                </a>
+
+                <a href="ide.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-muted-gray hover:text-warm-ivory hover:bg-elevated transition-colors">
+                    <span class="material-symbols-outlined text-xl text-tertiary">data_object</span>
+                    <span>Coding IDE</span>
+                </a>
+
+                <a href="career.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-muted-gray hover:text-warm-ivory hover:bg-elevated transition-colors">
+                    <span class="material-symbols-outlined text-xl">work</span>
+                    <span>Career Navigator</span>
+                </a>
+
+                <a href="copilot.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-muted-gray hover:text-warm-ivory hover:bg-elevated transition-colors">
+                    <span class="material-symbols-outlined text-xl">psychology</span>
+                    <span>AI Copilot</span>
+                </a>
+
+                <a href="reviews.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-muted-gray hover:text-warm-ivory hover:bg-elevated transition-colors">
+                    <span class="material-symbols-outlined text-xl text-[#F6C177]">rate_review</span>
+                    <span>Reviews</span>
+                </a>
+
+                <a href="contact.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-muted-gray hover:text-warm-ivory hover:bg-elevated transition-colors">
+                    <span class="material-symbols-outlined text-xl text-teal-brand">support_agent</span>
+                    <span>Contact Support</span>
+                </a>
+
+                <a href="profile.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-muted-gray hover:text-warm-ivory hover:bg-elevated transition-colors">
+                    <span class="material-symbols-outlined text-xl text-indigo-brand">person</span>
+                    <span>Profile & ID</span>
+                </a>
+
+                <div id="admin-sidebar-slot"></div>
+            </div>
+        </div>
+
+        <div class="p-4 border-t border-subtle">
+            <div class="flex items-center justify-between p-2 rounded-xl bg-midnight border border-subtle">
+                <a href="profile.html" class="flex items-center gap-3 hover:opacity-90 transition-opacity overflow-hidden" title="View Profile">
+                    <img alt="User Avatar" class="w-9 h-9 rounded-full object-cover border border-subtle user-avatar-display shrink-0" src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=150&auto=format&fit=crop&q=80"/>
+                    <div class="overflow-hidden">
+                        <div class="font-bold text-xs truncate user-name-display">Alex Rivera</div>
+                        <div class="text-[10px] text-muted-gray font-mono truncate user-role-display">Engineering Scholar</div>
+                    </div>
+                </a>
+                <button onclick="AuthManager.logout()" title="Logout" class="text-muted-gray hover:text-red-400 p-1.5 transition-colors shrink-0">
+                    <span class="material-symbols-outlined text-lg">logout</span>
+                </button>
+            </div>
+        </div>
+    </aside>
+
+    <div id="mobile-sidebar-overlay" class="fixed inset-0 bg-black/60 z-30 hidden md:hidden"></div>
+
+    <!-- MAIN DASHBOARD CONTENT -->
+    <main class="flex-1 flex flex-col min-w-0 overflow-y-auto">
+        <!-- Top Navigation Bar -->
+        <header class="h-20 px-6 md:px-8 border-b border-subtle bg-deep-twilight/80 backdrop-blur-md flex items-center justify-between sticky top-0 z-20">
+            <div class="flex items-center gap-4">
+                <button id="mobile-menu-btn" class="md:hidden text-muted-gray hover:text-warm-ivory p-1.5">
+                    <span class="material-symbols-outlined text-2xl">menu</span>
+                </button>
+                <div>
+                    <h1 class="font-bold text-lg text-warm-ivory flex items-center gap-2">
+                        <span id="dashboard-greeting-text">Good morning, Alex</span>
+                        <span id="dashboard-user-badge" class="px-2 py-0.5 rounded-full text-[10px] font-mono font-bold bg-indigo-brand/20 text-indigo-brand border border-indigo-brand/40">CSE • SEM 4</span>
+                    </h1>
+                    <p class="text-xs text-muted-gray font-mono" id="dashboard-current-date">Wednesday, September 2, 2026</p>
+                </div>
+            </div>
+
+            <!-- Header Quick Tools -->
+            <div class="flex items-center gap-3">
+                <button onclick="App.toggleCommandCenter()" class="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-xl bg-midnight border border-subtle text-xs text-muted-gray hover:text-warm-ivory transition-colors">
+                    <span class="material-symbols-outlined text-sm">search</span>
+                    <span>Search or Command</span>
+                    <kbd class="px-1.5 py-0.5 bg-elevated rounded border border-subtle text-[10px] font-mono">Ctrl+K</kbd>
+                </button>
+
+                <!-- Flame Streak Badge -->
+                <div class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-elevated border border-subtle">
+                    <span class="material-symbols-outlined text-rose-gold text-base">local_fire_department</span>
+                    <span class="text-xs font-bold font-mono user-streak-display">4 Days</span>
+                </div>
+
+                <!-- XP Badge -->
+                <div class="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-elevated border border-subtle text-xs font-bold font-mono text-teal-brand" id="xp-counter-display">
+                    4,120 XP
+                </div>
+            </div>
+        </header>
+
+        <div class="p-6 md:p-8 space-y-8 max-w-7xl w-full mx-auto">
+            
+            <!-- SECTION 1: AI RECOMMENDATION HERO BANNER (Section 20) -->
+            <div class="p-6 md:p-7 rounded-3xl bg-midnight border border-subtle relative overflow-hidden shadow-2xl space-y-4">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <div class="flex items-start gap-3.5">
+                        <div class="w-11 h-11 rounded-2xl bg-violet-brand/20 border border-violet-brand/40 flex items-center justify-center text-violet-brand shrink-0">
+                            <span class="material-symbols-outlined text-2xl">auto_awesome</span>
+                        </div>
+                        <div>
+                            <div class="flex items-center gap-2">
+                                <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-violet-brand/20 text-violet-brand border border-violet-brand/30">AI ADAPTIVE GUIDANCE</span>
+                                <span class="text-[11px] font-mono text-muted-gray">Personalized from recent activity</span>
+                            </div>
+                            <h2 id="dash-ai-rec-title" class="text-base sm:text-lg font-bold text-warm-ivory mt-1">
+                                "Focus on Dynamic Programming shortest paths next to secure high marks in Algorithms Mid-Sem."
+                            </h2>
+                            <p id="dash-ai-rec-subtitle" class="text-xs text-muted-gray mt-0.5">
+                                Your upcoming exam has 2 unstarted graph topics, and you recently solved 1 related daily task.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Action Triggers (Section 20) -->
+                    <div class="flex items-center gap-2.5 shrink-0">
+                        <a id="dash-ai-rec-cta" href="skills.html?skill=dsa" class="grad-indigo-btn px-4 py-2 rounded-xl text-xs font-bold shadow-md flex items-center gap-1.5">
+                            <span class="material-symbols-outlined text-sm">menu_book</span>
+                            <span>Start Learning</span>
+                        </a>
+                        <a href="quiz.html" class="px-4 py-2 rounded-xl bg-elevated hover:bg-surface-elevated border border-subtle text-xs font-semibold text-warm-ivory transition-colors">
+                            Practice Now
+                        </a>
+                        <button onclick="DashboardPage.addTaskFromAI()" class="px-3.5 py-2 rounded-xl bg-elevated hover:bg-surface-elevated border border-subtle text-xs font-semibold text-teal-brand transition-colors flex items-center gap-1">
+                            <span class="material-symbols-outlined text-sm">add</span>
+                            <span>Add to Planner</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION 2: CORE REAL-DATA METRIC CARDS (Section 19) -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+                
+                <!-- 1. Today's Study Time (Real Active Learning Telemetry) -->
+                <div class="p-5 rounded-3xl bg-midnight border border-subtle space-y-3 shadow-xl hover:border-teal-brand/40 transition-all flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-mono text-muted-gray uppercase tracking-wider">Today's Study</span>
+                            <div class="flex items-center gap-1.5">
+                                <span id="study-tracker-status-indicator" class="hidden"></span>
+                                <span class="material-symbols-outlined text-teal-brand text-xl">timer</span>
+                            </div>
+                        </div>
+                        <div id="dash-metric-today-study" class="text-3xl font-black font-mono text-warm-ivory mt-1">0h 0m</div>
+                        <p class="text-[11px] text-muted-gray mt-0.5">Your active learning time today</p>
+                    </div>
+
+                    <!-- Study Goal Progress Bar -->
+                    <div class="space-y-1.5 pt-1">
+                        <div class="flex items-center justify-between text-[11px] font-mono">
+                            <span class="text-muted-gray">Study Goal</span>
+                            <span id="dash-study-goal-text" class="text-teal-brand font-semibold">0m / 2h</span>
+                        </div>
+                        <div class="w-full h-1.5 bg-elevated rounded-full overflow-hidden border border-subtle/50">
+                            <div id="dash-study-goal-bar" class="h-full bg-gradient-to-r from-teal-brand to-indigo-brand rounded-full transition-all duration-500" style="width: 0%"></div>
+                        </div>
+                    </div>
+
+                    <!-- Footer Action -->
+                    <div class="text-xs text-muted-gray flex items-center justify-between pt-1 border-t border-subtle/60">
+                        <button onclick="DashboardPage.openStudyBreakdownModal()" class="text-teal-brand text-[11px] font-semibold hover:underline flex items-center gap-1">
+                            <span>Breakdown</span>
+                            <span class="material-symbols-outlined text-xs">analytics</span>
+                        </button>
+                        <a href="study.html" class="text-muted-gray hover:text-warm-ivory text-[11px] font-semibold flex items-center gap-1">
+                            <span>Study Room →</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 2. Verified Streak -->
+                <div class="p-5 rounded-3xl bg-midnight border border-subtle space-y-3 shadow-xl">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs font-mono text-muted-gray uppercase">Active Streak</span>
+                        <span class="material-symbols-outlined text-rose-gold text-xl">local_fire_department</span>
+                    </div>
+                    <div id="dash-metric-streak" class="text-3xl font-black font-mono text-rose-gold">4 Days</div>
+                    <div class="text-xs text-muted-gray flex items-center justify-between">
+                        <span>Longest: <span class="text-warm-ivory font-bold" id="dash-longest-streak">7 Days</span></span>
+                        <span class="text-teal-brand font-mono font-semibold">Verified</span>
+                    </div>
+                </div>
+
+                <!-- 3. Nearest Exam Countdown -->
+                <div class="p-5 rounded-3xl bg-midnight border border-subtle space-y-3 shadow-xl">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs font-mono text-muted-gray uppercase">Nearest Exam</span>
+                        <span class="material-symbols-outlined text-indigo-brand text-xl">event_note</span>
+                    </div>
+                    <div id="dash-metric-exam-countdown" class="text-3xl font-black font-mono text-indigo-brand">7d 12h</div>
+                    <div class="text-xs text-muted-gray truncate" id="dash-metric-exam-name">Mid-Sem: Algorithms</div>
+                </div>
+
+                <!-- 4. Career Readiness -->
+                <div class="p-5 rounded-3xl bg-midnight border border-subtle space-y-3 shadow-xl">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs font-mono text-muted-gray uppercase">Career Readiness</span>
+                        <span class="material-symbols-outlined text-violet-brand text-xl">work</span>
+                    </div>
+                    <div id="dash-metric-career-readiness" class="text-3xl font-black font-mono text-warm-ivory">78%</div>
+                    <div class="text-xs text-muted-gray flex items-center justify-between">
+                        <span>Target: ML Engineer</span>
+                        <a href="career.html" class="text-violet-brand font-semibold hover:underline">Audit →</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION 3: QUICK ACTIONS LAUNCHER (Section 21) -->
+            <div class="bg-midnight border border-subtle rounded-3xl p-6 space-y-4 shadow-2xl">
+                <div class="flex items-center justify-between border-b border-subtle/70 pb-3">
+                    <h3 class="font-bold text-sm text-warm-ivory">Quick Command Actions</h3>
+                    <span class="text-[11px] font-mono text-muted-gray">Direct Workflow Dispatches</span>
+                </div>
+
+                <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3 text-center text-xs">
+                    <button onclick="window.location.href='study.html'" class="p-3 rounded-2xl bg-elevated hover:bg-surface-elevated border border-subtle flex flex-col items-center gap-2 group transition-all">
+                        <div class="w-9 h-9 rounded-xl bg-teal-brand/10 text-teal-brand flex items-center justify-center group-hover:scale-110 transition-transform">
+                            <span class="material-symbols-outlined text-xl">play_arrow</span>
+                        </div>
+                        <span class="font-semibold text-warm-ivory">Start Study</span>
+                    </button>
+
+                    <button onclick="window.location.href='copilot.html'" class="p-3 rounded-2xl bg-elevated hover:bg-surface-elevated border border-subtle flex flex-col items-center gap-2 group transition-all">
+                        <div class="w-9 h-9 rounded-xl bg-violet-brand/10 text-violet-brand flex items-center justify-center group-hover:scale-110 transition-transform">
+                            <span class="material-symbols-outlined text-xl">psychology</span>
+                        </div>
+                        <span class="font-semibold text-warm-ivory">Ask AI</span>
+                    </button>
+
+                    <button onclick="window.location.href='pdf-analyzer.html'" class="p-3 rounded-2xl bg-elevated hover:bg-surface-elevated border border-teal-brand/40 flex flex-col items-center gap-2 group transition-all" title="Upload single or multiple PDFs and turn them into detailed, exam-ready notes, concepts, formulas, and Q&A.">
+                        <div class="w-9 h-9 rounded-xl bg-teal-brand/10 text-teal-brand flex items-center justify-center group-hover:scale-110 transition-transform">
+                            <span class="material-symbols-outlined text-xl">analytics</span>
+                        </div>
+                        <span class="font-semibold text-teal-brand">PDF Analyzer</span>
+                    </button>
+
+                    <button onclick="window.location.href='skills.html'" class="p-3 rounded-2xl bg-elevated hover:bg-surface-elevated border border-subtle flex flex-col items-center gap-2 group transition-all">
+                        <div class="w-9 h-9 rounded-xl bg-indigo-brand/10 text-indigo-brand flex items-center justify-center group-hover:scale-110 transition-transform">
+                            <span class="material-symbols-outlined text-xl">code</span>
+                        </div>
+                        <span class="font-semibold text-warm-ivory">Learn Skill</span>
+                    </button>
+
+                    <button onclick="window.location.href='quiz.html'" class="p-3 rounded-2xl bg-elevated hover:bg-surface-elevated border border-subtle flex flex-col items-center gap-2 group transition-all">
+                        <div class="w-9 h-9 rounded-xl bg-violet-brand/10 text-violet-brand flex items-center justify-center group-hover:scale-110 transition-transform">
+                            <span class="material-symbols-outlined text-xl">quiz</span>
+                        </div>
+                        <span class="font-semibold text-warm-ivory">Generate Quiz</span>
+                    </button>
+
+                    <button onclick="window.location.href='planner.html'" class="p-3 rounded-2xl bg-elevated hover:bg-surface-elevated border border-subtle flex flex-col items-center gap-2 group transition-all">
+                        <div class="w-9 h-9 rounded-xl bg-teal-brand/10 text-teal-brand flex items-center justify-center group-hover:scale-110 transition-transform">
+                            <span class="material-symbols-outlined text-xl">add_task</span>
+                        </div>
+                        <span class="font-semibold text-warm-ivory">Add Task</span>
+                    </button>
+
+                    <button onclick="window.location.href='exams.html'" class="p-3 rounded-2xl bg-elevated hover:bg-surface-elevated border border-subtle flex flex-col items-center gap-2 group transition-all">
+                        <div class="w-9 h-9 rounded-xl bg-indigo-brand/10 text-indigo-brand flex items-center justify-center group-hover:scale-110 transition-transform">
+                            <span class="material-symbols-outlined text-xl">event_note</span>
+                        </div>
+                        <span class="font-semibold text-warm-ivory">Add Exam</span>
+                    </button>
+
+                    <button onclick="window.location.href='projects.html'" class="p-3 rounded-2xl bg-elevated hover:bg-surface-elevated border border-subtle flex flex-col items-center gap-2 group transition-all">
+                        <div class="w-9 h-9 rounded-xl bg-rose-gold/10 text-rose-gold flex items-center justify-center group-hover:scale-110 transition-transform">
+                            <span class="material-symbols-outlined text-xl">terminal</span>
+                        </div>
+                        <span class="font-semibold text-warm-ivory">Create Project</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- SECTION 4: SPLIT WORKBENCH (TODAY'S TASKS & ACTIVE STUDY TIMER) -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                
+                <!-- Left: Today's Tasks Checklist -->
+                <div class="lg:col-span-7 bg-midnight border border-subtle rounded-3xl p-6 md:p-7 space-y-4 shadow-2xl flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between border-b border-subtle/70 pb-3">
+                            <div class="flex items-center gap-2">
+                                <span class="material-symbols-outlined text-teal-brand">check_box</span>
+                                <h3 class="font-bold text-sm text-warm-ivory">Today's Tasks Checklist</h3>
+                            </div>
+                            <span id="dash-tasks-completion-rate" class="text-xs font-mono font-bold text-teal-brand">25% Completed</span>
+                        </div>
+
+                        <div id="dash-tasks-list" class="space-y-2.5 mt-4">
+                            <!-- Populated dynamically -->
+                        </div>
+                    </div>
+
+                    <div class="pt-4 border-t border-subtle/70 flex items-center justify-between text-xs text-muted-gray">
+                        <span>Click checkbox to mark complete or start linked timer.</span>
+                        <a href="planner.html" class="text-indigo-brand font-semibold hover:underline flex items-center gap-1">
+                            <span>Open Full Planner</span>
+                            <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right: Active Study Timer Mini-Widget (Section 38 & 61) -->
+                <div class="lg:col-span-5 bg-midnight border border-subtle rounded-3xl p-6 md:p-7 space-y-5 shadow-2xl flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between border-b border-subtle/70 pb-3">
+                            <div class="flex items-center gap-2">
+                                <span class="material-symbols-outlined text-teal-brand">timer</span>
+                                <h3 class="font-bold text-sm text-warm-ivory">Study Session Widget</h3>
+                            </div>
+                            <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-elevated text-muted-gray">SYNCHRONIZED</span>
+                        </div>
+
+                        <!-- Big Timer Readout -->
+                        <div class="my-6 text-center">
+                            <div class="study-timer-display-sync font-mono text-5xl font-bold tracking-tight text-warm-ivory drop-shadow-sm">
+                                00:00:00
+                            </div>
+                            <p class="text-xs text-muted-gray mt-2" id="dash-timer-status-text">
+                                Ready to focus. Select or resume your session.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Mini Timer Controls -->
+                    <div class="pt-4 border-t border-subtle/70 space-y-3">
+                        <div class="flex items-center justify-between gap-3">
+                            <button onclick="StudyTracker.startSession('General Study', 'Command Center Session'); DashboardPage.syncTimerUI();" 
+                                class="study-timer-start-sync grad-indigo-btn w-full py-2.5 rounded-xl font-bold text-xs flex items-center justify-center gap-1.5 shadow-md">
+                                <span class="material-symbols-outlined text-base">play_arrow</span>
+                                <span>Start Quick Session</span>
+                            </button>
+                            <button onclick="StudyTracker.pauseSession(); DashboardPage.syncTimerUI();" 
+                                class="study-timer-pause-sync hidden w-full py-2.5 rounded-xl bg-elevated hover:bg-surface-elevated border border-subtle font-bold text-xs flex items-center justify-center gap-1.5">
+                                <span class="material-symbols-outlined text-base">pause</span>
+                                <span>Pause</span>
+                            </button>
+                            <button onclick="StudyTracker.endSession(); DashboardPage.init();" 
+                                class="study-timer-stop-sync hidden w-full py-2.5 rounded-xl bg-red-600/90 hover:bg-red-500 font-bold text-xs text-white flex items-center justify-center gap-1.5">
+                                <span class="material-symbols-outlined text-base">stop</span>
+                                <span>End & Save</span>
+                            </button>
+                        </div>
+                        <a href="study.html" class="block text-center text-xs text-muted-gray hover:text-warm-ivory underline transition-colors">
+                            Open Dedicated Study Hub & Session History →
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content Boundary Advertisement (Safe Non-Intrusive Placement) -->
+            <ad-banner placement="dashboard_bottom" format="horizontal"></ad-banner>
+        </div>
+    </main>
+
+    <!-- TODAY'S STUDY BREAKDOWN MODAL -->
+    <div id="study-breakdown-modal" class="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="bg-midnight border border-subtle rounded-3xl max-w-lg w-full p-6 shadow-2xl space-y-5 animate-scale-up">
+            <div class="flex items-center justify-between border-b border-subtle pb-4">
+                <div class="flex items-center gap-2.5">
+                    <div class="w-9 h-9 rounded-xl bg-teal-brand/20 border border-teal-brand/30 flex items-center justify-center text-teal-brand">
+                        <span class="material-symbols-outlined text-xl">timer</span>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-base text-warm-ivory">Today's Study Breakdown</h3>
+                        <p class="text-xs text-muted-gray font-mono">Verified Active Learning Telemetry</p>
+                    </div>
+                </div>
+                <button onclick="DashboardPage.closeStudyBreakdownModal()" class="text-muted-gray hover:text-warm-ivory p-1.5 rounded-lg">
+                    <span class="material-symbols-outlined text-xl">close</span>
+                </button>
+            </div>
+
+            <!-- Summary Stat Banner -->
+            <div class="p-4 rounded-2xl bg-elevated border border-subtle flex items-center justify-between">
+                <div>
+                    <span class="text-[10px] font-mono text-muted-gray uppercase">Total Active Today</span>
+                    <div id="modal-study-total" class="text-2xl font-black font-mono text-teal-brand">0m</div>
+                </div>
+                <div class="text-right">
+                    <span class="text-[10px] font-mono text-muted-gray uppercase">Daily Goal (2h)</span>
+                    <div id="modal-study-goal-pct" class="text-sm font-bold font-mono text-warm-ivory">0% achieved</div>
+                </div>
+            </div>
+
+            <!-- Category Breakdown List -->
+            <div class="space-y-2.5 max-h-64 overflow-y-auto pr-1" id="modal-study-categories-list">
+                <!-- Dynamically populated from real tracked data -->
+            </div>
+
+            <div class="pt-3 border-t border-subtle flex items-center justify-between text-xs text-muted-gray">
+                <span class="text-[11px] font-mono">Only active learning counts. Idle time excluded.</span>
+                <button onclick="DashboardPage.closeStudyBreakdownModal()" class="px-4 py-1.5 rounded-xl bg-elevated hover:bg-surface-elevated text-warm-ivory font-semibold text-xs transition-colors">
+                    Done
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/supabase.min.js"></script>
+    <script src="js/supabase-client.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/db.js"></script>
+    <script src="js/ads.js"></script>
+    <script src="js/study-tracker.js"></script>
+    <script src="js/study-timer.js"></script>
+    <script src="js/btech-bg3d.js"></script>
+    <script src="js/motion.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+        const DashboardPage = {
+            userProfile: null,
+
+            async init() {
+                // Strict Universal Route Guard (Live Supabase Session + Onboarding Check + Zero-flicker Splash)
+                const isAuthorized = await AuthManager.requireAuth({
+                    onReady: (user, profile) => {
+                        this.userProfile = profile;
+                        this.renderAll();
+                    }
+                });
+
+                if (!isAuthorized) return;
+
+                setInterval(() => this.syncTimerUI(), 1000);
+
+                // Realtime Live Listeners
+                window.addEventListener('btech:profile-updated', (e) => {
+                    this.userProfile = e.detail;
+                    this.renderAll();
+                });
+                window.addEventListener('btech:task-sync', () => this.renderTasks());
+                window.addEventListener('btech:session-sync', () => this.renderMetrics());
+                window.addEventListener('btech:exam-sync', () => this.renderMetrics());
+            },
+
+            renderAll() {
+                this.renderGreeting();
+                this.renderAIAdaptiveBanner();
+                this.renderMetrics();
+                this.renderTasks();
+                this.syncTimerUI();
+            },
+
+            renderAIAdaptiveBanner() {
+                const profile = this.userProfile || (typeof AuthManager !== 'undefined' ? AuthManager.getUser() : null) || { branch: 'CSE', semester: 1 };
+                const dept = (profile.department_id || profile.branch || 'CSE').toUpperCase();
+                const sem = profile.semester ? (typeof profile.semester === 'number' ? profile.semester : parseInt(profile.semester.replace(/\D/g, ''), 10) || 1) : 1;
+                const target = (profile.target_role || profile.targetCareer || profile.career_goal || '').toLowerCase();
+                const skills = Array.isArray(profile.skills) ? profile.skills : [];
+
+                const titleEl = document.getElementById('dash-ai-rec-title');
+                const subEl = document.getElementById('dash-ai-rec-subtitle');
+                const ctaEl = document.getElementById('dash-ai-rec-cta');
+
+                if (!titleEl || !subEl) return;
+
+                if (dept === 'ECE') {
+                    if (target.includes('embed') || target.includes('firmware') || skills.some(s => s.toLowerCase().includes('embed') || s.toLowerCase().includes('arm'))) {
+                        titleEl.textContent = '"Prioritize Embedded C, RTOS, and Microcontroller interfacing next to secure high marks in ECE Core."';
+                        subEl.textContent = `Personalized for Semester ${sem} • Hardware-software co-design, timers, and peripheral interfacing (UART/SPI/I2C) for your Embedded Engineer trajectory.`;
+                        if (ctaEl) ctaEl.href = 'skills.html?branch=ECE';
+                    } else if (target.includes('vlsi') || skills.some(s => s.toLowerCase().includes('verilog') || s.toLowerCase().includes('vlsi'))) {
+                        titleEl.textContent = '"Focus on RTL Design & Verilog synthesis next for Silicon VLSI benchmarks."';
+                        subEl.textContent = `Personalized for Semester ${sem} • Static timing analysis, digital IC verification, and FPGA prototyping for your VLSI trajectory.`;
+                        if (ctaEl) ctaEl.href = 'skills.html?branch=ECE';
+                    } else {
+                        titleEl.textContent = '"Focus on Signal Processing & Analog Microelectronics next to elevate your ECE standing."';
+                        subEl.textContent = `Personalized for Semester ${sem} • Core electronics principles, circuit analysis, and embedded fundamentals.`;
+                        if (ctaEl) ctaEl.href = 'skills.html?branch=ECE';
+                    }
+                } else if (dept === 'AUTO' || dept === 'AUTOMOBILE') {
+                    titleEl.textContent = '"Focus on IC Engine thermodynamics, Powertrain telemetry & EV transition next."';
+                    subEl.textContent = `Personalized for Semester ${sem} • Engine control units (ECU), hybrid powertrains, and vehicle dynamics for automotive excellence.`;
+                    if (ctaEl) ctaEl.href = 'branch-learning.html';
+                } else if (dept === 'MECH') {
+                    titleEl.textContent = '"Focus on SolidWorks CAD modeling & Finite Element Analysis (FEA) next."';
+                    subEl.textContent = `Personalized for Semester ${sem} • Parametric 3D modeling, stress analysis, and DFMA principles for mechanical excellence.`;
+                    if (ctaEl) ctaEl.href = 'skills.html?branch=MECH';
+                } else if (dept === 'CIVIL') {
+                    titleEl.textContent = '"Prioritize Structural Analysis & RCC Design for upcoming core engineering assessments."';
+                    subEl.textContent = `Personalized for Semester ${sem} • Finite element methods and structural detailing.`;
+                    if (ctaEl) ctaEl.href = 'skills.html?branch=CIVIL';
+                } else {
+                    // CSE / IT / Default
+                    if (target.includes('data') || target.includes('machine') || target.includes('ai')) {
+                        titleEl.textContent = '"Focus on Neural Architectures & PyTorch inference pipelines next."';
+                        subEl.textContent = `Personalized for Semester ${sem} • Statistical learning and model evaluation for your AI trajectory.`;
+                        if (ctaEl) ctaEl.href = 'skills.html?skill=python';
+                    } else {
+                        titleEl.textContent = '"Focus on Dynamic Programming shortest paths next to secure high marks in Algorithms Mid-Sem."';
+                        subEl.textContent = `Personalized for Semester ${sem} • Graph traversals, DP memoization, and Big-O trade-offs for technical excellence.`;
+                        if (ctaEl) ctaEl.href = 'skills.html?skill=dsa';
+                    }
+                }
+            },
+
+            renderGreeting() {
+                const hour = new Date().getHours();
+                const greeting = hour < 12 ? 'Good morning' : hour < 17 ? 'Good afternoon' : 'Good evening';
+                const profile = this.userProfile || AuthManager.getUser() || { name: 'Engineer', branch: 'CSE', semester: 1 };
+                const firstName = (profile.full_name || profile.name || 'Engineer').split(' ')[0];
+                const dept = profile.department_id || profile.branch || 'B.Tech';
+                const semVal = profile.semester;
+                const semText = semVal ? (typeof semVal === 'string' && semVal.includes('Sem') ? semVal : `SEM ${semVal}`) : 'SEM 1';
+
+                const greetingEl = document.getElementById('dashboard-greeting-text');
+                if (greetingEl) greetingEl.textContent = `${greeting}, ${firstName}`;
+
+                const badgeEl = document.getElementById('dashboard-user-badge');
+                if (badgeEl) badgeEl.textContent = `${dept} • ${semText}`;
+
+                const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+                const dateEl = document.getElementById('dashboard-current-date');
+                if (dateEl) dateEl.textContent = new Date().toLocaleDateString(undefined, options);
+            },
+
+            renderMetrics() {
+                let streak, exams, readiness;
+                try { streak = DB.getStreakMetrics(); } catch(e) { streak = { currentStreak: 0, longestStreak: 0 }; }
+                try { exams = DB.getExams(); } catch(e) { exams = []; }
+                try { readiness = DB.calculateCareerReadiness(); } catch(e) { readiness = 0; }
+
+                // 1. Today Study from real StudyTracker telemetry (isolated — failure must not crash dashboard)
+                let todayData = null;
+                try {
+                    if (typeof StudyTracker !== 'undefined' && typeof StudyTracker.getCachedToday === 'function') {
+                        todayData = StudyTracker.getCachedToday();
+                        // Asynchronously fetch freshest server sync
+                        if (typeof StudyTracker.fetchTodayMetrics === 'function') {
+                            StudyTracker.fetchTodayMetrics().then(fresh => {
+                                if (fresh) this.renderTodayStudyCard(fresh);
+                            }).catch(() => {});
+                        }
+                    }
+                    this.renderTodayStudyCard(todayData);
+                } catch (studyErr) {
+                    console.warn('[Dashboard] StudyTracker read failed (non-fatal):', studyErr.message);
+                }
+
+                // 2. Streak
+                const streakEl = document.getElementById('dash-metric-streak');
+                if (streakEl) streakEl.textContent = `${streak.currentStreak} Days`;
+                const longestEl = document.getElementById('dash-longest-streak');
+                if (longestEl) longestEl.textContent = `${streak.longestStreak} Days`;
+
+                // 3. Exam
+                if (exams.length > 0) {
+                    const nearest = exams[0];
+                    const cd = DB.getExamCountdown(nearest.examDate, nearest.examTime);
+                    const cdEl = document.getElementById('dash-metric-exam-countdown');
+                    if (cdEl) cdEl.textContent = `${cd.days}d ${cd.hours}h`;
+                    const nameEl = document.getElementById('dash-metric-exam-name');
+                    if (nameEl) nameEl.textContent = `${nearest.subject}: ${nearest.name}`;
+                } else {
+                    const cdEl = document.getElementById('dash-metric-exam-countdown');
+                    if (cdEl) cdEl.textContent = '—';
+                    const nameEl = document.getElementById('dash-metric-exam-name');
+                    if (nameEl) nameEl.textContent = 'No upcoming exams';
+                }
+
+                // 4. Career
+                const careerEl = document.getElementById('dash-metric-career-readiness');
+                if (careerEl) careerEl.textContent = `${readiness}%`;
+            },
+
+            renderTasks() {
+                const tasks = DB.getTasks();
+                const todayYMD = new Date().toISOString().split('T')[0];
+                const todayTasks = tasks.filter(t => t.date === todayYMD);
+                const container = document.getElementById('dash-tasks-list');
+                const rateEl = document.getElementById('dash-tasks-completion-rate');
+
+                if (!todayTasks.length) {
+                    container.innerHTML = `<div class="p-6 text-center text-xs text-muted-gray">No tasks scheduled for today. Add one above!</div>`;
+                    if (rateEl) rateEl.textContent = '0%';
+                    return;
+                }
+
+                const completed = todayTasks.filter(t => t.completed).length;
+                if (rateEl) rateEl.textContent = `${Math.round((completed / todayTasks.length) * 100)}% Completed`;
+
+                container.innerHTML = todayTasks.map(t => `
+                    <div class="p-3 rounded-2xl bg-elevated/70 border border-subtle flex items-center justify-between gap-3 text-xs">
+                        <div class="flex items-center gap-3">
+                            <button onclick="DashboardPage.toggleTask('${t.id}')" class="w-5 h-5 rounded-md border flex items-center justify-center transition-colors ${
+                                t.completed ? 'bg-teal-brand border-teal-brand text-black' : 'border-subtle hover:border-teal-brand'
+                            }">
+                                ${t.completed ? '<span class="material-symbols-outlined text-xs font-bold">check</span>' : ''}
+                            </button>
+                            <div>
+                                <div class="font-semibold ${t.completed ? 'line-through text-muted-gray' : 'text-warm-ivory'}">${t.title}</div>
+                                <div class="text-[10px] text-muted-gray font-mono">${t.category} • ${t.subject || 'General'}</div>
+                            </div>
+                        </div>
+                        ${!t.completed ? `
+                            <button onclick="StudyTracker.startSession('${t.subject || 'Study'}', '${t.title}', '${t.id}'); window.location.href='study.html';" class="text-teal-brand font-semibold flex items-center gap-1 hover:underline">
+                                <span class="material-symbols-outlined text-sm">timer</span>
+                                <span>Study</span>
+                            </button>
+                        ` : '<span class="text-teal-brand font-mono text-[10px]">Done</span>'}
+                    </div>
+                `).join('');
+            },
+
+            toggleTask(id) {
+                DB.toggleTaskCompletion(id);
+                this.renderTasks();
+            },
+
+            addTaskFromAI() {
+                const newTask = {
+                    id: 'task_ai_' + Date.now(),
+                    userId: DB.getCurrentUserEmail(),
+                    title: 'DP State Transitions: Knapsack & Shortest Paths',
+                    category: 'Exam Preparation',
+                    priority: 'High',
+                    subject: 'Data Structures & Algorithms',
+                    date: new Date().toISOString().split('T')[0],
+                    startTime: '15:00',
+                    endTime: '16:30',
+                    description: 'Recommended by AI Copilot for Algorithms Mid-Semester exam preparation.',
+                    completed: false,
+                    studyDurationSeconds: 0
+                };
+                DB.saveTask(newTask);
+                this.renderTasks();
+                AuthManager.showToast('Recommended task added to your planner!', 'success');
+            },
+
+            syncTimerUI() {
+                const current = (typeof StudyTracker !== 'undefined' && StudyTracker.getActiveSession) ? StudyTracker.getActiveSession() : null;
+                const statusText = document.getElementById('dash-timer-status-text');
+                if (statusText) {
+                    if (!current) {
+                        statusText.textContent = 'Ready to focus. Select or resume your session.';
+                    } else if (current.isPaused) {
+                        statusText.textContent = `Paused: ${current.activity} • ${current.topic}`;
+                    } else {
+                        statusText.textContent = `Recording Focus: ${current.activity} • ${current.topic}`;
+                    }
+                }
+            },
+
+            renderTodayStudyCard(data) {
+                const activeSec = data ? (data.activeSeconds || 0) : 0;
+                const goalSec = data ? (data.dailyGoalSeconds || 7200) : 7200;
+                const hasFormatter = typeof StudyTracker !== 'undefined' && typeof StudyTracker.formatDuration === 'function';
+                const formatted = hasFormatter ? StudyTracker.formatDuration(activeSec) : `${Math.round(activeSec / 60)}m`;
+                const goalFormatted = hasFormatter ? StudyTracker.formatDuration(goalSec) : `${Math.round(goalSec / 3600)}h`;
+                const pct = Math.min(100, Math.round((activeSec / goalSec) * 100));
+
+                const valEl = document.getElementById('dash-metric-today-study');
+                if (valEl) valEl.textContent = formatted;
+
+                const goalTextEl = document.getElementById('dash-study-goal-text');
+                if (goalTextEl) goalTextEl.textContent = `${formatted} / ${goalFormatted}`;
+
+                const goalBarEl = document.getElementById('dash-study-goal-bar');
+                if (goalBarEl) goalBarEl.style.width = `${pct}%`;
+
+                const goalPctEl = document.getElementById('dash-study-goal-percent');
+                if (goalPctEl) goalPctEl.textContent = `${pct}% achieved`;
+            },
+
+            openStudyBreakdownModal() {
+                const modal = document.getElementById('study-breakdown-modal');
+                if (!modal) return;
+                const breakdown = typeof StudyTracker !== 'undefined' ? StudyTracker.getBreakdown() : { totalFormatted: '0m', items: [] };
+
+                const totalEl = document.getElementById('modal-study-total');
+                if (totalEl) totalEl.textContent = breakdown.totalFormatted;
+
+                const goalCache = typeof StudyTracker !== 'undefined' ? StudyTracker.getCachedToday() : null;
+                const goalSec = goalCache?.dailyGoalSeconds || 7200;
+                const pct = Math.min(100, Math.round(((goalCache?.activeSeconds || 0) / goalSec) * 100));
+                const goalPctEl = document.getElementById('modal-study-goal-pct');
+                if (goalPctEl) goalPctEl.textContent = `${pct}% achieved (${typeof StudyTracker !== 'undefined' ? StudyTracker.formatDuration(goalSec) : '2h'} goal)`;
+
+                const listContainer = document.getElementById('modal-study-categories-list');
+                if (listContainer) {
+                    if (!breakdown.items.length) {
+                        listContainer.innerHTML = `
+                            <div class="p-6 rounded-2xl bg-midnight border border-subtle text-center text-xs text-muted-gray space-y-1">
+                                <span class="material-symbols-outlined text-2xl text-teal-brand">hourglass_empty</span>
+                                <p class="font-bold text-warm-ivory">No learning activities tracked yet today</p>
+                                <p class="text-[11px]">Start LearnHub, AI Notes, or Coding IDE to record genuine active study.</p>
+                            </div>
+                        `;
+                    } else {
+                        const maxSec = Math.max(...breakdown.items.map(i => i.seconds), 1);
+                        listContainer.innerHTML = breakdown.items.map(item => {
+                            const barPct = Math.round((item.seconds / maxSec) * 100);
+                            return `
+                                <div class="p-3 rounded-2xl bg-midnight border border-subtle space-y-2">
+                                    <div class="flex items-center justify-between text-xs">
+                                        <div class="flex items-center gap-2">
+                                            <span class="w-2 h-2 rounded-full bg-teal-brand"></span>
+                                            <span class="font-bold text-warm-ivory">${item.name}</span>
+                                        </div>
+                                        <span class="font-mono font-bold text-teal-brand">${item.formatted}</span>
+                                    </div>
+                                    <div class="w-full h-1.5 bg-elevated rounded-full overflow-hidden">
+                                        <div class="h-full bg-teal-brand rounded-full transition-all duration-300" style="width: ${barPct}%"></div>
+                                    </div>
+                                </div>
+                            `;
+                        }).join('');
+                    }
+                }
+
+                modal.classList.remove('hidden');
+            },
+
+            closeStudyBreakdownModal() {
+                const modal = document.getElementById('study-breakdown-modal');
+                if (modal) modal.classList.add('hidden');
+            }
+        };
+
+        document.addEventListener('DOMContentLoaded', () => {
+            DashboardPage.init();
+        });
+    </script>
+</body>
+</html>

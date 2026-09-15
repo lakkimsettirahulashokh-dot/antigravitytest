@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <!-- Primary SEO Meta Tags -->
+    <title>Resume Builder — Create Your Professional Resume | TechPath</title>
+    <meta name="title" content="Resume Builder — Create Your Professional Resume | TechPath">
+    <meta name="description" content="Build a professional, truthful resume for internships, placements, technical roles, and academic opportunities.">
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="canonical" href="https://TechPath.ai/resume-builder.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="TechPath">
+    <meta property="og:url" content="https://TechPath.ai/resume-builder.html">
+    <meta property="og:title" content="Resume Builder — Create Your Professional Resume | TechPath">
+    <meta property="og:description" content="Build a professional, truthful resume for internships, placements, technical roles, and academic opportunities.">
+    <meta property="og:image" content="https://TechPath.ai/assets/branding/techpath-og.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="TechPath — Learn. Build. Prepare. Grow.">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://TechPath.ai/resume-builder.html">
+    <meta name="twitter:title" content="Resume Builder — Create Your Professional Resume | TechPath">
+    <meta name="twitter:description" content="Build a professional, truthful resume for internships, placements, technical roles, and academic opportunities.">
+    <meta name="twitter:image" content="https://TechPath.ai/assets/branding/techpath-og.png">
+    <meta name="twitter:image:alt" content="TechPath — Learn. Build. Prepare. Grow.">
+
+    <!-- Favicon & App Icons -->
+    <link rel="icon" type="image/svg+xml" href="assets/branding/favicon.svg">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/branding/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/branding/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/branding/apple-touch-icon.png">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#0B0F19">
+    <!-- Primary SEO Meta Tags -->
+    <!-- Open Graph / Facebook -->
+    <!-- Twitter Card -->
+    <!-- Favicon & App Icons -->
+    <!-- Primary SEO Meta Tags -->
+    <!-- Open Graph / Facebook -->
+    <!-- Twitter Card -->
+    <!-- Favicon & App Icons -->
+    <!-- Primary SEO Meta Tags -->
+    <!-- Open Graph / Facebook -->
+    <!-- Twitter Card -->
+    <!-- Favicon & App Icons -->
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <link rel="stylesheet" href="css/tailwind.output.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="css/custom.css"/>
+    <link rel="stylesheet" href="css/motion.css"/>
+    <link rel="stylesheet" href="css/paradrop.css"/>
+    <style>
+        @media print {
+            body { background: white !important; color: black !important; }
+            header, aside, .no-print { display: none !important; }
+            #resume-preview-sheet {
+                border: none !important;
+                box-shadow: none !important;
+                margin: 0 !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                color: #111827 !important;
+                background: white !important;
+            }
+            #resume-preview-sheet * { color: #111827 !important; }
+        }
+    </style>
+
+    <script src="js/seo-metadata.js" defer></script>
+</head>
+<body class="bg-deep-twilight text-warm-ivory h-screen flex flex-col antialiased selection:bg-indigo-brand selection:text-white overflow-hidden">
+
+    <div class="bg-ambient-glow no-print"></div>
+
+    <!-- Header Navigation -->
+    <header class="h-16 px-6 bg-deep-twilight/90 border-b border-subtle flex items-center justify-between shrink-0 z-20 backdrop-blur-md no-print">
+        <div class="flex items-center gap-4">
+            <a href="dashboard.html" class="flex items-center gap-2 text-indigo-brand hover:opacity-90 transition-opacity">
+                <span class="material-symbols-outlined text-2xl">arrow_back</span>
+                <span class="font-bold text-sm text-warm-ivory">Dashboard</span>
+            </a>
+            <div class="h-4 w-px bg-subtle-border"></div>
+            <a href="index.html" class="flex items-center py-1" aria-label="TechPath Home">
+                <img src="assets/branding/techpath-emblem.png" alt="TechPath" class="h-6 w-auto object-contain" />
+            </a>
+            <div class="h-4 w-px bg-subtle-border hidden sm:block"></div>
+            <div class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-rose-gold">description</span>
+                <span class="font-bold text-sm text-warm-ivory">Interactive Resume Builder & ATS Optimizer</span>
+            </div>
+        </div>
+
+        <div class="flex items-center gap-3">
+            <div class="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-midnight border border-subtle text-xs font-mono">
+                <span class="text-muted-gray">ATS Score:</span>
+                <span id="ats-score-badge" class="font-bold text-teal-brand">91% (Recruiter Ready)</span>
+            </div>
+            <button onclick="ResumeApp.saveResume()" class="px-3.5 py-2 rounded-xl bg-elevated hover:bg-surface-high border border-subtle text-xs font-bold text-warm-ivory flex items-center gap-1.5 transition-colors shadow-sm active:scale-95">
+                <span class="material-symbols-outlined text-base text-teal-brand">bookmark_added</span>
+                <span>Save to Profile</span>
+            </button>
+            <button onclick="ResumeApp.exportPDF()" class="grad-indigo-btn px-4 py-2 rounded-xl text-xs font-bold flex items-center gap-1.5 shadow-md active:scale-95">
+                <span class="material-symbols-outlined text-base">download</span>
+                <span>Download / Print PDF</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Split Screen Workspace (Prioritizing clean form inputs with subtle 3D background) -->
+    <div class="flex-1 flex overflow-hidden p-4 md:p-6 gap-6 max-w-7xl w-full mx-auto relative z-10">
+        
+        <!-- Left: Form Inputs & Sections (Section 70) -->
+        <div class="w-full md:w-1/2 overflow-y-auto space-y-4 pr-1 no-print">
+            <div class="bg-midnight border border-subtle rounded-3xl p-6 space-y-4 shadow-xl">
+                <div class="flex items-center justify-between border-b border-subtle/70 pb-3">
+                    <h3 class="font-bold text-sm text-warm-ivory">1. Personal & Contact Details</h3>
+                    <span class="text-[10px] font-mono text-muted-gray uppercase">Auto-populated</span>
+                </div>
+                <div class="grid grid-cols-2 gap-3 text-xs">
+                    <div>
+                        <label class="font-mono text-muted-gray block mb-1">Full Name</label>
+                        <input id="inp-name" type="text" value="Alex Rivera" oninput="ResumeApp.sync()" class="premium-input w-full"/>
+                    </div>
+                    <div>
+                        <label class="font-mono text-muted-gray block mb-1">Target Title</label>
+                        <input id="inp-title" type="text" value="Machine Learning Engineer" oninput="ResumeApp.sync()" class="premium-input w-full"/>
+                    </div>
+                    <div>
+                        <label class="font-mono text-muted-gray block mb-1">Email</label>
+                        <input id="inp-email" type="email" value="alex.rivera@TechPath.ai" oninput="ResumeApp.sync()" class="premium-input w-full"/>
+                    </div>
+                    <div>
+                        <label class="font-mono text-muted-gray block mb-1">Portfolio / GitHub</label>
+                        <input id="inp-github" type="text" value="github.com/alexrivera" oninput="ResumeApp.sync()" class="premium-input w-full"/>
+                    </div>
+                </div>
+                <div>
+                    <label class="font-mono text-xs text-muted-gray block mb-1">Professional Objective</label>
+                    <textarea id="inp-objective" rows="2" oninput="ResumeApp.sync()" class="premium-input w-full text-xs">B.Tech Senior in Artificial Intelligence & Machine Learning with verified hands-on production experience in PyTorch, distributed systems (Raft), and FastAPI cloud deployments.</textarea>
+                </div>
+            </div>
+
+            <!-- Education Card -->
+            <div class="bg-midnight border border-subtle rounded-3xl p-6 space-y-4 shadow-xl">
+                <div class="flex items-center justify-between border-b border-subtle/70 pb-3">
+                    <h3 class="font-bold text-sm text-warm-ivory">2. Education</h3>
+                </div>
+                <div class="grid grid-cols-2 gap-3 text-xs">
+                    <div>
+                        <label class="font-mono text-muted-gray block mb-1">Institution</label>
+                        <input id="inp-college" type="text" value="Institute of Technology" oninput="ResumeApp.sync()" class="premium-input w-full"/>
+                    </div>
+                    <div>
+                        <label class="font-mono text-muted-gray block mb-1">Degree & Branch</label>
+                        <input id="inp-degree" type="text" value="B.Tech, AIML (CGPA: 8.9 / 10)" oninput="ResumeApp.sync()" class="premium-input w-full"/>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Core Skills & Projects -->
+            <div class="bg-midnight border border-subtle rounded-3xl p-6 space-y-4 shadow-xl">
+                <div class="flex items-center justify-between border-b border-subtle/70 pb-3">
+                    <h3 class="font-bold text-sm text-warm-ivory">3. Technical Skills & Tools</h3>
+                </div>
+                <div>
+                    <label class="font-mono text-xs text-muted-gray block mb-1">Languages & Frameworks</label>
+                    <input id="inp-skills" type="text" value="Python, PyTorch, C++, SQL, FastAPI, Docker, Git, Linux" oninput="ResumeApp.sync()" class="premium-input w-full text-xs"/>
+                </div>
+                <div>
+                    <label class="font-mono text-xs text-muted-gray block mb-1">Key Project Highlight</label>
+                    <textarea id="inp-project-desc" rows="3" oninput="ResumeApp.sync()" class="premium-input w-full text-xs">NeuralPath Advisor: Developed a multi-agent curriculum advisor in Python/FastAPI using LangChain and ChromaDB RAG, achieving sub-200ms vector search latency across 500+ syllabus documents.</textarea>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right: Real-Time Clean Printable A4 Preview Sheet -->
+        <div class="hidden md:flex flex-1 flex-col items-center justify-start overflow-y-auto">
+            <div id="resume-preview-sheet" class="w-full max-w-xl bg-white text-gray-900 rounded-2xl p-8 shadow-2xl space-y-6 text-xs font-sans min-h-[700px] border border-gray-300">
+                <!-- Header -->
+                <div class="border-b-2 border-gray-800 pb-4 text-center">
+                    <h1 class="text-2xl font-black uppercase tracking-wider text-gray-900" id="prev-name">Alex Rivera</h1>
+                    <div class="text-xs font-semibold text-indigo-700 tracking-wide mt-0.5" id="prev-title">Machine Learning Engineer</div>
+                    <div class="text-[11px] text-gray-600 mt-1.5 flex items-center justify-center gap-3">
+                        <span id="prev-email">alex.rivera@TechPath.ai</span>
+                        <span>•</span>
+                        <span id="prev-github">github.com/alexrivera</span>
+                    </div>
+                </div>
+
+                <!-- Objective -->
+                <div class="space-y-1">
+                    <h2 class="text-xs font-bold uppercase tracking-wider text-gray-800 border-b border-gray-300 pb-0.5">Professional Summary</h2>
+                    <p class="text-[11px] text-gray-700 leading-relaxed" id="prev-objective">
+                        B.Tech Senior in Artificial Intelligence & Machine Learning with verified hands-on production experience in PyTorch, distributed systems (Raft), and FastAPI cloud deployments.
+                    </p>
+                </div>
+
+                <!-- Education -->
+                <div class="space-y-1">
+                    <h2 class="text-xs font-bold uppercase tracking-wider text-gray-800 border-b border-gray-300 pb-0.5">Education</h2>
+                    <div class="flex justify-between items-baseline text-[11px]">
+                        <span class="font-bold text-gray-900" id="prev-college">Institute of Technology</span>
+                        <span class="text-gray-600 font-mono">2023 - 2027</span>
+                    </div>
+                    <div class="text-[11px] text-gray-700" id="prev-degree">B.Tech, AIML (CGPA: 8.9 / 10)</div>
+                </div>
+
+                <!-- Skills -->
+                <div class="space-y-1">
+                    <h2 class="text-xs font-bold uppercase tracking-wider text-gray-800 border-b border-gray-300 pb-0.5">Technical Competencies</h2>
+                    <p class="text-[11px] text-gray-700" id="prev-skills">
+                        Python, PyTorch, C++, SQL, FastAPI, Docker, Git, Linux
+                    </p>
+                </div>
+
+                <!-- Projects -->
+                <div class="space-y-2">
+                    <h2 class="text-xs font-bold uppercase tracking-wider text-gray-800 border-b border-gray-300 pb-0.5">Featured Engineering Projects</h2>
+                    <div>
+                        <div class="flex justify-between text-[11px] font-bold text-gray-900">
+                            <span>NeuralPath Multi-Agent Advisor</span>
+                            <span class="font-mono text-gray-600">FastAPI, PyTorch, ChromaDB</span>
+                        </div>
+                        <p class="text-[11px] text-gray-700 mt-1 leading-relaxed" id="prev-project-desc">
+                            Developed a multi-agent curriculum advisor in Python/FastAPI using LangChain and ChromaDB RAG, achieving sub-200ms vector search latency across 500+ syllabus documents.
+                        </p>
+                    </div>
+                    <div>
+                        <div class="flex justify-between text-[11px] font-bold text-gray-900">
+                            <span>Distributed Raft Key-Value Store</span>
+                            <span class="font-mono text-gray-600">Go, gRPC, Docker</span>
+                        </div>
+                        <p class="text-[11px] text-gray-700 mt-1 leading-relaxed">
+                            Implemented linearizable leader election and Raft consensus log replication surviving multi-node network failure testcases.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="js/supabase.min.js"></script>
+    <script src="js/supabase-client.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/db.js"></script>
+    <script src="js/study-tracker.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+        const ResumeApp = {
+            sync() {
+                document.getElementById('prev-name').textContent = document.getElementById('inp-name').value || 'Student Name';
+                document.getElementById('prev-title').textContent = document.getElementById('inp-title').value || 'Engineer';
+                document.getElementById('prev-email').textContent = document.getElementById('inp-email').value || '';
+                document.getElementById('prev-github').textContent = document.getElementById('inp-github').value || '';
+                document.getElementById('prev-objective').textContent = document.getElementById('inp-objective').value || '';
+                document.getElementById('prev-college').textContent = document.getElementById('inp-college').value || '';
+                document.getElementById('prev-degree').textContent = document.getElementById('inp-degree').value || '';
+                document.getElementById('prev-skills').textContent = document.getElementById('inp-skills').value || '';
+                document.getElementById('prev-project-desc').textContent = document.getElementById('inp-project-desc').value || '';
+            },
+
+            exportPDF() {
+                const name = document.getElementById('inp-name').value || 'Alex Rivera';
+                const title = document.getElementById('inp-title').value || 'Machine Learning Engineer';
+                const email = document.getElementById('inp-email').value || 'alex.rivera@TechPath.ai';
+                const github = document.getElementById('inp-github').value || 'github.com/alexrivera';
+                const objective = document.getElementById('inp-objective').value || '';
+                const college = document.getElementById('inp-college').value || '';
+                const degree = document.getElementById('inp-degree').value || '';
+                const skills = document.getElementById('inp-skills').value || '';
+                const projectDesc = document.getElementById('inp-project-desc').value || '';
+
+                // Persist resume to DB & Supabase
+                this.saveResume(false);
+
+                // Authentic PDF Generation via jsPDF
+                if (window.jspdf && window.jspdf.jsPDF) {
+                    try {
+                        const { jsPDF } = window.jspdf;
+                        const doc = new jsPDF({ unit: 'pt', format: 'a4' });
+
+                        // Header
+                        doc.setFont('helvetica', 'bold');
+                        doc.setFontSize(22);
+                        doc.setTextColor(30, 41, 59);
+                        doc.text(name.toUpperCase(), 40, 50);
+
+                        doc.setFont('helvetica', 'normal');
+                        doc.setFontSize(12);
+                        doc.setTextColor(79, 70, 229);
+                        doc.text(title, 40, 68);
+
+                        doc.setFontSize(9);
+                        doc.setTextColor(100, 116, 139);
+                        doc.text(`${email}  •  ${github}`, 40, 84);
+
+                        // Horizontal Divider
+                        doc.setDrawColor(203, 213, 225);
+                        doc.setLineWidth(1);
+                        doc.line(40, 95, 555, 95);
+
+                        let y = 120;
+                        const addSection = (secTitle, contentLines) => {
+                            doc.setFont('helvetica', 'bold');
+                            doc.setFontSize(11);
+                            doc.setTextColor(15, 23, 42);
+                            doc.text(secTitle.toUpperCase(), 40, y);
+                            y += 4;
+                            doc.setDrawColor(226, 232, 240);
+                            doc.line(40, y, 555, y);
+                            y += 14;
+
+                            doc.setFont('helvetica', 'normal');
+                            doc.setFontSize(9.5);
+                            doc.setTextColor(51, 65, 85);
+                            contentLines.forEach(line => {
+                                const split = doc.splitTextToSize(line, 515);
+                                doc.text(split, 40, y);
+                                y += split.length * 13;
+                            });
+                            y += 14;
+                        };
+
+                        if (objective) addSection('Professional Summary', [objective]);
+                        if (college || degree) addSection('Education', [`${college}  -  ${degree}`]);
+                        if (skills) addSection('Technical Competencies', [skills]);
+                        if (projectDesc) addSection('Featured Engineering Project', [projectDesc]);
+
+                        const fileName = `${name.replace(/[^a-zA-Z0-9]/g, '_')}_Resume.pdf`;
+                        if (window.Paradrop && window.Paradrop.startDownload) {
+                            window.Paradrop.startDownload({
+                                title: 'Exporting ATS Engineering Resume',
+                                filename: fileName,
+                                totalBytes: 154200,
+                                minMs: 2200,
+                                onPerformDownload: () => {
+                                    doc.save(fileName);
+                                    if (window.AuthManager) window.AuthManager.showToast(`Resume PDF generated and downloaded!`, 'success');
+                                }
+                            });
+                        } else {
+                            doc.save(fileName);
+                            if (window.AuthManager) window.AuthManager.showToast(`Resume PDF generated and downloaded!`, 'success');
+                        }
+                        return;
+                    } catch (err) {
+                        console.warn('jsPDF generation failed, falling back to print dialog:', err);
+                    }
+                }
+                window.print();
+            },
+
+            saveResume(showToast = true) {
+                const name = document.getElementById('inp-name').value || 'Alex Rivera';
+                const title = document.getElementById('inp-title').value || 'Software Engineer';
+                const email = document.getElementById('inp-email').value || 'alex.rivera@TechPath.ai';
+                const github = document.getElementById('inp-github').value || 'github.com/alexrivera';
+                const objective = document.getElementById('inp-objective').value || '';
+                const college = document.getElementById('inp-college').value || '';
+                const degree = document.getElementById('inp-degree').value || '';
+                const skills = document.getElementById('inp-skills').value || '';
+                const projectDesc = document.getElementById('inp-project-desc').value || '';
+                const skillsArray = skills.split(/[,•\n]/).map(s => s.trim()).filter(Boolean);
+
+                if (window.DB && window.DB.saveResume) {
+                    window.DB.saveResume({
+                        title: `${name} — ${title}`,
+                        targetRole: title,
+                        name, title, email, github, objective, college, degree, skills, projectDesc,
+                        personal: { name, email, targetRole: title, github },
+                        education: [{ degree, college, department: '' }],
+                        skills: skillsArray,
+                        allSkillsList: skillsArray,
+                        projects: projectDesc ? [{ name: 'Featured Engineering Project', description: projectDesc, technologies: skillsArray.slice(0, 5) }] : [],
+                        internships: [],
+                        certifications: []
+                    });
+                    if (showToast && window.AuthManager) {
+                        window.AuthManager.showToast('Resume saved to your profile and Supabase!', 'success');
+                    }
+                }
+            }
+        };
+
+        document.addEventListener('DOMContentLoaded', async () => {
+            // Universal Route Guard (Live Supabase Session & Onboarding Check)
+            if (typeof AuthManager !== 'undefined') {
+                const isAuthorized = await AuthManager.requireAuth({
+                    onReady: (user, profile) => {
+                        if (profile) {
+                            if (profile.full_name || profile.name) document.getElementById('inp-name').value = profile.full_name || profile.name;
+                            if (profile.email) document.getElementById('inp-email').value = profile.email;
+                            if (profile.target_role || profile.targetCareer) document.getElementById('inp-title').value = profile.target_role || profile.targetCareer;
+                        }
+                    }
+                });
+                if (!isAuthorized) return;
+            }
+            ResumeApp.sync();
+        });
+    </script>
+    <script src="js/paradrop.js"></script>
+    <script src="js/btech-bg3d.js"></script>
+</body>
+</html>

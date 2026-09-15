@@ -1,0 +1,1536 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <!-- Primary SEO Meta Tags -->
+    <title>PDF Analyzer — Engineering Document & Exam Intelligence | TechPath</title>
+    <meta name="title" content="PDF Analyzer — Engineering Document & Exam Intelligence | TechPath">
+    <meta name="description" content="Upload single or multiple engineering PDFs. Extract text, run OCR on scanned pages, synthesize detailed 26-section study notes, formulas, questions, MCQs, and Master Notes.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://TechPath.ai/pdf-analyzer.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="TechPath">
+    <meta property="og:url" content="https://TechPath.ai/pdf-analyzer.html">
+    <meta property="og:title" content="PDF Analyzer — Engineering Document & Exam Intelligence | TechPath">
+    <meta property="og:description" content="Upload single or multiple engineering PDFs. Extract text, run OCR on scanned pages, synthesize detailed 26-section study notes, formulas, questions, MCQs, and Master Notes.">
+    <meta property="og:image" content="https://TechPath.ai/assets/branding/techpath-og.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="TechPath — Learn. Build. Prepare. Grow.">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://TechPath.ai/pdf-analyzer.html">
+    <meta name="twitter:title" content="PDF Analyzer — Engineering Document & Exam Intelligence | TechPath">
+    <meta name="twitter:description" content="Upload single or multiple engineering PDFs. Extract text, run OCR on scanned pages, synthesize detailed 26-section study notes, formulas, questions, MCQs, and Master Notes.">
+    <meta name="twitter:image" content="https://TechPath.ai/assets/branding/techpath-og.png">
+    <meta name="twitter:image:alt" content="TechPath — Learn. Build. Prepare. Grow.">
+
+    <!-- Favicon & App Icons -->
+    <link rel="icon" type="image/svg+xml" href="assets/branding/favicon.svg">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/branding/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/branding/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/branding/apple-touch-icon.png">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#0B0F19">
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <link rel="stylesheet" href="css/tailwind.output.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="css/custom.css"/>
+    <link rel="stylesheet" href="css/motion.css"/>
+    <link rel="stylesheet" href="css/paradrop.css"/>
+    <style>
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; height: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: rgba(18, 24, 38, 0.6); border-radius: 8px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(88, 101, 242, 0.4); border-radius: 8px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: rgba(88, 101, 242, 0.8); }
+        .card-lift { transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease; }
+        .card-lift:hover { transform: translateY(-2px); box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5); }
+        @media print {
+            body { background: white !important; color: black !important; }
+            header, aside, .no-print { display: none !important; }
+            #notes-render-container { max-width: 100% !important; width: 100% !important; overflow: visible !important; }
+        }
+    </style>
+
+    <script src="js/seo-metadata.js" defer></script>
+</head>
+<body class="bg-main-bg text-warm-ivory h-screen flex flex-col antialiased selection:bg-indigo-brand selection:text-white overflow-hidden font-body-md">
+
+    <div class="bg-ambient-glow no-print"></div>
+
+    <!-- Header Navigation -->
+    <header class="h-16 px-4 sm:px-6 bg-midnight/90 border-b border-subtle-border flex items-center justify-between shrink-0 z-30 backdrop-blur-md no-print">
+        <div class="flex items-center gap-4">
+            <a href="dashboard.html" class="flex items-center gap-2 text-muted-gray hover:text-warm-ivory transition-colors">
+                <span class="material-symbols-outlined text-xl">arrow_back</span>
+                <span class="font-bold text-xs uppercase tracking-wider hidden sm:inline">Dashboard</span>
+            </a>
+            <div class="h-4 w-px bg-subtle-border"></div>
+            <a href="index.html" class="flex items-center py-1" aria-label="TechPath Home">
+                <img src="assets/branding/techpath-emblem.png" alt="TechPath" class="h-6 w-auto object-contain" />
+            </a>
+            <div class="h-4 w-px bg-subtle-border hidden sm:block"></div>
+            <div class="flex items-center gap-2.5">
+                <div class="w-8 h-8 rounded-lg bg-teal-brand/20 border border-teal-brand/40 flex items-center justify-center text-teal-brand shadow-sm">
+                    <span class="material-symbols-outlined text-lg">analytics</span>
+                </div>
+                <div>
+                    <h1 class="text-sm font-extrabold text-white flex items-center gap-2">
+                        PDF Analyzer
+                        <span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-teal-brand/20 text-teal-brand border border-teal-brand/30">26-SECTION ENGINE + OCR</span>
+                    </h1>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex items-center gap-2 sm:gap-3">
+            <select id="sel-notes-mode" class="bg-elevated border border-subtle-border rounded-lg px-2.5 py-1.5 text-xs text-warm-ivory font-semibold focus:border-indigo-brand outline-none cursor-pointer">
+                <option value="detailed" selected>Detailed Comprehensive (26 Sections)</option>
+                <option value="exam">Semester Exam High-Yield (Weightage & Proofs)</option>
+                <option value="simplified">Simplified Conceptual ("Explain Simply")</option>
+                <option value="quick">Quick Revision Guide (Rapid Bullets)</option>
+                <option value="lastminute">Last-Minute Formula Sheet (Units & Invariants)</option>
+            </select>
+            
+            <button onclick="PDFAnalyzerApp.toggleHistoryDrawer()" class="px-3 py-1.5 rounded-lg bg-elevated hover:bg-surface-high border border-subtle-border text-xs font-bold text-muted-gray hover:text-white flex items-center gap-1.5 transition-colors">
+                <span class="material-symbols-outlined text-base">folder_open</span>
+                <span class="hidden md:inline">My Documents</span>
+                <span id="history-count-pill" class="px-1.5 py-0.2 rounded-full text-[10px] bg-indigo-brand/20 text-indigo-brand font-mono font-bold">0</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Workspace (Split Screen) -->
+    <main class="flex-1 flex overflow-hidden p-3 sm:p-6 gap-6 max-w-[1650px] w-full mx-auto relative z-10">
+        
+        <!-- LEFT COLUMN: PDF Ingestion Queue & Processing Control -->
+        <aside class="w-full lg:w-4/12 flex flex-col bg-midnight rounded-3xl border border-subtle-border shadow-2xl p-4 sm:p-5 space-y-4 shrink-0 overflow-hidden">
+            
+            <div class="flex items-center justify-between">
+                <div>
+                    <h2 class="text-sm font-extrabold text-white flex items-center gap-1.5">
+                        <span class="material-symbols-outlined text-teal-brand text-lg">upload_file</span>
+                        Ingest Engineering Documents
+                    </h2>
+                    <p class="text-[11px] text-muted-gray mt-0.5">Upload single or multi-unit PDFs. Automatic OCR for scanned pages.</p>
+                </div>
+                <span id="queue-badge" class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-elevated text-muted-gray border border-subtle-border">
+                    0 Files
+                </span>
+            </div>
+
+            <!-- Drag and Drop Dropzone -->
+            <div id="drop-zone" 
+                 onclick="document.getElementById('multi-file-input').click()"
+                 ondragover="PDFAnalyzerApp.onDragOver(event)" 
+                 ondragleave="PDFAnalyzerApp.onDragLeave(event)" 
+                 ondrop="PDFAnalyzerApp.onDrop(event)"
+                 class="border-2 border-dashed border-subtle-border hover:border-teal-brand rounded-2xl p-5 text-center cursor-pointer transition-all bg-elevated/40 hover:bg-elevated group relative">
+                
+                <input id="multi-file-input" type="file" multiple accept=".pdf,.txt" onchange="PDFAnalyzerApp.handleFilesSelect(event)" class="hidden"/>
+                
+                <div class="w-12 h-12 rounded-2xl bg-teal-brand/20 border border-teal-brand/30 text-teal-brand flex items-center justify-center mx-auto mb-2 group-hover:scale-110 transition-transform">
+                    <span class="material-symbols-outlined text-2xl">cloud_upload</span>
+                </div>
+                <div class="text-xs font-bold text-white mb-0.5">Click to Browse or Drag & Drop PDFs</div>
+                <p class="text-[10px] text-muted-gray">Single PDF, Multiple PDFs, Textbooks & Scans (Up to 35MB)</p>
+                <div class="mt-2 flex items-center justify-center gap-2 text-[10px] font-mono text-teal-brand">
+                    <span class="material-symbols-outlined text-xs">verified</span>
+                    <span>High-Precision Native & Vision OCR</span>
+                </div>
+            </div>
+
+            <!-- Demo Pack Ingestion Button -->
+            <div class="p-3 rounded-2xl bg-elevated border border-subtle-border flex items-center justify-between text-xs">
+                <div>
+                    <div class="font-bold text-white text-[11px]">Load Sample Multi-Unit Pack</div>
+                    <div class="text-[10px] text-muted-gray font-mono">Unit 1 (OS Architecture) + Unit 2 (Virtual Memory)</div>
+                </div>
+                <button onclick="PDFAnalyzerApp.loadDemoPack()" class="px-2.5 py-1 rounded-lg bg-teal-brand/20 hover:bg-teal-brand/30 text-teal-brand text-[11px] font-bold border border-teal-brand/40 transition-colors">
+                    Load Sample
+                </button>
+            </div>
+
+            <!-- Selected File List Queue -->
+            <div class="flex-1 flex flex-col overflow-hidden space-y-2">
+                <div class="flex items-center justify-between text-[11px] font-bold text-muted-gray uppercase tracking-wider px-1">
+                    <span>Uploaded Documents</span>
+                    <button id="btn-clear-queue" onclick="PDFAnalyzerApp.clearQueue()" class="text-rose-gold hover:underline text-[10px] hidden">Clear All</button>
+                </div>
+
+                <div id="file-queue-list" class="flex-1 overflow-y-auto space-y-2 pr-1 custom-scrollbar">
+                    <div id="queue-empty-placeholder" class="h-full flex flex-col items-center justify-center text-center p-6 text-muted-gray text-xs border border-dashed border-subtle-border/60 rounded-2xl">
+                        <span class="material-symbols-outlined text-3xl mb-2 opacity-40">picture_as_pdf</span>
+                        <span>No documents selected yet.<br/>Upload single or multiple PDFs above.</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Processing Dashboard & Primary Actions -->
+            <div id="batch-control-card" class="p-3.5 rounded-2xl bg-elevated border border-subtle-border space-y-3 shrink-0">
+                <div class="flex items-center justify-between text-xs font-bold">
+                    <span class="text-white">Analysis Status</span>
+                    <span id="batch-progress-text" class="text-teal-brand font-mono text-[11px]">0 / 0 Ready</span>
+                </div>
+                <div class="w-full bg-midnight h-2 rounded-full overflow-hidden border border-subtle-border">
+                    <div id="batch-progress-bar" class="bg-gradient-to-r from-teal-brand to-indigo-brand h-full rounded-full transition-all duration-300" style="width: 0%;"></div>
+                </div>
+
+                <div class="flex flex-col gap-2 pt-1">
+                    <button id="btn-generate-notes" onclick="PDFAnalyzerApp.startBatchProcessing()" class="btn-primary-gradient w-full py-2.5 rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 shadow-lg active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed">
+                        <span class="material-symbols-outlined text-base">analytics</span>
+                        <span>Analyze & Generate Notes</span>
+                    </button>
+                    
+                    <div class="flex gap-2">
+                        <button id="btn-create-master" onclick="PDFAnalyzerApp.generateMasterNotes()" disabled class="flex-1 py-2 rounded-xl bg-midnight hover:bg-surface-high border border-subtle-border text-xs font-bold text-muted-gray hover:text-white flex items-center justify-center gap-1 transition-all disabled:opacity-40 disabled:cursor-not-allowed">
+                            <span class="material-symbols-outlined text-sm text-teal-brand">merge_type</span>
+                            <span>Create Master Notes</span>
+                        </button>
+                        <button id="btn-retry-failed" onclick="PDFAnalyzerApp.retryFailedFiles()" class="hidden px-3 py-2 rounded-xl bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/40 text-xs font-bold flex items-center gap-1 transition-colors">
+                            <span class="material-symbols-outlined text-sm">refresh</span>
+                            <span>Retry Failed</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </aside>
+
+        <!-- RIGHT COLUMN: Generated Detailed Notes, Formulas, MCQs & Master Notes Viewer -->
+        <section class="flex-1 flex flex-col bg-midnight rounded-3xl border border-subtle-border shadow-2xl overflow-hidden">
+            
+            <!-- Document Tabs Header -->
+            <div class="h-12 px-4 bg-elevated border-b border-subtle-border flex items-center justify-between shrink-0 overflow-x-auto custom-scrollbar no-print">
+                <div id="document-tab-bar" class="flex items-center gap-1.5">
+                    <!-- Master Notes Tab -->
+                    <button id="tab-master-notes" onclick="PDFAnalyzerApp.switchTab('master')" class="hidden px-3 py-1.5 rounded-lg text-xs font-bold flex items-center gap-1.5 bg-teal-brand text-black shadow-md">
+                        <span class="material-symbols-outlined text-sm">menu_book</span>
+                        <span>Combined Master Notes</span>
+                        <span id="badge-master-units" class="text-[9px] px-1.5 py-0.2 rounded-full bg-black/20 font-mono font-bold">0</span>
+                    </button>
+                    <!-- Individual tabs injected dynamically -->
+                </div>
+
+                <!-- Export & Connected Tools -->
+                <div class="flex items-center gap-1.5 shrink-0 ml-4">
+                    <button id="btn-preview-pdf" onclick="PDFAnalyzerApp.previewCurrentPdf()" title="Inspect PDF Preview" class="px-2.5 py-1 rounded-lg bg-midnight hover:bg-surface-high border border-subtle-border text-[11px] font-bold text-muted-gray hover:text-white flex items-center gap-1 transition-colors">
+                        <span class="material-symbols-outlined text-sm text-teal-brand">visibility</span>
+                        <span class="hidden sm:inline">Preview PDF</span>
+                    </button>
+
+                    <button onclick="PDFAnalyzerApp.openFlashcardsModal()" title="Transform notes into 3D Flashcards" class="px-2.5 py-1 rounded-lg bg-midnight hover:bg-surface-high border border-subtle-border text-[11px] font-bold text-muted-gray hover:text-white flex items-center gap-1 transition-colors">
+                        <span class="material-symbols-outlined text-sm text-teal-brand">style</span>
+                        <span class="hidden sm:inline">Flashcards</span>
+                    </button>
+
+                    <button onclick="PDFAnalyzerApp.openQuizModal()" title="Generate practice quiz from notes" class="px-2.5 py-1 rounded-lg bg-midnight hover:bg-surface-high border border-subtle-border text-[11px] font-bold text-muted-gray hover:text-white flex items-center gap-1 transition-colors">
+                        <span class="material-symbols-outlined text-sm text-indigo-brand">quiz</span>
+                        <span class="hidden sm:inline">Quiz</span>
+                    </button>
+
+                    <a href="exams.html" title="Connect to Exam Tracker" class="px-2.5 py-1 rounded-lg bg-midnight hover:bg-surface-high border border-subtle-border text-[11px] font-bold text-muted-gray hover:text-white flex items-center gap-1 transition-colors">
+                        <span class="material-symbols-outlined text-sm text-rose-gold">event_note</span>
+                        <span class="hidden sm:inline">Exam Tracker</span>
+                    </a>
+
+                    <button onclick="window.print()" title="Print / Export Report" class="px-2.5 py-1 rounded-lg bg-midnight hover:bg-surface-high border border-subtle-border text-[11px] font-bold text-muted-gray hover:text-white flex items-center gap-1 transition-colors">
+                        <span class="material-symbols-outlined text-sm">print</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Notes Content Scrollable Area -->
+            <div id="notes-render-container" class="flex-1 overflow-y-auto p-6 space-y-6 custom-scrollbar">
+                
+                <!-- Initial Empty State -->
+                <div id="notes-empty-state" class="h-full flex flex-col items-center justify-center text-center p-12 max-w-md mx-auto space-y-4">
+                    <div class="w-16 h-16 rounded-2xl bg-teal-brand/10 border border-teal-brand/30 text-teal-brand flex items-center justify-center mx-auto">
+                        <span class="material-symbols-outlined text-3xl">analytics</span>
+                    </div>
+                    <div>
+                        <h3 class="text-base font-bold text-white">No Analysis Generated Yet</h3>
+                        <p class="text-xs text-muted-gray mt-1 leading-relaxed">
+                            Upload your course PDFs on the left (or load the sample pack) and click 
+                            <span class="text-teal-brand font-semibold">Analyze & Generate Notes</span> to decompose files into structured 26-section notes, definitions, formulas, Q&As, MCQs, and Master Notes.
+                        </p>
+                    </div>
+                    <button onclick="PDFAnalyzerApp.loadDemoPack()" class="px-4 py-2 rounded-xl bg-elevated hover:bg-surface-high text-xs font-bold text-warm-ivory border border-subtle-border flex items-center gap-1.5 transition-colors">
+                        <span class="material-symbols-outlined text-base text-teal-brand">bolt</span>
+                        <span>Try Sample Operating Systems Pack</span>
+                    </button>
+                </div>
+
+                <!-- Notes Presentation (Injected dynamically) -->
+                <div id="notes-presentation" class="hidden space-y-8">
+                    <!-- Injected by JavaScript -->
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- Modal: PDF Document Preview -->
+    <div id="modal-pdf-preview" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 hidden">
+        <div class="bg-midnight rounded-3xl border border-subtle-border shadow-2xl max-w-4xl w-full h-[85vh] flex flex-col overflow-hidden">
+            <div class="flex items-center justify-between border-b border-subtle-border px-6 py-4 shrink-0">
+                <div class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-teal-brand text-xl">picture_as_pdf</span>
+                    <h3 id="preview-file-title" class="text-sm font-extrabold text-white">Document Preview</h3>
+                </div>
+                <button onclick="PDFAnalyzerApp.closeModal('modal-pdf-preview')" class="text-muted-gray hover:text-white p-1">
+                    <span class="material-symbols-outlined text-lg">close</span>
+                </button>
+            </div>
+            <div class="flex-1 bg-surface-high p-2 overflow-hidden flex items-center justify-center">
+                <iframe id="pdf-preview-iframe" class="w-full h-full rounded-2xl border border-subtle-border bg-white" src="about:blank"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: 3D Flashcards Preview & Sync -->
+    <div id="modal-flashcards" class="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm flex items-center justify-center p-4 hidden">
+        <div class="bg-midnight rounded-3xl border border-subtle-border shadow-2xl max-w-2xl w-full p-6 space-y-4">
+            <div class="flex items-center justify-between border-b border-subtle-border pb-3">
+                <div class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-teal-brand text-xl">style</span>
+                    <h3 class="text-sm font-extrabold text-white">Generated 3D Flashcards</h3>
+                </div>
+                <button onclick="PDFAnalyzerApp.closeModal('modal-flashcards')" class="text-muted-gray hover:text-white p-1">
+                    <span class="material-symbols-outlined text-lg">close</span>
+                </button>
+            </div>
+            <div id="flashcards-list" class="max-h-96 overflow-y-auto space-y-3 custom-scrollbar pr-1">
+                <!-- Injected cards -->
+            </div>
+            <div class="flex justify-between items-center pt-2">
+                <span id="flashcard-count-label" class="text-xs font-mono text-muted-gray">0 Cards Ready</span>
+                <a href="flashcards.html" class="btn-primary-gradient px-4 py-2 rounded-xl text-xs font-bold flex items-center gap-1 shadow-md">
+                    <span>Open in 3D Flashcard Simulator</span>
+                    <span class="material-symbols-outlined text-sm">open_in_new</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Practice Quiz Preview -->
+    <div id="modal-quiz" class="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm flex items-center justify-center p-4 hidden">
+        <div class="bg-midnight rounded-3xl border border-subtle-border shadow-2xl max-w-2xl w-full p-6 space-y-4">
+            <div class="flex items-center justify-between border-b border-subtle-border pb-3">
+                <div class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-indigo-brand text-xl">quiz</span>
+                    <h3 class="text-sm font-extrabold text-white">Generated Engineering Practice Quiz</h3>
+                </div>
+                <button onclick="PDFAnalyzerApp.closeModal('modal-quiz')" class="text-muted-gray hover:text-white p-1">
+                    <span class="material-symbols-outlined text-lg">close</span>
+                </button>
+            </div>
+            <div id="quiz-list" class="max-h-96 overflow-y-auto space-y-4 custom-scrollbar pr-1">
+                <!-- Injected quiz questions -->
+            </div>
+            <div class="flex justify-between items-center pt-2">
+                <span id="quiz-count-label" class="text-xs font-mono text-muted-gray">5 Questions Ready</span>
+                <a href="quiz.html" class="btn-primary-gradient px-4 py-2 rounded-xl text-xs font-bold flex items-center gap-1 shadow-md">
+                    <span>Open in Full Quiz Engine</span>
+                    <span class="material-symbols-outlined text-sm">open_in_new</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- History Drawer (My Saved Documents) -->
+    <div id="history-drawer" class="fixed inset-y-0 right-0 z-50 w-full sm:w-96 bg-midnight border-l border-subtle-border shadow-2xl transform translate-x-full transition-transform duration-300 ease-in-out p-6 flex flex-col">
+        <div class="flex items-center justify-between border-b border-subtle-border pb-3 mb-4">
+            <div class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-teal-brand">history_edu</span>
+                <h3 class="text-sm font-extrabold text-white">Saved Document Library</h3>
+            </div>
+            <button onclick="PDFAnalyzerApp.toggleHistoryDrawer()" class="text-muted-gray hover:text-white p-1">
+                <span class="material-symbols-outlined text-lg">close</span>
+            </button>
+        </div>
+        
+        <div class="mb-3">
+            <input id="history-search-input" type="text" oninput="PDFAnalyzerApp.filterHistory(this.value)" placeholder="Search saved analyses..." class="w-full bg-elevated border border-subtle-border rounded-xl px-3 py-2 text-xs text-warm-ivory outline-none focus:border-teal-brand"/>
+        </div>
+
+        <div id="history-batches-list" class="flex-1 overflow-y-auto space-y-3 custom-scrollbar pr-1">
+            <div class="text-center py-8 text-xs text-muted-gray">Loading your saved documents...</div>
+        </div>
+    </div>
+
+    <!-- Shared App Scripts -->
+    <script src="js/supabase.min.js"></script>
+    <script src="js/supabase-client.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/study-tracker.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/btech-bg3d.js"></script>
+
+    <!-- Master Unified PDF Analyzer Engine -->
+    <script>
+        const PDFAnalyzerApp = (() => {
+            // State
+            let filesQueue = [];
+            let activeTab = 'master'; // 'master' or document ID
+            let masterNotesData = null;
+            let currentActiveUser = null;
+
+            // Initialize App
+            async function init() {
+                if (typeof AuthManager !== 'undefined') {
+                    const isAuthorized = await AuthManager.requireAuth({
+                        onReady: (user, profile) => {
+                            currentActiveUser = profile || {
+                                id: user?.id,
+                                email: user?.email,
+                                name: user?.user_metadata?.full_name || user?.email?.split('@')[0],
+                                department: user?.user_metadata?.branch || 'CSE',
+                                semester: parseInt(user?.user_metadata?.semester || '1', 10)
+                            };
+                        }
+                    });
+                    if (!isAuthorized) return;
+                }
+
+                loadNotesHistory();
+            }
+
+            // Drag and Drop Handlers
+            function onDragOver(e) {
+                e.preventDefault();
+                document.getElementById('drop-zone').classList.add('border-teal-brand', 'bg-elevated/80');
+            }
+
+            function onDragLeave(e) {
+                e.preventDefault();
+                document.getElementById('drop-zone').classList.remove('border-teal-brand', 'bg-elevated/80');
+            }
+
+            function onDrop(e) {
+                e.preventDefault();
+                onDragLeave(e);
+                if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+                    handleFileList(e.dataTransfer.files);
+                }
+            }
+
+            function handleFilesSelect(e) {
+                if (e.target.files && e.target.files.length > 0) {
+                    handleFileList(e.target.files);
+                }
+            }
+
+            function handleFileList(files) {
+                const validTypes = ['application/pdf', 'text/plain'];
+                const validExts = ['.pdf', '.txt'];
+
+                for (const file of Array.from(files)) {
+                    const ext = '.' + file.name.split('.').pop().toLowerCase();
+                    if (!validExts.includes(ext) && !validTypes.includes(file.type)) {
+                        if (typeof AuthManager !== 'undefined') AuthManager.showToast(`Skipped "${file.name}": Only PDF and TXT files supported.`, 'warning');
+                        continue;
+                    }
+                    if (file.size > 35 * 1024 * 1024) {
+                        if (typeof AuthManager !== 'undefined') AuthManager.showToast(`Skipped "${file.name}": Exceeds 35MB limit.`, 'warning');
+                        continue;
+                    }
+
+                    if (filesQueue.some(f => f.name === file.name)) {
+                        if (typeof AuthManager !== 'undefined') AuthManager.showToast(`"${file.name}" is already in queue.`, 'info');
+                        continue;
+                    }
+
+                    const queueItem = {
+                        id: 'file-' + Date.now().toString(36) + '-' + Math.random().toString(36).substring(2, 6),
+                        file: file,
+                        name: file.name,
+                        size: file.size,
+                        base64: null,
+                        status: 'queued',
+                        statusText: 'Ready to Process',
+                        error: null,
+                        document: null,
+                        notes: null,
+                        extractionMethod: 'native',
+                        ocrUsed: false
+                    };
+
+                    filesQueue.push(queueItem);
+
+                    const reader = new FileReader();
+                    reader.onload = (evt) => {
+                        queueItem.base64 = evt.target.result;
+                    };
+                    reader.readAsDataURL(file);
+                }
+
+                renderQueue();
+            }
+
+            function renderQueue() {
+                const listEl = document.getElementById('file-queue-list');
+                const badgeEl = document.getElementById('queue-badge');
+                const clearBtn = document.getElementById('btn-clear-queue');
+                const placeholder = document.getElementById('queue-empty-placeholder');
+
+                badgeEl.textContent = `${filesQueue.length} ${filesQueue.length === 1 ? 'File' : 'Files'}`;
+                
+                if (filesQueue.length === 0) {
+                    listEl.innerHTML = '';
+                    if (placeholder) listEl.appendChild(placeholder);
+                    clearBtn.classList.add('hidden');
+                    document.getElementById('btn-generate-notes').disabled = true;
+                    updateBatchProgress();
+                    return;
+                }
+
+                clearBtn.classList.remove('hidden');
+                document.getElementById('btn-generate-notes').disabled = false;
+
+                listEl.innerHTML = filesQueue.map(item => {
+                    const statusColors = {
+                        queued: 'text-muted-gray border-subtle-border bg-midnight/40',
+                        uploading: 'text-indigo-brand border-indigo-brand/40 bg-indigo-brand/10',
+                        extracting: 'text-indigo-brand border-indigo-brand/40 bg-indigo-brand/10',
+                        ocr: 'text-amber-400 border-amber-400/40 bg-amber-400/10',
+                        analyzing: 'text-violet-brand border-violet-brand/40 bg-violet-brand/10',
+                        generating: 'text-teal-brand border-teal-brand/40 bg-teal-brand/10',
+                        completed: 'text-teal-brand border-teal-brand/40 bg-teal-brand/10',
+                        failed: 'text-red-400 border-red-400/40 bg-red-400/10'
+                    };
+
+                    const formatSize = (b) => {
+                        if (b < 1024) return b + ' B';
+                        if (b < 1024 * 1024) return (b / 1024).toFixed(1) + ' KB';
+                        return (b / (1024 * 1024)).toFixed(1) + ' MB';
+                    };
+
+                    const isProcessing = ['uploading', 'extracting', 'ocr', 'analyzing', 'generating'].includes(item.status);
+
+                    return `
+                        <div id="card-${item.id}" class="p-3 rounded-2xl bg-elevated border border-subtle-border hover:border-subtle-border/80 transition-all space-y-2 card-lift">
+                            <div class="flex items-start justify-between gap-2">
+                                <div class="flex items-center gap-2 min-w-0">
+                                    <div class="w-8 h-8 rounded-xl bg-teal-brand/10 border border-teal-brand/30 flex items-center justify-center text-teal-brand shrink-0">
+                                        <span class="material-symbols-outlined text-base">picture_as_pdf</span>
+                                    </div>
+                                    <div class="min-w-0">
+                                        <div class="text-xs font-bold text-white truncate" title="${item.name}">${item.name}</div>
+                                        <div class="text-[10px] text-muted-gray font-mono">${formatSize(item.size)}</div>
+                                    </div>
+                                </div>
+                                <div class="flex items-center gap-1">
+                                    ${item.base64 ? `
+                                        <button onclick="PDFAnalyzerApp.previewSpecificPdf('${item.id}')" title="Preview PDF" class="text-muted-gray hover:text-teal-brand p-1">
+                                            <span class="material-symbols-outlined text-sm">visibility</span>
+                                        </button>
+                                    ` : ''}
+                                    ${item.status === 'failed' ? `
+                                        <button onclick="PDFAnalyzerApp.retrySingleFile('${item.id}')" title="Retry File" class="text-amber-400 hover:text-amber-300 p-1">
+                                            <span class="material-symbols-outlined text-sm">refresh</span>
+                                        </button>
+                                    ` : ''}
+                                    ${!isProcessing ? `
+                                        <button onclick="PDFAnalyzerApp.removeFile('${item.id}')" title="Remove File" class="text-muted-gray hover:text-red-400 p-1">
+                                            <span class="material-symbols-outlined text-sm">close</span>
+                                        </button>
+                                    ` : ''}
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center justify-between text-[10px] pt-1 border-t border-subtle-border/40">
+                                <span class="px-2 py-0.5 rounded-full border font-mono font-semibold flex items-center gap-1 ${statusColors[item.status] || statusColors.queued}">
+                                    ${isProcessing ? '<span class="w-1.5 h-1.5 rounded-full bg-current animate-ping"></span>' : ''}
+                                    ${item.statusText}
+                                </span>
+                                ${item.ocrUsed ? '<span class="text-[9px] font-mono text-amber-400">OCR Recovered</span>' : ''}
+                                ${item.status === 'completed' ? '<span class="text-teal-brand font-bold">Ready</span>' : ''}
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+
+                updateBatchProgress();
+            }
+
+            function removeFile(id) {
+                filesQueue = filesQueue.filter(f => f.id !== id);
+                renderQueue();
+            }
+
+            function clearQueue() {
+                filesQueue = [];
+                renderQueue();
+            }
+
+            function updateBatchProgress() {
+                const total = filesQueue.length;
+                const completed = filesQueue.filter(f => f.status === 'completed').length;
+                const failed = filesQueue.filter(f => f.status === 'failed').length;
+
+                const percent = total > 0 ? Math.round((completed / total) * 100) : 0;
+                document.getElementById('batch-progress-bar').style.width = `${percent}%`;
+                document.getElementById('batch-progress-text').textContent = `${completed} / ${total} Ready`;
+
+                const retryBtn = document.getElementById('btn-retry-failed');
+                if (failed > 0) retryBtn.classList.remove('hidden');
+                else retryBtn.classList.add('hidden');
+
+                const masterBtn = document.getElementById('btn-create-master');
+                if (completed >= 2) {
+                    masterBtn.disabled = false;
+                    masterBtn.classList.remove('opacity-40');
+                } else {
+                    masterBtn.disabled = true;
+                    masterBtn.classList.add('opacity-40');
+                }
+            }
+
+            // Batch Processing Loop
+            async function startBatchProcessing() {
+                const pending = filesQueue.filter(f => f.status === 'queued' || f.status === 'failed');
+                if (pending.length === 0) {
+                    if (typeof AuthManager !== 'undefined') AuthManager.showToast('All documents are already analyzed!', 'info');
+                    return;
+                }
+
+                document.getElementById('btn-generate-notes').disabled = true;
+
+                for (const item of pending) {
+                    await processIndividualFile(item);
+                }
+
+                document.getElementById('btn-generate-notes').disabled = false;
+                renderDocumentTabs();
+
+                const completedCount = filesQueue.filter(f => f.status === 'completed').length;
+                if (completedCount >= 2) {
+                    await generateMasterNotes();
+                } else if (completedCount === 1) {
+                    const first = filesQueue.find(f => f.status === 'completed');
+                    if (first && first.notes) {
+                        switchTab(first.id);
+                    }
+                }
+            }
+
+            async function retryFailedFiles() {
+                const failed = filesQueue.filter(f => f.status === 'failed');
+                for (const item of failed) {
+                    await processIndividualFile(item);
+                }
+                renderDocumentTabs();
+            }
+
+            async function retrySingleFile(id) {
+                const item = filesQueue.find(f => f.id === id);
+                if (item) {
+                    await processIndividualFile(item);
+                    renderDocumentTabs();
+                }
+            }
+
+            async function processIndividualFile(item) {
+                const mode = document.getElementById('sel-notes-mode').value;
+
+                try {
+                    if (!item.base64) {
+                        item.status = 'uploading';
+                        item.statusText = 'Preparing File...';
+                        renderQueue();
+                        await new Promise((resolve) => {
+                            const check = setInterval(() => {
+                                if (item.base64) { clearInterval(check); resolve(); }
+                            }, 100);
+                        });
+                    }
+
+                    // Extraction & Preflight with OCR fallback
+                    item.status = 'extracting';
+                    item.statusText = 'Extracting Text & Layout...';
+                    renderQueue();
+
+                    const extractRes = await fetch('/api/ai/extract-pdf', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'x-user-id': currentActiveUser.id
+                        },
+                        body: JSON.stringify({
+                            fileName: item.name,
+                            fileSize: item.size,
+                            mimeType: item.file.type || 'application/pdf',
+                            fileData: item.base64,
+                            userId: currentActiveUser.id
+                        })
+                    });
+
+                    if (!extractRes.ok) {
+                        const err = await extractRes.json();
+                        throw new Error(err.error || 'Extraction failed.');
+                    }
+
+                    const extractData = await extractRes.json();
+                    item.document = extractData.document;
+                    item.extractedText = extractData.text;
+                    item.extractionMethod = extractData.extractionMethod;
+                    item.ocrUsed = extractData.ocrUsed;
+
+                    if (extractData.ocrUsed) {
+                        item.status = 'ocr';
+                        item.statusText = 'OCR Recovered';
+                        renderQueue();
+                        await new Promise(r => setTimeout(r, 300));
+                    }
+
+                    // Detailed Notes Synthesis (26 Academic Sections)
+                    item.status = 'generating';
+                    item.statusText = 'Synthesizing Detailed Analysis...';
+                    renderQueue();
+
+                    const notesRes = await fetch('/api/ai/notes', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'x-user-id': currentActiveUser.id
+                        },
+                        body: JSON.stringify({
+                            documentId: item.document ? item.document.id : null,
+                            extractedText: item.extractedText,
+                            fileName: item.name,
+                            mode: mode,
+                            userId: currentActiveUser.id,
+                            department: currentActiveUser.department || 'CSE',
+                            semester: currentActiveUser.semester || 4,
+                            targetRole: currentActiveUser.target_role || 'Engineering Specialist'
+                        })
+                    });
+
+                    if (!notesRes.ok) {
+                        const err = await notesRes.json();
+                        throw new Error(err.error || 'Failed to synthesize notes.');
+                    }
+
+                    const notesData = await notesRes.json();
+                    item.notes = notesData.note;
+                    item.status = 'completed';
+                    item.statusText = item.ocrUsed ? 'Completed (OCR)' : 'Completed';
+                    item.error = null;
+                } catch (err) {
+                    console.error(`[PDF Analyzer Process Error: ${item.name}]:`, err);
+                    item.status = 'failed';
+                    item.statusText = 'Failed';
+                    item.error = err.message;
+                }
+
+                renderQueue();
+            }
+
+            // Tab Management
+            function renderDocumentTabs() {
+                const tabBar = document.getElementById('document-tab-bar');
+                const completedItems = filesQueue.filter(f => f.status === 'completed');
+                const masterTab = document.getElementById('tab-master-notes');
+
+                if (completedItems.length >= 2) {
+                    masterTab.classList.remove('hidden');
+                    document.getElementById('badge-master-units').textContent = completedItems.length;
+                } else {
+                    masterTab.classList.add('hidden');
+                }
+
+                tabBar.querySelectorAll('.dynamic-file-tab').forEach(el => el.remove());
+
+                completedItems.forEach(item => {
+                    const btn = document.createElement('button');
+                    btn.className = `dynamic-file-tab px-3 py-1.5 rounded-lg text-xs font-bold flex items-center gap-1.5 transition-colors border border-subtle-border ${
+                        activeTab === item.id 
+                            ? 'bg-teal-brand text-black shadow-md' 
+                            : 'bg-midnight hover:bg-surface-high text-muted-gray hover:text-white'
+                    }`;
+                    btn.onclick = () => switchTab(item.id);
+                    btn.innerHTML = `
+                        <span class="material-symbols-outlined text-sm">description</span>
+                        <span class="truncate max-w-[130px]">${item.name}</span>
+                        ${item.ocrUsed ? '<span class="text-[9px] px-1 rounded bg-amber-400/20 text-amber-300 font-mono">OCR</span>' : ''}
+                    `;
+                    tabBar.appendChild(btn);
+                });
+            }
+
+            function switchTab(tabKey) {
+                activeTab = tabKey;
+                renderDocumentTabs();
+
+                const emptyState = document.getElementById('notes-empty-state');
+                const presentation = document.getElementById('notes-presentation');
+
+                if (tabKey === 'master') {
+                    if (masterNotesData) {
+                        emptyState.classList.add('hidden');
+                        presentation.classList.remove('hidden');
+                        renderMasterNotesView(masterNotesData);
+                    } else {
+                        emptyState.classList.remove('hidden');
+                        presentation.classList.add('hidden');
+                    }
+                } else {
+                    const doc = filesQueue.find(f => f.id === tabKey);
+                    if (doc && doc.notes) {
+                        emptyState.classList.add('hidden');
+                        presentation.classList.remove('hidden');
+                        renderIndividualNotesView(doc);
+                    }
+                }
+            }
+
+            // Master Notes Generator
+            async function generateMasterNotes() {
+                const completed = filesQueue.filter(f => f.status === 'completed' && f.notes);
+                if (completed.length < 2) {
+                    if (typeof AuthManager !== 'undefined') AuthManager.showToast('Please analyze at least 2 PDFs to generate Master Notes.', 'warning');
+                    return;
+                }
+
+                if (typeof AuthManager !== 'undefined') AuthManager.showToast('Synthesizing Combined Master Notes across all PDFs...', 'info');
+
+                try {
+                    const res = await fetch('/api/ai/master-notes', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            batchTitle: 'Unified Master Engineering Curriculum Notes',
+                            totalFiles: filesQueue.length,
+                            documentsNotes: completed.map(c => ({
+                                file_name: c.name,
+                                notes: c.notes
+                            }))
+                        })
+                    });
+
+                    if (res.ok) {
+                        const data = await res.json();
+                        masterNotesData = data.masterNotes;
+                        renderDocumentTabs();
+                        switchTab('master');
+                        if (typeof AuthManager !== 'undefined') AuthManager.showToast('Master Notes generated successfully!', 'success');
+                    } else {
+                        throw new Error('Could not synthesize Master Notes');
+                    }
+                } catch (e) {
+                    console.error('[Master Notes Error]:', e);
+                    if (typeof AuthManager !== 'undefined') AuthManager.showToast(e.message, 'error');
+                }
+            }
+
+            // PDF Preview in Modal
+            function previewCurrentPdf() {
+                const current = activeTab === 'master' ? filesQueue[0] : filesQueue.find(f => f.id === activeTab);
+                if (current && current.base64) {
+                    previewSpecificPdf(current.id);
+                } else if (filesQueue.length > 0 && filesQueue[0].base64) {
+                    previewSpecificPdf(filesQueue[0].id);
+                } else {
+                    if (typeof AuthManager !== 'undefined') AuthManager.showToast('No PDF loaded for preview yet.', 'info');
+                }
+            }
+
+            function previewSpecificPdf(id) {
+                const item = filesQueue.find(f => f.id === id);
+                if (!item || !item.base64) return;
+
+                document.getElementById('preview-file-title').textContent = `Preview: ${item.name}`;
+                const iframe = document.getElementById('pdf-preview-iframe');
+                iframe.src = item.base64;
+                document.getElementById('modal-pdf-preview').classList.remove('hidden');
+            }
+
+            // 26-Section Individual Notes View Renderer
+            function renderIndividualNotesView(item) {
+                const note = item.notes;
+                const container = document.getElementById('notes-presentation');
+
+                const topicNotes = note.detailed_explanation || note.topicNotes || [];
+                const definitions = note.definitions || [];
+                const formulas = note.formulas || [];
+                const examFocus = note.exam_focus || [];
+                const questions = note.important_questions || [];
+                const mcqs = note.mcqs || note.practice_questions || [];
+                const quickRev = note.quick_revision || [];
+
+                container.innerHTML = `
+                    <!-- 1. Header & Metadata Badge Bar -->
+                    <div class="p-6 rounded-3xl bg-elevated/80 border border-subtle-border space-y-4">
+                        <div class="flex flex-wrap items-center justify-between gap-3">
+                            <div class="space-y-1">
+                                <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-teal-brand/20 text-teal-brand border border-teal-brand/30">
+                                    ${(note.mode || 'DETAILED').toUpperCase()} ANALYSIS
+                                </span>
+                                <h2 class="text-xl font-black text-white">${note.title || item.name}</h2>
+                                <div class="flex items-center gap-3 text-xs text-muted-gray">
+                                    <span>Source: <strong class="text-white">${item.name}</strong></span>
+                                    <span>•</span>
+                                    <span>Method: <strong class="${item.ocrUsed ? 'text-amber-400' : 'text-teal-brand'}">${item.ocrUsed ? 'High-Precision OCR' : 'Native Text Stream'}</strong></span>
+                                    <span>•</span>
+                                    <span>Pages: <strong class="text-white">${item.document?.page_count || 1}</strong></span>
+                                </div>
+                            </div>
+                            <div>
+                                <button onclick="PDFAnalyzerApp.previewSpecificPdf('${item.id}')" class="px-3 py-1.5 rounded-xl bg-midnight hover:bg-surface-high border border-subtle-border text-xs font-bold text-teal-brand flex items-center gap-1.5 transition-colors">
+                                    <span class="material-symbols-outlined text-sm">visibility</span>
+                                    <span>View Source PDF</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- 2. Overview & Detailed Summary -->
+                        <div class="p-4 rounded-2xl bg-midnight/70 border border-subtle-border space-y-2">
+                            <h4 class="text-xs font-bold uppercase tracking-wider text-teal-brand flex items-center gap-1.5">
+                                <span class="material-symbols-outlined text-sm">summarize</span>
+                                Executive Academic Summary
+                            </h4>
+                            <p class="text-xs text-warm-ivory leading-relaxed">${note.summary || note.executive_summary || 'Document overview synthesized from source material.'}</p>
+                        </div>
+
+                        <!-- 3. Main Topics List -->
+                        ${(note.main_topics && note.main_topics.length > 0) ? `
+                            <div class="flex flex-wrap items-center gap-2 pt-1">
+                                <span class="text-[11px] font-bold text-muted-gray uppercase">Key Topics:</span>
+                                ${note.main_topics.map(t => `<span class="px-2.5 py-1 rounded-xl bg-midnight border border-subtle-border text-xs text-warm-ivory font-semibold">${t}</span>`).join('')}
+                            </div>
+                        ` : ''}
+                    </div>
+
+                    <!-- 4. Topic-by-Topic In-Depth Notes -->
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between border-b border-subtle-border pb-2">
+                            <h3 class="text-sm font-extrabold text-white flex items-center gap-2">
+                                <span class="material-symbols-outlined text-teal-brand text-lg">menu_book</span>
+                                Topic-by-Topic Detailed Study Notes
+                            </h3>
+                            <span class="text-[11px] font-mono text-muted-gray">${topicNotes.length} Modules Analyzed</span>
+                        </div>
+
+                        <div class="space-y-4">
+                            ${topicNotes.map((tn, idx) => `
+                                <div class="p-5 rounded-3xl bg-elevated/60 border border-subtle-border space-y-3">
+                                    <div class="flex items-center justify-between">
+                                        <h4 class="text-sm font-extrabold text-white flex items-center gap-2">
+                                            <span class="w-6 h-6 rounded-lg bg-teal-brand/20 border border-teal-brand/40 text-teal-brand flex items-center justify-center text-xs font-mono font-bold">${idx + 1}</span>
+                                            ${tn.topic}
+                                        </h4>
+                                        <span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-midnight border border-subtle-border text-muted-gray">
+                                            Source: ${item.name} ${tn.sourcePage ? `— ${tn.sourcePage}` : ''}
+                                        </span>
+                                    </div>
+                                    <p class="text-xs text-warm-ivory leading-relaxed">${tn.whatIsIt || tn.definition || tn.simpleExplanation || 'Core operational principle from source.'}</p>
+                                    
+                                    ${tn.howItWorks ? `
+                                        <div class="p-3 rounded-2xl bg-midnight/60 border border-subtle-border text-xs space-y-1">
+                                            <strong class="text-teal-brand text-[11px] uppercase tracking-wider block">How it Works / Execution Mechanism:</strong>
+                                            <p class="text-muted-gray leading-relaxed">${tn.howItWorks}</p>
+                                        </div>
+                                    ` : ''}
+
+                                    ${tn.algorithmProcess ? `
+                                        <div class="p-3 rounded-2xl bg-midnight/80 border border-subtle-border font-mono text-[11px] space-y-1">
+                                            <div class="text-rose-gold font-bold">Algorithm Flow:</div>
+                                            <div class="text-muted-gray">Input: ${tn.algorithmProcess.input || 'Valid system state'}</div>
+                                            <div class="text-muted-gray">Complexity: ${tn.algorithmProcess.complexity || 'O(n) bounded'}</div>
+                                        </div>
+                                    ` : ''}
+
+                                    <div class="flex flex-wrap gap-4 text-xs pt-1">
+                                        ${tn.application ? `<div><strong class="text-muted-gray">Application:</strong> <span class="text-warm-ivory">${tn.application}</span></div>` : ''}
+                                        ${tn.examRelevance ? `<div><strong class="text-rose-gold">Exam Weightage:</strong> <span class="text-warm-ivory">${tn.examRelevance}</span></div>` : ''}
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+
+                    <!-- 5. Key Definitions & Authoritative Terms -->
+                    ${definitions.length > 0 ? `
+                        <div class="space-y-4">
+                            <h3 class="text-sm font-extrabold text-white flex items-center gap-2 border-b border-subtle-border pb-2">
+                                <span class="material-symbols-outlined text-teal-brand text-lg">format_quote</span>
+                                Authoritative Definitions & Technical Terms
+                            </h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                ${definitions.map(d => `
+                                    <div class="p-4 rounded-2xl bg-elevated/60 border border-subtle-border space-y-1.5">
+                                        <div class="flex items-center justify-between">
+                                            <h5 class="text-xs font-bold text-teal-brand">${d.term}</h5>
+                                            <span class="text-[9px] font-mono text-muted-gray">Source: ${item.name}</span>
+                                        </div>
+                                        <p class="text-xs text-warm-ivory leading-relaxed">${d.definition}</p>
+                                        ${d.simpleExplanation ? `<p class="text-[11px] text-muted-gray italic">"${d.simpleExplanation}"</p>` : ''}
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    ` : ''}
+
+                    <!-- 6. Mathematical Formulas & Governing Equations -->
+                    ${formulas.length > 0 ? `
+                        <div class="space-y-4">
+                            <h3 class="text-sm font-extrabold text-white flex items-center gap-2 border-b border-subtle-border pb-2">
+                                <span class="material-symbols-outlined text-rose-gold text-lg">functions</span>
+                                Governing Formulas & Numerical Relationships
+                            </h3>
+                            <div class="space-y-3">
+                                ${formulas.map(f => `
+                                    <div class="p-4 rounded-2xl bg-elevated/60 border border-subtle-border space-y-2">
+                                        <div class="flex items-center justify-between">
+                                            <h5 class="text-xs font-bold text-white">${f.name || 'Governing Equation'}</h5>
+                                            <span class="text-[10px] font-mono text-muted-gray">Source: ${item.name}</span>
+                                        </div>
+                                        <div class="p-3 rounded-xl bg-midnight border border-subtle-border font-mono text-xs text-rose-gold font-bold">
+                                            ${f.formula}
+                                        </div>
+                                        <div class="text-[11px] text-muted-gray space-y-1">
+                                            <div><strong>Variables:</strong> ${f.variables || 'Standard engineering notation'}</div>
+                                            <div><strong>When to Use:</strong> ${f.whenToUse || 'Steady-state conditions'}</div>
+                                        </div>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    ` : ''}
+
+                    <!-- 7. Semester Exam High-Yield Roadmap -->
+                    ${examFocus.length > 0 ? `
+                        <div class="space-y-4">
+                            <h3 class="text-sm font-extrabold text-white flex items-center gap-2 border-b border-subtle-border pb-2">
+                                <span class="material-symbols-outlined text-amber-400 text-lg">military_tech</span>
+                                Semester Exam Focus & High-Yield Marks Roadmap
+                            </h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                ${examFocus.map(ef => `
+                                    <div class="p-4 rounded-2xl bg-elevated/60 border border-amber-500/20 space-y-2">
+                                        <div class="flex items-center justify-between">
+                                            <span class="px-2 py-0.5 rounded-full text-[10px] font-mono font-bold ${ef.priority === 'High Priority' ? 'bg-red-500/20 text-red-300 border border-red-500/30' : 'bg-amber-500/20 text-amber-300 border border-amber-500/30'}">
+                                                ${ef.priority || 'High Priority'}
+                                            </span>
+                                            <span class="text-[10px] font-mono text-teal-brand font-bold">${ef.expectedMarks || '8-10 Marks'}</span>
+                                        </div>
+                                        <h5 class="text-xs font-bold text-white">${ef.topic}</h5>
+                                        <p class="text-[11px] text-muted-gray">${ef.recommendation || 'Focus on step-by-step state derivations.'}</p>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    ` : ''}
+
+                    <!-- 8. Probable Exam Questions with Model Answers -->
+                    ${questions.length > 0 ? `
+                        <div class="space-y-4">
+                            <h3 class="text-sm font-extrabold text-white flex items-center gap-2 border-b border-subtle-border pb-2">
+                                <span class="material-symbols-outlined text-indigo-brand text-lg">quiz</span>
+                                Frequently Asked Questions & Structured Model Answers
+                            </h3>
+                            <div class="space-y-4">
+                                ${questions.map((q, idx) => `
+                                    <div class="p-5 rounded-3xl bg-elevated/60 border border-subtle-border space-y-3">
+                                        <div class="flex items-start justify-between gap-2">
+                                            <h5 class="text-xs font-bold text-white">Q${idx + 1}: ${q.question}</h5>
+                                            <span class="text-[9px] font-mono px-2 py-0.5 rounded bg-indigo-brand/20 text-indigo-brand shrink-0">PRACTICE QUESTION</span>
+                                        </div>
+                                        <div class="p-3.5 rounded-2xl bg-midnight/70 border border-subtle-border text-xs space-y-2">
+                                            <strong class="text-teal-brand text-[11px] uppercase tracking-wider block">Model Answer:</strong>
+                                            <p class="text-warm-ivory leading-relaxed">${typeof q.answer === 'string' ? q.answer : (q.answer?.explanation || q.answer?.definition || 'Model breakdown grounded in text.')}</p>
+                                        </div>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    ` : ''}
+
+                    <!-- 9. Interactive Practice MCQs -->
+                    ${mcqs.length > 0 ? `
+                        <div class="space-y-4">
+                            <h3 class="text-sm font-extrabold text-white flex items-center gap-2 border-b border-subtle-border pb-2">
+                                <span class="material-symbols-outlined text-violet-brand text-lg">check_circle</span>
+                                Practice Multiple Choice Questions
+                            </h3>
+                            <div class="grid grid-cols-1 gap-3">
+                                ${mcqs.map((m, idx) => `
+                                    <div class="p-4 rounded-2xl bg-elevated/60 border border-subtle-border space-y-2">
+                                        <div class="text-xs font-bold text-white">${idx + 1}. ${m.question}</div>
+                                        ${Array.isArray(m.options) ? `
+                                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1">
+                                                ${m.options.map(opt => `
+                                                    <div class="p-2 rounded-xl bg-midnight border border-subtle-border text-xs text-muted-gray font-mono">
+                                                        ${opt}
+                                                    </div>
+                                                `).join('')}
+                                            </div>
+                                        ` : ''}
+                                        <div class="pt-2 text-[11px] text-teal-brand font-semibold">
+                                            Correct Answer: ${m.correctAnswer || 'Option A'} • ${m.explanation || ''}
+                                        </div>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    ` : ''}
+
+                    <!-- 10. Quick Revision & One-Minute Revision -->
+                    ${quickRev.length > 0 ? `
+                        <div class="p-5 rounded-3xl bg-elevated/60 border border-teal-brand/30 space-y-3">
+                            <h3 class="text-sm font-extrabold text-teal-brand flex items-center gap-2">
+                                <span class="material-symbols-outlined text-lg">bolt</span>
+                                One-Minute Rapid Revision Checkpoints
+                            </h3>
+                            <ul class="space-y-1.5 text-xs text-warm-ivory list-disc list-inside">
+                                ${quickRev.map(item => `<li>${item}</li>`).join('')}
+                            </ul>
+                        </div>
+                    ` : ''}
+                `;
+            }
+
+            // Master Notes View Renderer
+            function renderMasterNotesView(master) {
+                const container = document.getElementById('notes-presentation');
+                const units = master.combinedUnits || [];
+                const defs = master.unifiedDefinitions || [];
+                const formulas = master.unifiedFormulas || [];
+                const comps = master.crossDocumentComparisons || [];
+                const roadmap = master.masterExamRoadmap || [];
+
+                container.innerHTML = `
+                    <div class="p-6 rounded-3xl bg-elevated/80 border border-teal-brand/40 space-y-4">
+                        <div class="space-y-1">
+                            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-teal-brand/20 text-teal-brand border border-teal-brand/30">
+                                COMBINED MASTER NOTES
+                            </span>
+                            <h2 class="text-xl font-black text-white">${master.masterTitle || 'Unified Course Notes'}</h2>
+                            <p class="text-xs text-teal-brand font-mono">${master.provenanceNotice || 'Synthesized across all ingested document streams.'}</p>
+                        </div>
+                        <p class="text-xs text-warm-ivory leading-relaxed">${master.executiveOverview || ''}</p>
+                    </div>
+
+                    <!-- Unified Syllabus Modules -->
+                    <div class="space-y-4">
+                        <h3 class="text-sm font-extrabold text-white flex items-center gap-2 border-b border-subtle-border pb-2">
+                            <span class="material-symbols-outlined text-teal-brand text-lg">view_module</span>
+                            Integrated Syllabus Modules
+                        </h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            ${units.map(u => `
+                                <div class="p-4 rounded-2xl bg-elevated/60 border border-subtle-border space-y-2">
+                                    <div class="flex items-center justify-between">
+                                        <h4 class="text-xs font-bold text-white">${u.unitName}</h4>
+                                        <span class="text-[9px] font-mono text-teal-brand px-2 py-0.5 rounded bg-midnight">Source: ${u.sourceDocument}</span>
+                                    </div>
+                                    <p class="text-xs text-muted-gray">${u.coreTakeaway || ''}</p>
+                                    ${Array.isArray(u.topics) ? `
+                                        <div class="flex flex-wrap gap-1 pt-1">
+                                            ${u.topics.map(t => `<span class="px-2 py-0.5 rounded-lg bg-midnight text-[10px] text-warm-ivory font-mono">${t}</span>`).join('')}
+                                        </div>
+                                    ` : ''}
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+
+                    <!-- Cross-Document Comparisons -->
+                    ${comps.length > 0 ? `
+                        <div class="space-y-4">
+                            <h3 class="text-sm font-extrabold text-white flex items-center gap-2 border-b border-subtle-border pb-2">
+                                <span class="material-symbols-outlined text-rose-gold text-lg">compare_arrows</span>
+                                Cross-Unit Connections & Comparative Analysis
+                            </h3>
+                            <div class="space-y-3">
+                                ${comps.map(c => `
+                                    <div class="p-4 rounded-2xl bg-elevated/60 border border-subtle-border space-y-2">
+                                        <h5 class="text-xs font-bold text-rose-gold">${c.comparisonArea || 'System Hierarchy'}</h5>
+                                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+                                            <div class="p-3 rounded-xl bg-midnight border border-subtle-border text-muted-gray">
+                                                ${c.documentAConcept || ''}
+                                            </div>
+                                            <div class="p-3 rounded-xl bg-midnight border border-subtle-border text-muted-gray">
+                                                ${c.documentBConcept || ''}
+                                            </div>
+                                        </div>
+                                        <p class="text-[11px] text-warm-ivory">${c.relationship || ''}</p>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    ` : ''}
+
+                    <!-- Unified Definitions & Formulas -->
+                    ${defs.length > 0 ? `
+                        <div class="space-y-4">
+                            <h3 class="text-sm font-extrabold text-white flex items-center gap-2 border-b border-subtle-border pb-2">
+                                <span class="material-symbols-outlined text-teal-brand text-lg">menu_book</span>
+                                Consolidated Master Glossary
+                            </h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                ${defs.map(d => `
+                                    <div class="p-3 rounded-xl bg-elevated/60 border border-subtle-border text-xs space-y-1">
+                                        <div class="flex items-center justify-between">
+                                            <strong class="text-teal-brand">${d.term}</strong>
+                                            <span class="text-[9px] font-mono text-muted-gray">${d.sourceDocument || ''}</span>
+                                        </div>
+                                        <p class="text-muted-gray">${d.definition}</p>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    ` : ''}
+
+                    <!-- Unified Formulas & Governing Equations -->
+                    ${formulas.length > 0 ? `
+                        <div class="space-y-4">
+                            <h3 class="text-sm font-extrabold text-white flex items-center gap-2 border-b border-subtle-border pb-2">
+                                <span class="material-symbols-outlined text-rose-gold text-lg">functions</span>
+                                Unified Formulas & Governing Equations
+                            </h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                ${formulas.map(f => `
+                                    <div class="p-4 rounded-2xl bg-elevated/60 border border-subtle-border space-y-2">
+                                        <div class="flex items-center justify-between">
+                                            <span class="text-xs font-bold text-rose-gold font-mono">${f.formula}</span>
+                                            <span class="text-[9px] font-mono text-muted-gray">Source: ${f.sourceDocument || ''}</span>
+                                        </div>
+                                        <p class="text-xs text-muted-gray">${f.meaning || f.variables || f.whenToUse || ''}</p>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    ` : ''}
+
+                    <!-- Master Exam Priority Roadmap -->
+                    ${roadmap.length > 0 ? `
+                        <div class="space-y-4">
+                            <h3 class="text-sm font-extrabold text-white flex items-center gap-2 border-b border-subtle-border pb-2">
+                                <span class="material-symbols-outlined text-amber-400 text-lg">military_tech</span>
+                                Master Exam Priority Roadmap
+                            </h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                ${roadmap.map(ef => `
+                                    <div class="p-4 rounded-2xl bg-elevated/60 border border-amber-500/20 space-y-2">
+                                        <div class="flex items-center justify-between">
+                                            <span class="px-2 py-0.5 rounded-full text-[10px] font-mono font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30">
+                                                ${ef.priority || 'HIGH PRIORITY'}
+                                            </span>
+                                            <span class="text-[9px] font-mono text-muted-gray">Source: ${ef.sourceDocument || ''}</span>
+                                        </div>
+                                        <h5 class="text-xs font-bold text-white">${ef.topic}</h5>
+                                        <p class="text-[11px] text-muted-gray">${ef.examGuidance || 'Core high-yield syllabus topic.'}</p>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    ` : ''}
+
+                    <!-- Master Question Bank with Model Answers -->
+                    ${(master.masterQuestionBank && master.masterQuestionBank.length > 0) ? `
+                        <div class="space-y-4">
+                            <h3 class="text-sm font-extrabold text-white flex items-center gap-2 border-b border-subtle-border pb-2">
+                                <span class="material-symbols-outlined text-indigo-brand text-lg">quiz</span>
+                                Master High-Yield Exam Questions & Model Answers
+                            </h3>
+                            <div class="space-y-4">
+                                ${master.masterQuestionBank.map((q, idx) => `
+                                    <div class="p-5 rounded-3xl bg-elevated/60 border border-subtle-border space-y-3">
+                                        <div class="flex items-start justify-between gap-2">
+                                            <h5 class="text-xs font-bold text-white">Q${idx + 1}: ${q.question}</h5>
+                                            <span class="text-[9px] font-mono px-2 py-0.5 rounded bg-teal-brand/20 text-teal-brand shrink-0">Source: ${q.sourceDocument || 'Combined'}</span>
+                                        </div>
+                                        <div class="p-3.5 rounded-2xl bg-midnight/70 border border-subtle-border text-xs space-y-2">
+                                            <strong class="text-teal-brand text-[11px] uppercase tracking-wider block">Model Answer:</strong>
+                                            <p class="text-warm-ivory leading-relaxed">${q.modelAnswer || q.answer || ''}</p>
+                                        </div>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    ` : ''}
+
+                    <!-- Unified Quick Revision -->
+                    ${(master.quickRevisionMaster && master.quickRevisionMaster.length > 0) ? `
+                        <div class="p-5 rounded-3xl bg-elevated/60 border border-teal-brand/30 space-y-3">
+                            <h3 class="text-sm font-extrabold text-teal-brand flex items-center gap-2">
+                                <span class="material-symbols-outlined text-lg">bolt</span>
+                                Rapid Quick Revision Checkpoints
+                            </h3>
+                            <ul class="space-y-1.5 text-xs text-warm-ivory list-disc list-inside">
+                                ${master.quickRevisionMaster.map(item => `<li>${item}</li>`).join('')}
+                            </ul>
+                        </div>
+                    ` : ''}
+                `;
+            }
+
+            // Flashcards & Quiz Modals
+            async function openFlashcardsModal() {
+                const modal = document.getElementById('modal-flashcards');
+                const list = document.getElementById('flashcards-list');
+                modal.classList.remove('hidden');
+
+                const activeDoc = activeTab === 'master' ? filesQueue[0] : filesQueue.find(f => f.id === activeTab);
+                const notes = activeDoc ? activeDoc.notes : null;
+
+                if (!notes) {
+                    list.innerHTML = '<div class="text-center py-6 text-xs text-muted-gray">Analyze a document first to generate 3D flashcards.</div>';
+                    return;
+                }
+
+                list.innerHTML = '<div class="text-center py-6 text-xs text-teal-brand">Synthesizing 3D Flashcards...</div>';
+
+                try {
+                    const res = await fetch('/api/ai/notes-flashcards', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ notes: notes, count: 6 })
+                    });
+                    if (res.ok) {
+                        const data = await res.json();
+                        const cards = data.flashcards || [];
+                        document.getElementById('flashcard-count-label').textContent = `${cards.length} Cards Ready`;
+                        list.innerHTML = cards.map(c => `
+                            <div class="p-4 rounded-2xl bg-elevated border border-subtle-border space-y-2">
+                                <div class="flex items-center justify-between text-[10px] text-teal-brand font-mono">
+                                    <span>${c.tag || 'Concept'}</span>
+                                    <span>${c.topic || ''}</span>
+                                </div>
+                                <div class="text-xs font-bold text-white">${c.front}</div>
+                                <div class="text-xs text-muted-gray p-2.5 rounded-xl bg-midnight border border-subtle-border">${c.back}</div>
+                            </div>
+                        `).join('');
+                    }
+                } catch (e) {
+                    list.innerHTML = '<div class="text-center py-6 text-xs text-red-400">Failed to load flashcards.</div>';
+                }
+            }
+
+            async function openQuizModal() {
+                const modal = document.getElementById('modal-quiz');
+                const list = document.getElementById('quiz-list');
+                modal.classList.remove('hidden');
+
+                const activeDoc = activeTab === 'master' ? filesQueue[0] : filesQueue.find(f => f.id === activeTab);
+                const notes = activeDoc ? activeDoc.notes : null;
+
+                if (!notes) {
+                    list.innerHTML = '<div class="text-center py-6 text-xs text-muted-gray">Analyze a document first to create a quiz.</div>';
+                    return;
+                }
+
+                list.innerHTML = '<div class="text-center py-6 text-xs text-indigo-brand">Preparing Practice Quiz...</div>';
+
+                try {
+                    const res = await fetch('/api/ai/notes-quiz', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ notes: notes, count: 5 })
+                    });
+                    if (res.ok) {
+                        const data = await res.json();
+                        const quiz = data.quiz || [];
+                        document.getElementById('quiz-count-label').textContent = `${quiz.length} Questions Ready`;
+                        list.innerHTML = quiz.map((q, idx) => `
+                            <div class="p-4 rounded-2xl bg-elevated border border-subtle-border space-y-2">
+                                <div class="text-xs font-bold text-white">${idx + 1}. ${q.question}</div>
+                                <div class="space-y-1 text-xs text-muted-gray font-mono">
+                                    ${(q.options || []).map(opt => `<div class="p-2 rounded-lg bg-midnight border border-subtle-border">${opt}</div>`).join('')}
+                                </div>
+                                <div class="text-[11px] text-teal-brand font-semibold pt-1">
+                                    Answer: ${q.correctAnswer} • ${q.explanation}
+                                </div>
+                            </div>
+                        `).join('');
+                    }
+                } catch (e) {
+                    list.innerHTML = '<div class="text-center py-6 text-xs text-red-400">Failed to generate quiz.</div>';
+                }
+            }
+
+            function closeModal(id) {
+                document.getElementById(id).classList.add('hidden');
+                if (id === 'modal-pdf-preview') {
+                    document.getElementById('pdf-preview-iframe').src = 'about:blank';
+                }
+            }
+
+            // Demo Pack Ingestion
+            function loadDemoPack() {
+                const demoUnits = [
+                    {
+                        name: 'Unit_1_OS_Architecture_Processes.pdf',
+                        text: 'Unit 1: Operating Systems Architecture and Process Synchronization. Process state machines alternate between Ready, Running, and Blocked states. Semaphores are integer synchronization variables invented by Dijkstra providing P() wait and V() signal primitives for mutual exclusion. Peterson algorithm guarantees mutual exclusion, progress, and bounded waiting for two cooperating threads. Deadlock conditions require mutual exclusion, hold and wait, no preemption, and circular wait. Banker algorithm prevents deadlocks by ensuring safe state transitions with available, allocation, and maximum demand matrix calculations.'
+                    },
+                    {
+                        name: 'Unit_2_Virtual_Memory_Paging.pdf',
+                        text: 'Unit 2: Virtual Memory Management and Page Replacement Invariants. Paging maps virtual addresses to physical frames through a page table hierarchy with Translation Lookaside Buffer (TLB) caching. Page fault occurs when valid bit is zero in the page table entry, triggering trap to operating system kernel. Belady anomaly demonstrates FIFO page replacement incurring more faults with larger physical frames. Optimal Page Replacement (OPT) replaces the page unused for longest future time. Least Recently Used (LRU) approximates OPT through stack algorithms and clock page replacement counter approximations. Thrashing occurs when working set exceeds allocated frames.'
+                    }
+                ];
+
+                filesQueue = [];
+                demoUnits.forEach((demo, idx) => {
+                    filesQueue.push({
+                        id: 'demo-' + idx,
+                        file: { name: demo.name, size: demo.text.length * 12 },
+                        name: demo.name,
+                        size: demo.text.length * 12,
+                        base64: 'data:text/plain;base64,' + btoa(demo.text),
+                        status: 'queued',
+                        statusText: 'Ready to Process',
+                        error: null,
+                        document: null,
+                        notes: null,
+                        extractionMethod: 'native',
+                        ocrUsed: false
+                    });
+                });
+
+                renderQueue();
+                if (typeof AuthManager !== 'undefined') AuthManager.showToast('Sample Operating Systems pack loaded! Click "Analyze & Generate Notes".', 'success');
+            }
+
+            // History Drawer
+            function toggleHistoryDrawer() {
+                const drawer = document.getElementById('history-drawer');
+                drawer.classList.toggle('translate-x-full');
+            }
+
+            let cachedNotesHistory = [];
+
+            async function loadNotesHistory() {
+                try {
+                    const res = await fetch(`/api/ai/notes?userId=${encodeURIComponent(currentActiveUser.id)}`);
+                    if (res.ok) {
+                        const data = await res.json();
+                        cachedNotesHistory = data.notes || [];
+                        document.getElementById('history-count-pill').textContent = cachedNotesHistory.length;
+                        renderHistoryList(cachedNotesHistory);
+                    }
+                } catch (e) {
+                    console.warn('[History Error]:', e.message);
+                }
+            }
+
+            function filterHistory(query) {
+                const q = (query || '').toLowerCase().trim();
+                if (!q) {
+                    renderHistoryList(cachedNotesHistory);
+                    return;
+                }
+                const filtered = cachedNotesHistory.filter(n => 
+                    (n.title && n.title.toLowerCase().includes(q)) || 
+                    (n.file_name && n.file_name.toLowerCase().includes(q))
+                );
+                renderHistoryList(filtered);
+            }
+
+            function renderHistoryList(notes) {
+                const list = document.getElementById('history-batches-list');
+                if (!notes || notes.length === 0) {
+                    list.innerHTML = '<div class="text-center py-8 text-xs text-muted-gray">No saved documents found.</div>';
+                    return;
+                }
+
+                list.innerHTML = notes.map(n => `
+                    <div class="p-3.5 rounded-2xl bg-elevated border border-subtle-border space-y-2 card-lift">
+                        <div class="flex items-start justify-between gap-2">
+                            <div class="min-w-0">
+                                <h4 class="text-xs font-bold text-white truncate">${n.title || n.file_name}</h4>
+                                <div class="text-[10px] text-muted-gray font-mono">${new Date(n.created_at || Date.now()).toLocaleDateString()} • ${(n.mode || 'detailed').toUpperCase()}</div>
+                            </div>
+                            <span class="px-2 py-0.5 rounded-full text-[9px] font-mono font-bold bg-teal-brand/20 text-teal-brand">Saved</span>
+                        </div>
+                        <div class="flex items-center justify-between pt-1 border-t border-subtle-border/40">
+                            <button onclick="PDFAnalyzerApp.reopenSavedNote('${n.id}')" class="text-xs text-teal-brand hover:underline font-bold flex items-center gap-1">
+                                <span class="material-symbols-outlined text-sm">open_in_new</span>
+                                Open Notes
+                            </button>
+                            <button onclick="PDFAnalyzerApp.deleteSavedNote('${n.id}')" class="text-[11px] text-muted-gray hover:text-red-400 p-1">
+                                <span class="material-symbols-outlined text-sm">delete</span>
+                            </button>
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            function reopenSavedNote(noteId) {
+                const note = cachedNotesHistory.find(n => n.id === noteId);
+                if (note) {
+                    toggleHistoryDrawer();
+                    const syntheticItem = {
+                        id: note.id,
+                        name: note.file_name || note.title,
+                        notes: note,
+                        document: { page_count: note.notes?.metadata?.pageCount || 1 },
+                        ocrUsed: note.notes?.metadata?.extractionMethod === 'ocr'
+                    };
+
+                    filesQueue = [syntheticItem];
+                    renderQueue();
+                    renderDocumentTabs();
+                    switchTab(syntheticItem.id);
+                    if (typeof AuthManager !== 'undefined') AuthManager.showToast(`Opened "${note.title}" from library.`, 'success');
+                }
+            }
+
+            async function deleteSavedNote(noteId) {
+                if (!confirm('Are you sure you want to delete this saved document analysis?')) return;
+                try {
+                    const res = await fetch(`/api/ai/notes/${noteId}`, { method: 'DELETE' });
+                    if (res.ok) {
+                        cachedNotesHistory = cachedNotesHistory.filter(n => n.id !== noteId);
+                        renderHistoryList(cachedNotesHistory);
+                        document.getElementById('history-count-pill').textContent = cachedNotesHistory.length;
+                        if (typeof AuthManager !== 'undefined') AuthManager.showToast('Document analysis deleted.', 'info');
+                    }
+                } catch (e) {
+                    if (typeof AuthManager !== 'undefined') AuthManager.showToast('Failed to delete.', 'error');
+                }
+            }
+
+            return {
+                init,
+                onDragOver,
+                onDragLeave,
+                onDrop,
+                handleFilesSelect,
+                removeFile,
+                clearQueue,
+                startBatchProcessing,
+                retryFailedFiles,
+                retrySingleFile,
+                switchTab,
+                generateMasterNotes,
+                previewCurrentPdf,
+                previewSpecificPdf,
+                loadDemoPack,
+                openFlashcardsModal,
+                openQuizModal,
+                closeModal,
+                toggleHistoryDrawer,
+                filterHistory,
+                reopenSavedNote,
+                deleteSavedNote
+            };
+        })();
+
+        // Alias for backward compatibility
+        const AINotesApp = PDFAnalyzerApp;
+
+        document.addEventListener('DOMContentLoaded', PDFAnalyzerApp.init);
+    </script>
+</body>
+</html>

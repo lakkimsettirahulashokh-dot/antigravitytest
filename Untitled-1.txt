@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BTechPath AI - AI Copilot Doubt Solver</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&amp;family=Geist:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-variant": "#34343d",
+                      "on-primary-fixed": "#000569",
+                      "on-primary-container": "#fffdff",
+                      "on-secondary-fixed": "#1c0062",
+                      "surface": "#12131b",
+                      "surface-bright": "#383842",
+                      "outline-variant": "#454655",
+                      "on-tertiary-fixed": "#00201c",
+                      "on-error-container": "#ffdad6",
+                      "background": "#12131b",
+                      "inverse-surface": "#e3e1ed",
+                      "on-secondary": "#31009a",
+                      "tertiary-fixed": "#62fae3",
+                      "surface-tint": "#bec2ff",
+                      "secondary": "#cabeff",
+                      "on-background": "#e3e1ed",
+                      "on-tertiary-container": "#f9fffc",
+                      "surface-container-lowest": "#0d0e16",
+                      "on-surface-variant": "#c6c5d7",
+                      "inverse-on-surface": "#2f3039",
+                      "on-error": "#690005",
+                      "tertiary": "#3cddc7",
+                      "error-container": "#93000a",
+                      "primary": "#bec2ff",
+                      "surface-container": "#1f1f27",
+                      "surface-container-low": "#1a1b23",
+                      "on-secondary-container": "#b9aaff",
+                      "primary-fixed": "#e0e0ff",
+                      "surface-container-highest": "#34343d",
+                      "surface-container-high": "#292932",
+                      "on-primary": "#000da4",
+                      "secondary-container": "#4816cb",
+                      "primary-container": "#5865f2",
+                      "surface-dim": "#12131b",
+                      "inverse-primary": "#3f4cda",
+                      "on-tertiary-fixed-variant": "#005047",
+                      "on-tertiary": "#003731",
+                      "tertiary-fixed-dim": "#3cddc7",
+                      "error": "#ffb4ab",
+                      "secondary-fixed": "#e6deff",
+                      "primary-fixed-dim": "#bec2ff",
+                      "on-primary-fixed-variant": "#222fc2",
+                      "secondary-fixed-dim": "#cabeff",
+                      "on-secondary-fixed-variant": "#4816cb",
+                      "tertiary-container": "#008476",
+                      "outline": "#8f8fa0",
+                      "on-surface": "#e3e1ed"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "margin-mobile": "16px",
+                      "xl": "80px",
+                      "container-max": "1440px",
+                      "xs": "4px",
+                      "base": "8px",
+                      "lg": "48px",
+                      "sm": "12px",
+                      "md": "24px",
+                      "gutter": "24px"
+              },
+              "fontFamily": {
+                      "headline-md": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "body-sm": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "mono-ui": [
+                              "Geist"
+                      ],
+                      "title-sm": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "label-caps": [
+                              "Geist"
+                      ],
+                      "display-lg-mobile": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "display-lg": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "body-md": [
+                              "Plus Jakarta Sans"
+                      ]
+              },
+              "fontSize": {
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-sm": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "mono-ui": [
+                              "13px",
+                              {
+                                      "lineHeight": "18px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "title-sm": [
+                              "18px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-caps": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.08em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "display-lg-mobile": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "display-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "56px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "26px",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+    </script>
+<style>
+        body { background-color: #0B0F19; color: #e3e1ed; }
+        .gradient-primary { background: linear-gradient(135deg, #5865f2, #b9aaff); }
+        .gradient-text { background: linear-gradient(135deg, #bec2ff, #cabeff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .border-subtle { border-color: #2A3147; }
+        .bg-level-1 { background-color: #121826; }
+        .bg-level-2 { background-color: #1A2031; }
+        
+        /* Custom scrollbar for chat area */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #34343d; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #454655; }
+    </style>
+</head>
+<body class="font-body-md text-body-md flex h-screen overflow-hidden">
+<!-- SideNavBar (Web) -->
+<nav class="hidden lg:flex flex-col fixed left-0 top-0 h-full py-md px-sm bg-surface-container dark:bg-surface-container border-r border-outline-variant w-64 z-50 bg-level-1 border-subtle">
+<div class="mb-lg px-sm">
+<h1 class="font-display-lg text-display-lg font-bold text-primary dark:text-primary text-xl">BTechPath AI</h1>
+<p class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest mt-1 text-[10px]">Engineering Ecosystem</p>
+</div>
+<ul class="flex-1 space-y-2">
+<li><a class="flex items-center space-x-3 px-sm py-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-variant transition-colors duration-200" href="#"><span class="material-symbols-outlined">home</span><span>Home</span></a></li>
+<li><a class="flex items-center space-x-3 px-sm py-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-variant transition-colors duration-200" href="#"><span class="material-symbols-outlined">school</span><span>Learn</span></a></li>
+<li><a class="flex items-center space-x-3 px-sm py-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-variant transition-colors duration-200" href="#"><span class="material-symbols-outlined">psychology</span><span>Skills</span></a></li>
+<li><a class="flex items-center space-x-3 px-sm py-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-variant transition-colors duration-200" href="#"><span class="material-symbols-outlined">auto_stories</span><span>Study</span></a></li>
+<li><a class="flex items-center space-x-3 px-sm py-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-variant transition-colors duration-200" href="#"><span class="material-symbols-outlined">quiz</span><span>Quiz</span></a></li>
+<li><a class="flex items-center space-x-3 px-sm py-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-variant transition-colors duration-200" href="#"><span class="material-symbols-outlined">event</span><span>Planner</span></a></li>
+<li><a class="flex items-center space-x-3 px-sm py-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-variant transition-colors duration-200" href="#"><span class="material-symbols-outlined">description</span><span>Exams</span></a></li>
+<li><a class="flex items-center space-x-3 px-sm py-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-variant transition-colors duration-200" href="#"><span class="material-symbols-outlined">terminal</span><span>Build</span></a></li>
+<li><a class="flex items-center space-x-3 px-sm py-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-variant transition-colors duration-200" href="#"><span class="material-symbols-outlined">work</span><span>Career</span></a></li>
+<li><a class="flex items-center space-x-3 px-sm py-2 text-primary font-bold bg-secondary-container rounded-lg" href="#"><span class="material-symbols-outlined">smart_toy</span><span>AI Copilot</span></a></li>
+</ul>
+<div class="mt-auto px-sm flex items-center space-x-3">
+<div class="w-8 h-8 rounded-full bg-surface-variant flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A highly detailed close-up portrait of a futuristic student avatar, rendered in a sleek 3D style with subtle neon violet and teal rim lighting. The background is a clean, dark minimalist space, emphasizing an intelligent, premium digital aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDoGqxtT4wLHwjUGPpGxtLYE2MCJuPbz8_4WOn49aPvabYFdvUeBf3QILAfgrEVhVaseZkge2Eoqsi4cp1-EK_Ha87sSeKA33nC5rIL7jy3qrAFrdIjJvoYitWzrDpzssTUj5HsGo3tRTdPhGoXmsGTCmvQhQ1Fn9Cap4egk8nrEzFww1u_V6wqcfCbMxsKnEEItQJDogFRQhjc_wyt6ak1yQPgEIGI5aZzOrpikvQVSeLhtXTLbjtCQA"/>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface">User Profile</span>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col h-full lg:ml-64 relative bg-[#0B0F19]">
+<!-- TopNavBar (Web) -->
+<header class="hidden lg:flex justify-between items-center w-full px-md h-16 sticky top-0 z-40 bg-surface dark:bg-surface bg-level-1 border-b border-subtle">
+<div class="flex items-center flex-1">
+<!-- Search bar on left logic applied, but hidden per instructions to focus on AI chat as primary input -->
+<h2 class="font-headline-md text-headline-md font-bold text-on-surface">Doubt Solver</h2>
+</div>
+<div class="flex items-center space-x-4">
+<button class="text-on-surface-variant hover:bg-surface-container-high rounded-full p-2 transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+</div>
+</header>
+<!-- Chat Interface -->
+<div class="flex-1 flex flex-col h-full overflow-hidden relative">
+<!-- Chat History -->
+<div class="flex-1 overflow-y-auto p-md lg:p-lg space-y-xl pb-32">
+<!-- Initial Welcome (Optional, but good for context if empty) -->
+<div class="text-center my-lg">
+<div class="w-16 h-16 rounded-full gradient-primary flex items-center justify-center mx-auto mb-4 shadow-[0_0_20px_rgba(88,101,242,0.3)]">
+<span class="material-symbols-outlined text-on-primary-container text-3xl">smart_toy</span>
+</div>
+<h3 class="font-display-lg-mobile text-display-lg-mobile lg:font-display-lg lg:text-display-lg font-bold text-on-surface mb-2">How can I help you today?</h3>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-lg mx-auto">Ask complex engineering questions, upload diagrams for analysis, or request simple explanations.</p>
+</div>
+<!-- Sample Interaction: User -->
+<div class="flex justify-end max-w-4xl mx-auto w-full">
+<div class="bg-level-2 border border-subtle rounded-xl rounded-tr-sm p-md max-w-[80%] shadow-md">
+<p class="font-body-md text-body-md text-on-surface">Can you explain Time Complexity? Specifically Big O notation. I'm getting confused with O(N) vs O(N^2).</p>
+</div>
+</div>
+</div>
+<!-- Input Area (Docked Bottom) -->
+<div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-[#0B0F19] via-[#0B0F19] to-transparent pt-lg pb-md px-md lg:px-lg z-20">
+<div class="max-w-4xl mx-auto">
+<!-- AI Modes -->
+<div class="flex items-center space-x-3 mb-4 overflow-x-auto pb-2 scrollbar-hide">
+<button class="flex items-center space-x-1 bg-secondary-container/20 border border-secondary-container text-secondary px-3 py-1 rounded-full font-label-caps text-label-caps whitespace-nowrap">
+<span class="material-symbols-outlined text-sm">school</span>
+<span>Detailed</span>
+</button>
+<button class="flex items-center space-x-1 bg-surface-variant border border-subtle text-on-surface-variant px-3 py-1 rounded-full font-label-caps text-label-caps whitespace-nowrap hover:bg-surface-bright transition-colors">
+<span class="material-symbols-outlined text-sm">child_care</span>
+<span>Simple Explanation</span>
+</button>
+<button class="flex items-center space-x-1 bg-surface-variant border border-subtle text-on-surface-variant px-3 py-1 rounded-full font-label-caps text-label-caps whitespace-nowrap hover:bg-surface-bright transition-colors">
+<span class="material-symbols-outlined text-sm">quiz</span>
+<span>Exam Mode</span>
+</button>
+</div>
+<!-- Input Box -->
+<div class="bg-level-1 border border-subtle rounded-xl flex items-center p-2 focus-within:border-primary focus-within:shadow-[0_0_10px_rgba(88,101,242,0.2)] transition-all">
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors rounded-lg hover:bg-surface-variant" title="Upload Image/Screenshot">
+<span class="material-symbols-outlined">image</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors rounded-lg hover:bg-surface-variant" title="Attach File">
+<span class="material-symbols-outlined">attach_file</span>
+</button>
+<input class="flex-1 bg-transparent border-none outline-none text-on-surface font-body-md text-body-md px-3 placeholder:text-on-surface-variant/50 focus:ring-0" placeholder="Ask a Question..." type="text"/>
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors rounded-lg hover:bg-surface-variant mr-1" title="Voice Input">
+<span class="material-symbols-outlined">mic</span>
+</button>
+<button class="p-2 gradient-primary text-on-primary-container rounded-lg hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">send</span>
+</button>
+</div>
+<div class="text-center mt-2">
+<p class="font-mono-ui text-mono-ui text-on-surface-variant/50 text-[10px]">AI can make mistakes. Verify important information.</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile) -->
+<nav class="lg:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 bg-surface-container-lowest dark:bg-surface-container-lowest border-t border-outline-variant rounded-t-xl shadow-md pb-safe">
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-caps-mobile text-label-caps-mobile mt-1 text-[10px]">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">school</span>
+<span class="font-label-caps-mobile text-label-caps-mobile mt-1 text-[10px]">Learn</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">auto_stories</span>
+<span class="font-label-caps-mobile text-label-caps-mobile mt-1 text-[10px]">Study</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-xl px-3 py-1" href="#">
+<span class="material-symbols-outlined">smart_toy</span>
+<span class="font-label-caps-mobile text-label-caps-mobile mt-1 text-[10px]">AI Copilot</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">menu</span>
+<span class="font-label-caps-mobile text-label-caps-mobile mt-1 text-[10px]">More</span>
+</a>
+</nav>
+</body></html>

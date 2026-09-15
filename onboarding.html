@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <!-- Primary SEO Meta Tags -->
+    <title>Student Onboarding | TechPath</title>
+    <meta name="title" content="Student Onboarding | TechPath">
+    <meta name="description" content="Configure your engineering degree, department, semester, and curriculum preferences.">
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="canonical" href="https://TechPath.ai/onboarding.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="TechPath">
+    <meta property="og:url" content="https://TechPath.ai/onboarding.html">
+    <meta property="og:title" content="Student Onboarding | TechPath">
+    <meta property="og:description" content="Configure your engineering degree, department, semester, and curriculum preferences.">
+    <meta property="og:image" content="https://TechPath.ai/assets/branding/techpath-og.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="TechPath — Learn. Build. Prepare. Grow.">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://TechPath.ai/onboarding.html">
+    <meta name="twitter:title" content="Student Onboarding | TechPath">
+    <meta name="twitter:description" content="Configure your engineering degree, department, semester, and curriculum preferences.">
+    <meta name="twitter:image" content="https://TechPath.ai/assets/branding/techpath-og.png">
+    <meta name="twitter:image:alt" content="TechPath — Learn. Build. Prepare. Grow.">
+
+    <!-- Favicon & App Icons -->
+    <link rel="icon" type="image/svg+xml" href="assets/branding/favicon.svg">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/branding/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/branding/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/branding/apple-touch-icon.png">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#0B0F19">
+    <!-- Primary SEO Meta Tags -->
+    <!-- Open Graph / Facebook -->
+    <!-- Twitter Card -->
+    <!-- Favicon & App Icons -->
+    <!-- Primary SEO Meta Tags -->
+    <!-- Open Graph / Facebook -->
+    <!-- Twitter Card -->
+    <!-- Favicon & App Icons -->
+    <!-- Primary SEO Meta Tags -->
+    <!-- Open Graph / Facebook -->
+    <!-- Twitter Card -->
+    <!-- Favicon & App Icons -->
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <script>
+        // Redirect legacy onboarding URLs to Start Your Journey
+        window.location.replace('start-journey.html' + window.location.search);
+    </script>
+    <link rel="stylesheet" href="css/tailwind.output.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="css/custom.css"/>
+    <link rel="stylesheet" href="css/motion.css"/>
+
+    <script src="js/seo-metadata.js" defer></script>
+</head>
+<body class="bg-deep-twilight text-warm-ivory min-h-screen flex flex-col justify-between p-4 sm:p-6 relative overflow-x-hidden antialiased selection:bg-indigo-brand selection:text-white">
+
+    <div class="bg-ambient-glow"></div>
+    <div class="bg-grid-pattern z-0 opacity-20"></div>
+
+    <!-- Header -->
+    <header class="w-full max-w-3xl mx-auto py-4 flex items-center justify-between relative z-20">
+        <a href="index.html" class="flex items-center gap-3 group py-1" aria-label="TechPath Home">
+                <img src="assets/branding/techpath-logo-horizontal.png" alt="TechPath" class="h-8 md:h-9 w-auto object-contain hidden sm:block transition-transform duration-200 group-hover:scale-[1.02]" />
+                <img src="assets/branding/techpath-emblem.png" alt="TechPath" class="h-7 w-auto object-contain sm:hidden" />
+            </a>
+        <div class="flex items-center gap-2 text-xs font-mono text-muted-gray">
+            <span>STEP</span>
+            <span id="step-indicator" class="px-2 py-0.5 rounded bg-indigo-brand text-white font-bold">1</span>
+            <span>OF 3</span>
+        </div>
+    </header>
+
+    <!-- Main Wizard Card -->
+    <main class="w-full max-w-2xl mx-auto my-auto relative z-10 py-6">
+        <div class="bg-midnight border border-subtle rounded-3xl p-6 sm:p-10 space-y-6 shadow-2xl backdrop-blur-md">
+            
+            <!-- STEP 1: Academic Track -->
+            <div id="step-1-view" class="space-y-5">
+                <div>
+                    <span class="px-3 py-1 rounded-full text-xs font-mono font-bold bg-indigo-brand/20 text-indigo-brand border border-indigo-brand/30">STEP 1: ACADEMIC PROFILE</span>
+                    <h2 class="text-2xl font-black text-warm-ivory mt-2">Specify Your Engineering Discipline</h2>
+                    <p class="text-xs text-muted-gray">This configures your course modules, semester roadmaps, and question banks.</p>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+                    <div class="sm:col-span-2">
+                        <div class="flex items-center justify-between mb-1">
+                            <label class="font-mono text-muted-gray">Select Degree & Department (45+ Disciplines)</label>
+                            <span id="branch-count-badge" class="px-2 py-0.5 rounded text-[10px] font-mono bg-indigo-brand/20 text-indigo-brand border border-indigo-brand/30">45+ Active Catalogs</span>
+                        </div>
+                        <div class="relative mb-2">
+                            <span class="material-symbols-outlined absolute left-3 top-2.5 text-muted-gray text-sm">search</span>
+                            <input id="branch-search" type="text" placeholder="Type to filter e.g. Civil, Mechanical, VLSI, Biotech, AI..." class="premium-input w-full pl-9 py-2 text-xs text-white"/>
+                        </div>
+                        <select id="ob-branch" class="premium-input w-full text-xs font-medium" onchange="handleBranchSelectionChange(this.value)">
+                            <option value="AIML">B.Tech — Artificial Intelligence & Machine Learning (AIML)</option>
+                        </select>
+                        <p class="text-[11px] text-muted-gray mt-1.5 flex items-center gap-1">
+                            <span class="material-symbols-outlined text-xs text-teal-brand">verified</span>
+                            <span>Directly synchronizes syllabi, filtered internships, and faculty lecture feeds.</span>
+                        </p>
+                    </div>
+                    <div>
+                        <label class="font-mono text-muted-gray block mb-1">Current Semester</label>
+                        <select id="ob-semester" class="premium-input w-full">
+                            <option value="Semester 6">Semester 6 (Senior Year Preparation)</option>
+                            <option value="Semester 1">Semester 1 (Freshman Fundamentals)</option>
+                            <option value="Semester 2">Semester 2</option>
+                            <option value="Semester 3">Semester 3 (Core Discipline Intro)</option>
+                            <option value="Semester 4">Semester 4</option>
+                            <option value="Semester 5">Semester 5 (Internship Drive Prep)</option>
+                            <option value="Semester 7">Semester 7</option>
+                            <option value="Semester 8">Semester 8 (Graduation & Capstone)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="font-mono text-muted-gray block mb-1">University / Institution</label>
+                        <input id="ob-college" type="text" placeholder="e.g. National Institute of Technology" class="premium-input w-full"/>
+                    </div>
+                </div>
+
+                <div class="flex justify-end pt-4 border-t border-subtle/70">
+                    <button onclick="goToStep(2)" class="grad-indigo-btn px-6 py-2.5 rounded-xl text-xs font-bold shadow-md flex items-center gap-2">
+                        <span>Continue to Career Goal</span>
+                        <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- STEP 2: Target Career Role (Section 18) -->
+            <div id="step-2-view" class="hidden space-y-5">
+                <div>
+                    <span class="px-3 py-1 rounded-full text-xs font-mono font-bold bg-teal-brand/20 text-teal-brand border border-teal-brand/30">STEP 2: CAREER ASPIRATION</span>
+                    <h2 class="text-2xl font-black text-warm-ivory mt-2">Select Your Target Industry Role</h2>
+                    <p class="text-xs text-muted-gray">Powers your skill gap engine and personalized project recommendations.</p>
+                </div>
+
+                <div class="space-y-3 text-xs">
+                    <div onclick="selectRole('Machine Learning Engineer')" id="role-mle" class="p-4 rounded-2xl bg-indigo-brand/20 border-2 border-indigo-brand cursor-pointer flex items-center justify-between">
+                        <div>
+                            <div class="font-bold text-sm text-warm-ivory">Machine Learning Engineer</div>
+                            <div class="text-muted-gray mt-0.5">PyTorch, Transformers, Model Optimization, Vector Search</div>
+                        </div>
+                        <span class="material-symbols-outlined text-teal-brand text-xl">check_circle</span>
+                    </div>
+
+                    <div onclick="selectRole('Full Stack Software Engineer')" id="role-fsd" class="p-4 rounded-2xl bg-elevated border border-subtle hover:border-indigo-brand/60 cursor-pointer flex items-center justify-between">
+                        <div>
+                            <div class="font-bold text-sm text-warm-ivory">Full Stack Software Engineer</div>
+                            <div class="text-muted-gray mt-0.5">React, Node.js, FastAPI, PostgreSQL, Distributed Systems</div>
+                        </div>
+                        <span class="material-symbols-outlined text-muted-gray text-xl">radio_button_unchecked</span>
+                    </div>
+
+                    <div onclick="selectRole('Cloud DevOps Architect')" id="role-cloud" class="p-4 rounded-2xl bg-elevated border border-subtle hover:border-indigo-brand/60 cursor-pointer flex items-center justify-between">
+                        <div>
+                            <div class="font-bold text-sm text-warm-ivory">Cloud DevOps & Systems Architect</div>
+                            <div class="text-muted-gray mt-0.5">Docker, Kubernetes, Linux Internals, CI/CD Pipelines</div>
+                        </div>
+                        <span class="material-symbols-outlined text-muted-gray text-xl">radio_button_unchecked</span>
+                    </div>
+                </div>
+
+                <div class="flex justify-between items-center pt-4 border-t border-subtle/70">
+                    <button onclick="goToStep(1)" class="px-4 py-2 rounded-xl bg-elevated text-xs font-semibold text-muted-gray">Back</button>
+                    <button onclick="goToStep(3)" class="grad-indigo-btn px-6 py-2.5 rounded-xl text-xs font-bold shadow-md flex items-center gap-2">
+                        <span>Continue to Preferences</span>
+                        <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- STEP 3: Study Preferences & Launch -->
+            <div id="step-3-view" class="hidden space-y-5">
+                <div>
+                    <span class="px-3 py-1 rounded-full text-xs font-mono font-bold bg-rose-gold/20 text-rose-gold border border-rose-gold/30">STEP 3: LEARNING DISCIPLINE</span>
+                    <h2 class="text-2xl font-black text-warm-ivory mt-2">Study Routine & Daily Target</h2>
+                    <p class="text-xs text-muted-gray">Helps calibrate your study streak notifications and daily planner goals.</p>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3 text-xs">
+                    <div>
+                        <label class="font-mono text-muted-gray block mb-1">Daily Study Target</label>
+                        <select id="ob-daily-target" class="premium-input w-full">
+                            <option value="2.0">2.0 Hours / Day</option>
+                            <option value="1.0">1.0 Hour / Day (Light)</option>
+                            <option value="3.0">3.0 Hours / Day (Intensive)</option>
+                            <option value="4.0">4.0 Hours / Day (Exam Mode)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="font-mono text-muted-gray block mb-1">Preferred Learning Style</label>
+                        <select id="ob-style" class="premium-input w-full">
+                            <option value="Project-First">Project-First & Code Implementation</option>
+                            <option value="Theory & Mathematical">Theory & Mathematical Proofs</option>
+                            <option value="Active Recall">Active Recall & Daily Quizzes</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="flex justify-between items-center pt-4 border-t border-subtle/70">
+                    <button onclick="goToStep(2)" class="px-4 py-2 rounded-xl bg-elevated text-xs font-semibold text-muted-gray">Back</button>
+                    <button onclick="completeOnboarding()" class="grad-indigo-btn px-7 py-3 rounded-xl text-xs font-bold shadow-xl flex items-center gap-2">
+                        <span>Launch TechPath</span>
+                        <span class="material-symbols-outlined text-sm">rocket_launch</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="text-center text-xs text-muted-gray py-3">
+        TechPath • Personalized Engineering Architecture
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/supabase.min.js"></script>
+    <script src="js/supabase-client.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/db.js"></script>
+    <script src="js/branches.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+        let selectedTargetRole = 'Machine Learning Engineer';
+
+        document.addEventListener('DOMContentLoaded', async () => {
+            // Load and populate full 45+ branch catalog
+            await BranchSystem.loadFromSupabase();
+            const existingUser = AuthManager.getUser();
+            const initialBranch = existingUser?.branch || 'AIML';
+            BranchSystem.populateSelect('ob-branch', initialBranch);
+
+            const activeBranches = BranchSystem.getActiveBranches();
+            const countBadge = document.getElementById('branch-count-badge');
+            if (countBadge) {
+                countBadge.textContent = `${activeBranches.length} Disciplines Available`;
+            }
+
+            // Real-time branch search filter
+            const searchInput = document.getElementById('branch-search');
+            if (searchInput) {
+                searchInput.addEventListener('input', (e) => {
+                    const query = e.target.value.trim();
+                    const sel = document.getElementById('ob-branch');
+                    if (!query) {
+                        BranchSystem.populateSelect('ob-branch', sel.value);
+                        return;
+                    }
+                    const matched = BranchSystem.searchBranches(query);
+                    if (matched.length > 0) {
+                        let html = '';
+                        matched.forEach(b => {
+                            html += `<option value="${b.code}">B.Tech — ${b.name} (${b.code}) [${b.category}]</option>`;
+                        });
+                        sel.innerHTML = html;
+                        sel.selectedIndex = 0;
+                        handleBranchSelectionChange(sel.value);
+                    } else {
+                        const opt = document.createElement('option');
+                        opt.value = '';
+                        opt.textContent = `No matching discipline found for "${query}"`;
+                        sel.innerHTML = '';
+                        sel.appendChild(opt);
+                    }
+                });
+            }
+
+            handleBranchSelectionChange(initialBranch);
+        });
+
+        function handleBranchSelectionChange(branchCode) {
+            if (!branchCode) return;
+            const branchObj = BranchSystem.getBranch(branchCode);
+            if (!branchObj) return;
+
+            // Dynamically adapt careers in Step 2 to the chosen branch
+            const careers = BranchSystem.getBranchCareers(branchCode);
+            if (careers && careers.length > 0) {
+                selectedTargetRole = careers[0];
+                const careerOptionsContainer = document.getElementById('step-2-view')?.querySelector('.space-y-3');
+                if (careerOptionsContainer) {
+                    careerOptionsContainer.innerHTML = careers.slice(0, 4).map((role, idx) => `
+                        <div onclick="selectDynamicRole('${role.replace(/'/g, "\\'")}', this)" class="p-4 rounded-2xl ${idx === 0 ? 'bg-indigo-brand/20 border-2 border-indigo-brand' : 'bg-elevated border border-subtle hover:border-indigo-brand/60'} cursor-pointer flex items-center justify-between dynamic-role-card">
+                            <div>
+                                <div class="font-bold text-sm text-warm-ivory">${role}</div>
+                                <div class="text-[11px] text-muted-gray font-mono mt-0.5">Discipline Alignment: ${branchObj.name}</div>
+                            </div>
+                            <span class="material-symbols-outlined ${idx === 0 ? 'text-teal-brand' : 'text-muted-gray'} text-xl">${idx === 0 ? 'check_circle' : 'radio_button_unchecked'}</span>
+                        </div>
+                    `).join('');
+                }
+            }
+        }
+
+        function selectDynamicRole(role, cardEl) {
+            selectedTargetRole = role;
+            document.querySelectorAll('.dynamic-role-card').forEach(el => {
+                el.className = 'p-4 rounded-2xl bg-elevated border border-subtle hover:border-indigo-brand/60 cursor-pointer flex items-center justify-between dynamic-role-card';
+                const icon = el.querySelector('.material-symbols-outlined');
+                if (icon) {
+                    icon.textContent = 'radio_button_unchecked';
+                    icon.className = 'material-symbols-outlined text-muted-gray text-xl';
+                }
+            });
+            if (cardEl) {
+                cardEl.className = 'p-4 rounded-2xl bg-indigo-brand/20 border-2 border-indigo-brand cursor-pointer flex items-center justify-between dynamic-role-card';
+                const icon = cardEl.querySelector('.material-symbols-outlined');
+                if (icon) {
+                    icon.textContent = 'check_circle';
+                    icon.className = 'material-symbols-outlined text-teal-brand text-xl';
+                }
+            }
+        }
+
+        function goToStep(step) {
+            document.getElementById('step-1-view').classList.add('hidden');
+            document.getElementById('step-2-view').classList.add('hidden');
+            document.getElementById('step-3-view').classList.add('hidden');
+            document.getElementById(`step-${step}-view`).classList.remove('hidden');
+            document.getElementById('step-indicator').textContent = step;
+        }
+
+        async function completeOnboarding() {
+            const branch = document.getElementById('ob-branch').value;
+            if (!branch) {
+                AuthManager.showToast('Please choose a valid engineering branch.', 'warning');
+                return;
+            }
+            const semester = parseInt(document.getElementById('ob-semester').value, 10) || 1;
+            const college = document.getElementById('ob-college').value.trim() || 'Institute of Technology';
+            const user = AuthManager.getUser() || { name: 'Student', email: '', role: 'student' };
+
+            user.branch = branch;
+            user.semester = semester;
+            user.college = college;
+            user.targetCareer = selectedTargetRole;
+            user.onboardingComplete = true;
+
+            AuthManager.setUser(user);
+            try {
+                if (window.AuthManager && AuthManager.saveOnboardingProfile) {
+                    await AuthManager.saveOnboardingProfile({
+                        name: user.name || user.full_name || 'Student',
+                        department: branch,
+                        semester: semester,
+                        targetRole: selectedTargetRole || 'Software Engineer',
+                        college: college
+                    });
+                }
+            } catch (err) {
+                console.warn('[Onboarding] Supabase profile update notice:', err);
+            }
+            AuthManager.showToast(`Track set to ${branch}! Opening Command Center...`, 'success');
+            setTimeout(() => {
+                window.location.href = 'dashboard.html';
+            }, 600);
+        }
+    </script>
+</body>
+</html>

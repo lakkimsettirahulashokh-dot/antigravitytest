@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <!-- Primary SEO Meta Tags -->
+    <title>Flashcards — 3D Active Recall Simulator | TechPath</title>
+    <meta name="title" content="Flashcards — 3D Active Recall Simulator | TechPath">
+    <meta name="description" content="Master engineering formulas, equations, and definitions using 3D interactive flashcards with spaced repetition.">
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="canonical" href="https://TechPath.ai/flashcards.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="TechPath">
+    <meta property="og:url" content="https://TechPath.ai/flashcards.html">
+    <meta property="og:title" content="Flashcards — 3D Active Recall Simulator | TechPath">
+    <meta property="og:description" content="Master engineering formulas, equations, and definitions using 3D interactive flashcards with spaced repetition.">
+    <meta property="og:image" content="https://TechPath.ai/assets/branding/techpath-og.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="TechPath — Learn. Build. Prepare. Grow.">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://TechPath.ai/flashcards.html">
+    <meta name="twitter:title" content="Flashcards — 3D Active Recall Simulator | TechPath">
+    <meta name="twitter:description" content="Master engineering formulas, equations, and definitions using 3D interactive flashcards with spaced repetition.">
+    <meta name="twitter:image" content="https://TechPath.ai/assets/branding/techpath-og.png">
+    <meta name="twitter:image:alt" content="TechPath — Learn. Build. Prepare. Grow.">
+
+    <!-- Favicon & App Icons -->
+    <link rel="icon" type="image/svg+xml" href="assets/branding/favicon.svg">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/branding/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/branding/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/branding/apple-touch-icon.png">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#0B0F19">
+    <!-- Primary SEO Meta Tags -->
+    <!-- Open Graph / Facebook -->
+    <!-- Twitter Card -->
+    <!-- Favicon & App Icons -->
+    <!-- Primary SEO Meta Tags -->
+    <!-- Open Graph / Facebook -->
+    <!-- Twitter Card -->
+    <!-- Favicon & App Icons -->
+    <!-- Primary SEO Meta Tags -->
+    <!-- Open Graph / Facebook -->
+    <!-- Twitter Card -->
+    <!-- Favicon & App Icons -->
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <link rel="stylesheet" href="css/tailwind.output.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;600&family=Plus+Jakarta+Sans:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="css/custom.css"/>
+    <link rel="stylesheet" href="css/motion.css"/>
+
+    <script src="js/seo-metadata.js" defer></script>
+</head>
+<body class="bg-background text-on-surface h-screen flex flex-col antialiased selection:bg-primary-container selection:text-white overflow-hidden">
+
+    <div class="bg-ambient-glow"></div>
+
+    <!-- Header -->
+    <header class="h-16 px-6 bg-surface-container-lowest border-b border-outline-variant/60 flex items-center justify-between shrink-0 z-20">
+        <div class="flex items-center gap-4">
+            <a href="dashboard.html" class="flex items-center gap-2 text-primary hover:opacity-90 transition-opacity">
+                <span class="material-symbols-outlined text-2xl">arrow_back</span>
+                <span class="font-bold text-sm text-white">Dashboard</span>
+            </a>
+            <div class="h-4 w-px bg-outline-variant"></div>
+            <a href="index.html" class="flex items-center py-1" aria-label="TechPath Home">
+                <img src="assets/branding/techpath-emblem.png" alt="TechPath" class="h-6 w-auto object-contain" />
+            </a>
+            <div class="h-4 w-px bg-outline-variant hidden sm:block"></div>
+            <div class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-tertiary">psychology_alt</span>
+                <span class="font-bold text-sm text-white">3D Active Recall Deck • Core Systems & CS</span>
+            </div>
+        </div>
+
+        <div class="flex items-center gap-4">
+            <div class="flex items-center gap-2 text-xs">
+                <span id="card-counter" class="font-mono font-bold text-white">1 / 5</span>
+                <div class="w-32 bg-surface-container h-2 rounded-full overflow-hidden border border-outline-variant/60">
+                    <div id="deck-progress" class="bg-tertiary h-full rounded-full transition-all duration-300" style="width: 20%;"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Flashcard Practice Area -->
+    <main class="flex-1 flex flex-col items-center justify-center p-6 relative z-10 max-w-2xl w-full mx-auto">
+        
+        <!-- Instruction Pill -->
+        <div class="mb-4 flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface-container border border-outline-variant text-xs text-on-surface-variant">
+            <span class="material-symbols-outlined text-sm text-primary">touch_app</span>
+            <span>Click card to reveal 3D answer & formula</span>
+        </div>
+
+        <!-- 3D Flip Card Container -->
+        <div class="flip-card-container w-full h-[360px] cursor-pointer">
+            <div id="flashcard-inner" class="flip-card-inner shadow-2xl">
+                
+                <!-- FRONT SIDE (Question) -->
+                <div class="flip-card-front bg-surface-container p-8 md:p-10 border border-outline-variant/80 flex flex-col justify-between relative overflow-hidden">
+                    <div class="flex items-center justify-between">
+                        <span id="card-category" class="px-3 py-1 rounded-full text-xs font-bold bg-primary-container/20 text-primary border border-primary/30 uppercase label-caps">Distributed Systems</span>
+                        <span class="text-xs font-mono text-outline">Question Prompt</span>
+                    </div>
+
+                    <div class="my-auto">
+                        <h2 id="card-question" class="text-xl sm:text-2xl font-bold text-white leading-relaxed">
+                            How does the Raft protocol guarantee Log Matching and prevent conflicting committed entries?
+                        </h2>
+                    </div>
+
+                    <div class="flex items-center justify-between text-xs text-on-surface-variant pt-4 border-t border-outline-variant/40">
+                        <span class="flex items-center gap-1">
+                            <span class="material-symbols-outlined text-sm">rotate_right</span>
+                            Tap to flip
+                        </span>
+                        <span class="font-mono text-tertiary">Active Recall Protocol</span>
+                    </div>
+                </div>
+
+                <!-- BACK SIDE (Answer & Formulas) -->
+                <div class="flip-card-back bg-surface-container-high p-8 md:p-10 border border-tertiary/50 flex flex-col justify-between relative overflow-hidden">
+                    <div class="flex items-center justify-between">
+                        <span class="px-3 py-1 rounded-full text-xs font-bold bg-tertiary-container/30 text-tertiary border border-tertiary/40 uppercase label-caps">Verified Solution</span>
+                        <span class="text-xs font-mono text-tertiary font-bold">Answer & Key Mechanism</span>
+                    </div>
+
+                    <div class="my-auto space-y-3">
+                        <p id="card-answer" class="text-sm sm:text-base text-on-surface leading-relaxed">
+                            Raft satisfies the <strong>Log Matching Invariant</strong>: if two logs contain an entry with the same index and term, they store identical commands and are identical in all preceding entries.
+                        </p>
+                        <div id="card-formula" class="p-3 rounded-lg bg-surface-container-lowest font-mono-ui text-xs text-primary border border-outline-variant">
+                            Invariant: AppendEntries consistency check fails if previous log index & term don't match follower's log.
+                        </div>
+                    </div>
+
+                    <div class="flex items-center justify-between text-xs text-on-surface-variant pt-4 border-t border-outline-variant/40">
+                        <span>Rate your recall confidence below</span>
+                        <span class="font-mono text-outline">Spaced Repetition Algorithm</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Spaced Repetition Rating Buttons -->
+        <div class="w-full mt-6 grid grid-cols-4 gap-3">
+            <button onclick="rateCard('Again')" class="py-2.5 px-3 rounded-xl bg-surface-container border border-red-500/30 hover:bg-red-500/20 hover:border-red-500 text-red-300 text-xs font-bold transition-all">
+                Again <span class="block text-[10px] font-normal opacity-70">&lt; 10m</span>
+            </button>
+            <button onclick="rateCard('Hard')" class="py-2.5 px-3 rounded-xl bg-surface-container border border-amber-500/30 hover:bg-amber-500/20 hover:border-amber-500 text-amber-300 text-xs font-bold transition-all">
+                Hard <span class="block text-[10px] font-normal opacity-70">2 Days</span>
+            </button>
+            <button onclick="rateCard('Good')" class="py-2.5 px-3 rounded-xl bg-surface-container border border-primary/40 hover:bg-primary-container hover:text-white text-primary text-xs font-bold transition-all">
+                Good <span class="block text-[10px] font-normal opacity-70">5 Days</span>
+            </button>
+            <button onclick="rateCard('Easy')" class="py-2.5 px-3 rounded-xl bg-surface-container border border-tertiary/40 hover:bg-tertiary-container hover:text-white text-tertiary text-xs font-bold transition-all">
+                Easy <span class="block text-[10px] font-normal opacity-70">12 Days</span>
+            </button>
+        </div>
+
+    </main>
+
+    <!-- Scripts -->
+    <script src="js/supabase.min.js"></script>
+    <script src="js/supabase-client.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/db.js"></script>
+    <script src="js/motion.js"></script>
+    <script>
+        const deck = [
+            {
+                id: "card_raft_1",
+                category: "Distributed Systems",
+                question: "How does the Raft protocol guarantee Log Matching and prevent conflicting committed entries?",
+                answer: "Raft satisfies the <strong>Log Matching Invariant</strong>: if two logs contain an entry with the same index and term, they store identical commands and are identical in all preceding entries.",
+                formula: "Invariant: AppendEntries consistency check fails if previous log index & term don't match follower's log."
+            },
+            {
+                id: "card_lsm_1",
+                category: "Database Engineering",
+                question: "Why do LSM Trees provide higher write throughput than standard B+ Trees for write-intensive workloads?",
+                answer: "LSM Trees convert random I/O writes into purely sequential disk writes via an in-memory MemTable and append-only WAL, flushing sequentially to immutable SSTables.",
+                formula: "Write Amplification: B+ Tree modifies in-place (4KB page writes for 50B row). LSM writes sequential batch."
+            },
+            {
+                id: "card_os_clock",
+                category: "Operating Systems",
+                question: "What is the core difference between the Clock Algorithm and true LRU for OS page replacement?",
+                answer: "The Clock Algorithm approximates LRU with <strong>O(1) overhead</strong> using a circular buffer and a single 'use bit' per frame, eliminating the need to maintain an expensive linked list or timestamps on every memory reference.",
+                formula: "Use Bit = 1 -> set to 0, advance pointer. Use Bit = 0 -> select for eviction."
+            },
+            {
+                id: "card_dsa_bellman",
+                category: "Algorithms & DSA",
+                question: "Why does Dijkstra fail with negative weight edges, but Bellman-Ford succeeds?",
+                answer: "Dijkstra finalizes vertex distance greedily upon queue extraction assuming edge weights are non-negative. Bellman-Ford relaxes all |E| edges |V|-1 times, propagating shorter paths even through negative edges.",
+                formula: "Time: Bellman-Ford O(V × E) vs Dijkstra O((V + E) log V). Detects negative cycles."
+            },
+            {
+                id: "card_ai_attn",
+                category: "Deep Learning & AI",
+                question: "What is the purpose of the √d_k division factor in Transformer Scaled Dot-Product Attention?",
+                answer: "For large key dimensions (d_k), dot products grow large in magnitude, pushing the softmax function into regions with tiny gradients (gradient vanishing). Dividing by √d_k keeps the variance of the dot product around 1.",
+                formula: "Attention(Q, K, V) = softmax( (Q × K^T) / √d_k ) × V"
+            }
+        ];
+
+        let currentCardIndex = 0;
+
+        function rateCard(rating) {
+            const card = deck[currentCardIndex];
+            if (card) {
+                // Record mastery attempt
+                if (window.DB && window.DB.saveQuizAttempt) {
+                    window.DB.saveQuizAttempt({
+                        id: 'flash_' + Date.now(),
+                        title: `Flashcard Review: ${card.category}`,
+                        documentName: card.question.slice(0, 35) + '...',
+                        difficulty: rating,
+                        score: rating === 'Easy' ? 5 : rating === 'Good' ? 4 : rating === 'Hard' ? 3 : 1,
+                        totalQuestions: 5,
+                        percentage: rating === 'Easy' ? 100 : rating === 'Good' ? 80 : rating === 'Hard' ? 60 : 20,
+                        date: new Date().toISOString()
+                    });
+                }
+                if (window.AuthManager) {
+                    AuthManager.showToast(`Card mastery recorded: ${rating}`, 'success');
+                }
+            }
+            currentCardIndex = (currentCardIndex + 1) % deck.length;
+            MotionSystem.loadCard(deck[currentCardIndex]);
+        }
+
+        document.addEventListener('DOMContentLoaded', async () => {
+            if (window.AuthManager) {
+                const isAuthorized = await AuthManager.requireAuth();
+                if (!isAuthorized) return;
+            }
+            MotionSystem.initFlashcardDeck(deck);
+        });
+    </script>
+    <script src="js/study-tracker.js"></script>
+    <script src="js/btech-bg3d.js"></script>
+</body>
+</html>

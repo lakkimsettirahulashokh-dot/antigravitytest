@@ -1,0 +1,681 @@
+{
+  "ECE": {
+    "branchCode": "ECE",
+    "branchName": "Electronics & Communication Engineering",
+    "specializationTitle": "Chips & Semiconductors: From Silicon to VLSI",
+    "specializationTagline": "Comprehensive silicon physics, transistor logic, nanometer IC fabrication, and chip design",
+    "badge": "SEMICONDUCTOR & CHIP ENGINEERING",
+    "icon": "memory",
+    "accentColor": "#6366f1",
+    "topicsCount": 25,
+    "overview": "Semiconductors are the bedrock of modern civilization, powering everything from smartphones and supercomputers to electric vehicles and satellite constellations. This specialization covers the complete journey of semiconductor microelectronics: from quantum solid-state physics and silicon crystal growth, through PN junction and MOSFET transistor operation, to photolithographic wafer fabrication, VLSI digital logic, and cutting-edge fabless chip design methodologies.",
+    "modules": [
+      {
+        "id": "module-1",
+        "title": "Module 1: Silicon & Semiconductor Fundamentals",
+        "badge": "Solid State Physics",
+        "topics": [
+          {
+            "id": "what-is-semiconductor",
+            "name": "What is a Semiconductor?",
+            "content": "A semiconductor is a material whose electrical conductivity lies between that of a conductor (such as copper or gold) and an insulator (such as glass or quartz). The electrical properties of semiconductors can be precisely altered and controlled by the introduction of trace impurities (doping), the application of electric fields, or exposure to light and temperature. Silicon (Si) is by far the most dominant semiconductor used globally due to its abundance in the Earth's crust (in silica sand), stable oxide layer (SiO2), and favorable bandgap for ambient room-temperature operation."
+          },
+          {
+            "id": "silicon-fundamentals",
+            "name": "Silicon & Semiconductor Crystal Structure",
+            "content": "Silicon is a Group 14 element with an atomic number of 14 and four valence electrons. In its solid crystal state, silicon atoms form a diamond cubic crystal lattice where each atom shares its four valence electrons with four adjacent silicon neighbors through covalent bonds. At absolute zero (0 Kelvin), all valence electrons are locked securely in covalent bonds, making pure (intrinsic) silicon a perfect electrical insulator. As temperature rises, thermal agitation causes some valence electrons to break free from their covalent bonds, creating free electrons and leaving behind vacant electron states known as 'holes' (which act as positive mobile charge carriers)."
+          },
+          {
+            "id": "conductors-semiconductors-insulators",
+            "name": "Conductors vs. Semiconductors vs. Insulators (Energy Band Theory)",
+            "content": "In solid-state physics, electronic energy band theory explains the distinction:\n• Conductors (Metals): The conduction band and valence band overlap, or the valence band is partially filled. Electrons require zero bandgap energy (Eg ≈ 0 eV) to move freely and conduct electrical current.\n• Insulators: A large forbidden energy gap (Eg > 5 eV) separates the completely filled valence band and the empty conduction band. At room temperature, electrons cannot overcome this vast gap.\n• Semiconductors: Feature a moderate forbidden bandgap (Silicon: Eg = 1.12 eV at 300K; Germanium: Eg = 0.67 eV; Gallium Arsenide: Eg = 1.42 eV). Thermal or optical energy can easily excite valence electrons into the conduction band, allowing controlled conduction."
+          },
+          {
+            "id": "ptype-ntype",
+            "name": "P-Type & N-Type Semiconductors (Doping)",
+            "content": "Intrinsic silicon has too few free carriers (intrinsic carrier concentration ni ≈ 1.5 × 10^10 cm^-3 at 300K) to be practically useful in electronic circuits. Doping is the intentional introduction of specific impurity atoms into the silicon crystal lattice in minute quantities (e.g., 1 impurity atom per 10^6 to 10^8 silicon atoms):\n• N-Type Semiconductor: Silicon is doped with pentavalent Group 15 donor atoms (Phosphorus, Arsenic, Antimony). The donor atom contributes four electrons to covalent bonds and leaves one weakly bound extra electron that enters the conduction band at room temperature. Electrons are the majority carriers; holes are the minority carriers.\n• P-Type Semiconductor: Silicon is doped with trivalent Group 13 acceptor atoms (Boron, Gallium, Indium). The trivalent atom creates an empty electron spot (a hole) in the covalent bond network. Holes are the majority carriers; electrons are the minority carriers."
+          }
+        ]
+      },
+      {
+        "id": "module-2",
+        "title": "Module 2: Junctions, Diodes & Transistors",
+        "badge": "Active Devices",
+        "topics": [
+          {
+            "id": "pn-junction",
+            "name": "The PN Junction & Built-in Potential",
+            "content": "When P-type and N-type regions meet within a single silicon crystal, a PN junction is formed. Because of the steep concentration gradient across the metallurgical boundary, majority electrons from the N-side diffuse into the P-side, and majority holes from the P-side diffuse into the N-side. Near the metallurgical interface, recombining carriers leave behind uncompensated fixed ionized donor atoms (+ve on N-side) and fixed ionized acceptor atoms (-ve on P-side). This region, depleted of mobile charge carriers, is called the Depletion Region (or Space Charge Region). The fixed charges set up an internal electric field pointing from N to P, creating a Built-in Potential Barrier (Vbi ≈ 0.7V for silicon at 300K) that opposes further carrier diffusion until equilibrium is reached."
+          },
+          {
+            "id": "diodes",
+            "name": "Diodes: Forward Bias, Reverse Bias & Rectification",
+            "content": "A diode is a two-terminal semiconductor device that conducts current primarily in one direction:\n• Forward Bias: An external positive voltage is applied to the P-side (anode) relative to the N-side (cathode). When V > 0.7V, the external field overcomes the built-in barrier, narrowing the depletion region and allowing a large exponential forward current (Shockley diode equation: I = Is * [exp(qV / kT) - 1]).\n• Reverse Bias: Positive voltage connected to N-side and negative to P-side. This widens the depletion region, blocking majority carrier flow and permitting only a tiny pico-ampere reverse saturation current (Is) driven by minority carriers, until the Zener or Avalanche breakdown voltage is reached."
+          },
+          {
+            "id": "transistors-bjt-fet",
+            "name": "Transistors: Evolution from BJT to FET",
+            "content": "Transistors are three-terminal active devices that function as amplifiers or electronic switches. While early electronics relied on Bipolar Junction Transistors (BJTs: NPN and PNP, which are current-controlled devices operating on both electrons and holes), modern digital microprocessors and memories almost exclusively use Field-Effect Transistors (FETs: unipolar devices controlled by an electric field voltage), specifically MOSFETs, due to their near-infinite DC input resistance, minuscule static power dissipation, and high packing density on silicon."
+          },
+          {
+            "id": "mosfet-basics",
+            "name": "MOSFET Basics (Structure, Threshold Voltage & Operation)",
+            "content": "The Metal-Oxide-Semiconductor Field-Effect Transistor (MOSFET) is the fundamental building block of all modern microchips (over 10^22 transistors manufactured in human history). A typical planar N-channel MOSFET (NMOS) consists of a P-type silicon substrate (body), two heavily doped N+ wells (Source and Drain), a micro-thin insulating silicon dioxide (SiO2) or high-k dielectric layer, and a conducting Gate electrode on top.\n• Cutoff Region (Vgs < Vth): No conducting channel exists between source and drain; only negligible subthreshold leakage current flows.\n• Strong Inversion (Vgs > Vth): When the gate voltage exceeds the Threshold Voltage (Vth), the electric field repels holes from the substrate surface and attracts minority electrons, creating a thin N-type 'inversion layer' channel connecting source to drain.\n• Triode/Linear vs Saturation: When Vds is small, the channel behaves like a voltage-controlled resistor. When Vds ≥ Vgs - Vth, the channel pinches off at the drain end, and drain current saturates (Id = 1/2 * μ * Cox * (W/L) * (Vgs - Vth)^2)."
+          },
+          {
+            "id": "cmos",
+            "name": "CMOS Technology (Complementary MOS)",
+            "content": "Complementary Metal-Oxide-Semiconductor (CMOS) utilizes matched pairs of P-channel (PMOS) and N-channel (NMOS) transistors to implement logic gates. In a CMOS inverter:\n• The PMOS pull-up network connects output to Vdd.\n• The NMOS pull-down network connects output to Ground.\nWhen input is HIGH (1), the NMOS conducts and pulls output to 0, while PMOS is completely OFF. When input is LOW (0), PMOS conducts and pulls output to Vdd, while NMOS is OFF. Crucially, except during rapid switching transitions, there is never a direct path from Vdd to Ground, meaning CMOS logic draws almost ZERO static DC power, enabling billions of transistors to operate without vaporizing the silicon chip."
+          }
+        ]
+      },
+      {
+        "id": "module-3",
+        "title": "Module 3: Integrated Circuits & Nanometer Fab Process",
+        "badge": "Semiconductor Manufacturing",
+        "topics": [
+          {
+            "id": "integrated-circuits",
+            "name": "Integrated Circuits (ICs) & Moore's Law",
+            "content": "In 1958-1959, Jack Kilby and Robert Noyce independently invented the Integrated Circuit (IC)—integrating transistors, diodes, resistors, and interconnections onto a single monolithic semiconductor crystal substrate rather than wiring discrete components together. Gordon Moore famously predicted in 1965 that the number of transistors packed into a microchip would double roughly every two years, driving exponential improvements in computing speed, memory capacity, and energy efficiency while drastically reducing cost per transistor."
+          },
+          {
+            "id": "ic-fabrication-overview",
+            "name": "IC Fabrication Overview (Cleanrooms & Yield)",
+            "content": "IC manufacturing is the most precise engineering discipline in human history, carried out inside ISO Class 1 cleanrooms containing fewer than 10 dust particles larger than 0.1 microns per cubic meter (thousands of times cleaner than an operating room). A single airborne dust speck on a wafer can destroy millions of nanometer-scale transistors, crashing manufacturing yield. Cleanroom engineers wear full-body contamination suits ('bunny suits'), and incoming air passes through ultra-low penetration air (ULPA) filtration banks with laminar downward airflow."
+          },
+          {
+            "id": "wafer-production",
+            "name": "Silicon Wafer: From Sand to Polished Ingot",
+            "content": "1. Quartz sand (SiO2) is reduced in an electric arc furnace to Metallurgical Grade Silicon (MGS, 98% pure).\n2. MGS is chemically converted to trichlorosilane gas (SiHCl3), repeatedly distilled, and reacted with hydrogen (Siemens process) to produce Electronic Grade Silicon (EGS) with 99.999999999% ('eleven nines') purity.\n3. Czochralski (CZ) Growth: EGS is melted at 1425°C in a quartz crucible. A seed crystal with the desired crystal orientation (<100> or <111>) is dipped into the melt and slowly pulled upward while rotating, forming a giant cylindrical single-crystal silicon ingot (boule) up to 2 meters long and 300 mm (12 inches) in diameter.\n4. Diamond wire saws slice the boule into ultra-thin circular wafers (~775 μm thick), which undergo chemical-mechanical polishing (CMP) to achieve atomic-level mirror flatness."
+          },
+          {
+            "id": "photolithography",
+            "name": "Photolithography (DUV, EUV & Resolution Limits)",
+            "content": "Photolithography is the photographic printing process that transfers circuit layout geometric patterns from photomasks onto the wafer:\n• Step 1: A light-sensitive organic polymer called photoresist (PR) is spin-coated uniformly onto the wafer surface.\n• Step 2: An advanced scanner machine (such as ASML Twinscan) projects deep ultraviolet (DUV at 193 nm) or extreme ultraviolet (EUV at 13.5 nm produced by vaporizing molten tin droplets with lasers) light through a precision photomask.\n• Step 3: Projection lenses or multi-layer reflective mirrors focus the pattern onto the photoresist.\n• Step 4: The exposed wafer is immersed in developer chemical. In positive resist, exposed areas dissolve, leaving microscopic stencils that protect underlying silicon during etching or doping.\n• Rayleigh Criterion: Resolution R = k1 * (λ / NA), where λ is wavelength and NA is numerical aperture."
+          },
+          {
+            "id": "etching",
+            "name": "Etching (Wet Chemical vs. Dry Plasma Reactive Ion)",
+            "content": "Etching removes unwanted layers of oxide, nitride, polysilicon, or metal not shielded by the photoresist stencil:\n• Wet Chemical Etching: Immersing wafers in chemical acid baths (e.g., buffered hydrofluoric acid HF for SiO2). It is isotropic (etches equally in all directions, causing horizontal undercut beneath resist edges), which limits its use for nanometer geometries.\n• Dry Plasma / Reactive Ion Etching (RIE): High-frequency electric fields excite reactive gases (e.g., CF4, Cl2, SF6) into an ionized plasma inside a vacuum chamber. Accelerated ions bombard the wafer perpendicularly, combining chemical reaction with physical sputtering. RIE provides extreme anisotropy (vertical side walls with near-zero lateral undercut), critical for sub-100nm transistor gates."
+          },
+          {
+            "id": "deposition",
+            "name": "Thin-Film Deposition (CVD, PVD, ALD)",
+            "content": "Modern chips contain dozens of alternating conducting, semiconducting, and insulating layers:\n• Chemical Vapor Deposition (CVD): Gaseous precursors react and decompose on the heated wafer surface to deposit uniform dielectric films (SiO2, Si3N4) and polysilicon.\n• Physical Vapor Deposition (PVD / Sputtering): Heavy argon ions bombard a pure metal target (Copper, Aluminum, Titanium, Tantalum), ejecting metal atoms that condense as thin conductive metal lines and barrier layers on the wafer.\n• Atomic Layer Deposition (ALD): Sequential self-terminating gas-surface chemical reactions that deposit thin films one atomic monolayer at a time, providing 100% conformal coverage over high aspect ratio 3D FinFET and Gate-All-Around (GAA) structures."
+          },
+          {
+            "id": "doping-fabrication",
+            "name": "Doping: Ion Implantation & Rapid Thermal Annealing (RTA)",
+            "content": "To introduce dopant atoms into defined source, drain, and well regions:\n• Ion Implantation: Dopant gas atoms (Phosphorus, Arsenic, Boron) are ionized, accelerated across voltages up to hundreds of kilovolts in an electromagnetic beam line, mass-filtered with magnetic analyzers, and shot directly into the silicon wafer surface with surgical dose and depth control.\n• Rapid Thermal Annealing (RTA): Ion bombardment temporarily damages the silicon crystal lattice. Wafers are rapidly heated with high-intensity infrared halogen lamps or lasers to ~1000°C for seconds. This repairs crystal lattice defects and moves dopant atoms into substitutional lattice positions (electrical activation) without allowing unwanted dopant diffusion."
+          },
+          {
+            "id": "packaging",
+            "name": "IC Packaging, Wire Bonding & 3D Chiplets",
+            "content": "After 500-1000 manufacturing steps, the wafer is complete. Automated probers test each integrated die (wafer sort). Diamond saws dice the wafer into individual chips:\n• Legacy Packaging: Lead-frame packaging with gold/copper wire bonding (DIP, QFP, SOIC).\n• Modern Packaging: Ball Grid Array (BGA), Flip-Chip packaging where microscopic solder micro-bumps bond the chip upside-down directly to a substrate, slashing parasitic inductance.\n• Advanced Heterogeneous 2.5D & 3D Packaging (Chiplets, TSMC CoWoS, Intel EMIB): Multiple specialized silicon dies (compute CPU die, graphics GPU die, High Bandwidth Memory HBM3 stacks) are mounted side-by-side or stacked vertically on silicon interposers with Through-Silicon Vias (TSVs) to overcome single-die reticle limits."
+          }
+        ]
+      },
+      {
+        "id": "module-4",
+        "title": "Module 4: Chip Design vs Manufacturing & Digital Architecture",
+        "badge": "VLSI Design Flow",
+        "topics": [
+          {
+            "id": "design-vs-manufacturing",
+            "name": "Chip Design vs. Chip Manufacturing (Fabless vs. Foundry Model)",
+            "content": "The global semiconductor supply chain is divided into distinct specialized business models:\n• Fabless Design Companies: Focus solely on architectural innovation, IC design, algorithms, and software. They own the chip intellectual property (IP) but do not own semiconductor fabrication plants (e.g., Nvidia, AMD, Qualcomm, Apple, MediaTek, Arm).\n• Pure-Play Foundries: Own multi-billion dollar semiconductor fabrication plants (fabs costing $15B-$20B each) and manufacture chips exclusively for fabless clients (e.g., TSMC, GlobalFoundries, UMC, Tower Semiconductor).\n• Integrated Device Manufacturers (IDMs): Both design and manufacture their own semiconductor chips in-house (e.g., Intel, Samsung Electronics, Texas Instruments, Micron Technology).\n• EDA & IP Providers: Provide electronic design automation software and reusable IP blocks (Synopsys, Cadence Design Systems, Siemens EDA)."
+          },
+          {
+            "id": "digital-logic-basics",
+            "name": "Digital Logic Fundamentals (Boolean Gates, FSMs & Timing)",
+            "content": "All computing hardware translates Boolean algebra into silicon circuitry:\n• Logic Gates: AND, OR, NOT, NAND, NOR, XOR, XNOR built using complementary NMOS/PMOS transistor networks.\n• Combinational Logic: Adders (Ripple Carry, Carry-Lookahead), Multiplexers (MUX), Decoders, Arithmetic Logic Units (ALU).\n• Sequential Logic: Latches, D-Flip-Flops, Registers, Counters, and Finite State Machines (FSMs: Moore vs. Mealy machines) that synchronize data transmission to a periodic clock signal.\n• Timing Constraints: Setup Time (data must be stable before the clock edge), Hold Time (data must remain stable after clock edge), and Clock Skew."
+          },
+          {
+            "id": "vlsi-flow",
+            "name": "VLSI Design Flow: RTL to GDSII",
+            "content": "How a digital chip goes from idea to silicon:\n1. Specification & Architecture: Defining instruction set architecture (ISA), bus topologies (AXI, AHB), power budgets.\n2. RTL Design: Writing synthesizable hardware code in Verilog, SystemVerilog, or VHDL.\n3. Functional Verification: Universal Verification Methodology (UVM), constrained-random testbenches, assertions (SVA), code coverage, and formal verification.\n4. Logic Synthesis: Translating RTL into a gate-level netlist mapped to a foundry's standard cell library (NAND, DFF cells) using Synopsys Design Compiler.\n5. Static Timing Analysis (STA): Verifying setup and hold times across all process, voltage, and temperature (PVT) corners with Synopsys PrimeTime.\n6. Physical Design (P&R): Floorplanning, power grid distribution, cell placement, clock tree synthesis (CTS), and signal routing.\n7. Physical Verification: Design Rule Check (DRC) ensuring foundry geometric rules, Layout Versus Schematic (LVS) proving layout matches netlist, and Antenna checks.\n8. Tapeout & GDSII / OASIS file delivery to the foundry fab."
+          },
+          {
+            "id": "embedded-systems-synergy",
+            "name": "Embedded Systems Synergy (Microcontrollers, SoCs & Firmware)",
+            "content": "Semiconductor microchips interface directly with physical systems through Embedded Systems:\n• Microcontrollers (MCU): Integrate CPU core (ARM Cortex-M, RISC-V), SRAM, Flash memory, and peripherals (GPIO, Timers, ADC, DAC) onto a single silicon chip (e.g., STM32, ESP32, PIC).\n• Systems-on-Chip (SoC): Integrate multi-core application processors, GPU, neural processing units (NPU), memory controllers (LPDDR5), and RF modems (5G, Wi-Fi, Bluetooth) into one compact package (e.g., Apple M-series, Qualcomm Snapdragon).\n• Hardware Protocols: UART (asynchronous serial), SPI (high-speed synchronous bus), I2C (two-wire open-drain bus), CAN (differential robust automotive bus).\n• Embedded Software: Bare-metal C/C++, FreeRTOS, Zephyr RTOS, hardware abstraction layer (HAL) register drivers, and interrupt service routines (ISR)."
+          }
+        ]
+      },
+      {
+        "id": "module-5",
+        "title": "Module 5: Industry Roles, Skills, Projects & Interviews",
+        "badge": "Career Acceleration",
+        "topics": [
+          {
+            "id": "semiconductor-roles",
+            "name": "Semiconductor Industry Roles & Career Paths",
+            "content": "Key career avenues in microelectronics:\n• ASIC / RTL Design Engineer: Writes hardware description code (Verilog/SystemVerilog) for core processors, memory controllers, and cryptographic accelerators.\n• ASIC Verification Engineer (DV): Builds robust test environments using SystemVerilog and UVM to hunt bugs before multimillion-dollar tapeouts.\n• Physical Design (PD) Engineer: Specializes in floorplanning, clock tree synthesis (CTS), static timing closure (STA), and place-and-route.\n• Analog / Mixed-Signal IC Designer: Designs ADCs, DACs, phase-locked loops (PLLs), high-speed SerDes, and power management ICs (PMICs).\n• Silicon Validation & Characterization Engineer: Tests first silicon chips on benchtop automated test equipment (ATE) with oscilloscopes and logic analyzers in hardware labs.\n• Fab Process Engineer: Optimizes yield, chemical baths, lithography exposure, and plasma etch recipes inside semiconductor foundries.\n• Embedded Systems Engineer: Writes firmware, RTOS drivers, and middleware connecting chips to automotive, aerospace, and IoT hardware."
+          },
+          {
+            "id": "skills-required",
+            "name": "Core Technical Skills Required",
+            "content": "• Hardware Languages: SystemVerilog, Verilog, VHDL.\n• Scripting: Python, Tcl (standard automation script for EDA tools), Linux Bash, Perl.\n• Verification Methodology: UVM (Universal Verification Methodology), SVA (SystemVerilog Assertions), Formal Verification.\n• EDA Tool Suites: Synopsys (Design Compiler, PrimeTime, ICC2), Cadence (Innovus, Genus, Virtuoso), Siemens QuestaSim.\n• Lab Instrument Competence: Digital storage oscilloscopes, logic analyzers, spectrum analyzers, JTAG debuggers (J-Link, ST-Link).\n• Fundamentals: CMOS layout design rules, Static Timing Analysis (setup/hold slack, clock jitter), transmission line theory, computer architecture (pipelining, caching, branch prediction)."
+          },
+          {
+            "id": "learning-roadmap",
+            "name": "Semester-by-Semester Learning Roadmap",
+            "content": "• Year 1 (Semesters 1-2): Solid-State Physics, Semiconductor Fundamentals, Basic Circuit Analysis (KCL/KVL, Thevenin/Norton), C Programming.\n• Year 2 (Semesters 3-4): Electronic Devices & Circuits (Diodes, BJT, MOSFET bias models), Digital Electronics (Gates, K-maps, Flip-Flops, FSMs), Microprocessors (8086 / ARM assembly, memory interfacing).\n• Year 3 (Semesters 5-6): CMOS Digital IC Design, Verilog RTL Modeling, Computer Architecture & Organization, Embedded C, FreeRTOS, Signals & Systems.\n• Year 4 (Semesters 7-8): Advanced VLSI & ASIC Verification (SystemVerilog / UVM), Static Timing Analysis, FPGA Capstone Tapeout, High-Speed PCB Layout."
+          },
+          {
+            "id": "projects-portfolio",
+            "name": "High-Impact Portfolio Projects",
+            "content": "1. 32-Bit Pipelined RISC-V (RV32I) CPU Core: Designed in synthesizable SystemVerilog with 5-stage pipeline (IF, ID, EX, MEM, WB), hazard detection unit, data forwarding, and branch prediction. Verified in QuestaSim/ModelSim.\n2. CMOS 8-Transistor Static Full Adder Layout: Custom transistor schematic and physical layout designed in Cadence Virtuoso. Simulated propagation delay, dynamic power dissipation, and DRC/LVS clearance.\n3. FPGA-Based High-Speed Video Stream Frame Buffer: Implemented on Xilinx Artix-7/Zynq using Vivado, featuring HDMI I/O, DDR3 SDRAM controller interfacing via AXI4, and hardware edge-detection image processing pipeline in RTL.\n4. Real-Time Battery Management System (BMS) Microcontroller Firmware: Bare-metal Embedded C firmware on ARM Cortex-M4 with CAN bus communication, Coulomb counting SOC estimation, overvoltage/overcurrent protection ISRs, and SPI sensor telemetry."
+          },
+          {
+            "id": "interview-questions",
+            "name": "Top Semiconductor & VLSI Technical Interview Questions",
+            "content": "Q1: Explain Setup Time and Hold Time violations. How do you resolve them?\nA: Setup time is the minimum time data must remain stable BEFORE the active clock edge. Hold time is the minimum time data must remain stable AFTER the active clock edge. Setup violation occurs when data arrives too late (long combinational path); fix by pipelining, reducing combinational logic, or lowering clock frequency. Hold violation occurs when data changes too quickly (contamination delay too short); fix by inserting delay buffers into the data path. Clock frequency reduction does NOT fix hold violations!\n\nQ2: Why is CMOS power dissipation so much lower than NMOS or TTL logic?\nA: Because PMOS and NMOS networks are complementary. Under steady-state DC inputs, either the pull-up or pull-down network is completely OFF, so there is no direct path from Vdd to Ground. Power is dissipated only during charging/discharging of parasitic load capacitances during switching transitions (P_dynamic = α * C * V^2 * f) and minor subthreshold leakage.\n\nQ3: What is the Rayleigh Criterion in Photolithography?\nA: R = k1 * (λ / NA), where R is minimum feature resolution, k1 is process factor (typically 0.25 to 0.4), λ is illumination wavelength, and NA is numerical aperture. To shrink transistors, foundries reduced λ (from 436nm g-line down to 193nm DUV and 13.5nm EUV) and increased NA using water immersion (NA = 1.35) and High-NA EUV optics (NA = 0.55)."
+          }
+        ]
+      }
+    ]
+  },
+  "AUTO": {
+    "branchCode": "AUTO",
+    "branchName": "Automobile Engineering",
+    "specializationTitle": "Automobile Engines: Internal Combustion, Powertrains & Hybrid Systems",
+    "specializationTagline": "Thermodynamics, mechanical engine components, forced induction, engine management, and EV comparison",
+    "badge": "AUTOMOTIVE PROPULSION & POWERTRAINS",
+    "icon": "directions_car",
+    "accentColor": "#f59e0b",
+    "topicsCount": 24,
+    "overview": "Automobile engines represent one of the crowning triumphs of modern mechanical engineering. This specialization delivers a rigorous educational exploration of internal combustion engines, thermodynamic power cycles, multi-cylinder mechanical architectures, forced induction, electronic fuel management, emissions chemistry, and the transitional mechanics of hybrid powertrains and modern EV propulsion.",
+    "modules": [
+      {
+        "id": "module-1",
+        "title": "Module 1: Engine Fundamentals & Thermodynamic Cycles",
+        "badge": "Thermodynamics & Principles",
+        "topics": [
+          {
+            "id": "engine-fundamentals",
+            "name": "Engine Fundamentals & Working Principles",
+            "content": "An automobile engine is a prime mover—a heat engine that transforms the chemical energy bound within hydrocarbon fuels (or alternative biofuels and hydrogen) into thermal energy through controlled combustion, and subsequently converts that thermal energy into mechanical rotational work at the crankshaft. The fundamental metric of engine performance is determined by swept displacement volume, volumetric efficiency, indicated power, brake power, torque output, and brake specific fuel consumption (BSFC)."
+          },
+          {
+            "id": "internal-combustion-engine",
+            "name": "The Internal Combustion (IC) Engine Architecture",
+            "content": "In an Internal Combustion (IC) engine, the combustion of the fuel-air mixture takes place directly inside the working cylinder chamber itself, contrasting with external combustion engines (such as steam turbines) where fuel burns in an external furnace. IC engines offer superior power-to-weight ratios, rapid starting capability, and exceptional mechanical efficiency, making them the primary automotive propulsion technology for over a century."
+          },
+          {
+            "id": "two-stroke-vs-four-stroke",
+            "name": "2-Stroke vs. 4-Stroke Engines",
+            "content": "• 4-Stroke Engine: Completes one thermodynamic cycle over four linear piston strokes (two complete revolutions of the crankshaft: 720° rotation):\n  1. Intake Stroke (piston descends, creating vacuum; intake valve opens to induct fuel-air mixture or pure air).\n  2. Compression Stroke (both valves close; piston ascends to compress the charge into combustion clearance space).\n  3. Power / Expansion Stroke (spark plug ignites or fuel is injected into compressed air; rapid gas expansion drives piston down with high force).\n  4. Exhaust Stroke (exhaust valve opens; ascending piston pushes spent exhaust gases out into manifold).\n• 2-Stroke Engine: Completes the thermodynamic cycle in only two piston strokes (one crankshaft revolution: 360° rotation) using ports in the cylinder wall instead of poppet valves. While lighter and producing a power stroke every single revolution, two-stroke engines suffer from significant unburnt hydrocarbon emissions due to fuel-air short-circuiting during scavenging."
+          },
+          {
+            "id": "petrol-vs-diesel",
+            "name": "Petrol (SI) vs. Diesel (CI) Combustion Physics",
+            "content": "• Spark Ignition (SI / Petrol) Engines: Air and volatile gasoline are premixed during intake. The mixture is compressed at moderate compression ratios (8:1 to 12:1) to prevent premature spontaneous auto-ignition (knocking). Near Top Dead Center (TDC), an electric spark plug fires, initiating a laminar flame front that sweeps across the combustion chamber. Fuel rating is governed by Octane Number (resistance to knocking).\n• Compression Ignition (CI / Diesel) Engines: Air alone is drawn in and compressed to extreme compression ratios (16:1 to 22:1), heating the compressed air well beyond the auto-ignition temperature of diesel fuel (~500°C to 700°C). Highly atomized liquid diesel fuel is injected directly into the hot air at massive pressures (up to 2,500 bar). Droplets vaporize and spontaneously ignite through multiple flame kernels. Fuel rating is governed by Cetane Number (ignition delay quality). CI engines exhibit significantly higher thermal efficiency and torque at lower RPMs."
+          }
+        ]
+      },
+      {
+        "id": "module-2",
+        "title": "Module 2: Engine Mechanical Components & Valve Train",
+        "badge": "Kinematics & Machine Design",
+        "topics": [
+          {
+            "id": "engine-components-overview",
+            "name": "Engine Block, Cylinder Head & Crankcase",
+            "content": "The engine block (cylinder block) is the robust structural skeleton supporting all reciprocating and rotating parts, cast from gray cast iron or lightweight aluminum alloy with cast-in iron cylinder liners. The upper surface is bolted securely to the Cylinder Head with a multi-layer steel (MLS) head gasket to seal extreme combustion pressures (often exceeding 150 bar in turbocharged diesels). The block incorporates cast-in internal cooling water jackets and pressurized oil galleries."
+          },
+          {
+            "id": "cylinder-piston-rings",
+            "name": "Cylinder, Piston & Piston Rings",
+            "content": "• Cylinder Bore: Machined and cross-hatch plateau-honed to microscopic precision, allowing oil retention for continuous lubrication.\n• Piston: Cast or forged aluminum alloy component that directly bears the high-pressure gas explosion. Comprises the crown, ring lands, pin boss, and skirt.\n• Piston Rings: Installed in circumferential ring grooves on the piston:\n  1. Top Compression Ring (ductile iron or steel with chrome/ceramic coating): Seals combustion gases from leaking into the crankcase (blow-by).\n  2. Second Scraper Ring: Provides secondary compression sealing and scrapes excess oil film downward.\n  3. Oil Control Ring (three-piece assembly with expander): Meters a microscopic hydrodynamic oil film on the cylinder wall and wipes surplus oil back to the sump."
+          },
+          {
+            "id": "connecting-rod-crankshaft",
+            "name": "Connecting Rod & Crankshaft (Slider-Crank Mechanism)",
+            "content": "• Connecting Rod: Forged steel (or titanium in high-performance engines) H-beam or I-beam member that connects the reciprocating piston to the rotating crankshaft. The small end houses a bronze bushing for the floating wrist pin (gudgeon pin); the split big end houses precision tri-metal hydrodynamic journal bearings.\n• Crankshaft: Forged carbon-manganese alloy steel or ductile cast iron backbone. Features main bearing journals (aligned with engine block axis), offset crankpins (rod journals), counterweights to dynamically balance rotating and reciprocating forces, and precision oil drillings feeding pressurized engine oil to rod bearings. Transforms linear reciprocating piston motion into continuous rotary shaft output torque."
+          },
+          {
+            "id": "camshaft-valves-vvt",
+            "name": "Camshaft, Valves & Variable Valve Timing (VVT)",
+            "content": "• Camshaft: Rotates at exactly half crankshaft speed (1:2 ratio) in 4-stroke engines, driven by a reinforced timing belt, chain, or gears. Features precision egg-shaped cam lobes that dictate valve opening lift, duration, and ramp velocity.\n• Valve Configuration: Modern engines utilize Double Overhead Camshaft (DOHC) setups with four valves per cylinder (two intake, two exhaust) for maximum gas flow area with lower reciprocating valve inertia.\n• Poppet Valves: Forged from heat-resistant austenitic steel (intake) and nickel-chromium Inconel alloy (exhaust, often sodium-filled for internal thermal dissipation).\n• Variable Valve Timing & Lift (VVT/VTEC): Electro-hydraulic cam phasers continuously advance or retard camshaft angle relative to the crankshaft depending on engine speed and load, maximizing low-end torque while breathing freely for peak high-RPM horsepower."
+          }
+        ]
+      },
+      {
+        "id": "module-3",
+        "title": "Module 3: Induction, Fuel Systems, Cooling & Lubrication",
+        "badge": "Fluids & Engine Systems",
+        "topics": [
+          {
+            "id": "spark-plug-ignition",
+            "name": "Spark Plug & High-Energy Ignition Systems",
+            "content": "The spark plug seals the combustion chamber and delivers a 20,000 to 45,000-volt electrical arc across its electrode gap (0.8 mm to 1.1 mm) to ignite compressed air-fuel mixtures. Modern spark plugs utilize laser-welded iridium or platinum fine-wire center electrodes, providing exceptional resistance to electrical erosion and fouling. Modern engines use Coil-On-Plug (COP) distributorless ignition where an individual ignition coil sits directly atop each spark plug, driven by digital ECU ignition timing maps."
+          },
+          {
+            "id": "fuel-injection-systems",
+            "name": "Fuel Injection: Port vs. Gasoline Direct Injection (GDI) & CRDi",
+            "content": "• Port Fuel Injection (PFI): Fuel injectors spray atomized petrol into intake manifold runners upstream of intake valves at low pressure (3 to 5 bar). Fuel washes over valves and evaporates with incoming air.\n• Gasoline Direct Injection (GDI): High-pressure solenoid or piezoelectric injectors inject petrol directly into the combustion cylinder at pressures up to 200-350 bar during the intake or compression stroke. Enables precise homogeneous or stratified charge combustion, higher compression ratios without knock, and significant fuel savings.\n• Common Rail Diesel Injection (CRDi): An engine-driven high-pressure pump pressurizes a shared rail manifold up to 2,000-2,500 bar. Piezoelectric injectors execute multiple injection events per single combustion cycle (pre-injection for noise reduction, main injection for power, post-injection for soot filter regeneration)."
+          },
+          {
+            "id": "turbocharger-supercharger",
+            "name": "Forced Induction: Turbochargers vs. Superchargers",
+            "content": "Naturally aspirated engines rely on atmospheric pressure to fill cylinders. Forced induction compresses incoming intake air, packing substantially more oxygen molecules into the combustion chamber to burn more fuel and generate massive power from smaller engine displacements:\n• Turbocharger: Driven by waste exhaust gas enthalpy. Hot exhaust gas spins a turbine wheel connected via a common shaft to a centrifugal compressor wheel. Highly thermally efficient, but can suffer from 'turbo lag' at low engine speeds before exhaust flow builds up. Modern engines employ Variable Geometry Turbochargers (VGT) and twin-scroll turbine housings.\n• Supercharger: Mechanically driven directly from the engine crankshaft via a serpentine belt or gears (Roots blower, twin-screw, or centrifugal). Delivers instantaneous throttle response with zero lag, but consumes parasitic engine power to drive the compressor.\n• Intercooler (Charge Air Cooler): Air heats up substantially when compressed. Air-to-air or air-to-liquid heat exchangers cool the compressed charge air before it enters cylinders, increasing charge density and mitigating engine knock."
+          },
+          {
+            "id": "cooling-lubrication",
+            "name": "Engine Cooling & Forced Lubrication Systems",
+            "content": "• Cooling System: Only ~30-40% of fuel energy turns into mechanical work; the remainder converts to heat and exhaust. Liquid cooling circulates ethylene glycol-water coolant through block water jackets, controlled by a wax pellet thermostat that routes coolant to the cross-flow aluminum radiator when operating temperature (90°C to 105°C) is reached.\n• Lubrication System: Full-pressure wet-sump system. An engine-driven gerotor oil pump draws oil from the oil pan sump through a pickup screen, pumps it through a pleated spin-on oil filter, and forces it under 2 to 5 bar pressure through the main oil gallery to crankshaft main bearings, rod bearings, camshaft journals, and hydraulic lash adjusters. Modern multi-grade synthetic engine oils (e.g., SAE 0W-20, 5W-30) incorporate viscosity index improvers, detergents, and anti-wear ZDDP additives to maintain hydrodynamic lubrication films under extreme shear stresses."
+          }
+        ]
+      },
+      {
+        "id": "module-4",
+        "title": "Module 4: Transmission Interface, Emissions & Diagnostics",
+        "badge": "Controls & Compliance",
+        "topics": [
+          {
+            "id": "transmission-relationship",
+            "name": "Engine to Transmission Interface (Clutch, Flywheel & Torque Converter)",
+            "content": "An internal combustion engine cannot produce torque from zero RPM; it must idle and operate within a bounded RPM power band (typically 1,000 to 6,500 RPM). The transmission matches engine speed and torque to road wheel requirements:\n• Flywheel: Heavy rotational mass bolted to the crankshaft rear flange that stores kinetic energy to smooth out torque fluctuations between firing strokes.\n• Manual Transmission: Single or dual-plate friction clutch engages/disengages power to the gearbox input shaft.\n• Automatic Transmission: Uses a hydrodynamic Torque Converter (impeller, turbine, and stator with one-way sprag clutch) providing fluid coupling and torque multiplication at low launch speeds, with an internal lockup clutch for direct mechanical drive at cruising speeds."
+          },
+          {
+            "id": "emissions-control",
+            "name": "Engine Emissions & Environmental Aftertreatment",
+            "content": "Harmful combustion byproducts include Carbon Monoxide (CO), Unburnt Hydrocarbons (HC), Oxides of Nitrogen (NOx), and Particulate Matter (PM/Soot):\n• Three-Way Catalytic Converter (TWC for Petrol): Ceramic honeycomb monolith coated with precious metals (Platinum, Palladium, Rhodium). When air-fuel ratio is maintained precisely at stoichiometric lambda (λ = 1.00 or 14.7:1 for petrol), it simultaneously oxidizes CO and HC into CO2 and H2O while reducing NOx into harmless N2 gas.\n• Exhaust Gas Recirculation (EGR): Meters a fraction of inert exhaust gas back into the intake air to lower peak combustion flame temperatures below 1600°C, drastically suppressing NOx formation.\n• Diesel Aftertreatment (BS6 / Euro 6): Diesel Particulate Filter (DPF) traps microscopic carbon soot particles and burns them off periodically; Selective Catalytic Reduction (SCR) injects Aqueous Urea Solution (AdBlue / DEF) into hot exhaust to chemically convert NOx into nitrogen and water vapor over a vanadium/zeolite catalyst."
+          },
+          {
+            "id": "engine-diagnostics-obd2",
+            "name": "Electronic Engine Management & OBD-II Diagnostics",
+            "content": "Modern engines are controlled by a 32-bit Electronic Control Unit (ECU) running closed-loop feedback algorithms:\n• Sensor Network: Mass Airflow (MAF), Manifold Absolute Pressure (MAP), Throttle Position Sensor (TPS), Crankshaft & Camshaft Hall-effect position sensors, Knock sensors (piezoelectric accelerometers), and Heated Oxygen (Lambda) sensors upstream and downstream of the catalytic converter.\n• On-Board Diagnostics (OBD-II): Standardized diagnostic protocol. When the ECU detects operating parameters outside acceptable limits (e.g., misfire, catalyst degradation, sensor circuit failure), it illuminates the Check Engine Light (MIL) and stores a 5-character Diagnostic Trouble Code (DTC, such as P0300 for random misfire) and freeze-frame sensor data accessible via CAN bus scan tools."
+          }
+        ]
+      },
+      {
+        "id": "module-5",
+        "title": "Module 5: Hybrid Engines, EV Powertrains, Careers & Interviews",
+        "badge": "Future Powertrains & Career",
+        "topics": [
+          {
+            "id": "hybrid-engines",
+            "name": "Hybrid Engines (Series, Parallel, Power-Split & Atkinson Cycle)",
+            "content": "Hybrid Electric Vehicles (HEV / PHEV) combine an internal combustion engine with one or more electric motor-generators and a high-voltage traction battery:\n• Atkinson Cycle: Employs late intake valve closing during compression to make expansion ratio significantly larger than compression ratio, achieving ultra-high thermal efficiency (>40%) at the cost of low-end torque (which the electric motor seamlessly compensates for).\n• Architecture Types:\n  1. Mild Hybrid (MHEV): 48V belt-driven starter generator provides engine stop-start, torque assist, and minor regenerative braking.\n  2. Series Hybrid: Engine has zero mechanical connection to wheels; it spins a generator to charge battery and power electric drive motors.\n  3. Parallel Hybrid: Both engine and electric motor can mechanically deliver torque to wheels simultaneously through a shared gearbox.\n  4. Power-Split Hybrid (e.g., Toyota Hybrid Synergy Drive): Planetary gearset splits engine torque continuously between generator and wheels, functioning as an electronic continuously variable transmission (e-CVT)."
+          },
+          {
+            "id": "ev-powertrain-comparison",
+            "name": "ICE vs. Battery Electric Vehicle (BEV) Powertrain Comparison",
+            "content": "• Efficiency: ICE thermal efficiency is 30-42%; Electric Motors (Permanent Magnet Synchronous Motors PMSM / AC Induction) achieve 90-96% electrical-to-mechanical conversion efficiency.\n• Torque Delivery: ICE engines require clutch slippage and multi-speed gearboxes to produce torque; electric motors deliver peak maximum torque at zero RPM from dead stop, enabling single-speed reduction gearboxes.\n• Complexity & Maintenance: An ICE engine contains over 2,000 moving parts requiring periodic oil, spark plug, belt, and filter replacements; an EV powertrain has under 20 moving parts with zero oil changes.\n• Energy Density: Liquid hydrocarbon fuels store ~12,000 Wh/kg of chemical energy compared to ~250-300 Wh/kg in modern Lithium-Ion battery cells (NMC/LFP), highlighting why long-haul heavy transport and aviation continue exploring sustainable aviation fuels and hydrogen IC engines alongside electrification."
+          },
+          {
+            "id": "engine-careers",
+            "name": "Automotive & Powertrain Engineering Career Paths",
+            "content": "• Powertrain Calibration Engineer: Tunes ECU engine maps, fuel injection parameters, and ignition curves for emissions compliance and drivability.\n• Engine Design & NVH Engineer: Uses CAD/FEA to optimize block stiffness, piston skirt friction, and acoustic damping to minimize engine noise and vibration.\n• Thermal Management Engineer: Simulates complex vehicle coolant, refrigerant, and battery thermal circuits using 1D CFD tools.\n• Hybrid/EV Powertrain Integration Engineer: Designs high-voltage inverters, motor controllers, and battery pack management systems (BMS).\n• Automotive Quality & Diagnostics Lead: Manages assembly plant testing, OBD-II certification, and warranty failure analysis."
+          },
+          {
+            "id": "required-skills",
+            "name": "Core Technical Skills Required",
+            "content": "• Thermodynamics & Heat Transfer: Air-standard cycle calculations, convective cooling, exhaust enthalpy.\n• Simulation Software: GT-SUITE / GT-POWER (industry-standard 1D engine simulation), Ricardo WAVE, MATLAB/Simulink, ANSYS Fluent CFD.\n• CAD & Mechanical Design: CATIA V5/3DEXPERIENCE, SolidWorks, PTC Creo.\n• Automotive Protocols: CAN bus, LIN bus, OBD-II protocols (ISO 15765), UDS (Unified Diagnostic Services).\n• Laboratory Testing: Engine dynamometer testing, eddy-current and AC dyno operation, emission bench gas analyzers (FID, NDIR, CLD)."
+          },
+          {
+            "id": "learning-roadmap-auto",
+            "name": "Semester-by-Semester Learning Roadmap",
+            "content": "• Year 1 (Semesters 1-2): Engineering Mechanics, Engineering Thermodynamics, Materials Science & Metallurgy, Engineering Graphics / CAD.\n• Year 2 (Semesters 3-4): Fluid Mechanics & Hydraulic Machinery, Kinematics & Dynamics of Machines, Manufacturing Processes, Automotive Chassis.\n• Year 3 (Semesters 5-6): Internal Combustion Engines, Automotive Electrical & Electronic Systems, Heat Transfer & CFD, Vehicle Dynamics.\n• Year 4 (Semesters 7-8): Hybrid & Electric Vehicle Powertrains, Engine Testing & Emission Measurement, Autonomous Vehicle Systems, Capstone Powertrain Project."
+          },
+          {
+            "id": "auto-projects",
+            "name": "High-Impact Portfolio Projects",
+            "content": "1. 1D Thermodynamic Cycle & Combustion Simulation in Python/MATLAB: Modeled a 4-cylinder 2.0L turbocharged gasoline engine calculating cylinder pressure vs. crank angle, indicated work, and Wiebe combustion heat release.\n2. OBD-II Real-Time Vehicle Telemetry Data Logger: Engineered an ESP32 microcontroller system interfacing via MCP2515 CAN transceiver to read live engine RPM, coolant temperature, fuel trim, and vehicle speed, transmitting to cloud IoT dashboard.\n3. Turbocharger Matching & Intercooler Efficiency Analysis: Calculated compressor pressure ratio and mass flow map operating points for an engine downsizing application, validating charge air density gains in GT-Power.\n4. Formula Student / Baja SAE Powertrain Design: Engineered intake restrictor geometry, custom tuned exhaust runner lengths using Helmholtz resonance principles, and calibrated dyno fuel maps for competition single-cylinder engine."
+          },
+          {
+            "id": "auto-interview-questions",
+            "name": "Top Automotive & Engine Technical Interview Questions",
+            "content": "Q1: What is the difference between Engine Knocking (Detonation) and Pre-Ignition?\nA: Pre-ignition is the ignition of the air-fuel mixture BEFORE the spark plug fires, caused by glowing carbon deposits or hot spark plug electrodes. Knocking (detonation) occurs AFTER the spark plug fires, when unburnt end-gas ahead of the advancing flame front experiences extreme pressure and temperature, auto-igniting spontaneously and creating supersonic shockwaves that erode piston crowns and crack ring lands.\n\nQ2: What is Valve Overlap, and why is it beneficial at high RPM?\nA: Valve overlap is the brief period at the end of the exhaust stroke and beginning of the intake stroke when BOTH the intake valve and exhaust valve are simultaneously open. At high RPM, the high momentum of exiting exhaust gases creates a localized low-pressure scavenging wave in the combustion chamber that actively pulls the fresh intake charge into the cylinder, increasing volumetric efficiency above 100%.\n\nQ3: Why do Atkinson Cycle engines produce higher thermal efficiency?\nA: In standard Otto cycle engines, the compression ratio equals the expansion ratio. The Atkinson cycle holds the intake valve open into the initial compression stroke, pushing a portion of air back into the manifold (effective compression ratio is smaller than physical expansion ratio). This allows combustion gases to expand further during the power stroke, extracting more mechanical work from exhaust gas enthalpy before exhaust valves open."
+          }
+        ]
+      }
+    ]
+  },
+  "CSE": {
+    "branchCode": "CSE",
+    "branchName": "Computer Science & Engineering",
+    "specializationTitle": "Software Development & Computer Systems Architecture",
+    "specializationTagline": "Algorithms, operating systems, distributed architectures, and modern systems engineering",
+    "badge": "SYSTEMS & SOFTWARE ENGINEERING",
+    "icon": "computer",
+    "accentColor": "#3b82f6",
+    "topicsCount": 20,
+    "overview": "Computer Science and Engineering spans the complete spectrum from foundational algorithms and discrete mathematics to high-throughput distributed systems, Linux kernel internals, compiler optimizations, and scalable cloud applications.",
+    "modules": [
+      {
+        "id": "module-1",
+        "title": "Module 1: Algorithms, Data Structures & Complexity",
+        "badge": "Core Theory",
+        "topics": [
+          {
+            "id": "algorithms-systems",
+            "name": "Advanced Data Structures & Asymptotic Analysis",
+            "content": "Mastery of amortized analysis, self-balancing trees (AVL, Red-Black), segment trees, B+ trees in databases, disjoint set unions, and NP-completeness."
+          },
+          {
+            "id": "os-internals",
+            "name": "Operating Systems & Concurrency",
+            "content": "Process scheduling algorithms, virtual memory paging, translation lookaside buffer (TLB), multi-threading, mutexes, semaphores, and deadlocks."
+          }
+        ]
+      },
+      {
+        "id": "module-2",
+        "title": "Module 2: Distributed Systems & Cloud Architecture",
+        "badge": "Enterprise Scale",
+        "topics": [
+          {
+            "id": "distributed-systems",
+            "name": "Distributed Systems & Consensus Protocols",
+            "content": "CAP theorem, Paxos and Raft consensus, distributed caching (Redis), message queues (Kafka), and event-driven microservices."
+          },
+          {
+            "id": "database-internals",
+            "name": "Database Internals & Transaction Isolation",
+            "content": "ACID guarantees, Write-Ahead Logging (WAL), MVCC (Multi-Version Concurrency Control), SQL optimization, and NoSQL document stores."
+          }
+        ]
+      }
+    ]
+  },
+  "MECH": {
+    "branchCode": "MECH",
+    "branchName": "Mechanical Engineering",
+    "specializationTitle": "Mechanical Systems, Thermodynamics & Advanced Manufacturing",
+    "specializationTagline": "Thermodynamic cycles, fluid mechanics, finite element analysis (FEA), robotics, and precision manufacturing.",
+    "badge": "MECHANICAL SPECIALIZATION",
+    "icon": "precision_manufacturing",
+    "accentColor": "#E11D48",
+    "topicsCount": 20,
+    "overview": "Mechanical Engineering encompasses the physics, design, thermal dynamics, and manufacturing of mechanical and electromechanical machinery. From fluid power and aerospace turbines to robotics and additive fabrication, this curriculum builds core engineering competence.",
+    "modules": [
+      {
+        "id": "mech-mod-1",
+        "title": "Module 1: Engineering Thermodynamics & Heat Transfer",
+        "badge": "Thermal Physics",
+        "topics": [
+          {
+            "id": "laws-of-thermodynamics",
+            "name": "Laws of Thermodynamics & Enthalpy Balances",
+            "content": "The Zeroth, First, Second, and Third laws govern all energy transformations. The First Law establishes energy conservation (dQ = dU + dW), while the Second Law introduces entropy (dS >= dQ/T), defining limits on heat engine efficiency via the Carnot theorem."
+          },
+          {
+            "id": "steam-rankine-cycle",
+            "name": "Steam Power & Modified Rankine Cycles",
+            "content": "Steam power plants utilize the ideal Rankine cycle involving constant-pressure boiling, isentropic expansion in steam turbines, isobaric condensation, and isentropic pumping. Modern efficiency is boosted via reheating and regenerative feed heating."
+          },
+          {
+            "id": "air-standard-cycles",
+            "name": "Air Standard Cycles: Otto, Diesel & Dual",
+            "content": "Internal combustion engines are thermodynamically modeled through air-standard approximations. The Otto cycle features isochoric heat addition, the Diesel cycle uses isobaric heat addition, and the Dual cycle combines both."
+          },
+          {
+            "id": "heat-transfer-modes",
+            "name": "Conduction, Convection & Radiation Mechanisms",
+            "content": "Heat transfer analysis applies Fourier's Law for conduction (q = -k A dT/dx), Newton's Law of Cooling for convection (q = h A (Ts - Tinf)), and the Stefan-Boltzmann Law for blackbody radiation (E = sigma T^4)."
+          }
+        ]
+      },
+      {
+        "id": "mech-mod-2",
+        "title": "Module 2: Fluid Mechanics & Hydraulic Machinery",
+        "badge": "Fluid Dynamics",
+        "topics": [
+          {
+            "id": "fluid-statics-bernoulli",
+            "name": "Fluid Statics & Bernoulli Energy Conservation",
+            "content": "Fluid statics calculates hydrostatic pressures (p = rho g h) and buoyancy via Archimedes principle. For inviscid, incompressible streamline flow, the Bernoulli equation preserves mechanical energy: P + 0.5 rho v^2 + rho g z = Constant."
+          },
+          {
+            "id": "viscous-pipe-flow",
+            "name": "Laminar vs Turbulent Pipe Flow & Head Loss",
+            "content": "Flow classification uses the Reynolds number (Re = rho v D / mu). Laminar flow (Re < 2000) follows the Hagen-Poiseuille parabolic profile. Turbulent flow (Re > 4000) produces chaotic mixing and is modeled with the Darcy-Weisbach friction factor."
+          },
+          {
+            "id": "turbomachinery-pumps",
+            "name": "Centrifugal Pumps & Pelton/Francis Turbines",
+            "content": "Centrifugal pumps convert shaft torque into static fluid head via impeller centrifugal acceleration. In hydraulic power, impulse Pelton wheels utilize high-velocity water jets, while Francis reaction turbines convert pressure and kinetic head into shaft power."
+          },
+          {
+            "id": "boundary-layer-aerodynamics",
+            "name": "Boundary Layer Theory & Aerodynamic Drag",
+            "content": "Prandtl boundary layer theory analyzes viscous wall shear stress. Fluid decelerates from free-stream velocity to zero at the solid boundary. Adverse pressure gradients trigger boundary layer separation, generating form drag and stall."
+          }
+        ]
+      },
+      {
+        "id": "mech-mod-3",
+        "title": "Module 3: Mechanics of Materials & Machine Design",
+        "badge": "Solid Mechanics",
+        "topics": [
+          {
+            "id": "stress-strain-mohr",
+            "name": "Stress-Strain Tensors & Mohr's Circle",
+            "content": "Multiaxial stress fields decompose into normal and shear components. Mohr's circle provides graphical transformation for principal stresses (sigma1, sigma2) and maximum shear stress (tau_max). Essential for identifying failure planes."
+          },
+          {
+            "id": "failure-theories-fatigue",
+            "name": "Failure Theories: Von Mises, Tresca & S-N Curves",
+            "content": "Ductile metals yield when distortion energy reaches threshold (Von Mises criterion). Under cyclic dynamic loading, fatigue failure occurs below yield strength, governed by the Wöhler S-N curve and Goodman endurance limits."
+          },
+          {
+            "id": "machine-element-shafts-gears",
+            "name": "Design of Shafts, Spur Gears & Bearing Selection",
+            "content": "Shaft design balances torsional shear (T*r/J) and bending moments (M*y/I) under ASME fatigue design codes. Involute spur gears are dimensioned based on Lewis bending equations and surface compressive pitting resistance."
+          },
+          {
+            "id": "vibration-damping-systems",
+            "name": "Mechanical Vibrations & Dynamic Resonance",
+            "content": "Single-degree-of-freedom oscillators are modeled by m*x'' + c*x' + k*x = F(t). The undamped natural frequency is omega_n = sqrt(k/m). When excitation matches natural frequency, resonance produces dangerous displacement amplitudes without damping."
+          }
+        ]
+      },
+      {
+        "id": "mech-mod-4",
+        "title": "Module 4: Advanced Manufacturing & CAD/CAM",
+        "badge": "Manufacturing Systems",
+        "topics": [
+          {
+            "id": "cnc-machining-gcode",
+            "name": "CNC Machining, Toolpath Generation & G-Codes",
+            "content": "Subtractive manufacturing utilizes computer numerical control (CNC) mills and lathes. Toolpaths execute standardized ISO G-codes (G00 rapid move, G01 linear interpolation, G02/G03 circular arc) and M-codes for spindle and coolant activation."
+          },
+          {
+            "id": "additive-manufacturing",
+            "name": "Additive Manufacturing (3D Printing) & Slicing",
+            "content": "Fused deposition modeling (FDM), stereolithography (SLA), and selective laser sintering (SLS) build parts layer-by-layer from 3D CAD meshes. Toolpaths are parameterized by infill density, layer height, and thermal laser energy density."
+          },
+          {
+            "id": "metrology-gd-and-t",
+            "name": "Geometric Dimensioning & Tolerancing (GD&T)",
+            "content": "ASME Y14.5 defines geometric controls including flatness, cylindricity, perpendicularity, parallelism, and true position. Coordinate measuring machines (CMM) verify manufactured deviations within specified datum reference frames."
+          },
+          {
+            "id": "fea-solid-modeling",
+            "name": "Finite Element Analysis (FEA) & Mesh Convergence",
+            "content": "FEA discretizes continuous structures into finite tetrahedral or hexahedral elements. Stiffness equations [K]{u} = {F} are solved numerically to determine nodal displacements, strains, and stress concentrations (stress hotspots)."
+          }
+        ]
+      },
+      {
+        "id": "mech-mod-5",
+        "title": "Module 5: Mechanical Capstones & Career Roadmap",
+        "badge": "Projects & Career",
+        "topics": [
+          {
+            "id": "mech-capstone-projects",
+            "name": "Industry Grade Mechanical Capstone Projects",
+            "content": "1. Automated 4-DOF Robotic Manipulator: Kinematic design, harmonic gearboxes, stepper control, and ROS integration.\n2. Regenerative Shell-and-Tube Heat Exchanger: CFD thermo-hydraulic analysis in ANSYS Fluent to maximize heat transfer coefficient.\n3. Electric Two-Wheeler Chassis FEA: Lightweight tubular trellis frame optimization for torsional stiffness and crash absorption.\n4. Automated Solar Tracking Mechanism: Dual-axis sun tracking servo drive yielding 32% efficiency improvement over static panels."
+          },
+          {
+            "id": "mech-target-roles",
+            "name": "Target High-Growth Mechanical Engineering Roles",
+            "content": "1. CAD/CAM Product Design Engineer: Automotive OEMs, aerospace assemblies, and consumer robotics ($75k-$120k).\n2. Thermal Systems & CFD Specialist: Battery thermal management, data center cooling, and gas turbine blades ($85k-$135k).\n3. Finite Element Analysis (FEA) Stress Analyst: Structural integrity certification, dynamic impact simulation, and fatigue testing ($80k-$130k).\n4. Robotics & Automation Systems Engineer: Industrial assembly lines, automated guided vehicles, and PLC automation ($85k-$140k)."
+          },
+          {
+            "id": "mech-core-skills",
+            "name": "Essential Technical Skills & Tool Mastery",
+            "content": "Core CAD/CAE Software: SolidWorks, CATIA V5, Autodesk Inventor, Siemens NX.\nSimulation & Analysis: ANSYS Mechanical, ANSYS Fluent, Abaqus, MATLAB / Simulink.\nManufacturing: Mastercam, G-code manual programming, 3D printing slicing (Cura), GD&T compliance.\nInstrumentation: Strain gauges, thermocouples, load cells, LabVIEW data acquisition."
+          },
+          {
+            "id": "mech-technical-interviews",
+            "name": "Top Mechanical Engineering Technical Interview Bank",
+            "content": "Q1: Explain the difference between engineering stress and true stress in tensile testing.\nAns: Engineering stress divides applied load by original cross-sectional area (A0), whereas true stress divides instantaneous load by the actual instantaneous cross-sectional area (A) as the specimen necks.\n\nQ2: How does the Von Mises yield criterion determine failure under multiaxial load?\nAns: It states that yielding begins when the second invariant of the deviatoric stress tensor reaches a critical value—equivalent to the distortion strain energy in the material reaching the distortion energy at yield in simple tension.\n\nQ3: What causes cavitation in centrifugal pumps and how do you prevent it?\nAns: Cavitation occurs when static pressure inside the pump impeller drops below the liquid's vapor pressure, forming vapor bubbles that violently collapse against the impeller blade, causing pitting. Prevent by ensuring Net Positive Suction Head Available (NPSHA) exceeds NPSH Required (NPSHR).\n\nQ4: What is the significance of the endurance limit on an S-N curve?\nAns: The endurance limit is the stress amplitude below which a ferrous material can withstand an infinite number of cyclic stress reversals without suffering fatigue failure."
+          }
+        ]
+      }
+    ]
+  },
+  "CIVIL": {
+    "branchCode": "CIVIL",
+    "branchName": "Civil Engineering",
+    "specializationTitle": "Structural Mechanics, Smart Infrastructure & Geotechnical Design",
+    "specializationTagline": "Finite element structural analysis, reinforced concrete (RCC), geotechnical foundations, and transportation hydraulics.",
+    "badge": "CIVIL SPECIALIZATION",
+    "icon": "architecture",
+    "accentColor": "#059669",
+    "topicsCount": 20,
+    "overview": "Civil Engineering shapes the modern built environment. From high-rise structural mechanics and earthquake-resilient concrete design to soil mechanics and smart transportation systems, this curriculum provides core engineering rigor.",
+    "modules": [
+      {
+        "id": "civ-mod-1",
+        "title": "Module 1: Structural Analysis & Mechanics of Solids",
+        "badge": "Structural Mechanics",
+        "topics": [
+          {
+            "id": "determinate-indeterminate-structures",
+            "name": "Determinate vs Indeterminate Trusses & Frames",
+            "content": "Determinate structures satisfy static equilibrium equations alone (Sigma Fx = 0, Fy = 0, M = 0). Indeterminate structures require compatibility conditions of deformation. Degree of static and kinematic indeterminacy dictates analysis approach."
+          },
+          {
+            "id": "moment-distribution-method",
+            "name": "Moment Distribution & Slope Deflection Methods",
+            "content": "Hardy Cross moment distribution method iteratively balances fixed-end moments at continuous beam joints based on rotational stiffness factors (4EI/L or 3EI/L) and carry-over factors (0.5). Enables rapid multi-span beam analysis."
+          },
+          {
+            "id": "matrix-stiffness-method",
+            "name": "Direct Stiffness Matrix Method for Structures",
+            "content": "Modern structural software (STAAD.Pro, ETABS) employs matrix displacement methods. Element stiffness matrices [k] assemble into global structure stiffness [K]. The equilibrium system [K]{Delta} = {P} is solved for joint displacements."
+          },
+          {
+            "id": "influence-line-diagrams",
+            "name": "Influence Line Diagrams (ILD) for Moving Loads",
+            "content": "ILDs track bending moment, shear force, or axial reaction at a specific cross-section as a unit concentrated load traverses a bridge deck. Müller-Breslau principle enables qualitative ILD construction."
+          }
+        ]
+      },
+      {
+        "id": "civ-mod-2",
+        "title": "Module 2: Concrete Technology & RCC Design",
+        "badge": "Concrete Design",
+        "topics": [
+          {
+            "id": "cement-hydration-mix-design",
+            "name": "Cement Chemistry, Hydration & IS 10262 Mix Design",
+            "content": "Portland cement hydration forms calcium silicate hydrate (C-S-H) gel, providing compressive strength. Mix proportioning according to IS 10262 specifies target mean strength, water-cement ratio, aggregate grading, and superplasticizer dosage."
+          },
+          {
+            "id": "limit-state-design-rcc",
+            "name": "Limit State Method: Flexure, Shear & Torsion",
+            "content": "Limit state design balances Limit State of Collapse (ultimate load capacity) and Limit State of Serviceability (deflection and crack width). In flexure, parabolic-rectangular concrete stress block is balanced by yield steel tension."
+          },
+          {
+            "id": "rcc-columns-footings",
+            "name": "Design of Columns, Slender Walls & Isolated Footings",
+            "content": "Compression members carry axial load and bending moments. Slenderness ratio (Leff/r) triggers lateral buckling considerations. Shallow spread footings are sized for allowable soil bearing capacity and checked for two-way punching shear."
+          },
+          {
+            "id": "prestressed-concrete-basics",
+            "name": "Prestressed Concrete: Pre-tensioning & Post-tensioning",
+            "content": "Prestressed concrete introduces compressive pre-stress into tensile concrete zones using high-tensile steel tendons before service loads occur. Mitigates tensile cracks and enables long-span bridge girders."
+          }
+        ]
+      },
+      {
+        "id": "civ-mod-3",
+        "title": "Module 3: Geotechnical Engineering & Soil Mechanics",
+        "badge": "Soil Mechanics",
+        "topics": [
+          {
+            "id": "soil-classification-phase",
+            "name": "Soil Phase Relations & Unified Soil Classification (USCS)",
+            "content": "Three-phase soil systems relate solid grains, pore water, and pore air. Key metrics include void ratio (e), porosity (n), degree of saturation (S), and water content (w). USCS classifies soils based on liquid limit, plastic limit, and sieve grading."
+          },
+          {
+            "id": "darcy-permeability-seepage",
+            "name": "Permeability, Seepage Velocity & Flow Nets",
+            "content": "Darcy's Law models fluid seepage through porous media: v = k * i. Laplace equations govern 2D steady seepage beneath dams. Orthogonal flow nets (equipotential lines and flow channels) calculate seepage discharge and uplift pressures."
+          },
+          {
+            "id": "mohr-coulomb-shear-strength",
+            "name": "Mohr-Coulomb Shear Strength & Triaxial Testing",
+            "content": "Soil shear strength is defined by tau = c + sigma_n * tan(phi), where c is cohesion and phi is angle of internal friction. Consolidated-undrained (CU) and consolidated-drained (CD) triaxial tests determine effective stress parameters."
+          },
+          {
+            "id": "terzaghi-bearing-capacity",
+            "name": "Terzaghi Bearing Capacity & Settlement Analysis",
+            "content": "Ultimate bearing capacity of shallow foundations follows Terzaghi: q_ult = c*Nc + q*Nq + 0.5*gamma*B*Ngamma. Immediate elastic settlement and primary consolidation settlement under clay layers dictate allowable limits."
+          }
+        ]
+      },
+      {
+        "id": "civ-mod-4",
+        "title": "Module 4: Transportation & Water Resources Engineering",
+        "badge": "Infrastructure",
+        "topics": [
+          {
+            "id": "highway-geometric-design",
+            "name": "Highway Geometric Design, Superelevation & Sight Distance",
+            "content": "Road alignments specify stopping sight distance (SSD) and overtaking sight distance (OSD). Horizontal curves incorporate superelevation (e = v^2 / 225R) to counteract centrifugal force, integrated with transition spiral curves."
+          },
+          {
+            "id": "pavement-design-cbr",
+            "name": "Flexible vs Rigid Pavement Design (IRC 37 & CBR)",
+            "content": "Flexible pavements distribute traffic wheel loads across granular base and subbase layers down to subgrade soil, parameterized by California Bearing Ratio (CBR) values. Rigid pavements rely on concrete slab flexural beam action."
+          },
+          {
+            "id": "open-channel-hydraulics",
+            "name": "Open Channel Flow: Manning's Equation & Hydraulic Jump",
+            "content": "Gravity flow in open canals follows Manning's uniform equation: V = (1/n) * R^(2/3) * S^(1/2). Froude number (Fr = v / sqrt(g*y)) distinguishes subcritical (Fr < 1) and supercritical (Fr > 1) flow. Hydraulic jumps dissipate destructive kinetic energy."
+          },
+          {
+            "id": "hydrology-flood-routing",
+            "name": "Hydrograph Analysis, Unit Hydrographs & Flood Routing",
+            "content": "Rainfall-runoff modeling applies unit hydrograph theory to convert net precipitation into stream discharge. Muskingum flood routing tracks wave translation and channel storage attenuation downstream."
+          }
+        ]
+      },
+      {
+        "id": "civ-mod-5",
+        "title": "Module 5: Civil Engineering Capstones & Career Roadmap",
+        "badge": "Projects & Career",
+        "topics": [
+          {
+            "id": "civil-capstone-projects",
+            "name": "High-Impact Civil Engineering Capstone Projects",
+            "content": "1. Seismic Vulnerability Assessment of Multi-Story Framed Building: Non-linear pushover analysis in ETABS according to IS 1893 seismic codes.\n2. Smart Urban Stormwater Drainage Network: Modeling 50-year storm flood volumes using EPA SWMM software.\n3. Prestressed I-Girder Highway Overpass Bridge: Complete flexural prestressing design, cable profile layout, and tendon loss calculation.\n4. Deep Foundation Pile Group Design: Settlement and lateral pile capacity analysis in liquefiable seismic soils."
+          },
+          {
+            "id": "civil-target-roles",
+            "name": "Target Civil & Structural Engineering Roles",
+            "content": "1. Structural Design Engineer: EPC consultancies, bridge design, and high-rise commercial framing ($70k-$115k).\n2. Geotechnical & Foundation Engineer: Subsurface investigations, slope stability, and dam embankments ($75k-$120k).\n3. Transportation & Highway Engineer: Expressway geometric planning, traffic simulation, and mass transit ($70k-$110k).\n4. BIM & Construction Project Manager: 4D BIM modeling, Primavera scheduling, and cost engineering ($80k-$130k)."
+          },
+          {
+            "id": "civil-core-skills",
+            "name": "Essential Civil Engineering Software & Field Standards",
+            "content": "Structural Modeling: ETABS, STAAD.Pro, SAP2000, SAFE, Tekla Structures.\nGeotechnical: GeoStudio, PLAXIS, Rocscience.\nDrafting & BIM: AutoCAD Civil 3D, Revit Structure, Navisworks.\nCodes & Standards: IS 456 (RCC), IS 800 (Steel), IS 1893 (Earthquake), IRC 37 (Highways)."
+          },
+          {
+            "id": "civil-technical-interviews",
+            "name": "Top Civil Engineering Technical Interview Bank",
+            "content": "Q1: What is the purpose of providing shear reinforcement in RCC beams?\nAns: Concrete has low tensile strength and fails diagonally under shear due to principal diagonal tension. Vertical stirrups or bent-up bars resist this diagonal tension and prevent sudden brittle shear failure.\n\nQ2: What is the difference between shallow and deep foundations?\nAns: Terzaghi defines shallow foundations as those where depth of embedment (Df) is less than or equal to width (B). Deep foundations (piles, caissons) have Df >> B and transfer loads to deep competent rock or soil strata via skin friction and end bearing.\n\nQ3: Explain the concept of balanced, under-reinforced, and over-reinforced RCC sections.\nAns: In a balanced section, steel yields at the exact moment concrete reaches its ultimate compressive strain (0.0035). Under-reinforced sections have less steel than balanced; steel yields first, giving ample warning before failure (ductile). Over-reinforced sections fail suddenly in concrete compression without warning (brittle and prohibited in design codes).\n\nQ4: What is superelevation and why is it necessary on horizontal curves?\nAns: Superelevation is the transverse inward tilting of the outer edge of a road above the inner edge. It counteracts centrifugal force acting outwards on turning vehicles, preventing skidding and overturning."
+          }
+        ]
+      }
+    ]
+  }
+}
