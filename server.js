@@ -18,6 +18,7 @@ const { exec } = require('child_process');
 const { buildComprehensiveStudyPack } = require('./exam_study_pack_generator.js');
 const { CurriculumDatabase, UNIVERSITIES } = require('./curriculum_database.js');
 const ideRunner = require('./scripts/ide_runner.js');
+const BranchSystem = require('./js/branches.js');
 
 const ROOT_DIR = path.resolve(__dirname);
 
@@ -9223,22 +9224,29 @@ Format as strict JSON:
             // 8. GOOGLE ADS CENTRALIZED SERVICE ENDPOINTS
             // ------------------------------------------------------------------
             if (pathname === '/api/ads/config' && req.method === 'GET') {
+                const envAppId = process.env.ADMOB_APP_ID || 'ca-app-pub-4576597124085942~9258254900';
+                const envBannerUnit = process.env.ADMOB_BANNER_UNIT || 'ca-app-pub-4576597124085942/1850538175';
+                const pubMatch = (envAppId + ' ' + envBannerUnit).match(/pub-(\d{16})/);
+                const publisherId = pubMatch ? `ca-pub-${pubMatch[1]}` : 'ca-pub-4576597124085942';
+                const bannerUnitId = envBannerUnit.includes('/') ? envBannerUnit.split('/')[1] : envBannerUnit;
+
                 const adsConfig = {
                     ads_enabled: true,
-                    app_id: 'ca-app-pub-2659485988975906~5542995898',
-                    publisher_id: 'ca-pub-2659485988975906',
-                    test_mode: false,
+                    app_id: envAppId,
+                    publisher_id: publisherId,
+                    test_mode: process.env.NODE_ENV !== 'production',
                     slots: {
-                        reviews_bottom: '2120907009',
-                        career_discovery_boundary: '2120907009',
-                        ai_notes_bottom: '2120907009',
-                        dashboard_bottom: '2836941504',
-                        internships_boundary: '2836941504',
-                        learnhub_bottom: '2836941504',
-                        skills_content_boundary: '1414329992',
-                        roadmap_boundary: '1414329992',
-                        projects_bottom: '1414329992',
-                        default: '2120907009'
+                        reviews_bottom: bannerUnitId || '1850538175',
+                        career_discovery_boundary: bannerUnitId || '1850538175',
+                        ai_notes_bottom: bannerUnitId || '1850538175',
+                        dashboard_bottom: bannerUnitId || '1850538175',
+                        internships_boundary: bannerUnitId || '1850538175',
+                        learnhub_bottom: bannerUnitId || '1850538175',
+                        skills_content_boundary: bannerUnitId || '1850538175',
+                        roadmap_boundary: bannerUnitId || '1850538175',
+                        projects_bottom: bannerUnitId || '1850538175',
+                        branch_learning_bottom: bannerUnitId || '1850538175',
+                        default: bannerUnitId || '1850538175'
                     },
                     placements: {
                         reviews_bottom: true,
@@ -9249,7 +9257,8 @@ Format as strict JSON:
                         roadmap_boundary: true,
                         learnhub_bottom: true,
                         projects_bottom: true,
-                        ai_notes_bottom: true
+                        ai_notes_bottom: true,
+                        branch_learning_bottom: true
                     }
                 };
                 res.writeHead(200, { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' });
@@ -10457,33 +10466,41 @@ Format as strict JSON:
                     console.error('[BranchLearning] Catalog load error:', e.message);
                 }
 
+                // Canonical resolution using BranchSystem
                 let resolvedKey = null;
                 const upper = branchQuery.toUpperCase();
-                const q = branchQuery.toLowerCase();
+                const resolvedBranch = (typeof BranchSystem !== 'undefined' && BranchSystem.resolveBranch) 
+                    ? BranchSystem.resolveBranch(branchQuery) 
+                    : null;
 
-                // 1. Direct code lookup
-                if (catalog[upper]) {
+                if (resolvedBranch && resolvedBranch.code) {
+                    resolvedKey = resolvedBranch.code;
+                } else if (catalog[upper]) {
                     resolvedKey = upper;
-                } else if (upper === 'EC' || q.includes('ece') || q.includes('electron') || q.includes('vlsi') || q.includes('semiconductor') || q.includes('telecom')) {
-                    resolvedKey = 'ECE';
-                } else if (upper === 'AU' || q.includes('auto') || q.includes('car') || q.includes('vehicle') || q.includes('engine')) {
-                    resolvedKey = 'AUTO';
-                } else if (upper === 'ME' || q.includes('mech') || q.includes('machine')) {
-                    resolvedKey = 'MECH';
-                } else if (upper === 'CS' || upper === 'SE' || q.includes('computer') || q.includes('software')) {
-                    resolvedKey = 'CSE';
-                } else if (upper === 'CE' || q.includes('civil') || q.includes('struct')) {
-                    resolvedKey = 'CIVIL';
-                } else if (upper === 'EE' || q.includes('eee') || (q.includes('electr') && !q.includes('electron'))) {
-                    resolvedKey = 'EEE';
-                } else if (q.includes('aiml') || (q.includes('ai') && q.includes('ml'))) {
-                    resolvedKey = 'AIML';
-                } else if (q.includes('it') || q.includes('information')) {
-                    resolvedKey = 'IT';
                 }
 
                 // Strict branch content: only return specialization if matching branch exists
-                const specialization = (resolvedKey && catalog[resolvedKey]) ? catalog[resolvedKey] : null;
+                let specialization = null;
+                if (resolvedKey && catalog[resolvedKey]) {
+                    specialization = JSON.parse(JSON.stringify(catalog[resolvedKey]));
+                    specialization.activeSemester = semesterQuery;
+                    
+                    const semPhase = semesterQuery <= 2 ? 'Fundamentals Phase (Semesters 1-2)' : 
+                                    (semesterQuery <= 4 ? 'Core Architecture Phase (Semesters 3-4)' : 
+                                    (semesterQuery <= 6 ? 'Advanced Specialization Phase (Semesters 5-6)' : 'Capstone & Industry Phase (Semesters 7-8)'));
+                    specialization.semesterPhase = semPhase;
+
+                    // Annotate modules with semester recommendation
+                    if (Array.isArray(specialization.modules)) {
+                        specialization.modules.forEach((mod, idx) => {
+                            const modSemRange = mod.semesterRecommendation || (
+                                idx === 0 ? [1, 2] : (idx === 1 ? [3, 4] : (idx === 2 ? [5, 6] : [7, 8]))
+                            );
+                            mod.semesterRecommendation = modSemRange;
+                            mod.isRecommendedForSemester = modSemRange.includes(semesterQuery);
+                        });
+                    }
+                }
 
                 res.writeHead(200, {
                     'Content-Type': 'application/json',

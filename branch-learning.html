@@ -128,7 +128,7 @@
                     <img alt="User Avatar" class="w-9 h-9 rounded-full object-cover border border-[#2A3147] user-avatar-display" src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=150&auto=format&fit=crop&q=80"/>
                     <div class="overflow-hidden">
                         <div class="font-bold text-xs truncate user-name-display">Engineering Scholar</div>
-                        <div class="text-[10px] text-indigo-300 font-mono truncate user-branch-display">ECE</div>
+                        <div class="text-[10px] text-indigo-300 font-mono truncate user-branch-display">Branch</div>
                     </div>
                 </div>
                 <button onclick="AuthManager.logout()" title="Logout" class="text-[#A1A7BC] hover:text-red-400 p-1.5 transition-colors">
@@ -157,7 +157,7 @@
             <div class="flex items-center gap-3">
                 <div class="hidden sm:flex items-center gap-2 px-3 py-1 rounded-full bg-[#121826] border border-[#2A3147] text-xs font-mono">
                     <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                    <span id="header-branch-pill">ECE Specialization</span>
+                    <span id="header-branch-pill">Branch Specialization</span>
                 </div>
                 <a href="profile.html" class="px-3 py-1.5 rounded-lg bg-[#1A2031] hover:bg-[#2A3147] text-xs text-[#F5F7FA] border border-[#2A3147] flex items-center gap-1.5 transition-all">
                     <span class="material-symbols-outlined text-sm text-indigo-400">edit_note</span>
@@ -176,17 +176,17 @@
                     <div class="space-y-3 max-w-3xl">
                         <div class="flex flex-wrap items-center gap-2.5">
                             <span id="hero-badge" class="px-3 py-1 rounded-full text-[11px] font-mono font-bold tracking-wider uppercase bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">
-                                SEMICONDUCTOR & CHIP ENGINEERING
+                                BRANCH SPECIALIZATION
                             </span>
                             <span id="hero-semester-badge" class="px-2.5 py-0.5 rounded-full text-[11px] font-mono bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">
-                                Semester 2 • Fundamentals Phase
+                                Academic Curriculum
                             </span>
                         </div>
                         <h1 id="hero-title" class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight">
-                            Chips & Semiconductors: From Silicon to VLSI
+                            Specialized Branch Learning
                         </h1>
                         <p id="hero-tagline" class="text-xs sm:text-sm text-[#A1A7BC] leading-relaxed">
-                            Comprehensive silicon physics, transistor logic, nanometer IC fabrication, and chip design.
+                            Verified engineering curriculum, hardware labs, and mock interviews tailored to your discipline.
                         </p>
                     </div>
 
@@ -195,7 +195,7 @@
                         <div class="px-4 py-2.5 rounded-2xl bg-[#0B0F19]/90 border border-[#2A3147] flex items-center gap-3">
                             <span class="material-symbols-outlined text-2xl text-indigo-400">layers</span>
                             <div>
-                                <div id="stat-topics-count" class="text-base font-bold text-white font-mono">25 Topics</div>
+                                <div id="stat-topics-count" class="text-base font-bold text-white font-mono">-- Topics</div>
                                 <div class="text-[10px] text-[#A1A7BC]">Full Syllabus Coverage</div>
                             </div>
                         </div>
@@ -291,6 +291,11 @@
                 </div>
             </div>
 
+            <!-- Non-intrusive Branch Learning Banner Ad -->
+            <div class="pt-4 border-t border-[#2A3147]/50">
+                <ad-banner placement="branch_learning_bottom" format="horizontal"></ad-banner>
+            </div>
+
         </div>
     </main>
 
@@ -300,6 +305,7 @@
     <script src="js/auth.js"></script>
     <script src="js/study-tracker.js"></script>
     <script src="js/branches.js"></script>
+    <script src="js/ads.js" defer></script>
     <script src="js/branch-learning.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', async () => {

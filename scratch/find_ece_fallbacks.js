@@ -1,24 +1,24 @@
 const fs = require('fs');
 const path = require('path');
 
-function walk(dir) {
+function searchDir(dir) {
     const files = fs.readdirSync(dir);
     for (const f of files) {
-        if (['node_modules', '.git', 'tools', 'scratch'].includes(f)) continue;
-        const fp = path.join(dir, f);
-        const stat = fs.statSync(fp);
+        const full = path.join(dir, f);
+        if (f === 'node_modules' || f === 'scratch' || f === '.git' || f === 'tools' || f === 'data_store.json') continue;
+        const stat = fs.statSync(full);
         if (stat.isDirectory()) {
-            walk(fp);
+            searchDir(full);
         } else if (f.endsWith('.js') || f.endsWith('.html')) {
-            const content = fs.readFileSync(fp, 'utf8');
+            const content = fs.readFileSync(full, 'utf8');
             const lines = content.split('\n');
-            lines.forEach((l, i) => {
-                if (l.includes("'ECE'") || l.includes('"ECE"')) {
-                    console.log(`${fp}:${i + 1}: ${l.trim()}`);
+            lines.forEach((line, idx) => {
+                if (line.includes('ECE') || line.includes('Chips & Semiconductors')) {
+                    console.log(`${full}:${idx + 1}: ${line.trim()}`);
                 }
             });
         }
     }
 }
 
-walk('.');
+searchDir('.');

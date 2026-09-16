@@ -25,35 +25,11 @@ const BranchLearning = {
 
     normalizeBranch(val) {
         if (!val) return '';
-        const raw = String(val).trim();
-        const upper = raw.toUpperCase();
-        const q = raw.toLowerCase();
-
-        if (['AUTO', 'AUTOMOBILE', 'AU'].includes(upper) || q.includes('auto') || q.includes('car') || q.includes('vehicle') || q.includes('engine')) {
-            return 'AUTO';
+        if (typeof BranchSystem !== 'undefined' && BranchSystem.resolveBranch) {
+            const resolved = BranchSystem.resolveBranch(val);
+            if (resolved && resolved.code) return resolved.code;
         }
-        if (['ECE', 'EC', 'ELECTRONICS'].includes(upper) || q.includes('ece') || q.includes('electron') || q.includes('vlsi') || q.includes('semiconductor') || q.includes('telecom')) {
-            return 'ECE';
-        }
-        if (['MECH', 'ME', 'MECHANICAL'].includes(upper) || q.includes('mech') || q.includes('machine')) {
-            return 'MECH';
-        }
-        if (['CSE', 'CS', 'COMPUTER'].includes(upper) || q.includes('computer') || q.includes('software')) {
-            return 'CSE';
-        }
-        if (['CIVIL', 'CE'].includes(upper) || q.includes('civil') || q.includes('struct')) {
-            return 'CIVIL';
-        }
-        if (['EEE', 'EE'].includes(upper) || q.includes('eee') || (q.includes('electr') && !q.includes('electron'))) {
-            return 'EEE';
-        }
-        if (upper === 'AIML' || (q.includes('ai') && q.includes('ml'))) {
-            return 'AIML';
-        }
-        if (['IT', 'INFOTECH'].includes(upper) || q.includes('information')) {
-            return 'IT';
-        }
-        return upper;
+        return String(val).toUpperCase().trim();
     },
 
     bindEvents() {
@@ -195,15 +171,21 @@ const BranchLearning = {
         const heroSemBadge = document.getElementById('hero-semester-badge');
         const statTopicsCount = document.getElementById('stat-topics-count');
 
+        const branchDisplayName = this.getBranchDisplayName(spec.branchCode);
         if (navTitle) navTitle.textContent = `${spec.branchCode} Learning`;
-        if (headerPill) headerPill.textContent = `${spec.branchCode} • ${spec.specializationTitle.split(':')[0]}`;
+        if (headerPill) headerPill.textContent = `${spec.branchCode} • ${(spec.specializationTitle || branchDisplayName).split(':')[0]}`;
         if (heroBadge) heroBadge.textContent = spec.badge || `${spec.branchCode} SPECIALIZATION`;
-        if (heroTitle) heroTitle.textContent = spec.specializationTitle;
-        if (heroTagline) heroTagline.textContent = spec.specializationTagline;
+        if (heroTitle) heroTitle.textContent = spec.specializationTitle || `${branchDisplayName} Curriculum`;
+        if (heroTagline) heroTagline.textContent = spec.specializationTagline || `Specialized engineering curriculum for ${branchDisplayName}.`;
         if (statTopicsCount) statTopicsCount.textContent = `${spec.topicsCount || 25} Topics`;
 
-        const semPhase = this.currentSemester <= 2 ? 'Fundamentals Phase' : (this.currentSemester <= 5 ? 'Core Architecture Phase' : 'Capstone & Industry Phase');
-        if (heroSemBadge) heroSemBadge.textContent = `Semester ${this.currentSemester} • ${semPhase}`;
+        document.querySelectorAll('.user-branch-display').forEach(el => {
+            el.textContent = spec.branchCode;
+        });
+
+        const activeSem = spec.activeSemester || this.currentSemester || 1;
+        const semPhase = activeSem <= 2 ? 'Fundamentals Phase' : (activeSem <= 5 ? 'Core Architecture Phase' : 'Capstone & Industry Phase');
+        if (heroSemBadge) heroSemBadge.textContent = `Semester ${activeSem} • ${spec.semesterPhase || semPhase}`;
 
         // 2. Render Tab 1: Curriculum Modules
         this.renderCurriculum(spec);
@@ -227,6 +209,8 @@ const BranchLearning = {
             return;
         }
 
+        const activeSem = spec.activeSemester || this.currentSemester || 1;
+
         container.innerHTML = spec.modules.map((mod, modIdx) => `
             <div class="glass-card rounded-2xl border border-[#2A3147] overflow-hidden transition-all">
                 <div class="p-4 sm:p-5 flex items-center justify-between cursor-pointer bg-[#121826]/90 hover:bg-[#1A2031]" onclick="BranchLearning.toggleModule('module-block-${modIdx}')">
@@ -235,7 +219,10 @@ const BranchLearning = {
                             0${modIdx + 1}
                         </span>
                         <div>
-                            <h3 class="text-sm font-bold text-white">${this.escapeHtml(mod.title)}</h3>
+                            <div class="flex items-center gap-2">
+                                <h3 class="text-sm font-bold text-white">${this.escapeHtml(mod.title)}</h3>
+                                ${mod.isRecommendedForSemester ? `<span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">Recommended for Sem ${activeSem}</span>` : ''}
+                            </div>
                             <span class="text-[10px] font-mono text-indigo-300">${mod.badge || 'Core Academic Topic'} • ${(mod.topics || []).length} In-depth Concepts</span>
                         </div>
                     </div>
@@ -475,19 +462,35 @@ ${this.formatContent(skillsText || 'Mastery of specialized modeling, design veri
 
     getBranchDisplayName(code) {
         if (!code) return 'Engineering';
-        if (typeof BranchSystem !== 'undefined' && BranchSystem.getBranch) {
-            const b = BranchSystem.getBranch(code);
-            if (b && b.name) return b.name;
+        if (typeof BranchSystem !== 'undefined') {
+            if (BranchSystem.getBranch) {
+                const b = BranchSystem.getBranch(code);
+                if (b && b.name) return b.name;
+            }
+            if (BranchSystem.resolveBranch) {
+                const b = BranchSystem.resolveBranch(code);
+                if (b && b.name) return b.name;
+            }
         }
         const map = {
             'AUTO': 'Automobile Engineering',
             'ECE': 'Electronics & Communication Engineering',
+            'EIE': 'Electronics & Instrumentation Engineering',
             'MECH': 'Mechanical Engineering',
             'CSE': 'Computer Science & Engineering',
             'CIVIL': 'Civil Engineering',
             'EEE': 'Electrical & Electronics Engineering',
             'AIML': 'Artificial Intelligence & Machine Learning',
-            'IT': 'Information Technology'
+            'IT': 'Information Technology',
+            'CHEM': 'Chemical Engineering',
+            'BIOTECH': 'Biotechnology Engineering',
+            'BIOMED': 'Biomedical Engineering',
+            'AERO': 'Aerospace Engineering',
+            'AERONAUT': 'Aeronautical Engineering',
+            'MECHTRON': 'Mechatronics Engineering',
+            'ROBOTICS': 'Robotics & Automation Engineering',
+            'MFG': 'Manufacturing Engineering',
+            'IND': 'Industrial Engineering'
         };
         return map[code] || code;
     },
@@ -526,10 +529,16 @@ ${this.formatContent(skillsText || 'Mastery of specialized modeling, design veri
         const statTopicsCount = document.getElementById('stat-topics-count');
 
         if (navTitle) navTitle.textContent = 'Branch Learning';
+        const headerPill = document.getElementById('header-branch-pill');
+        if (headerPill) headerPill.textContent = 'Branch Required';
         if (heroBadge) heroBadge.textContent = 'SELECTION REQUIRED';
         if (heroTitle) heroTitle.textContent = 'Branch Personalization';
         if (heroTagline) heroTagline.textContent = 'Select your engineering discipline to unlock specialized curriculum, labs, and interview prep.';
         if (statTopicsCount) statTopicsCount.textContent = '0 Topics';
+
+        document.querySelectorAll('.user-branch-display').forEach(el => {
+            el.textContent = 'None';
+        });
 
         const container = document.getElementById('modules-container');
         if (container) {

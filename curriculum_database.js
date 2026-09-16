@@ -1061,6 +1061,12 @@ function generateBranchCurriculumFallback(branchCode, semesterNum) {
 
     // Standard engineering template calibrated by discipline
     const coreMap = {
+        'EIE': ['Transducers and Sensors Engineering', 'Industrial Instrumentation', 'Linear Control Systems', 'PLC, SCADA & Automation', 'Microcontrollers & Embedded Systems'],
+        'MECHTRON': ['Electro-Mechanical Actuators', 'Sensors and Signal Conditioning', 'Robotics and Motion Control', 'Microcontroller Interfacing', 'Industrial Automation & PLC'],
+        'BIOMED': ['Biomedical Instrumentation', 'Bio-potential Amplifiers & Sensors', 'Diagnostic Medical Imaging', 'Biomaterials & Implants', 'Medical Device Safety & Standards'],
+        'MFG': ['Advanced Machining & CNC', 'Additive Manufacturing & 3D Printing', 'Metrology and GD&T', 'Lean Manufacturing & Six Sigma', 'Tool and Die Design'],
+        'IND': ['Operations Research & Linear Programming', 'Supply Chain Engineering', 'Facilities Planning and Layout', 'Work Study and Ergonomics', 'Quality Engineering & Six Sigma'],
+        'IT': ['Enterprise Web Architecture', 'Database Management Systems', 'Computer Networks & Security', 'Cloud Computing & DevOps', 'Distributed Systems Design'],
         'AIML': ['Artificial Intelligence Principles', 'Python for AI & ML', 'Linear Algebra & Probability', 'Data Structures & Algorithms', 'Machine Learning Foundations'],
         'AIDS': ['Foundations of Data Science', 'Data Wrangling with Python', 'Database Systems', 'Statistics & Inference', 'AI System Architecture'],
         'CYBER': ['Cryptography Fundamentals', 'Network Security Architecture', 'Computer System Security', 'Operating Systems', 'Ethical Hacking & Vulnerability Assessment'],

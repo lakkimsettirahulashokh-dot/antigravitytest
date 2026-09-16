@@ -24,30 +24,32 @@
     const AdService = {
         config: {
             enabled: true,
-            appId: 'ca-app-pub-2659485988975906~5542995898',
-            publisherId: 'ca-pub-2659485988975906',
+            appId: 'ca-app-pub-4576597124085942~9258254900',
+            publisherId: 'ca-pub-4576597124085942',
             testMode: false,
             isDev: false,
             slots: {
-                reviews_bottom: '2120907009',
-                career_discovery_boundary: '2120907009',
-                ai_notes_bottom: '2120907009',
-                dashboard_bottom: '2836941504',
-                internships_boundary: '2836941504',
-                learnhub_bottom: '2836941504',
-                skills_content_boundary: '1414329992',
-                roadmap_boundary: '1414329992',
-                projects_bottom: '1414329992',
-                default: '2120907009'
+                branch_learning_bottom: '1850538175',
+                learnhub_bottom: '1850538175',
+                reviews_bottom: '1850538175',
+                career_discovery_boundary: '1850538175',
+                ai_notes_bottom: '1850538175',
+                dashboard_bottom: '1850538175',
+                internships_boundary: '1850538175',
+                skills_content_boundary: '1850538175',
+                roadmap_boundary: '1850538175',
+                projects_bottom: '1850538175',
+                default: '1850538175'
             },
             placements: {
+                branch_learning_bottom: true,
+                learnhub_bottom: true,
                 reviews_bottom: true,
                 dashboard_bottom: true,
                 skills_content_boundary: true,
                 career_discovery_boundary: true,
                 internships_boundary: true,
                 roadmap_boundary: true,
-                learnhub_bottom: true,
                 projects_bottom: true,
                 ai_notes_bottom: true
             }
@@ -274,6 +276,7 @@
             const isTest = this.config.isDev || this.config.testMode;
 
             // Apply base container styling to prevent Cumulative Layout Shift
+            element.setAttribute('data-ad-state', 'loading');
             element.style.display = 'block';
             element.style.minHeight = format === 'card' ? '250px' : '90px';
             element.style.width = '100%';
@@ -297,10 +300,12 @@
                         adId: slotId,
                         isTesting: isTest
                     });
+                    element.setAttribute('data-ad-state', 'loaded');
                     this.stats.requestsAttempted++;
                 }
             } catch (err) {
                 console.warn('[AdService] Native AdMob bridge error:', err);
+                element.setAttribute('data-ad-state', 'error');
                 this.stats.errors.push(err.message);
             }
         },
@@ -333,6 +338,7 @@
                         console.info(`[AdService] Google AdSense request dispatched: Slot ${slotId} (Mode: ${isTest ? 'Official Google Test Ads' : 'Live Production Ads'})`);
                     } catch (pushErr) {
                         console.warn('[AdService] Google AdSense push error:', pushErr.message);
+                        element.setAttribute('data-ad-state', 'error');
                         this.stats.errors.push(pushErr.message);
                     }
                 };
@@ -362,8 +368,10 @@
                         if (status === 'unfilled') {
                             console.info(`[AdService] Google ad response: 'unfilled' for slot ${slotId}. (Google has no active fill for this domain/origin).`);
                             this.stats.unfilledSlots.push(placement);
+                            element.setAttribute('data-ad-state', 'unfilled');
                             this.collapseElement(element, 'Google AdSense unfilled');
                         } else if (status === 'filled') {
+                            element.setAttribute('data-ad-state', 'loaded');
                             this.stats.impressionsServed++;
                             console.info(`[AdService] Google ad rendered successfully for slot ${slotId}`);
                         }
@@ -372,6 +380,7 @@
 
             } catch (err) {
                 console.warn('[AdService] Failed to initialize ad slot:', err.message);
+                element.setAttribute('data-ad-state', 'error');
                 this.stats.errors.push(err.message);
                 this.collapseElement(element, err.message);
             }
@@ -410,6 +419,9 @@
 
         collapseElement(element, reason = '') {
             if (!element) return;
+            if (!element.getAttribute('data-ad-state') || element.getAttribute('data-ad-state') === 'loading') {
+                element.setAttribute('data-ad-state', 'collapsed');
+            }
             element.style.minHeight = '0';
             element.style.height = '0';
             element.style.opacity = '0';
