@@ -1,4 +1,4 @@
-/* ==========================================================================
+﻿/* ==========================================================================
    BTechPath AI OS — Real Supabase Authentication & Strict Authorization Engine
    - Real Supabase Google OAuth & Session Restoration
    - Real Supabase Email/Password Sign Up & Sign In with Onboarding Guard
@@ -8,7 +8,7 @@
    - Real Database Profile Save with Verification before Dashboard Access
    - Loop-Free Onboarding: Completed users navigate directly to Dashboard
    - Strict Admin Role Guard: rahulashokhlakkimsetty@gmail.com
-   - Support Email: lakkimsettirahulashok@gmail.com
+   - Support Email: lakkimsettirahulashokh@gmail.com
    ========================================================================== */
 
 const AuthManager = {
@@ -18,7 +18,7 @@ const AuthManager = {
     'rahulashokhlakkimsetty@gmail.com'
   ],
   AUTHORIZED_ADMIN_EMAIL: 'rahulashokhlakkimsetty@gmail.com',
-  SUPPORT_EMAIL: 'lakkimsettirahulashok@gmail.com',
+  SUPPORT_EMAIL: 'lakkimsettirahulashokh@gmail.com',
   // In-memory admin verification cache (cleared on logout; never persisted to localStorage)
   _adminVerifiedCache: null,
   _adminVerifiedAt: 0,

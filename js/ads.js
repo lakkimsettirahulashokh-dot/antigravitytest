@@ -4,11 +4,10 @@
      1. Web / PWA (Current Runtime): Real Google AdSense (adsbygoogle.js)
      2. Native Wrappers (Capacitor/Cordova): Mobile Ads SDK (AdMob)
    Configured Identifiers:
-     - AdMob App ID:    ca-app-pub-2659485988975906~5542995898
-     - Web Publisher:   ca-pub-2659485988975906
-     - Ad Unit 1:       2120907009 (reviews_bottom, career, ai-notes, default)
-     - Ad Unit 2:       2836941504 (dashboard_bottom, internships, learnhub)
-     - Ad Unit 3:       1414329992 (skills, roadmap, projects)
+     - AdMob App ID:    ca-app-pub-4576597124085942~9258254900
+     - Web Publisher:   ca-pub-4576597124085942
+     - Banner Unit:     1850538175 (branch_learning_bottom, learnhub_bottom, default)
+     - Interstitial:    3539024364
    Zero Fake Ads:
      - Never renders fake static cards or dummy placeholders.
      - Uses official Google data-adtest="on" during development/test mode.

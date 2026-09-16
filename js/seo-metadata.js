@@ -131,6 +131,66 @@ const PAGE_METADATA = {
         ogDescription: 'Information on authentication tokens, preferences persistence, and privacy-respecting cookies.',
         ogImage: DEFAULT_OG_IMAGE
     },
+    disclaimer: {
+        path: '/disclaimer.html',
+        fileName: 'disclaimer.html',
+        title: 'Disclaimers & AI Governance | TechPath',
+        description: 'Official AI, Educational, Career, and Third-Party content disclaimers for TechPath. Understand AI limitations and independent verification standards.',
+        canonical: `${CANONICAL_ORIGIN}/disclaimer`,
+        robots: 'index, follow',
+        ogType: 'website',
+        ogTitle: 'Disclaimers & AI Governance | TechPath',
+        ogDescription: 'Official AI disclaimers, educational outcomes, career guidance, and third-party content policies.',
+        ogImage: DEFAULT_OG_IMAGE
+    },
+    copyright: {
+        path: '/copyright-policy.html',
+        fileName: 'copyright-policy.html',
+        title: 'Copyright & Content Policy | TechPath',
+        description: 'TechPath copyright policy, uploaded PDF terms, Indian Copyright Act fair dealing provisions, and DMCA notice & takedown procedures.',
+        canonical: `${CANONICAL_ORIGIN}/copyright-policy`,
+        robots: 'index, follow',
+        ogType: 'website',
+        ogTitle: 'Copyright & Content Policy | TechPath',
+        ogDescription: 'Uploaded PDF terms, Indian Copyright Act fair dealing provisions, and DMCA notice & takedown procedures.',
+        ogImage: DEFAULT_OG_IMAGE
+    },
+    grievance: {
+        path: '/grievance.html',
+        fileName: 'grievance.html',
+        title: 'Grievance Redressal Mechanism | TechPath',
+        description: 'Statutory Grievance Redressal Mechanism under the IT Rules, 2021 and DPDP Act, 2023 for TechPath users. Contact our Grievance Officer.',
+        canonical: `${CANONICAL_ORIGIN}/grievance`,
+        robots: 'index, follow',
+        ogType: 'website',
+        ogTitle: 'Grievance Redressal Mechanism | TechPath',
+        ogDescription: 'Official grievance contact and redressal mechanism under IT Rules and DPDP Act.',
+        ogImage: DEFAULT_OG_IMAGE
+    },
+    security: {
+        path: '/security.html',
+        fileName: 'security.html',
+        title: 'Platform Security & Data Protection | TechPath',
+        description: 'Explore TechPath\'s multi-layered security architecture, Supabase RLS policies, zero client API key exposure, and responsible vulnerability disclosure.',
+        canonical: `${CANONICAL_ORIGIN}/security`,
+        robots: 'index, follow',
+        ogType: 'website',
+        ogTitle: 'Platform Security & Data Protection | TechPath',
+        ogDescription: 'Technical security architecture, data isolation, and encryption practices.',
+        ogImage: DEFAULT_OG_IMAGE
+    },
+    legalPrint: {
+        path: '/legal-print.html',
+        fileName: 'legal-print.html',
+        title: 'Master Legal & Compliance Framework | TechPath',
+        description: 'Printable Master Legal & Compliance Charter covering all 14 statutory policies, DPDP Act 2023, and IT Rules 2021.',
+        canonical: `${CANONICAL_ORIGIN}/legal-print`,
+        robots: 'noindex, nofollow',
+        ogType: 'website',
+        ogTitle: 'Master Legal Compliance Framework | TechPath',
+        ogDescription: 'Consolidated statutory policies and legal compliance documentation.',
+        ogImage: DEFAULT_OG_IMAGE
+    },
     'government-exams': {
         path: '/government-exams.html',
         fileName: 'government-exams.html',

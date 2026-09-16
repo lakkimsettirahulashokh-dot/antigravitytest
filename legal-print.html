@@ -1,0 +1,723 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>TechPath — Master Legal Compliance & Policy Framework</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <style>
+        :root {
+            --primary: #1E293B;
+            --accent: #4F46E5;
+            --text: #0F172A;
+            --text-muted: #475569;
+            --border: #E2E8F0;
+            --bg-light: #F8FAFC;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            color: var(--text);
+            background: #FFFFFF;
+            line-height: 1.65;
+            font-size: 13.5px;
+        }
+
+        /* Screen Toolbar */
+        .toolbar {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: #0B0F19;
+            color: #F5F7FA;
+            padding: 12px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+        }
+
+        .toolbar-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .toolbar-right {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 12.5px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.2s;
+            border: 1px solid transparent;
+        }
+
+        .btn-primary {
+            background: #4F46E5;
+            color: #FFFFFF;
+        }
+        .btn-primary:hover {
+            background: #4338CA;
+        }
+
+        .btn-secondary {
+            background: #1E293B;
+            color: #F8FAFC;
+            border-color: #334155;
+        }
+        .btn-secondary:hover {
+            background: #334155;
+        }
+
+        /* Document Container */
+        .doc-container {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 48px 36px;
+        }
+
+        /* Cover Section */
+        .cover {
+            padding: 60px 0 40px;
+            border-bottom: 2px solid var(--border);
+            margin-bottom: 40px;
+        }
+
+        .cover-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 9999px;
+            background: #EEF2FF;
+            color: #4F46E5;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .cover-title {
+            font-size: 32px;
+            font-weight: 800;
+            color: #0F172A;
+            letter-spacing: -0.02em;
+            line-height: 1.25;
+            margin-bottom: 12px;
+        }
+
+        .cover-subtitle {
+            font-size: 16px;
+            color: var(--text-muted);
+            margin-bottom: 24px;
+            max-width: 700px;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 16px;
+            background: var(--bg-light);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 16px 20px;
+            font-size: 12px;
+        }
+
+        .meta-item strong {
+            display: block;
+            color: #0F172A;
+            font-size: 13px;
+        }
+
+        .meta-item span {
+            color: var(--text-muted);
+        }
+
+        /* TOC */
+        .toc {
+            background: #F8FAFC;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 48px;
+        }
+
+        .toc h3 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #0F172A;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .toc-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px 24px;
+            font-size: 12.5px;
+        }
+
+        .toc-grid a {
+            color: #334155;
+            text-decoration: none;
+            display: flex;
+            justify-content: space-between;
+            padding: 4px 0;
+            border-bottom: 1px dotted #CBD5E1;
+        }
+
+        .toc-grid a:hover {
+            color: #4F46E5;
+            font-weight: 600;
+        }
+
+        /* Section Styling */
+        .policy-section {
+            margin-bottom: 44px;
+            padding-top: 12px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: baseline;
+            gap: 10px;
+            border-bottom: 1.5px solid var(--border);
+            padding-bottom: 8px;
+            margin-bottom: 18px;
+        }
+
+        .section-num {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 14px;
+            font-weight: 700;
+            color: #4F46E5;
+            background: #EEF2FF;
+            padding: 2px 8px;
+            border-radius: 6px;
+        }
+
+        .section-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #0F172A;
+        }
+
+        .policy-section p {
+            margin-bottom: 12px;
+            color: #334155;
+            text-align: justify;
+        }
+
+        .policy-section ul, .policy-section ol {
+            margin-left: 22px;
+            margin-bottom: 14px;
+            color: #334155;
+        }
+
+        .policy-section li {
+            margin-bottom: 6px;
+        }
+
+        .callout-box {
+            background: #F8FAFC;
+            border-left: 4px solid #4F46E5;
+            border-radius: 0 8px 8px 0;
+            padding: 14px 18px;
+            margin: 16px 0;
+            font-size: 12.5px;
+            color: #1E293B;
+        }
+
+        .callout-box strong {
+            display: block;
+            margin-bottom: 4px;
+            color: #0F172A;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin: 14px 0;
+        }
+
+        .card {
+            background: #F8FAFC;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 12px 14px;
+            font-size: 12px;
+        }
+
+        .card strong {
+            display: block;
+            margin-bottom: 4px;
+            color: #0F172A;
+            font-size: 12.5px;
+        }
+
+        /* Sign-off Box */
+        .signoff-box {
+            margin-top: 50px;
+            border: 2px dashed var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            background: #FAFAFA;
+        }
+
+        /* Print Settings */
+        @media print {
+            .toolbar {
+                display: none !important;
+            }
+            body {
+                font-size: 11pt;
+                line-height: 1.5;
+                color: #000;
+                background: #FFF;
+            }
+            .doc-container {
+                max-width: 100%;
+                padding: 0;
+            }
+            .page-break {
+                page-break-before: always;
+            }
+            .cover {
+                padding-top: 20px;
+                margin-bottom: 20px;
+            }
+            a {
+                color: #000;
+                text-decoration: none;
+            }
+            .callout-box {
+                border-left-color: #333;
+                background: #F4F4F4;
+            }
+            .card {
+                background: #F9F9F9;
+                border-color: #DDD;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Screen Toolbar -->
+    <div class="toolbar">
+        <div class="toolbar-left">
+            <span class="material-symbols-outlined text-indigo-400">policy</span>
+            <span>TechPath AI OS — Master Legal & Compliance Framework</span>
+        </div>
+        <div class="toolbar-right">
+            <button onclick="window.print()" class="btn btn-primary">
+                <span class="material-symbols-outlined" style="font-size: 16px;">print</span>
+                <span>Print / Save as PDF</span>
+            </button>
+            <a href="TechPath_Legal_Compliance_and_Policies.pdf" download class="btn btn-secondary">
+                <span class="material-symbols-outlined" style="font-size: 16px;">download</span>
+                <span>Direct PDF</span>
+            </a>
+            <a href="index.html" class="btn btn-secondary">
+                <span>Exit to Platform</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Document Wrapper -->
+    <div class="doc-container">
+
+        <!-- Cover Page -->
+        <header class="cover">
+            <span class="cover-badge">STATUTORY COMPLIANCE DOCUMENT</span>
+            <h1 class="cover-title">TechPath AI Operating System</h1>
+            <p class="cover-subtitle">
+                Master Governance, Data Protection, AI Ethics, Copyright, and Operational Legal Framework. Comprehensive compliance charter covering Indian DPDP Act 2023, IT Rules 2021, and International Standards.
+            </p>
+
+            <div class="meta-grid">
+                <div class="meta-item">
+                    <span>Effective Date:</span>
+                    <strong>September 16, 2026</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Document Version:</span>
+                    <strong>v2.4.0 (Consolidated)</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Governing Jurisdiction:</span>
+                    <strong>Hyderabad / Andhra Pradesh, India</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Official Desk:</span>
+                    <a href="mailto:lakkimsettirahulashokh@gmail.com" style="color: inherit; text-decoration: underline;"><strong>lakkimsettirahulashokh@gmail.com</strong></a>
+                </div>
+            </div>
+        </header>
+
+        <!-- Table of Contents -->
+        <nav class="toc">
+            <h3>
+                <span class="material-symbols-outlined" style="font-size: 18px;">menu_book</span>
+                <span>Document Structure & Table of Contents (14 Core Sections)</span>
+            </h3>
+            <div class="toc-grid">
+                <a href="#p-1"><span>01. Privacy Policy & DPDP Framework</span> <span>Sec. 1</span></a>
+                <a href="#p-2"><span>02. Master Terms of Use & Conditions</span> <span>Sec. 2</span></a>
+                <a href="#p-3"><span>03. Artificial Intelligence (AI) Disclaimer</span> <span>Sec. 3</span></a>
+                <a href="#p-4"><span>04. Uploaded PDF & Content Copyright</span> <span>Sec. 4</span></a>
+                <a href="#p-5"><span>05. Third-Party Content & YouTube Links</span> <span>Sec. 5</span></a>
+                <a href="#p-6"><span>06. User Reviews & Community Standards</span> <span>Sec. 6</span></a>
+                <a href="#p-7"><span>07. Advertising & Sponsored Content</span> <span>Sec. 7</span></a>
+                <a href="#p-8"><span>08. Cookies, LocalStorage & Telemetry</span> <span>Sec. 8</span></a>
+                <a href="#p-9"><span>09. Account Deletion & Data Erasure</span> <span>Sec. 9</span></a>
+                <a href="#p-10"><span>10. Platform Security & Data Isolation</span> <span>Sec. 10</span></a>
+                <a href="#p-11"><span>11. Statutory Grievance Redressal</span> <span>Sec. 11</span></a>
+                <a href="#p-12"><span>12. Intellectual Property & Trademarks</span> <span>Sec. 12</span></a>
+                <a href="#p-13"><span>13. Educational Outcomes & Career Limits</span> <span>Sec. 13</span></a>
+                <a href="#p-14"><span>14. Children's Privacy & Minor Consent</span> <span>Sec. 14</span></a>
+            </div>
+        </nav>
+
+        <!-- Section 1 -->
+        <section id="p-1" class="policy-section">
+            <div class="section-header">
+                <span class="section-num">01</span>
+                <h2 class="section-title">Privacy Policy & DPDP Act Governance</h2>
+            </div>
+            <p>
+                TechPath operates under strict compliance with India's Digital Personal Data Protection (DPDP) Act, 2023, the Information Technology Act, 2000, and global data stewardship benchmarks. Consent given by students is free, specific, informed, unconditional, and unambiguous.
+            </p>
+            <div class="callout-box">
+                <strong>Categories of Personal Data Collected & Processing Purpose:</strong>
+                <ul>
+                    <li><strong>Account Identity:</strong> Display name, email address, password hash, and Google OAuth UID for authentication and profile segregation.</li>
+                    <li><strong>Academic Profile:</strong> Engineering branch/department, semester level, target skills, and target companies to filter relevant syllabi and learning modules.</li>
+                    <li><strong>Profile Media:</strong> User-provided avatar photos stored in isolated Supabase storage buckets; modifiable and removable at will.</li>
+                    <li><strong>Uploaded Materials:</strong> Lecture notes, syllabus outlines, and PDF documents parsed client-side or via ephemeral OCR buffers solely to generate notes or solve user doubts. Private files are never used to train public AI models.</li>
+                    <li><strong>AI Prompts & Generated Output:</strong> Text queries submitted to AI Doubt Solver and AI Copilot, proxied server-side to AI inference APIs without retaining student identity headers.</li>
+                    <li><strong>Mock Interview Media:</strong> Camera and microphone streams processed locally or via transient session memory; no persistent unencrypted surveillance or background retention.</li>
+                    <li><strong>Telemetry & Diagnostics:</strong> Browser user-agent strings, IP addresses for security rate-limiting, and error logs stripped of sensitive personal data.</li>
+                </ul>
+            </div>
+            <p>
+                <strong>Cross-Border Data Processing:</strong> TechPath utilizes enterprise cloud infrastructure (e.g., Supabase PostgreSQL in AWS/GCP regions and Google Gemini/OpenAI inference endpoints). Where data flows cross-border for processing, it is governed under standard contractual clauses and encryption standards safeguarding user privacy.
+            </p>
+            <p>
+                <strong>Withdrawal of Consent:</strong> Users maintain the statutory right to withdraw consent at any time. Withdrawal takes effect immediately upon processing, following which account data is purged within thirty (30) calendar days.
+            </p>
+        </section>
+
+        <!-- Section 2 -->
+        <section id="p-2" class="policy-section">
+            <div class="section-header">
+                <span class="section-num">02</span>
+                <h2 class="section-title">Terms & Conditions of Platform Use</h2>
+            </div>
+            <p>
+                These Terms of Use govern access to TechPath web applications, databases, and microservices. By registering or browsing TechPath, you agree to comply with these terms in full:
+            </p>
+            <ul>
+                <li><strong>Account Responsibility:</strong> You are responsible for safeguarding your login credentials. TechPath is not liable for unauthorized account access resulting from compromised user devices or shared passwords.</li>
+                <li><strong>Acceptable Academic Use:</strong> TechPath is designed to empower engineering students. Users agree to respect university honor codes and academic integrity policies.</li>
+                <li><strong>Prohibited Activities:</strong> Users may not decompile software, execute denial-of-service attacks, deploy automated web scrapers, upload malicious payloads, or artificially manipulate study timer metrics.</li>
+                <li><strong>Suspension and Termination:</strong> TechPath reserves the right to suspend or terminate accounts that breach platform rules, distribute illegal or infringing content, or engage in abusive behavior toward community members.</li>
+                <li><strong>Service Availability:</strong> We strive for 99.9% uptime but provide the service on an "as is" and "as available" basis without warranties of uninterrupted availability during scheduled server maintenance.</li>
+                <li><strong>Limitation of Liability:</strong> TechPath's aggregate liability for direct claims arising out of platform usage is limited to the actual amount paid by the user to TechPath (if any) in the twelve (12) months preceding the claim. TechPath disclaims indirect, incidental, or consequential damages.</li>
+                <li><strong>Governing Law & Jurisdiction:</strong> All disputes shall be governed by the laws of India, subject to the exclusive jurisdiction of the competent courts in Hyderabad / Andhra Pradesh, India.</li>
+            </ul>
+        </section>
+
+        <!-- Section 3 -->
+        <section id="p-3" class="policy-section">
+            <div class="section-header">
+                <span class="section-num">03</span>
+                <h2 class="section-title">Artificial Intelligence (AI) Technology Disclaimers</h2>
+            </div>
+            <p>
+                TechPath incorporates generative artificial intelligence algorithms to assist students. Users are explicitly informed that:
+            </p>
+            <div class="callout-box">
+                <strong>AI Hallucination & Accuracy Limitation Notice:</strong>
+                AI-generated outputs are probabilistic and may contain factual inaccuracies, outdated programming paradigms, mathematical oversights, or hallucinations. TechPath is an educational assistant and does not warrant or guarantee the accuracy, completeness, or suitability of AI responses.
+            </div>
+            <p>
+                This disclaimer applies across all integrated AI modules:
+            </p>
+            <div class="grid-2">
+                <div class="card">
+                    <strong>AI Doubt Solver & Copilot</strong>
+                    Synthesized explanations and code snippets must be independently compiled and tested in local environments before reliance.
+                </div>
+                <div class="card">
+                    <strong>PDF Analyzer & AI Notes</strong>
+                    Summaries depend on OCR legibility and may omit complex engineering equations or nuanced textbook footnotes.
+                </div>
+                <div class="card">
+                    <strong>AI Mock Interview</strong>
+                    Automated scores and feedback are pedagogical simulations and do not reflect corporate recruiter hiring rubrics.
+                </div>
+                <div class="card">
+                    <strong>Career & Resume Advice</strong>
+                    Automated career roadmaps and resume scoring do not constitute professional career counseling or employment guarantees.
+                </div>
+            </div>
+            <p>
+                <strong>Non-Expert Counsel:</strong> AI outputs must never be treated as licensed professional, legal, medical, financial, or certified engineering counsel.
+            </p>
+        </section>
+
+        <!-- Section 4 -->
+        <section id="p-4" class="policy-section">
+            <div class="section-header">
+                <span class="section-num">04</span>
+                <h2 class="section-title">Uploaded PDF & Content Copyright Governance</h2>
+            </div>
+            <p>
+                The PDF Analyzer and AI Notes tools allow students to extract study points from documents. The legal parameters governing uploaded materials include:
+            </p>
+            <ul>
+                <li><strong>No Transfer of Ownership:</strong> Uploading notes or textbooks DOES NOT transfer intellectual property ownership to TechPath. TechPath acquires no proprietary rights over user documents.</li>
+                <li><strong>User Responsibility:</strong> Users warrant that they hold valid ownership, license, or legal fair dealing exemptions for all submitted content.</li>
+                <li><strong>Fair Dealing under Indian Law:</strong> Section 52(1)(a)(i) of the Indian Copyright Act, 1957 recognizes fair dealing for private study, non-commercial research, and personal education. TechPath tools are calibrated exclusively for private individual research.</li>
+                <li><strong>Ephemeral Processing:</strong> Uploaded PDF files are parsed in temporary memory and are not published to public libraries or shared across student accounts.</li>
+                <li><strong>Notice and Takedown:</strong> Copyright holders may submit takedown notices to <a href="mailto:lakkimsettirahulashokh@gmail.com" style="color: #4F46E5; text-decoration: underline;"><code class="font-mono">lakkimsettirahulashokh@gmail.com</code></a>. We acknowledge receipt within 24–48 hours and disable infringing content expeditiously.</li>
+            </ul>
+        </section>
+
+        <!-- Section 5 -->
+        <section id="p-5" class="policy-section">
+            <div class="section-header">
+                <span class="section-num">05</span>
+                <h2 class="section-title">Third-Party Content, Links & YouTube Attribution</h2>
+            </div>
+            <p>
+                TechPath curates high-quality external educational resources to enrich undergraduate study:
+            </p>
+            <ul>
+                <li><strong>Respect for Third-Party Terms:</strong> Video lectures in LearnHub are embedded directly from YouTube using the official YouTube iframe player under YouTube's Terms of Service. TechPath does not store, re-host, or strip monetization from external videos.</li>
+                <li><strong>No False Affiliation:</strong> References to external universities (e.g., IITs, MIT, Stanford), educational channels (NPTEL, freeCodeCamp), or corporations do not imply formal endorsement, sponsorship, or partnership with TechPath.</li>
+                <li><strong>Authentic Linkages:</strong> TechPath strictly curates valid URLs and never fabricates artificial source links or citations.</li>
+            </ul>
+        </section>
+
+        <!-- Section 6 -->
+        <section id="p-6" class="policy-section">
+            <div class="section-header">
+                <span class="section-num">06</span>
+                <h2 class="section-title">User Reviews & Community Moderation Guidelines</h2>
+            </div>
+            <p>
+                To maintain authentic student feedback and ensure compliance with Consumer Protection (E-Commerce) standards:
+            </p>
+            <ul>
+                <li><strong>Truthful Feedback:</strong> Reviews must reflect genuine student experiences on TechPath. Fabricated testimonials or incentivized promotional spam are strictly prohibited.</li>
+                <li><strong>Content Restrictions:</strong> Reviews containing abusive language, hate speech, defamation, private personally identifiable information (PII), or commercial advertisements will be rejected.</li>
+                <li><strong>Moderation Rights:</strong> TechPath reserves the right to review, approve, edit for length, or remove reviews violating community guidelines prior to or following publication.</li>
+                <li><strong>Attribution Consent:</strong> By submitting a review, students confirm their consent to display their chosen display name, department, and academic rating publicly.</li>
+            </ul>
+        </section>
+
+        <!-- Section 7 -->
+        <section id="p-7" class="policy-section">
+            <div class="section-header">
+                <span class="section-num">07</span>
+                <h2 class="section-title">Advertising & Commercial Transparency Policy</h2>
+            </div>
+            <p>
+                Where commercial advertisements or sponsored educational modules are introduced:
+            </p>
+            <ul>
+                <li><strong>Clear Disclosure:</strong> Promotional or sponsored content is prominently tagged with "Ad" or "Sponsored" labels to prevent confusion with academic curricula.</li>
+                <li><strong>No Disguised Ads:</strong> Advertising will never be disguised as core engineering notes or mandatory course syllabus modules.</li>
+                <li><strong>Zero Artificial Clicks:</strong> Platform operators and users are strictly prohibited from generating invalid impressions, clicking own advertisements, or employing automated click bots.</li>
+                <li><strong>Provider Compliance:</strong> All advertising placements adhere to Google AdSense, publisher partner policies, and Indian ASCI advertising standards.</li>
+            </ul>
+        </section>
+
+        <!-- Section 8 -->
+        <section id="p-8" class="policy-section">
+            <div class="section-header">
+                <span class="section-num">08</span>
+                <h2 class="section-title">Cookies, Local Storage & Session State Notice</h2>
+            </div>
+            <p>
+                TechPath emphasizes client-side data isolation. Storage mechanisms are categorized as follows:
+            </p>
+            <div class="grid-2">
+                <div class="card">
+                    <strong>Essential Session Tokens</strong>
+                    Cryptographic JWT session tokens stored to maintain secure authenticated logins across dashboard modules.
+                </div>
+                <div class="card">
+                    <strong>Student Preferences</strong>
+                    Local client keys saving dark mode themes, 3D WebGL motion toggles, and sidebar collapse configurations.
+                </div>
+                <div class="card">
+                    <strong>Study Stopwatch State</strong>
+                    Local timestamps preserving ongoing study timer counts so progress survives accidental browser reloads.
+                </div>
+                <div class="card">
+                    <strong>Zero Covert Tracking</strong>
+                    TechPath does not deploy invasive cross-site behavioral tracking cookies or sell device fingerprint metrics.
+                </div>
+            </div>
+            <p>
+                Students can wipe all local storage data at any time via browser developer tools or settings without affecting account data stored in the cloud.
+            </p>
+        </section>
+
+        <!-- Section 9 -->
+        <section id="p-9" class="policy-section">
+            <div class="section-header">
+                <span class="section-num">09</span>
+                <h2 class="section-title">Account Deletion, Erasure & Data Retention Framework</h2>
+            </div>
+            <p>
+                Students hold the unequivocal right to delete their TechPath accounts and purge associated personal data:
+            </p>
+            <div class="callout-box">
+                <strong>Account Deletion Procedure:</strong>
+                Submit a deletion request from your registered account email to <a href="mailto:lakkimsettirahulashokh@gmail.com" style="color: #4F46E5; text-decoration: underline;"><code class="font-mono">lakkimsettirahulashokh@gmail.com</code></a> with the subject "Permanent Account Erasure Request".
+            </div>
+            <ul>
+                <li><strong>Verification:</strong> Our team verifies requester authorization to prevent malicious account takeovers.</li>
+                <li><strong>Backend Execution:</strong> Upon confirmation, user rows in the authentication schema, personal profiles, saved flashcards, and uploaded avatars are permanently deleted within thirty (30) days.</li>
+                <li><strong>Statutory Retention Exceptions:</strong> Minimal technical audit logs, dispute records, or financial transaction proofs may be retained where strictly mandated by statutory tax, accounting, or cybersecurity incident investigation laws.</li>
+            </ul>
+        </section>
+
+        <!-- Section 10 -->
+        <section id="p-10" class="policy-section">
+            <div class="section-header">
+                <span class="section-num">10</span>
+                <h2 class="section-title">Platform Security & Data Protection Architecture</h2>
+            </div>
+            <p>
+                TechPath implements multi-layered security controls to protect student records:
+            </p>
+            <ul>
+                <li><strong>Row Level Security (RLS):</strong> PostgreSQL database tables enforce strict tenant isolation policies ensuring students can only access their own profile rows.</li>
+                <li><strong>HTTPS & TLS 1.3:</strong> All web traffic is encrypted in transit using industry-standard Transport Layer Security.</li>
+                <li><strong>Zero Client-Side API Keys:</strong> Third-party LLM credentials (Google Gemini, OpenAI) remain locked in backend environment variables and are never transmitted to student browsers.</li>
+                <li><strong>File Validation & Rate Limiting:</strong> Uploaded files are restricted by MIME type and size (25MB cap). Endpoint rate-limiting mitigates brute-force attacks and abuse.</li>
+                <li><strong>Responsible Vulnerability Disclosure:</strong> Security researchers discovering flaws are encouraged to report findings responsibly to <a href="mailto:lakkimsettirahulashokh@gmail.com" style="color: #4F46E5; text-decoration: underline;"><code class="font-mono">lakkimsettirahulashokh@gmail.com</code></a> without compromising user data.</li>
+            </ul>
+        </section>
+
+        <!-- Section 11 -->
+        <section id="p-11" class="policy-section">
+            <div class="section-header">
+                <span class="section-num">11</span>
+                <h2 class="section-title">Statutory Grievance Redressal Mechanism & Officer</h2>
+            </div>
+            <p>
+                Pursuant to Rule 3(2) of the Information Technology (Intermediary Guidelines and Digital Media Ethics Code) Rules, 2021, and Section 13 of the DPDP Act, 2023, TechPath designates the following Grievance Officer:
+            </p>
+            <div class="callout-box">
+                <strong>Designated Grievance Redressal Officer Details:</strong>
+                <p><strong>Name:</strong> Rahul Ashok Lakkimsetti</p>
+                <p><strong>Role:</strong> Lead Administrator & Data Protection Custodian, TechPath AI OS</p>
+                <p><strong>Grievance Desk Email:</strong> <a href="mailto:lakkimsettirahulashokh@gmail.com">lakkimsettirahulashokh@gmail.com</a></p>
+                <p><strong>Jurisdiction:</strong> Andhra Pradesh / Hyderabad, India</p>
+            </div>
+            <p>
+                <strong>Statutory Service Level Agreements:</strong>
+            </p>
+            <ul>
+                <li>Receipt of grievance is formally acknowledged with a tracking ID within <strong>24 to 48 hours</strong>.</li>
+                <li>Investigation, remediation, or final redressal is communicated in writing within <strong>15 calendar days</strong>.</li>
+                <li>Appellate escalations may be filed with the Grievance Appellate Committee (GAC) or Data Protection Board of India.</li>
+            </ul>
+        </section>
+
+        <!-- Section 12 -->
+        <section id="p-12" class="policy-section">
+            <div class="section-header">
+                <span class="section-num">12</span>
+                <h2 class="section-title">Intellectual Property & Brand Ownership</h2>
+            </div>
+            <p>
+                All proprietary software and creative elements comprising TechPath are protected under copyright, trademark, and intellectual property statutes:
+            </p>
+            <ul>
+                <li>The name <strong>TechPath</strong>, official logos, brand typography, and design elements are proprietary assets of the platform founders.</li>
+                <li>Underlying frontend scripts, backend server logic, prompt pipelines, and curriculum structures are copyright protected.</li>
+                <li>No user may decompile, reproduce, mirror, or commercialize platform software without express written authorization.</li>
+            </ul>
+        </section>
+
+        <!-- Section 13 -->
+        <section id="p-13" class="policy-section">
+            <div class="section-header">
+                <span class="section-num">13</span>
+                <h2 class="section-title">Educational Outcomes, Career & Examination Disclaimers</h2>
+            </div>
+            <p>
+                TechPath provides curriculum navigation and career preparation for student convenience. Students must note:
+            </p>
+            <ul>
+                <li><strong>No Employment or Placement Guarantee:</strong> Completing mock interviews, roadmaps, or study tracks does not guarantee campus placement, corporate offers, or internship shortlisting.</li>
+                <li><strong>No Academic Marks Warranty:</strong> Curricula reflect AICTE guidelines; however, passing grades, semester GPA, and degree awards depend entirely on official university evaluations.</li>
+                <li><strong>Examination Details:</strong> Dates, notifications, and syllabus outlines for GATE, UPSC ESE, GRE, CAT, etc., must always be verified against official conducting portals (e.g., IIT GATE, UPSC, NTA).</li>
+            </ul>
+        </section>
+
+        <!-- Section 14 -->
+        <section id="p-14" class="policy-section">
+            <div class="section-header">
+                <span class="section-num">14</span>
+                <h2 class="section-title">Children's Privacy, Teen Users & Age Verification</h2>
+            </div>
+            <p>
+                TechPath is structured for undergraduate engineering students, polytechnic scholars, and pre-engineering aspirants:
+            </p>
+            <ul>
+                <li><strong>Eligibility Threshold:</strong> Users must be at least 13 years of age. Individuals under 13 are prohibited from creating accounts.</li>
+                <li><strong>Users Aged 13 to 18:</strong> Minors between 13 and 18 represent that they have reviewed these terms with a parent or legal guardian and obtained appropriate consent.</li>
+                <li><strong>Parental Inquiries:</strong> Parents or guardians who believe a child under 13 has submitted personal data may contact <a href="mailto:lakkimsettirahulashokh@gmail.com" style="color: #4F46E5; text-decoration: underline;"><code class="font-mono">lakkimsettirahulashokh@gmail.com</code></a> for prompt account termination and data purge.</li>
+            </ul>
+        </section>
+
+        <!-- Sign-Off Block -->
+        <div class="signoff-box">
+            <h4 style="font-size: 15px; font-weight: 700; color: #0F172A; margin-bottom: 8px;">Official Document Affirmation</h4>
+            <p style="font-size: 12px; color: #475569; margin-bottom: 16px;">
+                This Master Compliance Framework represents the authoritative legal covenant between TechPath and its registered users. Regularly reviewed and maintained by platform engineering and legal governance.
+            </p>
+            <div style="font-size: 11.5px; font-family: 'JetBrains Mono', monospace; color: #64748B;">
+                <div>DIGITAL SIGNATURE & HASH: SHA256: TECHPATH-MASTER-LEGAL-FRAMEWORK-2026-V2.4</div>
+                <div>PUBLICATION STAMP: 2026-09-16T10:30:00+05:30 • HYDERABAD, INDIA</div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>

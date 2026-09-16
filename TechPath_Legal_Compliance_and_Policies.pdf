@@ -1,0 +1,280 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [5 0 R 7 0 R 9 0 R 11 0 R 13 0 R] /Count 5 >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>
+endobj
+5 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 6 0 R /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> >>
+endobj
+6 0 obj
+<< /Length 1640 >>
+stream
+BT
+/F2 26 Tf
+50 680 Td
+(TechPath AI Operating System) Tj
+ET
+BT
+/F2 16 Tf
+50 645 Td
+(Master Legal Compliance & Policy Charter) Tj
+ET
+BT
+/F1 11 Tf
+50 615 Td
+(Comprehensive 14-Point Governance Framework Under DPDP Act 2023 & IT Rules 2021) Tj
+ET
+BT
+/F1 10 Tf
+50 560 Td
+(Document Version: 2.4.0 Consolidated) Tj
+0 -18 Td
+(Effective Date: September 16, 2026) Tj
+0 -18 Td
+(Jurisdiction: Hyderabad / Andhra Pradesh, India) Tj
+0 -18 Td
+(Grievance Desk: lakkimsettirahulashokh@gmail.com) Tj
+0 -18 Td
+(Platform URL: https://TechPath.ai) Tj
+ET
+BT
+/F2 12 Tf
+50 430 Td
+(TABLE OF STATUTORY COMPLIANCE ARTICLES) Tj
+ET
+BT
+/F1 9 Tf
+50 405 Td
+(01. Master Privacy Policy & DPDP Act 2023 Governance) Tj
+0 -16 Td
+(02. Master Terms of Use & Platform Conditions) Tj
+0 -16 Td
+(03. Artificial Intelligence (AI) Technology Disclaimers) Tj
+0 -16 Td
+(04. Uploaded PDF & Content Copyright Governance) Tj
+0 -16 Td
+(05. Third-Party Content, Links & YouTube Attribution) Tj
+0 -16 Td
+(06. User Reviews & Community Standards) Tj
+0 -16 Td
+(07. Advertising & Sponsored Content Transparency) Tj
+0 -16 Td
+(08. Cookies, Local Storage & Telemetry Notice) Tj
+0 -16 Td
+(09. Account Deletion, Erasure & Retention Framework) Tj
+0 -16 Td
+(10. Platform Security & Data Protection Architecture) Tj
+0 -16 Td
+(11. Statutory Grievance Redressal Mechanism & Officer) Tj
+0 -16 Td
+(12. Intellectual Property & Brand Protection) Tj
+0 -16 Td
+(13. Educational Outcomes, Career & Examination Disclaimers) Tj
+0 -16 Td
+(14. Children's Privacy, Minor Users & Age Eligibility) Tj
+ET
+BT
+/F1 8.5 Tf
+50 100 Td
+(CONFIDENTIAL & STATUTORY CHARTER - PREPARED FOR REGULATORY GOVERNANCE & PUBLIC NOTICE) Tj
+ET
+endstream
+endobj
+7 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 8 0 R /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> >>
+endobj
+8 0 obj
+<< /Length 5284 >>
+stream
+BT /F2 12.5 Tf 50 720 Td (01. Master Privacy Policy & DPDP Act 2023 Governance) Tj ET
+BT /F1 9 Tf 50 700 Td (TechPath operates under strict compliance with India's Digital Personal Data Protection \(DPDP\) Act, 2023,) Tj ET
+BT /F1 9 Tf 50 686.5 Td (the Information Technology Act, 2000, and global data privacy standards. All consent obtained from students) Tj ET
+BT /F1 9 Tf 50 673 Td (is free, specific, informed, unconditional, and unambiguous.) Tj ET
+BT /F2 9.5 Tf 50 651.5 Td (Categories of Personal Data Collected:) Tj ET
+BT /F1 9 Tf 60 638 Td (- Name, email address, password hash, and Google OAuth UID for identity segregation.) Tj ET
+BT /F1 9 Tf 60 624.5 Td (- Academic profile: Engineering department, semester, and target skills to tailor learning modules.) Tj ET
+BT /F1 9 Tf 60 611 Td (- Profile photos uploaded voluntarily, stored in isolated Supabase storage buckets.) Tj ET
+BT /F1 9 Tf 60 597.5 Td (- Uploaded lecture slides and PDF notes, parsed locally or in transient buffers solely for study assistance.) Tj ET
+BT /F1 9 Tf 60 584 Td (- AI queries submitted to AI Doubt Solver and AI Copilot, proxied securely without student identity headers.) Tj ET
+BT /F1 9 Tf 60 570.5 Td (- Mock interview audio and video data, processed locally in session memory without surveillance retention.) Tj ET
+BT /F1 9 Tf 60 557 Td (- Diagnostic telemetry: Browser user-agent and IP addresses utilized solely for security rate limiting.) Tj ET
+BT /F2 9.5 Tf 50 535.5 Td (Cross-Border Processing & Third Parties:) Tj ET
+BT /F1 9 Tf 50 522 Td (Infrastructure is hosted on enterprise cloud providers \(Supabase PostgreSQL, Google Gemini API, OpenAI\).) Tj ET
+BT /F1 9 Tf 50 508.5 Td (Any cross-border transit is governed under standard contractual clauses with end-to-end TLS 1.3 encryption.) Tj ET
+BT /F2 9.5 Tf 50 487 Td (Withdrawal of Consent & Erasure:) Tj ET
+BT /F1 9 Tf 50 473.5 Td (Students maintain the statutory right to withdraw consent at any time by emailing lakkimsettirahulashokh@gmail.com.) Tj ET
+BT /F1 9 Tf 50 460 Td (Upon withdrawal, active sessions are revoked immediately and account records are purged within 30 days.) Tj ET
+BT /F2 12.5 Tf 50 431.5 Td (02. Master Terms of Use & Conditions) Tj ET
+BT /F1 9 Tf 50 411.5 Td (These Terms of Use govern all access to TechPath web applications, databases, and microservices.) Tj ET
+BT /F2 9.5 Tf 50 398 Td (By accessing the platform, users agree to the following enforceable terms:) Tj ET
+BT /F1 9 Tf 60 376.5 Td (- Account Responsibility: Users are responsible for preserving credential confidentiality.) Tj ET
+BT /F1 9 Tf 60 363 Td (- Acceptable Academic Use: Intended strictly for legitimate undergraduate engineering preparation.) Tj ET
+BT /F1 9 Tf 60 349.5 Td (- Prohibited Activities: Automated crawling, scraping, denial-of-service attempts, reverse engineering,) Tj ET
+BT /F1 9 Tf 50 336 Td (  and posting abusive, fraudulent, or malicious payloads are strictly prohibited.) Tj ET
+BT /F1 9 Tf 60 322.5 Td (- Account Suspension: TechPath reserves the right to suspend accounts breaching platform guidelines.) Tj ET
+BT /F1 9 Tf 60 309 Td (- Availability: The platform is provided on an 'as is' and 'as available' basis without warranties of) Tj ET
+BT /F1 9 Tf 50 295.5 Td (  uninterrupted availability during emergency maintenance or third-party outages.) Tj ET
+BT /F1 9 Tf 60 282 Td (- Limitation of Liability: TechPath's direct liability is limited to actual fees paid in the preceding) Tj ET
+BT /F1 9 Tf 50 268.5 Td (  twelve months, disclaiming consequential, indirect, or punitive damages.) Tj ET
+BT /F1 9 Tf 60 255 Td (- Jurisdiction: Governed under the laws of India, subject to the exclusive jurisdiction of the competent) Tj ET
+BT /F1 9 Tf 50 241.5 Td (  courts in Hyderabad / Andhra Pradesh, India.) Tj ET
+BT /F2 12.5 Tf 50 213 Td (03. Artificial Intelligence \(AI\) Technology Disclaimers) Tj ET
+BT /F1 9 Tf 50 193 Td (TechPath incorporates advanced generative AI models \(including Google Gemini and OpenAI architectures\).) Tj ET
+BT /F2 9.5 Tf 50 179.5 Td (Users must understand the technical nature and limitations of artificial intelligence:) Tj ET
+BT /F1 9 Tf 60 158 Td (- Inherent Probabilistic Output: AI models may generate factual inaccuracies, outdated programming) Tj ET
+BT /F1 9 Tf 50 144.5 Td (  syntax, mathematical errors, or hallucinations.) Tj ET
+BT /F1 9 Tf 60 131 Td (- Independent Verification Mandatory: TechPath is an educational assistant and does not guarantee the) Tj ET
+BT /F1 9 Tf 50 117.5 Td (  accuracy, completeness, suitability, or outcome of AI responses. Students must verify critical) Tj ET
+BT /F1 9 Tf 50 104 Td (  formulas, theorems, and code against authoritative textbooks and official university syllabi.) Tj ET
+BT /F1 9 Tf 60 90.5 Td (- Module Disclaimers: Applies to AI Doubt Solver, AI Copilot, PDF Analyzer, AI Notes, and Mock Interview.) Tj ET
+BT /F1 9 Tf 60 77 Td (- Non-Expert Advice: AI output does not constitute certified legal, medical, financial, or engineering counsel.) Tj ET
+BT /F1 8 Tf 50 760 Td (TechPath AI OS - Master Legal & Compliance Framework v2.4) Tj ET
+BT /F1 8 Tf 480 760 Td (Statutory Notice) Tj ET
+BT /F1 8 Tf 50 35 Td (Grievance Officer: lakkimsettirahulashokh@gmail.com | Hyderabad, India) Tj ET
+BT /F1 8 Tf 510 35 Td (Page 2 of 5) Tj ET
+endstream
+endobj
+9 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 10 0 R /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> >>
+endobj
+10 0 obj
+<< /Length 4719 >>
+stream
+BT /F2 12.5 Tf 50 720 Td (04. Uploaded PDF & Content Copyright Governance) Tj ET
+BT /F1 9 Tf 50 700 Td (The PDF Analyzer and AI Notes generator allow students to extract learning insights from study materials.) Tj ET
+BT /F1 9 Tf 60 678.5 Td (- No Ownership Transfer: Uploading documents DOES NOT transfer copyright ownership to TechPath. TechPath) Tj ET
+BT /F1 9 Tf 50 665 Td (  acquires no proprietary claims over student materials and has no right to resell or redistribute them.) Tj ET
+BT /F1 9 Tf 60 651.5 Td (- User Warranty: Users warrant that they possess legal ownership, license, or valid fair-dealing rights.) Tj ET
+BT /F1 9 Tf 60 638 Td (- Indian Copyright Act 1957: Section 52\(1\)\(a\)\(i\) permits fair dealing for private study, non-commercial) Tj ET
+BT /F1 9 Tf 50 624.5 Td (  research, and academic instruction. TechPath is engineered strictly to support individual research.) Tj ET
+BT /F1 9 Tf 60 611 Td (- Ephemeral Retention: Uploaded documents are parsed in temporary memory and are never made public.) Tj ET
+BT /F1 9 Tf 60 597.5 Td (- Notice and Takedown: Copyright holders may submit infringement notifications to:) Tj ET
+BT /F1 9 Tf 50 584 Td (  lakkimsettirahulashokh@gmail.com. We acknowledge receipt within 24-48 hours and act promptly.) Tj ET
+BT /F2 12.5 Tf 50 555.5 Td (05. Third-Party Content, Links & YouTube Attribution) Tj ET
+BT /F2 9.5 Tf 50 535.5 Td (TechPath references third-party educational resources to enrich undergraduate study pathways:) Tj ET
+BT /F1 9 Tf 60 514 Td (- YouTube Video Player: External video lectures in LearnHub are embedded directly from YouTube via the) Tj ET
+BT /F1 9 Tf 50 500.5 Td (  official player in compliance with YouTube Developer Terms. TechPath does not host or pirate video files.) Tj ET
+BT /F1 9 Tf 60 487 Td (- No Implied Affiliation: Mentions of universities \(IITs, MIT, Stanford\) or corporate certifications) Tj ET
+BT /F1 9 Tf 50 473.5 Td (  do not constitute endorsement, official sponsorship, or commercial affiliation.) Tj ET
+BT /F1 9 Tf 60 460 Td (- Authentic Hyperlinks: TechPath only provides verified links and never fabricates false references.) Tj ET
+BT /F2 12.5 Tf 50 431.5 Td (06. User Reviews & Community Standards) Tj ET
+BT /F2 9.5 Tf 50 411.5 Td (TechPath features peer reviews to guide students across technical modules and career paths:) Tj ET
+BT /F1 9 Tf 60 390 Td (- Truthful Representation: Reviews must reflect authentic, verifiable student experiences.) Tj ET
+BT /F1 9 Tf 60 376.5 Td (- Prohibited Submissions: Defamatory, abusive, obscene, harassing, or commercial spam will be removed.) Tj ET
+BT /F1 9 Tf 60 363 Td (- Moderation Authority: Platform administrators reserve the right to review and remove violating content.) Tj ET
+BT /F1 9 Tf 60 349.5 Td (- Public Attribution: Submitting a review confirms consent to display chosen name, branch, and rating.) Tj ET
+BT /F2 12.5 Tf 50 321 Td (07. Advertising & Sponsored Content Transparency) Tj ET
+BT /F2 9.5 Tf 50 301 Td (Where commercial advertisements or sponsored educational resources appear on the platform:) Tj ET
+BT /F1 9 Tf 60 279.5 Td (- Clear Labeling: All sponsored units are clearly marked with 'Sponsored' or 'Ad' labels.) Tj ET
+BT /F1 9 Tf 60 266 Td (- No Disguised Ads: Advertisements will never be disguised as academic curricula or mandatory coursework.) Tj ET
+BT /F1 9 Tf 60 252.5 Td (- Zero Artificial Clicks: Platform operators and users must not artificially click ads or deploy click-bots.) Tj ET
+BT /F1 9 Tf 60 239 Td (- Policy Compliance: Ad operations adhere to Google AdSense guidelines and Indian advertising standards.) Tj ET
+BT /F2 12.5 Tf 50 210.5 Td (08. Cookies, Local Storage & Telemetry Notice) Tj ET
+BT /F2 9.5 Tf 50 190.5 Td (TechPath prioritizes client-side data isolation over intrusive tracking:) Tj ET
+BT /F1 9 Tf 60 169 Td (- Essential Tokens: Secure cryptographic session tokens stored to maintain authenticated login sessions.) Tj ET
+BT /F1 9 Tf 60 155.5 Td (- Client Preferences: LocalStorage keys preserving dark mode, 3D WebGL motion, and sidebar states.) Tj ET
+BT /F1 9 Tf 60 142 Td (- Study Stopwatch: Local timestamps caching study duration counters across accidental browser reloads.) Tj ET
+BT /F1 9 Tf 60 128.5 Td (- Zero Covert Tracking: TechPath does not sell tracking cookies, device fingerprints, or ad identifiers.) Tj ET
+BT /F1 9 Tf 60 115 Td (- User Control: Students may wipe client storage at any time via browser settings.) Tj ET
+BT /F1 8 Tf 50 760 Td (TechPath AI OS - Master Legal & Compliance Framework v2.4) Tj ET
+BT /F1 8 Tf 480 760 Td (Statutory Notice) Tj ET
+BT /F1 8 Tf 50 35 Td (Grievance Officer: lakkimsettirahulashokh@gmail.com | Hyderabad, India) Tj ET
+BT /F1 8 Tf 510 35 Td (Page 3 of 5) Tj ET
+endstream
+endobj
+11 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 12 0 R /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> >>
+endobj
+12 0 obj
+<< /Length 4452 >>
+stream
+BT /F2 12.5 Tf 50 720 Td (09. Account Deletion, Erasure & Retention Framework) Tj ET
+BT /F2 9.5 Tf 50 700 Td (Students hold the statutory right to erase their accounts and purge all associated personal data:) Tj ET
+BT /F1 9 Tf 60 678.5 Td (- Deletion Process: Send an email from your registered address to lakkimsettirahulashokh@gmail.com) Tj ET
+BT /F1 9 Tf 50 665 Td (  with the subject 'Permanent Account Erasure Request'.) Tj ET
+BT /F1 9 Tf 60 651.5 Td (- Backend Execution: Upon verification, profile records, saved study packs, and avatars are permanently) Tj ET
+BT /F1 9 Tf 50 638 Td (  purged from PostgreSQL database storage within thirty \(30\) days.) Tj ET
+BT /F1 9 Tf 60 624.5 Td (- Statutory Retention Exceptions: Minimal audit logs or dispute records are retained only where mandated) Tj ET
+BT /F1 9 Tf 50 611 Td (  by statutory tax, security incident reporting, or cybersecurity laws.) Tj ET
+BT /F2 12.5 Tf 50 582.5 Td (10. Platform Security & Data Protection Architecture) Tj ET
+BT /F2 9.5 Tf 50 562.5 Td (TechPath employs a robust defense-in-depth architecture across all microservices:) Tj ET
+BT /F1 9 Tf 60 541 Td (- Row Level Security \(RLS\): PostgreSQL database tables enforce strict tenant isolation policies so) Tj ET
+BT /F1 9 Tf 50 527.5 Td (  students can access only their own records.) Tj ET
+BT /F1 9 Tf 60 514 Td (- Cryptography: HTTPS/TLS 1.3 encryption in transit and AES-256 encryption at rest.) Tj ET
+BT /F1 9 Tf 60 500.5 Td (- Zero Client API Keys: LLM provider secrets \(Gemini, OpenAI\) are strictly isolated on server runtimes.) Tj ET
+BT /F1 9 Tf 60 487 Td (- File Validation: Uploads are restricted by MIME type and size capped at 25MB.) Tj ET
+BT /F1 9 Tf 60 473.5 Td (- Vulnerability Reporting: Responsible researchers may report issues to lakkimsettirahulashokh@gmail.com.) Tj ET
+BT /F2 12.5 Tf 50 445 Td (11. Statutory Grievance Redressal Mechanism & Officer) Tj ET
+BT /F1 9 Tf 50 425 Td (Pursuant to Rule 3\(2\) of the Information Technology Intermediary Rules, 2021, and Section 13 of the) Tj ET
+BT /F2 9.5 Tf 50 411.5 Td (DPDP Act, 2023, TechPath has appointed a designated Grievance Officer:) Tj ET
+BT /F1 9 Tf 60 390 Td (- Grievance Officer: Rahul Ashok Lakkimsetti) Tj ET
+BT /F1 9 Tf 60 376.5 Td (- Role: Lead Administrator & Data Protection Custodian) Tj ET
+BT /F1 9 Tf 60 363 Td (- Official Desk: lakkimsettirahulashokh@gmail.com) Tj ET
+BT /F1 9 Tf 60 349.5 Td (- Jurisdiction: Andhra Pradesh / Hyderabad, India) Tj ET
+BT /F1 9 Tf 60 336 Td (- Service Level Agreements \(SLAs\): Formal acknowledgement within 24 to 48 hours; full investigation and) Tj ET
+BT /F1 9 Tf 50 322.5 Td (  redressal communicated in writing within 15 calendar days.) Tj ET
+BT /F1 9 Tf 60 309 Td (- Appellate Remedy: Appeals may be escalated to the Grievance Appellate Committee \(GAC\) or Data Protection Board.) Tj ET
+BT /F2 12.5 Tf 50 280.5 Td (12. Intellectual Property & Brand Protection) Tj ET
+BT /F2 9.5 Tf 50 260.5 Td (All original elements of TechPath are protected under intellectual property legislation:) Tj ET
+BT /F1 9 Tf 60 239 Td (- Proprietary Assets: TechPath brand name, logos, typography, visual layouts, and curriculum hierarchies.) Tj ET
+BT /F1 9 Tf 60 225.5 Td (- Code & Workflows: Source code, prompt pipelines, and IDE sandboxes are proprietary works.) Tj ET
+BT /F1 9 Tf 60 212 Td (- Restrictions: Unauthorized mirroring, decompilation, scraping, or commercial resale is prohibited.) Tj ET
+BT /F2 12.5 Tf 50 183.5 Td (13. Educational Outcomes, Career & Examination Disclaimers) Tj ET
+BT /F2 9.5 Tf 50 163.5 Td (TechPath provides learning roadmaps and examination preparation materials for guidance only:) Tj ET
+BT /F1 9 Tf 60 142 Td (- No Employment Guarantee: Mock interviews, roadmaps, and resume reviews do not guarantee jobs or placements.) Tj ET
+BT /F1 9 Tf 60 128.5 Td (- No Academic Marks Warranty: Passing scores, college GPAs, and certifications depend on university grading.) Tj ET
+BT /F1 9 Tf 60 115 Td (- Official Authority Verification: Exam dates, syllabus, and cutoffs for GATE, UPSC ESE, GRE, CAT, etc.,) Tj ET
+BT /F1 9 Tf 50 101.5 Td (  must always be confirmed directly with official conducting bodies.) Tj ET
+BT /F1 8 Tf 50 760 Td (TechPath AI OS - Master Legal & Compliance Framework v2.4) Tj ET
+BT /F1 8 Tf 480 760 Td (Statutory Notice) Tj ET
+BT /F1 8 Tf 50 35 Td (Grievance Officer: lakkimsettirahulashokh@gmail.com | Hyderabad, India) Tj ET
+BT /F1 8 Tf 510 35 Td (Page 4 of 5) Tj ET
+endstream
+endobj
+13 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 14 0 R /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> >>
+endobj
+14 0 obj
+<< /Length 890 >>
+stream
+BT /F2 12.5 Tf 50 720 Td (14. Children's Privacy, Minor Users & Age Eligibility) Tj ET
+BT /F2 9.5 Tf 50 700 Td (TechPath is engineered for undergraduate engineering, polytechnic, and university students:) Tj ET
+BT /F1 9 Tf 60 678.5 Td (- Eligibility: Users must be at least 13 years old. Individuals under 13 are prohibited from registering.) Tj ET
+BT /F1 9 Tf 60 665 Td (- Minors 13-18: Must review and accept these terms with parental or legal guardian consent.) Tj ET
+BT /F1 9 Tf 60 651.5 Td (- Parental Inquiries: Guardians may contact lakkimsettirahulashokh@gmail.com for prompt account termination.) Tj ET
+BT /F1 8 Tf 50 760 Td (TechPath AI OS - Master Legal & Compliance Framework v2.4) Tj ET
+BT /F1 8 Tf 480 760 Td (Statutory Notice) Tj ET
+BT /F1 8 Tf 50 35 Td (Grievance Officer: lakkimsettirahulashokh@gmail.com | Hyderabad, India) Tj ET
+BT /F1 8 Tf 510 35 Td (Page 5 of 5) Tj ET
+endstream
+endobj
+xref
+0 15
+0000000000 65535 f 
+0000000010 00000 n 
+0000000062 00000 n 
+0000000148 00000 n 
+0000000248 00000 n 
+0000000353 00000 n 
+0000000492 00000 n 
+0000002188 00000 n 
+0000002327 00000 n 
+0000007667 00000 n 
+0000007807 00000 n 
+0000012583 00000 n 
+0000012724 00000 n 
+0000017233 00000 n 
+0000017374 00000 n 
+trailer
+<< /Size 15 /Root 1 0 R >>
+startxref
+18320
+%%EOF
