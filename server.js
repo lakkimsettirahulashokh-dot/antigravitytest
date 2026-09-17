@@ -2537,9 +2537,10 @@ function getCorsOrigin(req) {
     return appUrl || allowedList[0] || `http://localhost:${PREFERRED_PORT}`;
 }
 
-function startServer(port, attemptsLeft = 5) {
-    const server = http.createServer(async (req, res) => {
-        try {
+let activePort = PREFERRED_PORT;
+
+async function requestHandler(req, res) {
+    try {
             const corsOrigin = getCorsOrigin(req);
 
             // Intercept res.writeHead to dynamically bind CORS origin, credentials, and Vary: Origin
@@ -2615,7 +2616,7 @@ function startServer(port, attemptsLeft = 5) {
                     (process.env.GEMINI_API_KEY && !process.env.GEMINI_API_KEY.includes('your_gemini'))
                 );
                 const hasRemoteSupabase = Boolean(process.env.SUPABASE_URL && !process.env.SUPABASE_URL.includes('your-project-id'));
-                const publicSupabaseUrl = hasRemoteSupabase ? process.env.SUPABASE_URL : `http://localhost:${port}`;
+                const publicSupabaseUrl = hasRemoteSupabase ? process.env.SUPABASE_URL : `http://localhost:${activePort}`;
                 const publicSupabaseKey = hasRemoteSupabase ? process.env.SUPABASE_ANON_KEY : 'btechpath-local-anon-key';
 
                 res.writeHead(200, {
@@ -2626,7 +2627,7 @@ function startServer(port, attemptsLeft = 5) {
                 res.end(JSON.stringify({
                     supabaseUrl: publicSupabaseUrl,
                     supabaseAnonKey: publicSupabaseKey,
-                    appUrl: (req.headers && req.headers.host ? `${req.headers['x-forwarded-proto'] || 'http'}://${req.headers.host}` : (process.env.APP_URL || `http://localhost:${port}`)),
+                    appUrl: (req.headers && req.headers.host ? `${req.headers['x-forwarded-proto'] || 'http'}://${req.headers.host}` : (process.env.APP_URL || `http://localhost:${activePort}`)),
                     isSupabaseConfigured: true,
                     isAIConfigured: isAIConfigured,
                     aiProvider: process.env.OPENROUTER_API_KEY ? 'OpenRouter Cloud AI' : 'Gemini AI',
@@ -2692,7 +2693,7 @@ function startServer(port, attemptsLeft = 5) {
             // 0. OAUTH AUTHORIZE: GET /auth/v1/authorize
             if (pathname === '/auth/v1/authorize' && req.method === 'GET') {
                 const provider = parsedUrl.searchParams.get('provider') || 'google';
-                const redirectTo = parsedUrl.searchParams.get('redirect_to') || `http://localhost:${port}/auth/callback`;
+                const redirectTo = parsedUrl.searchParams.get('redirect_to') || `http://localhost:${activePort}/auth/callback`;
                 
                 // For development/mock Gotrue: generate a mock Google student or use default user
                 let oauthUser = MASTER_USERS.find(u => u.email === 'alex.rivera@btechpath.ai');
@@ -3066,7 +3067,7 @@ function startServer(port, attemptsLeft = 5) {
                 }
                 const body = await parseBody(req);
                 const email = (body.email || '').trim().toLowerCase();
-                const defaultRedirect = (process.env.APP_URL || `http://localhost:${port}`) + '/reset-password';
+                const defaultRedirect = (process.env.APP_URL || `http://localhost:${activePort}`) + '/reset-password';
                 const redirectTo = body.redirect_to || defaultRedirect;
                 const user = MASTER_USERS.find(u => u.email === email);
                 let recoveryUrl = null;
@@ -11256,8 +11257,12 @@ Format as strict JSON:
                 }));
             }
         }
-    });
+    }
 
+const server = http.createServer(requestHandler);
+
+function startServer(port = PREFERRED_PORT, attemptsLeft = 5) {
+    activePort = port;
     server.on('error', (err) => {
         if (err.code === 'EADDRINUSE' && attemptsLeft > 0) {
             console.log(`Port ${port} in use, trying port ${port + 1}...`);
@@ -11280,23 +11285,30 @@ Format as strict JSON:
         console.log('  🛑 Press Ctrl+C in this terminal to stop the server');
         console.log('========================================================');
 
-        if (process.platform === 'win32') {
-            exec(`start ${localUrl}`, () => {});
-        } else if (process.platform === 'darwin') {
-            exec(`open ${localUrl}`, () => {});
-        } else {
-            exec(`xdg-open ${localUrl}`, () => {});
+        if (process.env.NODE_ENV !== 'production' && !process.env.VERCEL) {
+            if (process.platform === 'win32') {
+                exec(`start ${localUrl}`, () => {});
+            } else if (process.platform === 'darwin') {
+                exec(`open ${localUrl}`, () => {});
+            } else {
+                exec(`xdg-open ${localUrl}`, () => {});
+            }
         }
     });
+    return server;
 }
 
 if (require.main === module) {
     startServer(PREFERRED_PORT);
 }
 
-module.exports = {
-    startServer,
-    validateEnv,
-    getCorsOrigin,
-    checkRateLimit
-};
+// Vercel Serverless Function & Node.js Exports
+// The default export MUST be a function (req, res) or an http.Server instance.
+module.exports = requestHandler;
+module.exports.default = requestHandler;
+module.exports.server = server;
+module.exports.requestHandler = requestHandler;
+module.exports.startServer = startServer;
+module.exports.validateEnv = validateEnv;
+module.exports.getCorsOrigin = getCorsOrigin;
+module.exports.checkRateLimit = checkRateLimit;

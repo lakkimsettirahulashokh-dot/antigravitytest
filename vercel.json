@@ -1,0 +1,67 @@
+{
+  "version": 2,
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "rewrites": [
+    { "source": "/api", "destination": "/server.js" },
+    { "source": "/api/:path*", "destination": "/server.js" },
+    { "source": "/auth/:path*", "destination": "/server.js" },
+    { "source": "/rest/:path*", "destination": "/server.js" },
+    { "source": "/storage/:path*", "destination": "/server.js" },
+    { "source": "/learnhub", "destination": "/learn.html" },
+    { "source": "/project-hub", "destination": "/projects.html" },
+    { "source": "/skill-hub", "destination": "/skills.html" },
+    { "source": "/resume", "destination": "/resume-builder.html" },
+    { "source": "/exam-tracker", "destination": "/exams.html" }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        },
+        {
+          "key": "X-XSS-Protection",
+          "value": "1; mode=block"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        }
+      ]
+    },
+    {
+      "source": "/assets/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/css/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400, stale-while-revalidate=604800"
+        }
+      ]
+    },
+    {
+      "source": "/js/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400, stale-while-revalidate=604800"
+        }
+      ]
+    }
+  ]
+}
