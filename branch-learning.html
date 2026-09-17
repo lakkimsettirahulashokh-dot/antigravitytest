@@ -4,6 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Specialized Branch Learning | TechPath</title>
+    <meta name="description" content="Explore specialized engineering branch learning tracks, subject modules, and curriculum resources for all B.Tech branches.">
+    <link rel="canonical" href="https://techpath.app/branch-learning.html">
+    <meta name="theme-color" content="#0B0F19">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="manifest" href="manifest.json">
     <link rel="icon" type="image/png" href="assets/branding/techpath-emblem.png">
     
     <!-- Google Fonts & Material Symbols -->
@@ -12,9 +19,24 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     
-    <!-- Tailwind CSS Output -->
+    <!-- Tailwind CSS Output & Motion System -->
     <link rel="stylesheet" href="css/tailwind.output.css">
+    <link rel="stylesheet" href="css/motion.css">
+    <script src="js/motion.js" defer></script>
     <script src="js/seo-metadata.js" defer></script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Course",
+      "name": "B.Tech Specialized Engineering Branch Tracks",
+      "description": "Comprehensive curriculum and branch-specific study paths for CSE, ECE, EIE, MECH, CIVIL, and AI/ML.",
+      "provider": {
+        "@type": "EducationalOrganization",
+        "name": "TechPath AI OS",
+        "url": "https://techpath.app"
+      }
+    }
+    </script>
 
     <style>
         body {
@@ -43,7 +65,7 @@
         }
     </style>
 </head>
-<body class="min-h-screen flex flex-col md:flex-row overflow-hidden antialiased">
+<body class="bg-[#07090E] text-[#F5F7FA] min-h-screen flex flex-col md:flex-row antialiased selection:bg-[#5865F2] selection:text-white">
 
     <!-- Mobile Header -->
     <div class="md:hidden flex items-center justify-between p-4 bg-[#0B0F19] border-b border-[#2A3147] z-50">
@@ -51,13 +73,15 @@
             <img src="assets/branding/techpath-emblem.png" alt="TechPath" class="h-7 w-auto">
             <span class="font-bold text-sm tracking-tight text-white">TechPath</span>
         </a>
-        <button onclick="document.getElementById('main-sidebar').classList.toggle('-translate-x-full')" class="p-2 rounded-lg bg-[#1A2031] text-[#A1A7BC]">
+        <button id="mobile-menu-btn" onclick="const s = document.getElementById('main-sidebar'), o = document.getElementById('mobile-sidebar-overlay'); s.classList.toggle('-translate-x-full'); if (o) o.classList.toggle('hidden');" class="p-2 rounded-lg bg-[#1A2031] text-[#A1A7BC]">
             <span class="material-symbols-outlined">menu</span>
         </button>
     </div>
 
+    <div id="mobile-sidebar-overlay" onclick="document.getElementById('main-sidebar').classList.add('-translate-x-full'); this.classList.add('hidden');" class="fixed inset-0 bg-black/60 z-30 hidden md:hidden"></div>
+
     <!-- SIDEBAR NAVIGATION -->
-    <aside id="main-sidebar" class="w-64 bg-[#0B0F19] border-r border-[#2A3147] flex flex-col justify-between shrink-0 z-40 fixed md:static inset-y-0 left-0 -translate-x-full md:translate-x-0 transition-transform duration-300">
+    <aside id="main-sidebar" class="w-64 bg-[#0B0F19] border-r border-[#2A3147] flex flex-col justify-between shrink-0 z-40 fixed md:sticky md:top-0 md:h-screen inset-y-0 left-0 -translate-x-full md:translate-x-0 transition-transform duration-300">
         <div>
             <div class="h-20 px-6 flex items-center justify-between border-b border-[#2A3147]">
                 <a href="index.html" class="flex items-center gap-3 group py-1" aria-label="TechPath Home">
@@ -139,7 +163,7 @@
     </aside>
 
     <!-- MAIN SCROLLABLE CONTENT -->
-    <main class="flex-1 flex flex-col h-screen overflow-y-auto">
+    <main class="flex-1 flex flex-col min-w-0">
         <!-- Top Sticky Header -->
         <header class="h-16 px-6 bg-[#0B0F19]/80 backdrop-blur-md border-b border-[#2A3147] flex items-center justify-between shrink-0 sticky top-0 z-30">
             <div class="flex items-center gap-3">

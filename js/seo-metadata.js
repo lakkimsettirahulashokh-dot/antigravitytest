@@ -537,6 +537,76 @@ function applyPageMetadata(identifier) {
     setMeta('name', 'twitter:title', meta.ogTitle || meta.title);
     setMeta('name', 'twitter:description', meta.ogDescription || meta.description);
     setMeta('name', 'twitter:image', meta.ogImage || DEFAULT_OG_IMAGE);
+
+    // Schema.org JSON-LD Structured Data
+    injectSchemaMarkup(meta);
+}
+
+/**
+ * Injects Schema.org JSON-LD Structured Data for rich search snippets
+ */
+function injectSchemaMarkup(meta) {
+    if (typeof document === 'undefined') return;
+    let schemaScript = document.getElementById('techpath-schema-jsonld');
+    if (!schemaScript) {
+        schemaScript = document.createElement('script');
+        schemaScript.id = 'techpath-schema-jsonld';
+        schemaScript.type = 'application/ld+json';
+        document.head.appendChild(schemaScript);
+    }
+
+    const schemaData = {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "EducationalOrganization",
+                "@id": `${CANONICAL_ORIGIN}/#organization`,
+                "name": SITE_NAME,
+                "url": CANONICAL_ORIGIN,
+                "logo": `${CANONICAL_ORIGIN}/assets/branding/techpath-logo-horizontal.png`,
+                "sameAs": [
+                    "https://github.com"
+                ],
+                "description": "Educational technology platform for undergraduate engineering students."
+            },
+            {
+                "@type": "WebSite",
+                "@id": `${CANONICAL_ORIGIN}/#website`,
+                "url": CANONICAL_ORIGIN,
+                "name": SITE_NAME,
+                "publisher": {
+                    "@id": `${CANONICAL_ORIGIN}/#organization`
+                },
+                "potentialAction": {
+                    "@type": "SearchAction",
+                    "target": `${CANONICAL_ORIGIN}/exams.html?q={search_term_string}`,
+                    "query-input": "required name=search_term_string"
+                }
+            },
+            {
+                "@type": "SoftwareApplication",
+                "name": "TechPath AI OS",
+                "operatingSystem": "Web, Android, iOS",
+                "applicationCategory": "EducationalApplication",
+                "offers": {
+                    "@type": "Offer",
+                    "price": "0",
+                    "priceCurrency": "INR"
+                }
+            }
+        ]
+    };
+
+    schemaScript.textContent = JSON.stringify(schemaData, null, 2);
+}
+
+// Auto-apply on browser DOM load
+if (typeof window !== 'undefined' && typeof document !== 'undefined') {
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => applyPageMetadata());
+    } else {
+        applyPageMetadata();
+    }
 }
 
 // Export for Node and Browser environments

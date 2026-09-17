@@ -151,14 +151,18 @@ const MIME_TYPES = {
     '.ogg':  'audio/ogg'
 };
 
-// 2. Helper to parse JSON request bodies
+// 2. Helper to parse JSON request bodies with route-specific size caps
 function parseBody(req) {
     return new Promise((resolve, reject) => {
         let body = '';
+        const url = req.url || '';
+        const isUploadRoute = url.includes('upload') || url.includes('pdf') || url.includes('ocr');
+        const maxBytes = isUploadRoute ? 25 * 1024 * 1024 : 2 * 1024 * 1024; // 25MB for files, 2MB for json
+
         req.on('data', chunk => {
             body += chunk.toString();
-            if (body.length > 35 * 1024 * 1024) { // 35MB limit for PDFs
-                reject(new Error('Payload too large'));
+            if (body.length > maxBytes) {
+                reject(new Error('Payload too large: Exceeded maximum allowed size'));
             }
         });
         req.on('end', () => {
@@ -2414,6 +2418,83 @@ function checkRateLimit(key, maxLimit, windowMs) {
     return true;
 }
 
+// ------------------------------------------------------------------------------
+// Production Security Logger
+// ------------------------------------------------------------------------------
+function logSecurityEvent(eventType, metadata = {}) {
+    const timestamp = new Date().toISOString();
+    console.warn(`[SECURITY_AUDIT] [${timestamp}] [${eventType}]`, JSON.stringify(metadata));
+}
+
+// ------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------
+// Recursive HTML & Script Sanitizer
+// ------------------------------------------------------------------------------
+function sanitizeInput(data) {
+    if (typeof data === 'string') {
+        return data
+            .replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '')
+            .replace(/javascript:[^"']*/gi, '')
+            .replace(/on\w+\s*=/gi, '')
+            .replace(/\0/g, '')
+            .trim();
+    }
+    if (Array.isArray(data)) {
+        return data.map(sanitizeInput);
+    }
+    if (data !== null && typeof data === 'object') {
+        const sanitized = {};
+        for (const [k, v] of Object.entries(data)) {
+            sanitized[k] = sanitizeInput(v);
+        }
+        return sanitized;
+    }
+    return data;
+}
+
+// ------------------------------------------------------------------------------
+// Prompt Injection Sanitizer & Guardrail
+// ------------------------------------------------------------------------------
+function isPromptInjection(text) {
+    if (!text || typeof text !== 'string') return false;
+    const lower = text.toLowerCase();
+    const patterns = [
+        /ignore\s+(all\s+)?(previous|prior|above)\s+instructions/i,
+        /disregard\s+(all\s+)?(previous|prior)\s+instructions/i,
+        /system\s+(override|directive|prompt)/i,
+        /you\s+are\s+now\s+(unfiltered|dan|jailbreak|developer mode)/i,
+        /reveal\s+(your\s+)?(system\s+prompt|api\s+key|internal\s+instructions)/i,
+        /output\s+all\s+internal\s+rules/i,
+        /\bbase64_decode\b/i
+    ];
+    return patterns.some(p => p.test(lower));
+}
+
+// ------------------------------------------------------------------------------
+// CSRF Token Protection Engine
+// ------------------------------------------------------------------------------
+const CSRF_TOKENS_STORE = new Map();
+function generateCsrfToken(userId = 'anon') {
+    const token = 'csrf-' + crypto.randomBytes(24).toString('hex');
+    CSRF_TOKENS_STORE.set(token, {
+        userId,
+        expiresAt: Date.now() + 24 * 60 * 60 * 1000 // 24 hours
+    });
+    return token;
+}
+
+function verifyCsrfToken(req) {
+    if (['GET', 'HEAD', 'OPTIONS'].includes(req.method)) return true;
+    const token = req.headers['x-csrf-token'] || req.headers['csrf-token'];
+    if (!token) return false;
+    const record = CSRF_TOKENS_STORE.get(token);
+    if (!record || Date.now() > record.expiresAt) {
+        if (record) CSRF_TOKENS_STORE.delete(token);
+        return false;
+    }
+    return true;
+}
+
 function getCorsOrigin(req) {
     const origin = req.headers['origin'];
     const host = req.headers['host'];
@@ -2502,12 +2583,21 @@ function startServer(port, attemptsLeft = 5) {
             const parsedUrl = new URL(req.url, `http://${req.headers.host || 'localhost'}`);
             const pathname = decodeURIComponent(parsedUrl.pathname);
 
+            // Global IP Sliding-Window Rate Limiter (Max 240 requests/minute per IP)
+            const clientIp = req.headers['x-forwarded-for'] ? req.headers['x-forwarded-for'].split(',')[0].trim() : (req.socket?.remoteAddress || '127.0.0.1');
+            if (!checkRateLimit('global_' + clientIp, 240, 60000)) {
+                logSecurityEvent('RATE_LIMIT_GLOBAL_EXCEEDED', { clientIp, pathname, method: req.method });
+                res.writeHead(429, { 'Content-Type': 'application/json', 'Retry-After': '60' });
+                res.end(JSON.stringify({ error: 'too_many_requests', message: 'Too many requests. Please wait a moment before trying again.' }));
+                return;
+            }
+
             // CORS Preflight
             if (req.method === 'OPTIONS') {
                 res.writeHead(204, {
                     'Access-Control-Allow-Origin': corsOrigin,
                     'Access-Control-Allow-Methods': 'GET, POST, PUT, PATCH, DELETE, OPTIONS',
-                    'Access-Control-Allow-Headers': 'Content-Type, Authorization, apikey, x-client-info, x-supabase-api-version, prefer, x-user-id',
+                    'Access-Control-Allow-Headers': 'Content-Type, Authorization, apikey, x-client-info, x-supabase-api-version, prefer, x-user-id, x-csrf-token',
                     'Access-Control-Allow-Credentials': 'true',
                     'Access-Control-Max-Age': '86400',
                     'Vary': 'Origin'
@@ -2543,6 +2633,55 @@ function startServer(port, attemptsLeft = 5) {
                     analyticsId: process.env.ANALYTICS_ID || null,
                     supportEmail: 'lakkimsettirahulashok@gmail.com'
                 }));
+                return;
+            }
+
+            // ------------------------------------------------------------------
+            // API ROUTE: /api/pricing (Server-Side Definitive Pricing)
+            // ------------------------------------------------------------------
+            if (pathname === '/api/pricing' && req.method === 'GET') {
+                res.writeHead(200, {
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': getCorsOrigin(req),
+                    'Access-Control-Allow-Credentials': 'true',
+                    'Cache-Control': 'public, max-age=3600'
+                });
+                res.end(JSON.stringify({
+                    currency: 'INR',
+                    tiers: [
+                        {
+                            id: 'student_free',
+                            name: 'Engineering Foundation',
+                            price: 0,
+                            interval: 'lifetime',
+                            features: ['All Branch Curricula', 'Curated Video Lectures', 'Basic Doubt Solving', '3 Mock Interviews']
+                        },
+                        {
+                            id: 'placement_pro',
+                            name: 'Campus Placement & GATE Pro',
+                            price: 499,
+                            interval: 'month',
+                            features: ['Unlimited AI Copilot & Derivations', 'Full Resume Gap Analysis', '50 Technical Mock Interviews', 'Unlimited Flashcards & PDF OCR']
+                        }
+                    ],
+                    updatedAt: '2026-09-16T10:00:00Z'
+                }));
+                return;
+            }
+
+            // ------------------------------------------------------------------
+            // API ROUTE: /api/csrf-token (Cryptographic CSRF Token Generator)
+            // ------------------------------------------------------------------
+            if (pathname === '/api/csrf-token' && req.method === 'GET') {
+                const authUser = verifyAuthToken(req);
+                const token = generateCsrfToken(authUser?.id || 'anon');
+                res.setHeader('Set-Cookie', `csrf_token=${token}; Path=/; HttpOnly; SameSite=Strict; Max-Age=86400`);
+                res.writeHead(200, {
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': getCorsOrigin(req),
+                    'Access-Control-Allow-Credentials': 'true'
+                });
+                res.end(JSON.stringify({ csrfToken: token }));
                 return;
             }
 
@@ -2881,14 +3020,17 @@ function startServer(port, attemptsLeft = 5) {
                     user.salt = crypto.randomBytes(16).toString('hex');
                     user.password_hash = hashPassword(body.password, user.salt);
 
-                    // Single-Use Recovery Token Enforcement: Invalidate recovery token immediately upon password update
-                    if (activeToken) {
-                        const session = MASTER_SESSIONS.get(activeToken);
-                        if (session && session.type === 'recovery') {
-                            MASTER_SESSIONS.delete(activeToken);
-                            REVOKED_TOKENS_STORE.add(activeToken);
+                    // Reset sessions across all devices upon password change
+                    for (const [tok, sess] of MASTER_SESSIONS.entries()) {
+                        if (sess.userId === user.id) {
+                            MASTER_SESSIONS.delete(tok);
+                            REVOKED_TOKENS_STORE.add(tok);
                         }
                     }
+                    // Issue a new fresh active session token for the current client
+                    const newClientToken = 'sb-sec-' + crypto.randomBytes(32).toString('hex');
+                    MASTER_SESSIONS.set(newClientToken, { userId: user.id, email: user.email, expiresAt: Date.now() + 7 * 24 * 3600 * 1000 });
+                    logSecurityEvent('PASSWORD_CHANGED_ALL_SESSIONS_REVOKED', { userId: user.id });
                 }
                 if (body.data) {
                     user.user_metadata = { ...(user.user_metadata || {}), ...body.data };
@@ -3539,6 +3681,12 @@ function startServer(port, attemptsLeft = 5) {
                     res.end(JSON.stringify({ success: false, error: 'Too many doubt solver requests. Please wait a moment before trying again.' }));
                     return;
                 }
+                if (!checkRateLimit('ai_cap_' + clientIp, 30, 3600000)) {
+                    logSecurityEvent('AI_QUOTA_EXCEEDED', { clientIp, pathname });
+                    res.writeHead(429, { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' });
+                    res.end(JSON.stringify({ success: false, error: 'Hourly AI request limit reached (30 queries/hour). Please wait before submitting more queries.' }));
+                    return;
+                }
                 const body = await parseBody(req);
                 const question = (body.question || '').trim();
                 const image = body.image || null;
@@ -3547,6 +3695,17 @@ function startServer(port, attemptsLeft = 5) {
                 const chatHistory = Array.isArray(body.chatHistory) ? body.chatHistory : [];
                 const userEmail = (body.userEmail || body.userId || 'alex.rivera@btechpath.ai').trim().toLowerCase();
                 const conversationId = body.conversationId || ('conv_' + Date.now());
+
+                // Security: Prompt injection prevention
+                if (question && isPromptInjection(question)) {
+                    logSecurityEvent('PROMPT_INJECTION_BLOCKED', { clientIp, question: question.substring(0, 100) });
+                    res.writeHead(400, { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' });
+                    res.end(JSON.stringify({
+                        success: false,
+                        error: 'Safety Guard: Prompt rejected due to prohibited instructions or system override attempt.'
+                    }));
+                    return;
+                }
 
                 // 1. Validation: At least question text or image must be provided
                 if (!question && !image) {
@@ -4248,11 +4407,30 @@ Return STRICT JSON only matching this exact schema:
             // API ROUTE: /api/ai/pdf-notes (Individual PDF Notes Decomposition)
             // ------------------------------------------------------------------
             if (pathname === '/api/ai/pdf-notes' && req.method === 'POST') {
+                const clientIp = req.headers['x-forwarded-for'] || req.socket?.remoteAddress || '127.0.0.1';
+                if (!checkRateLimit('ai_pdf_notes_' + clientIp, 20, 60000)) {
+                    res.writeHead(429, { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' });
+                    res.end(JSON.stringify({ success: false, error: 'Too many PDF notes generation requests. Please wait a moment.' }));
+                    return;
+                }
+                if (!checkRateLimit('ai_cap_' + clientIp, 30, 3600000)) {
+                    logSecurityEvent('AI_QUOTA_EXCEEDED', { clientIp, pathname });
+                    res.writeHead(429, { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' });
+                    res.end(JSON.stringify({ success: false, error: 'Hourly AI request limit reached. Please wait before submitting more queries.' }));
+                    return;
+                }
                 const body = await parseBody(req);
                 const fileName = body.file_name || body.fileName || 'Engineering Lecture Notes';
                 const extractedText = (body.extractedText || body.text || '').trim();
                 const mode = body.mode || 'detailed';
                 const structure = body.detectedStructure || detectPdfStructure(extractedText);
+
+                if (extractedText && isPromptInjection(extractedText.slice(0, 1000))) {
+                    logSecurityEvent('PROMPT_INJECTION_BLOCKED', { clientIp, fileName });
+                    res.writeHead(400, { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' });
+                    res.end(JSON.stringify({ success: false, error: 'Safety Guard: Document contains prohibited prompt injection patterns.' }));
+                    return;
+                }
 
                 if (!extractedText) {
                     res.writeHead(400, { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' });
@@ -4896,6 +5074,18 @@ JSON Schema:
             // API ROUTE: /api/ai/notes (Generate, Retrieve, Update, Delete AI Notes)
             // ------------------------------------------------------------------
             if (pathname === '/api/ai/notes' && req.method === 'POST') {
+                const clientIp = req.headers['x-forwarded-for'] || req.socket?.remoteAddress || '127.0.0.1';
+                if (!checkRateLimit('ai_notes_' + clientIp, 20, 60000)) {
+                    res.writeHead(429, { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' });
+                    res.end(JSON.stringify({ success: false, error: 'Too many notes generation requests. Please wait a moment.' }));
+                    return;
+                }
+                if (!checkRateLimit('ai_cap_' + clientIp, 30, 3600000)) {
+                    logSecurityEvent('AI_QUOTA_EXCEEDED', { clientIp, pathname });
+                    res.writeHead(429, { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' });
+                    res.end(JSON.stringify({ success: false, error: 'Hourly AI request limit reached. Please wait before submitting more queries.' }));
+                    return;
+                }
                 const body = await parseBody(req);
                 const userId = (req.headers['x-user-id'] || body.userId || body.user_id || 'guest_user').trim();
                 const documentId = (body.documentId || body.document_id || '').trim();
@@ -4909,6 +5099,13 @@ JSON Schema:
                 let extractedText = (body.extractedText || body.text || (document ? document.extracted_text : '') || '').trim();
                 let fileName = (body.fileName || body.file_name || (document ? document.file_name : 'Academic Document')).trim();
                 let structure = document ? document.detected_structure : detectPdfStructure(extractedText);
+
+                if (extractedText && isPromptInjection(extractedText.slice(0, 1000))) {
+                    logSecurityEvent('PROMPT_INJECTION_BLOCKED', { clientIp, fileName });
+                    res.writeHead(400, { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' });
+                    res.end(JSON.stringify({ success: false, error: 'Safety Guard: Document contains prohibited prompt injection instructions.' }));
+                    return;
+                }
 
                 if (!extractedText || extractedText.length < 30) {
                     res.writeHead(400, { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' });
@@ -9837,7 +10034,7 @@ Format as strict JSON:
                     success: true,
                     message: 'Sent successfully',
                     messageId: newMsg.id,
-                    supportEmail: 'lakkimsettirahulashok@gmail.com'
+                    supportEmail: 'lakkimsettirahulashokh@gmail.com'
                 }));
                 return;
             }

@@ -61,7 +61,7 @@
 
     <script src="js/seo-metadata.js" defer></script>
 </head>
-<body class="bg-main-bg text-warm-ivory h-screen flex flex-col antialiased selection:bg-indigo-brand selection:text-white overflow-hidden font-body-md">
+<body class="bg-main-bg text-warm-ivory min-h-screen lg:h-screen flex flex-col antialiased selection:bg-indigo-brand selection:text-white lg:overflow-hidden font-body-md">
 
     <div class="bg-ambient-glow no-print"></div>
 
@@ -108,7 +108,7 @@
     </header>
 
     <!-- Main Workspace (Split Screen) -->
-    <main class="flex-1 flex overflow-hidden p-3 sm:p-6 gap-6 max-w-[1650px] w-full mx-auto relative z-10">
+    <main class="flex-1 flex flex-col lg:flex-row overflow-y-auto lg:overflow-hidden p-3 sm:p-6 gap-6 max-w-[1650px] w-full mx-auto relative z-10">
         
         <!-- LEFT COLUMN: PDF Ingestion Queue & Processing Control -->
         <aside class="w-full lg:w-4/12 flex flex-col bg-midnight rounded-3xl border border-subtle-border shadow-2xl p-4 sm:p-5 space-y-4 shrink-0 overflow-hidden">

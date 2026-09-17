@@ -8,7 +8,7 @@ const path = require('path');
 const assert = require('assert');
 
 const BASE_URL = 'http://localhost:8080';
-const OFFICIAL_SUPPORT_EMAIL = 'lakkimsettirahulashok@gmail.com';
+const OFFICIAL_SUPPORT_EMAIL = 'lakkimsettirahulashokh@gmail.com';
 
 function request(method, pathUrl, headers = {}, body = null) {
     return new Promise((resolve, reject) => {
@@ -74,28 +74,28 @@ async function runTests() {
             const res = await request('GET', '/contact.html');
             assert.strictEqual(res.status, 200);
             assert(res.raw.includes(OFFICIAL_SUPPORT_EMAIL), 'contact.html must have official support email');
-            assert(!res.raw.includes('lakkimsettirahulashok@gmail.com'), 'No typos in contact.html');
+            assert(!res.raw.includes('lakkimsettirahulashokh@gmail.com'), 'No typos in contact.html');
         }),
 
         test('1.3 FAQs page contains official support email', async () => {
             const res = await request('GET', '/faqs.html');
             assert.strictEqual(res.status, 200);
             assert(res.raw.includes(OFFICIAL_SUPPORT_EMAIL), 'faqs.html must have official support email');
-            assert(!res.raw.includes('lakkimsettirahulashok@gmail.com'), 'No typos in faqs.html');
+            assert(!res.raw.includes('lakkimsettirahulashokh@gmail.com'), 'No typos in faqs.html');
         }),
 
         test('1.4 Terms page contains official support email', async () => {
             const res = await request('GET', '/terms.html');
             assert.strictEqual(res.status, 200);
             assert(res.raw.includes(OFFICIAL_SUPPORT_EMAIL), 'terms.html must have official support email');
-            assert(!res.raw.includes('lakkimsettirahulashok@gmail.com'), 'No typos in terms.html');
+            assert(!res.raw.includes('lakkimsettirahulashokh@gmail.com'), 'No typos in terms.html');
         }),
 
         test('1.5 Privacy Policy page contains official support email', async () => {
             const res = await request('GET', '/privacy-policy.html');
             assert.strictEqual(res.status, 200);
             assert(res.raw.includes(OFFICIAL_SUPPORT_EMAIL), 'privacy-policy.html must have official support email');
-            assert(!res.raw.includes('lakkimsettirahulashok@gmail.com'), 'No typos in privacy-policy.html');
+            assert(!res.raw.includes('lakkimsettirahulashokh@gmail.com'), 'No typos in privacy-policy.html');
         }),
 
         test('1.6 Reviews page footer contains official support email', async () => {

@@ -116,7 +116,7 @@ ALTER TABLE public.admin_role_assignments ENABLE ROW LEVEL SECURITY;
 DROP POLICY IF EXISTS "Admin reads role assignments" ON public.admin_role_assignments;
 CREATE POLICY "Admin reads role assignments" ON public.admin_role_assignments
     FOR SELECT USING (
-        LOWER(COALESCE(auth.jwt() ->> 'email', '')) IN ('rahulashokhlakkimsetty@gmail.com', 'lakkimsettirahulashokh@gmail.com', 'lakkimsettirahulashok@gmail.com')
+        LOWER(COALESCE(auth.jwt() ->> 'email', '')) IN ('rahulashokhlakkimsetty@gmail.com', 'lakkimsettirahulashokh@gmail.com', 'lakkimsettirahulashokh@gmail.com')
     );
 
 DROP POLICY IF EXISTS "No self-assignment" ON public.admin_role_assignments;
@@ -130,11 +130,11 @@ SECURITY DEFINER
 STABLE
 AS $$
   SELECT (
-    LOWER(COALESCE(auth.jwt() ->> 'email', '')) IN ('rahulashokhlakkimsetty@gmail.com', 'lakkimsettirahulashokh@gmail.com', 'lakkimsettirahulashok@gmail.com')
+    LOWER(COALESCE(auth.jwt() ->> 'email', '')) IN ('rahulashokhlakkimsetty@gmail.com', 'lakkimsettirahulashokh@gmail.com', 'lakkimsettirahulashokh@gmail.com')
     OR EXISTS (
       SELECT 1 FROM auth.users
       WHERE id = auth.uid()
-        AND LOWER(email) IN ('rahulashokhlakkimsetty@gmail.com', 'lakkimsettirahulashokh@gmail.com', 'lakkimsettirahulashok@gmail.com')
+        AND LOWER(email) IN ('rahulashokhlakkimsetty@gmail.com', 'lakkimsettirahulashokh@gmail.com', 'lakkimsettirahulashokh@gmail.com')
     )
     OR EXISTS (
       SELECT 1 FROM public.admin_role_assignments

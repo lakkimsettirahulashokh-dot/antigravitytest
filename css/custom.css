@@ -440,10 +440,21 @@ textarea.border-red-500 {
    ========================================================================== */
 
 /* 1. Global Viewport & Horizontal Overflow Protection */
-html, body {
-  max-width: 100vw;
-  overflow-x: hidden;
+html {
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+body {
+  max-width: 100%;
   position: relative;
+  min-height: 100%;
+}
+
+@supports not (overflow: clip) {
+  html {
+    overflow-x: hidden;
+  }
 }
 
 :root {
@@ -560,4 +571,45 @@ img[src*="techpath-emblem"] {
   backface-visibility: hidden;
   max-width: 100%;
 }
+
+/* 7. Comprehensive Overflow & Native Scrolling Engine */
+.overflow-auto { overflow: auto; }
+.overflow-hidden { overflow: hidden; }
+.overflow-clip { overflow: clip; }
+.overflow-visible { overflow: visible; }
+.overflow-scroll { overflow: scroll; }
+
+.overflow-x-auto { overflow-x: auto; }
+.overflow-y-auto { overflow-y: auto; }
+.overflow-x-hidden { overflow-x: hidden; }
+.overflow-y-hidden { overflow-y: hidden; }
+.overflow-x-clip { overflow-x: clip; }
+.overflow-y-clip { overflow-y: clip; }
+.overflow-x-visible { overflow-x: visible; }
+.overflow-y-visible { overflow-y: visible; }
+.overflow-x-scroll { overflow-x: scroll; }
+.overflow-y-scroll { overflow-y: scroll; }
+
+/* Responsive breakpoints for panel layouts */
+@media (min-width: 768px) {
+  .md\:overflow-hidden { overflow: hidden; }
+  .md\:overflow-auto { overflow: auto; }
+  .md\:overflow-y-auto { overflow-y: auto; }
+  .md\:overflow-x-auto { overflow-x: auto; }
+}
+
+@media (min-width: 1024px) {
+  .lg\:overflow-hidden { overflow: hidden; }
+  .lg\:overflow-auto { overflow: auto; }
+  .lg\:overflow-y-auto { overflow-y: auto; }
+  .lg\:overflow-x-auto { overflow-x: auto; }
+}
+
+/* Momentum Touch Scrolling for Mobile Devices */
+.overflow-y-auto,
+.overflow-x-auto,
+.overflow-auto {
+  -webkit-overflow-scrolling: touch;
+}
+
 

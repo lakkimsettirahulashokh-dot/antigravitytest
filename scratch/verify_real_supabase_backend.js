@@ -69,7 +69,7 @@ async function runTests() {
         const configRes = await makeRequest('/api/config');
         assert(configRes.statusCode === 200, 'Endpoint returns HTTP 200 OK');
         assert(configRes.body.supabaseUrl === 'https://kkdqahqcochicfvkfyan.supabase.co', 'Points to real Supabase project URL');
-        assert(configRes.body.supportEmail === 'lakkimsettirahulashok@gmail.com', 'Returns exact canonical support email (lakkimsettirahulashok@gmail.com)');
+        assert(configRes.body.supportEmail === 'lakkimsettirahulashokh@gmail.com', 'Returns exact canonical support email (lakkimsettirahulashokh@gmail.com)');
         assert(!configRes.raw.includes('service_role') && !configRes.raw.includes('SUPABASE_SERVICE_ROLE_KEY'), 'Never leaks service-role key or private secrets');
         assert(typeof configRes.body.supabaseAnonKey === 'string' && configRes.body.supabaseAnonKey.startsWith('eyJ'), 'Delivers safe public Supabase Anon JWT');
 

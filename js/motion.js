@@ -197,8 +197,6 @@ const MotionSystem = {
       const user = AuthManager.getUser();
       if (user) {
         user.xp = (user.xp || 3850) + 250;
-        AuthManager.setUser(user);
-        App.updateUserContext();
       }
     }
   },
@@ -214,9 +212,111 @@ const MotionSystem = {
         App.updateUserContext();
       }
     }
+  },
+
+  // 8. Universal Android Material Ripple Engine
+  initRippleEngine() {
+    document.addEventListener('pointerdown', (e) => {
+      // Only target atomic buttons and interactive controls, never cards or scrollable layout sections
+      const target = e.target.closest('button, a.btn, .tap-effect, .grad-indigo-btn, .btn-secondary, [role="button"]');
+      if (!target || target.disabled) return;
+
+      const rect = target.getBoundingClientRect();
+      const diameter = Math.max(rect.width, rect.height) * 2;
+      const radius = diameter / 2;
+
+      const ripple = document.createElement('span');
+      ripple.className = 'ripple-wave';
+      ripple.style.width = `${diameter}px`;
+      ripple.style.height = `${diameter}px`;
+      ripple.style.left = `${e.clientX - rect.left - radius}px`;
+      ripple.style.top = `${e.clientY - rect.top - radius}px`;
+
+      // Safe containment without affecting page scroll
+      const isCard = target.classList.contains('glass-card') || target.classList.contains('card');
+      if (isCard) return; // Do not alter overflow on card containers
+
+      if (getComputedStyle(target).position === 'static') {
+        target.style.position = 'relative';
+      }
+      if (getComputedStyle(target).overflow === 'visible') {
+        target.style.overflow = 'hidden';
+      }
+
+      target.appendChild(ripple);
+
+      setTimeout(() => {
+        if (ripple.parentNode) ripple.parentNode.removeChild(ripple);
+      }, 500);
+    }, { passive: true });
   }
 };
 
+// ==============================================================================
+// TechPath Universal Loading Skeleton Engine
+// ==============================================================================
+const TechPathSkeleton = {
+  renderCards(count = 3) {
+    return Array.from({ length: count }, () => `
+      <div class="skeleton-card space-y-4">
+        <div class="flex items-center gap-3">
+          <div class="skeleton skeleton-avatar"></div>
+          <div class="space-y-2 flex-1">
+            <div class="skeleton skeleton-text" style="width: 50%;"></div>
+            <div class="skeleton skeleton-text" style="width: 30%; height: 0.75em;"></div>
+          </div>
+        </div>
+        <div class="space-y-2 pt-2">
+          <div class="skeleton skeleton-text" style="width: 90%;"></div>
+          <div class="skeleton skeleton-text" style="width: 75%;"></div>
+          <div class="skeleton skeleton-text" style="width: 60%;"></div>
+        </div>
+        <div class="pt-4 flex items-center justify-between border-t border-[#2A3147]/50">
+          <div class="skeleton skeleton-button" style="width: 80px; height: 32px;"></div>
+          <div class="skeleton skeleton-button" style="width: 100px; height: 32px;"></div>
+        </div>
+      </div>
+    `).join('');
+  },
+
+  renderList(count = 4) {
+    return Array.from({ length: count }, () => `
+      <div class="p-4 rounded-2xl bg-[#121826] border border-[#2A3147] flex items-center justify-between gap-4">
+        <div class="flex items-center gap-3.5 flex-1">
+          <div class="skeleton skeleton-avatar" style="width: 36px; height: 36px;"></div>
+          <div class="space-y-1.5 flex-1">
+            <div class="skeleton skeleton-text" style="width: 45%;"></div>
+            <div class="skeleton skeleton-text" style="width: 25%; height: 0.7em;"></div>
+          </div>
+        </div>
+        <div class="skeleton skeleton-button" style="width: 90px; height: 32px;"></div>
+      </div>
+    `).join('');
+  },
+
+  attach(container, type = 'cards', count = 3) {
+    if (!container) return;
+    const el = typeof container === 'string' ? document.querySelector(container) : container;
+    if (!el) return;
+    if (type === 'cards') {
+      el.innerHTML = `<div class="skeleton-grid">${this.renderCards(count)}</div>`;
+    } else if (type === 'list') {
+      el.innerHTML = `<div class="space-y-3">${this.renderList(count)}</div>`;
+    }
+  }
+};
+
+window.TechPathSkeleton = TechPathSkeleton;
+
 document.addEventListener('DOMContentLoaded', () => {
   MotionSystem.init();
+  MotionSystem.initRippleEngine();
+
+  // Auto-fill any elements declared with data-skeleton
+  document.querySelectorAll('[data-skeleton]').forEach(el => {
+    const type = el.getAttribute('data-skeleton') || 'cards';
+    const count = parseInt(el.getAttribute('data-skeleton-count') || '3', 10);
+    TechPathSkeleton.attach(el, type, count);
+  });
 });
+

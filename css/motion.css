@@ -192,7 +192,130 @@
   transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-/* 11. Accessibility: Prefers Reduced Motion */
+/* 11. Universal Loading Skeletons */
+@keyframes skeleton-shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.skeleton {
+  background: linear-gradient(90deg, #1A2031 25%, #252D42 50%, #1A2031 75%);
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.5s infinite ease-in-out;
+  border-radius: 0.5rem;
+  color: transparent !important;
+  pointer-events: none;
+  user-select: none;
+}
+
+.skeleton-text {
+  height: 1em;
+  margin-bottom: 0.5em;
+  border-radius: 0.375rem;
+  display: block;
+}
+
+.skeleton-title {
+  height: 1.5em;
+  width: 60%;
+  margin-bottom: 0.75em;
+  border-radius: 0.5rem;
+}
+
+.skeleton-card {
+  min-height: 180px;
+  border-radius: 1.25rem;
+  border: 1px solid #2A3147;
+  padding: 1.5rem;
+  background: #121826;
+  position: relative;
+  overflow: hidden;
+}
+
+.skeleton-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 9999px;
+  flex-shrink: 0;
+}
+
+.skeleton-button {
+  height: 42px;
+  width: 130px;
+  border-radius: 0.75rem;
+}
+
+.skeleton-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.25rem;
+}
+
+/* 12. Native Android App Tap Feedback & Ripple */
+.tap-effect,
+button,
+a.btn,
+.grad-indigo-btn,
+.btn-secondary,
+.glass-card-interactive,
+[role="button"] {
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 0.12s cubic-bezier(0.2, 0, 0.2, 1), opacity 0.12s ease;
+  user-select: none;
+}
+
+.tap-effect:active,
+button:active:not(:disabled),
+a.btn:active,
+.grad-indigo-btn:active,
+.btn-secondary:active,
+.glass-card-interactive:active,
+[role="button"]:active {
+  transform: scale(0.965);
+  opacity: 0.92;
+}
+
+/* App-Like Mobile Viewport & Natural Scroll Physics */
+html {
+  -webkit-tap-highlight-color: transparent;
+  overscroll-behavior-y: auto;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  touch-action: pan-x pan-y;
+  overscroll-behavior-y: auto;
+}
+
+/* Android Ripple Helper */
+.ripple-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.ripple-wave {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.35) 0%, rgba(88, 101, 242, 0.2) 70%, transparent 100%);
+  transform: scale(0);
+  animation: ripple-spread 0.45s cubic-bezier(0.1, 0.8, 0.3, 1);
+  pointer-events: none;
+  z-index: 50;
+}
+
+@keyframes ripple-spread {
+  to {
+    transform: scale(3.5);
+    opacity: 0;
+  }
+}
+
+/* 13. Accessibility: Prefers Reduced Motion */
 @media (prefers-reduced-motion: reduce) {
   *, ::before, ::after {
     animation-duration: 0.01ms !important;
@@ -206,7 +329,8 @@
   .laser-scanner-line,
   .roadmap-energy-path,
   .roadmap-energy-path-active,
-  .streak-glow {
+  .streak-glow,
+  .skeleton {
     animation: none !important;
   }
 }

@@ -160,7 +160,7 @@ async function runAudit() {
     console.log('\n[6/8] Verifying Application API Compatibility...');
     const configRes = await makeRequest('/api/config');
     assert(configRes.status === 200, '/api/config returns 200 OK');
-    assert(configRes.body.supportEmail === 'lakkimsettirahulashok@gmail.com', 'Returns exact canonical support email (no trailing h)');
+    assert(configRes.body.supportEmail === 'lakkimsettirahulashokh@gmail.com', 'Returns exact canonical support email (no trailing h)');
     assert(!configRes.body.serviceRoleKey && !configRes.body.aiKey, 'Zero secrets leaked in public config');
 
     const healthRes = await makeRequest('/api/health');

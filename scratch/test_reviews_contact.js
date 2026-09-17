@@ -74,13 +74,13 @@ async function runTests() {
         const resReviews = await makeRequest('GET', '/reviews');
         assert(resReviews.status === 200, 'GET /reviews resolves with 200 OK');
         assert(resReviews.raw.includes('What Students Say About TechPath') || resReviews.raw.includes('What Students Say About BTechPath AI'), 'Reviews page contains expected heading');
-        assert(resReviews.raw.includes('lakkimsettirahulashok@gmail.com'), 'Reviews page contains support email');
+        assert(resReviews.raw.includes('lakkimsettirahulashokh@gmail.com'), 'Reviews page contains support email');
         assert(!resReviews.raw.includes('whatsapp') && !resReviews.raw.includes('wa.me'), 'Reviews page has NO WhatsApp numbers');
 
         const resContact = await makeRequest('GET', '/contact');
         assert(resContact.status === 200, 'GET /contact resolves with 200 OK');
         assert(resContact.raw.includes('Contact Us'), 'Contact page contains expected heading');
-        assert(resContact.raw.includes('lakkimsettirahulashok@gmail.com'), 'Contact page contains support email');
+        assert(resContact.raw.includes('lakkimsettirahulashokh@gmail.com'), 'Contact page contains support email');
         assert(!resContact.raw.includes('whatsapp') && !resContact.raw.includes('wa.me'), 'Contact page has NO WhatsApp numbers');
 
         // -------------------------------------------------------------
@@ -205,7 +205,7 @@ async function runTests() {
         });
         assert(resValidMsg.status === 201, 'POST /api/contact accepts valid inquiry (201 Created)');
         assert(resValidMsg.body.messageId, 'Response includes messageId');
-        assert(resValidMsg.body.supportEmail === 'lakkimsettirahulashok@gmail.com', 'Response confirms official support email');
+        assert(resValidMsg.body.supportEmail === 'lakkimsettirahulashokh@gmail.com', 'Response confirms official support email');
 
         const messageId = resValidMsg.body.messageId;
 

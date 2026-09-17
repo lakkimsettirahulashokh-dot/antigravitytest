@@ -19,6 +19,8 @@ const App = {
     this.setupMobileMenu();
     this.initCommandCenter();
     this.initLoadingExperience();
+    this.initPWA();
+    this.initTouchFeedback();
 
     window.addEventListener('btech:profile-updated', () => {
       this.updateUserContext();
@@ -382,10 +384,22 @@ const App = {
     const overlay = document.getElementById('mobile-sidebar-overlay');
     const mobileMenu = document.getElementById('mobile-menu');
 
+    const closeSidebar = () => {
+      if (sidebar) sidebar.classList.add('-translate-x-full');
+      if (overlay) overlay.classList.add('hidden');
+      document.body.style.overflow = '';
+    };
+
     if (menuBtn && sidebar) {
       menuBtn.addEventListener('click', () => {
-        sidebar.classList.toggle('-translate-x-full');
-        if (overlay) overlay.classList.toggle('hidden');
+        const isClosed = sidebar.classList.contains('-translate-x-full');
+        if (isClosed) {
+          sidebar.classList.remove('-translate-x-full');
+          if (overlay) overlay.classList.remove('hidden');
+          document.body.style.overflow = 'hidden';
+        } else {
+          closeSidebar();
+        }
       });
     } else if (menuBtn && mobileMenu) {
       menuBtn.addEventListener('click', () => {
@@ -394,11 +408,33 @@ const App = {
     }
 
     if (overlay && sidebar) {
-      overlay.addEventListener('click', () => {
-        sidebar.classList.add('-translate-x-full');
-        overlay.classList.add('hidden');
+      overlay.addEventListener('click', closeSidebar);
+    }
+
+    // Auto-close on nav link click in mobile view
+    if (sidebar) {
+      sidebar.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          if (window.innerWidth < 768) {
+            closeSidebar();
+          }
+        });
       });
     }
+
+    // Clear stale locks on resize or history navigation
+    window.addEventListener('resize', () => {
+      if (window.innerWidth >= 768 && document.body.style.overflow === 'hidden' && (!sidebar || sidebar.classList.contains('-translate-x-full'))) {
+        document.body.style.overflow = '';
+      }
+    }, { passive: true });
+
+    window.addEventListener('pageshow', () => {
+      document.body.style.overflow = '';
+    });
+    window.addEventListener('popstate', () => {
+      document.body.style.overflow = '';
+    });
   },
 
   // ========================================================================
@@ -485,6 +521,7 @@ const App = {
     if (!modal) return;
     if (modal.classList.contains('hidden')) {
       modal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
       const input = document.getElementById('command-search-input');
       if (input) {
         input.value = '';
@@ -499,6 +536,7 @@ const App = {
   closeCommandCenter() {
     const modal = document.getElementById('command-center-modal');
     if (modal) modal.classList.add('hidden');
+    document.body.style.overflow = '';
   },
 
   renderCommandResults(query) {
@@ -644,6 +682,82 @@ const App = {
       dialog.remove();
       if (onConfirm) onConfirm();
     };
+  },
+
+  // 13. Enterprise PWA Engine & Offline Sync
+  initPWA() {
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js')
+          .then((reg) => {
+            console.log('[PWA] Service Worker registered with scope:', reg.scope);
+          })
+          .catch((err) => {
+            console.warn('[PWA] Service Worker registration failed:', err);
+          });
+      });
+    }
+
+    // Android Install Prompt Hook
+    let deferredPrompt;
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      window.deferredPWAInstallPrompt = e;
+
+      // Check if user already dismissed install banner in this session
+      if (sessionStorage.getItem('pwa_install_dismissed')) return;
+
+      const installBtn = document.getElementById('pwa-install-banner-btn');
+      if (installBtn) {
+        installBtn.classList.remove('hidden');
+        installBtn.onclick = async () => {
+          if (deferredPrompt) {
+            deferredPrompt.prompt();
+            const { outcome } = await deferredPrompt.userChoice;
+            console.log('[PWA] User choice:', outcome);
+            deferredPrompt = null;
+          }
+        };
+      }
+    });
+
+    // Offline / Online Network Status Watchers
+    window.addEventListener('offline', () => {
+      if (window.AuthManager && typeof window.AuthManager.showToast === 'function') {
+        window.AuthManager.showToast('You are currently offline. Running from browser cache.', 'warning');
+      }
+    });
+
+    window.addEventListener('online', () => {
+      if (window.AuthManager && typeof window.AuthManager.showToast === 'function') {
+        window.AuthManager.showToast('Network connection restored.', 'success');
+      }
+    });
+  },
+
+  // 14. Native Android Touch Ripple & Tactile Feedback
+  initTouchFeedback() {
+    document.addEventListener('pointerdown', (e) => {
+      const target = e.target.closest('button, a.btn, .grad-indigo-btn, .tap-effect, [role="button"]');
+      if (!target) return;
+
+      const rect = target.getBoundingClientRect();
+      const ripple = document.createElement('span');
+      ripple.className = 'ripple-wave';
+      
+      const size = Math.max(rect.width, rect.height);
+      ripple.style.width = ripple.style.height = `${size}px`;
+      ripple.style.left = `${e.clientX - rect.left - size / 2}px`;
+      ripple.style.top = `${e.clientY - rect.top - size / 2}px`;
+
+      if (!target.classList.contains('ripple-container')) {
+        target.classList.add('ripple-container');
+      }
+
+      target.appendChild(ripple);
+      setTimeout(() => ripple.remove(), 600);
+    }, { passive: true });
   }
 };
 
