@@ -20,7 +20,7 @@ const { CurriculumDatabase, UNIVERSITIES } = require('./curriculum_database.js')
 const ideRunner = require('./scripts/ide_runner.js');
 const BranchSystem = require('./js/branches.js');
 
-const ROOT_DIR = path.resolve(__dirname);
+const ROOT_DIR = (process.env.VERCEL || process.env.AWS_LAMBDA_FUNCTION_NAME) ? process.cwd() : path.resolve(__dirname);
 const UPLOADS_BASE = (process.env.VERCEL || process.env.AWS_LAMBDA_FUNCTION_NAME) ? path.join('/tmp', 'uploads') : path.join(ROOT_DIR, 'uploads');
 
 // 1. Simple Native .env Loader
