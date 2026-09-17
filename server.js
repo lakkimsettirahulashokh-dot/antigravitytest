@@ -21,6 +21,7 @@ const ideRunner = require('./scripts/ide_runner.js');
 const BranchSystem = require('./js/branches.js');
 
 const ROOT_DIR = path.resolve(__dirname);
+const UPLOADS_BASE = (process.env.VERCEL || process.env.AWS_LAMBDA_FUNCTION_NAME) ? path.join('/tmp', 'uploads') : path.join(ROOT_DIR, 'uploads');
 
 // 1. Simple Native .env Loader
 function loadEnv() {
@@ -3230,7 +3231,7 @@ async function requestHandler(req, res) {
 
                 const safeBucket = path.basename(bucket);
                 const safeObjectPath = path.normalize(objectPath).replace(/^(\.\.[\/\\])+/, '');
-                const allowedBase = path.resolve(ROOT_DIR, 'uploads');
+                const allowedBase = path.resolve(UPLOADS_BASE);
                 const destFile = path.resolve(allowedBase, safeBucket, safeObjectPath);
 
                 if (!destFile.startsWith(allowedBase) || safeObjectPath.includes('..')) {
@@ -3241,8 +3242,12 @@ async function requestHandler(req, res) {
 
                 const rawBuf = await parseRawBuffer(req, 10 * 1024 * 1024);
                 const destDir = path.dirname(destFile);
-                fs.mkdirSync(destDir, { recursive: true });
-                fs.writeFileSync(destFile, rawBuf);
+                try {
+                    if (!fs.existsSync(destDir)) fs.mkdirSync(destDir, { recursive: true });
+                    fs.writeFileSync(destFile, rawBuf);
+                } catch (e) {
+                    console.warn('[Storage] Could not write destFile:', e.message);
+                }
 
                 const publicUrl = `/storage/v1/object/public/${safeBucket}/${safeObjectPath.replace(/\\/g, '/')}`;
                 const effectiveUserId = targetUserId || authUserId;
@@ -3576,10 +3581,14 @@ async function requestHandler(req, res) {
                     return;
                 }
 
-                const userUploadDir = path.join(ROOT_DIR, 'uploads', 'profile-images', userId);
-                fs.mkdirSync(userUploadDir, { recursive: true });
-                const filePath = path.join(userUploadDir, `profile-photo.${ext}`);
-                fs.writeFileSync(filePath, imgBuf);
+                const userUploadDir = path.join(UPLOADS_BASE, 'profile-images', userId);
+                try {
+                    if (!fs.existsSync(userUploadDir)) fs.mkdirSync(userUploadDir, { recursive: true });
+                    const filePath = path.join(userUploadDir, `profile-photo.${ext}`);
+                    fs.writeFileSync(filePath, imgBuf);
+                } catch (e) {
+                    console.warn('[Storage] Could not write user photo:', e.message);
+                }
 
                 const avatarUrl = `/storage/v1/object/public/profile-images/${userId}/profile-photo.${ext}?v=${Date.now()}`;
 
@@ -3624,7 +3633,7 @@ async function requestHandler(req, res) {
                     return;
                 }
 
-                const userUploadDir = path.join(ROOT_DIR, 'uploads', 'profile-images', userId);
+                const userUploadDir = path.join(UPLOADS_BASE, 'profile-images', userId);
                 if (fs.existsSync(userUploadDir)) {
                     ['profile-photo.jpg', 'profile-photo.png', 'profile-photo.webp'].forEach(f => {
                         const fp = path.join(userUploadDir, f);
@@ -10176,10 +10185,7 @@ Format as strict JSON:
             // Strict ownership isolation: auth.uid() === folder name
             // Supported formats: JPG/JPEG, PNG, WebP (Max: 5MB)
             // ==================================================================
-            const STORAGE_DIR = path.join(ROOT_DIR, 'uploads', 'profile-images');
-            if (!fs.existsSync(STORAGE_DIR)) {
-                fs.mkdirSync(STORAGE_DIR, { recursive: true });
-            }
+            const STORAGE_DIR = path.join(UPLOADS_BASE, 'profile-images');
 
             // A. Serve Public/Authenticated Storage Objects: GET /storage/v1/object/public/profile-images/* and GET /storage/v1/object/profile-images/*
             if ((pathname.startsWith('/storage/v1/object/public/profile-images/') || pathname.startsWith('/storage/v1/object/profile-images/')) && req.method === 'GET') {
@@ -10231,8 +10237,11 @@ Format as strict JSON:
                 }
 
                 const targetDir = path.join(STORAGE_DIR, targetUserId);
-                if (!fs.existsSync(targetDir)) {
-                    fs.mkdirSync(targetDir, { recursive: true });
+                try {
+                    if (!fs.existsSync(STORAGE_DIR)) fs.mkdirSync(STORAGE_DIR, { recursive: true });
+                    if (!fs.existsSync(targetDir)) fs.mkdirSync(targetDir, { recursive: true });
+                } catch (e) {
+                    console.warn('[Storage] Could not create targetDir:', e.message);
                 }
 
                 const rawBuffer = await parseRawBuffer(req, 6 * 1024 * 1024);
@@ -10253,7 +10262,11 @@ Format as strict JSON:
                 }
 
                 const destFile = path.join(STORAGE_DIR, safeSubPath);
-                fs.writeFileSync(destFile, fileBuffer);
+                try {
+                    fs.writeFileSync(destFile, fileBuffer);
+                } catch (e) {
+                    console.warn('[Storage] Could not write destFile:', e.message);
+                }
 
                 const publicUrl = `/storage/v1/object/public/profile-images/${safeSubPath.replace(/\\/g, '/')}`;
                 
@@ -10371,19 +10384,30 @@ Format as strict JSON:
                 }
 
                 const userDir = path.join(STORAGE_DIR, authUserId);
-                if (!fs.existsSync(userDir)) {
-                    fs.mkdirSync(userDir, { recursive: true });
+                try {
+                    if (!fs.existsSync(STORAGE_DIR)) fs.mkdirSync(STORAGE_DIR, { recursive: true });
+                    if (!fs.existsSync(userDir)) fs.mkdirSync(userDir, { recursive: true });
+                } catch (e) {
+                    console.warn('[Storage] Could not create userDir:', e.message);
                 }
 
                 // Clear any existing photos for this user
-                const existingFiles = fs.readdirSync(userDir);
-                for (const file of existingFiles) {
-                    try { fs.unlinkSync(path.join(userDir, file)); } catch (e) {}
+                if (fs.existsSync(userDir)) {
+                    try {
+                        const existingFiles = fs.readdirSync(userDir);
+                        for (const file of existingFiles) {
+                            try { fs.unlinkSync(path.join(userDir, file)); } catch (e) {}
+                        }
+                    } catch (e) {}
                 }
 
                 const fileName = `profile-photo.${ext}`;
                 const filePath = path.join(userDir, fileName);
-                fs.writeFileSync(filePath, buffer);
+                try {
+                    fs.writeFileSync(filePath, buffer);
+                } catch (e) {
+                    console.warn('[Storage] Could not write profile photo:', e.message);
+                }
 
                 const publicAvatarUrl = `/storage/v1/object/public/profile-images/${authUserId}/${fileName}?v=${Date.now()}`;
 
