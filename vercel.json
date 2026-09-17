@@ -1,19 +1,15 @@
 {
   "version": 2,
+  "buildCommand": null,
   "outputDirectory": ".",
   "cleanUrls": true,
   "trailingSlash": false,
-  "functions": {
-    "server.js": {
-      "includeFiles": "{css/**,js/**,assets/**,*.html,manifest.json,favicon.ico}"
-    }
-  },
   "rewrites": [
-    { "source": "/api", "destination": "/server.js" },
-    { "source": "/api/:path*", "destination": "/server.js" },
-    { "source": "/auth/:path*", "destination": "/server.js" },
-    { "source": "/rest/:path*", "destination": "/server.js" },
-    { "source": "/storage/:path*", "destination": "/server.js" },
+    { "source": "/api", "destination": "/api/index.js" },
+    { "source": "/api/:path*", "destination": "/api/index.js" },
+    { "source": "/auth/:path*", "destination": "/api/index.js" },
+    { "source": "/rest/:path*", "destination": "/api/index.js" },
+    { "source": "/storage/:path*", "destination": "/api/index.js" },
     { "source": "/learnhub", "destination": "/learn.html" },
     { "source": "/project-hub", "destination": "/projects.html" },
     { "source": "/skill-hub", "destination": "/skills.html" },
