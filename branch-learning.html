@@ -234,6 +234,98 @@
                 </div>
             </div>
 
+            <!-- Dedicated Holographic 3D Branch Visualization Stage -->
+            <div id="hologram-visual-card" class="glass-card rounded-3xl p-6 relative overflow-hidden border border-indigo-500/20 bg-gradient-to-b from-[#121826]/90 to-[#0B0F19]/95 shadow-2xl transition-all">
+                <div class="flex flex-col lg:flex-row items-center justify-between gap-6">
+                    <!-- 3D WebGL Canvas Stage -->
+                    <div class="relative w-full lg:w-1/2 h-72 sm:h-80 rounded-2xl overflow-hidden bg-[#07090E]/60 border border-indigo-500/20 flex items-center justify-center group">
+                        <div id="branch-hologram-stage" class="w-full h-full relative cursor-grab active:cursor-grabbing"></div>
+                        <!-- Live Hologram HUD Badges -->
+                        <div class="absolute top-3 left-3 flex items-center gap-2 pointer-events-none">
+                            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-indigo-500/20 text-indigo-300 border border-indigo-500/40 flex items-center gap-1.5">
+                                <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping"></span>
+                                <span id="holo-status-pill">HOLOGRAPHIC 3D TELEMETRY</span>
+                            </span>
+                        </div>
+                        <div class="absolute bottom-3 right-3 text-[10px] font-mono text-[#A1A7BC]/70 pointer-events-none">
+                            <span id="holo-rot-hint">Drag / Hover to Inspect Parallax</span>
+                        </div>
+                    </div>
+
+                    <!-- Dynamic Holographic Explanation & Fast Branch Switcher -->
+                    <div class="w-full lg:w-1/2 space-y-4">
+                        <div class="space-y-1.5">
+                            <div class="flex items-center gap-2">
+                                <span id="holo-branch-code-badge" class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 uppercase">
+                                    ECE SPEC
+                                </span>
+                                <span id="holo-discipline-title" class="text-xs font-mono text-[#A1A7BC]">
+                                    Solid-State Nanoelectronics
+                                </span>
+                            </div>
+                            <h2 id="holo-model-title" class="text-lg sm:text-xl font-bold text-white tracking-tight">
+                                Chips & Semiconductors: 3D Holographic Silicon Die
+                            </h2>
+                            <p id="holo-model-description" class="text-xs text-[#A1A7BC] leading-relaxed">
+                                Interactive engineering visualization of microchip package architecture, wafer fabrication boundaries, microscopic transistor junctions, and VLSI circuit traces.
+                            </p>
+                        </div>
+
+                        <!-- In-Page Reactive Branch & Semester Switcher -->
+                        <div class="p-4 rounded-2xl bg-[#0B0F19]/80 border border-[#2A3147] space-y-3">
+                            <div class="flex items-center justify-between text-xs">
+                                <span class="font-bold text-white flex items-center gap-1.5">
+                                    <span class="material-symbols-outlined text-sm text-indigo-400">swap_horiz</span>
+                                    <span>Instant Branch Switcher</span>
+                                </span>
+                                <span class="text-[10px] text-emerald-400 font-mono flex items-center gap-1">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                                    <span>Supabase Sync</span>
+                                </span>
+                            </div>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                                <div>
+                                    <label for="branch-quick-select" class="block text-[10px] font-mono text-[#A1A7BC] mb-1">ENGINEERING BRANCH</label>
+                                    <select id="branch-quick-select" onchange="BranchLearning.onSelectBranchChange(this.value)" class="w-full px-3 py-2 rounded-xl bg-[#121826] border border-[#2A3147] text-xs text-white focus:border-indigo-500 focus:outline-none transition-colors">
+                                        <option value="ECE">ECE — Chips & Semiconductors</option>
+                                        <option value="AUTO">Automobile — Automotive Engines</option>
+                                        <option value="MECH">Mechanical — Machinery & CAD</option>
+                                        <option value="EIE">EIE — Sensors & Industrial Automation</option>
+                                        <option value="EEE">EEE — Power Systems & Electrical Machines</option>
+                                        <option value="CSE">CSE — Computer Architecture & Cloud</option>
+                                        <option value="IT">IT — Network & Cloud Infrastructure</option>
+                                        <option value="AIML">AI & ML — Neural Networks & Tensors</option>
+                                        <option value="DS">Data Science — Data Pipelines & Analytics</option>
+                                        <option value="CIVIL">Civil — Structural Bridges & Construction</option>
+                                        <option value="CHEM">Chemical — Chemical Reactor & Process Plant</option>
+                                        <option value="BIOTECH">Biotechnology — DNA & Bioreactors</option>
+                                        <option value="BIOMED">Biomedical — Medical Devices & Signals</option>
+                                        <option value="AERO">Aerospace — Jet Engines & Propulsion</option>
+                                        <option value="MECHTRON">Mechatronics — Robotics & Automation</option>
+                                        <option value="ROBOTICS">Robotics — Industrial Manipulators</option>
+                                        <option value="MFG">Manufacturing — CNC & Machining Systems</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="semester-quick-select" class="block text-[10px] font-mono text-[#A1A7BC] mb-1">CURRENT SEMESTER</label>
+                                    <select id="semester-quick-select" onchange="BranchLearning.onSelectSemesterChange(this.value)" class="w-full px-3 py-2 rounded-xl bg-[#121826] border border-[#2A3147] text-xs text-white focus:border-indigo-500 focus:outline-none transition-colors">
+                                        <option value="1">Semester 1 (Fundamentals)</option>
+                                        <option value="2">Semester 2 (Applied Sciences)</option>
+                                        <option value="3">Semester 3 (Core Discipline)</option>
+                                        <option value="4">Semester 4 (Intermediate Core)</option>
+                                        <option value="5">Semester 5 (Advanced Design)</option>
+                                        <option value="6">Semester 6 (Specialized Topics)</option>
+                                        <option value="7">Semester 7 (Industrial Capstones)</option>
+                                        <option value="8">Semester 8 (Major Project & Career)</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- Tabbed Navigation Bar -->
             <div class="flex items-center gap-2 overflow-x-auto pb-2 border-b border-[#2A3147]">
                 <button onclick="BranchLearning.switchTab('curriculum')" id="tab-btn-curriculum" class="tab-btn active px-4 py-2.5 rounded-xl text-xs font-semibold flex items-center gap-2 border border-transparent transition-all shrink-0">
@@ -330,6 +422,8 @@
     <script src="js/study-tracker.js"></script>
     <script src="js/branches.js"></script>
     <script src="js/ads.js" defer></script>
+    <script src="js/three.min.js"></script>
+    <script src="js/branch-3d.js"></script>
     <script src="js/branch-learning.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', async () => {

@@ -107,7 +107,9 @@
 
             // 2. Detect local development vs production domain
             const hostname = window.location.hostname;
-            this.config.isDev = (hostname === 'localhost' || hostname === '127.0.0.1' || hostname === '' || window.location.protocol === 'file:');
+            const isProdDomain = (hostname === 'tech-path-six.vercel.app' || hostname === 'techpath.io' || hostname === 'www.techpath.io');
+            this.config.isDev = !isProdDomain;
+            this.config.testMode = !isProdDomain;
 
             // 3. Fetch remote configuration from server
             this.fetchConfig();

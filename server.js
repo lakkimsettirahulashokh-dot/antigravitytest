@@ -6819,18 +6819,16 @@ Return STRICT JSON only:
             // ------------------------------------------------------------------
             if (pathname === '/api/admin/check-role' && (req.method === 'GET' || req.method === 'POST')) {
                 const isAuthorized = await verifyAdminRequest(req, {});
-                const statusCode = isAuthorized ? 200 : 403;
-                res.writeHead(statusCode, {
+                res.writeHead(200, {
                     'Content-Type': 'application/json',
                     'Access-Control-Allow-Origin': '*',
                     'Cache-Control': 'no-store, no-cache, must-revalidate',
                     'X-Content-Type-Options': 'nosniff'
                 });
                 res.end(JSON.stringify({
+                    success: true,
                     authorized: isAuthorized,
-                    role: isAuthorized ? 'admin' : 'student',
-                    // Never return the admin password or service keys
-                    // Only confirm authorization status
+                    role: isAuthorized ? 'admin' : 'student'
                 }));
                 return;
             }
@@ -10680,25 +10678,48 @@ Format as strict JSON:
 
                 let catalog = {};
                 try {
-                    const catalogPath = path.join(__dirname, 'data', 'branch_learning_catalog.json');
-                    if (fs.existsSync(catalogPath)) {
-                        catalog = JSON.parse(fs.readFileSync(catalogPath, 'utf8'));
+                    const catalogCandidates = [
+                        path.join(ROOT_DIR, 'data', 'branch_learning_catalog.json'),
+                        path.join(ROOT_DIR, 'public', 'data', 'branch_learning_catalog.json'),
+                        path.join(__dirname, 'data', 'branch_learning_catalog.json'),
+                        path.join(process.cwd(), 'data', 'branch_learning_catalog.json')
+                    ];
+                    const foundPath = catalogCandidates.find(p => fs.existsSync(p));
+                    if (foundPath) {
+                        catalog = JSON.parse(fs.readFileSync(foundPath, 'utf8'));
                     }
                 } catch (e) {
                     console.error('[BranchLearning] Catalog load error:', e.message);
                 }
 
-                // Canonical resolution using BranchSystem
-                let resolvedKey = null;
-                const upper = branchQuery.toUpperCase();
-                const resolvedBranch = (typeof BranchSystem !== 'undefined' && BranchSystem.resolveBranch) 
-                    ? BranchSystem.resolveBranch(branchQuery) 
-                    : null;
+                // Canonical resolution using BranchSystem and Normalizer mapping
+                const NORM_SLUGS = {
+                    'ece': 'ECE', 'eie': 'EIE', 'eee': 'EEE', 'cse': 'CSE', 'it': 'IT',
+                    'ai-ml': 'AIML', 'aiml': 'AIML', 'ai': 'AIML', 'data-science': 'DS', 'ds': 'DS',
+                    'mechanical': 'MECH', 'mech': 'MECH', 'automobile': 'AUTO', 'auto': 'AUTO',
+                    'civil': 'CIVIL', 'chemical': 'CHEM', 'chem': 'CHEM',
+                    'biotechnology': 'BIOTECH', 'biotech': 'BIOTECH',
+                    'biomedical': 'BIOMED', 'biomed': 'BIOMED',
+                    'aerospace': 'AERO', 'aero': 'AERO', 'aeronaut': 'AERO',
+                    'mechatronics': 'MECHTRON', 'mechtron': 'MECHTRON',
+                    'robotics': 'ROBOTICS', 'manufacturing': 'MFG', 'mfg': 'MFG', 'ind': 'IND'
+                };
 
-                if (resolvedBranch && resolvedBranch.code) {
-                    resolvedKey = resolvedBranch.code;
-                } else if (catalog[upper]) {
-                    resolvedKey = upper;
+                let resolvedKey = null;
+                const cleanQuery = branchQuery.toLowerCase().trim();
+                const upper = branchQuery.toUpperCase().trim();
+
+                if (NORM_SLUGS[cleanQuery]) {
+                    resolvedKey = NORM_SLUGS[cleanQuery];
+                } else {
+                    const resolvedBranch = (typeof BranchSystem !== 'undefined' && BranchSystem.resolveBranch) 
+                        ? BranchSystem.resolveBranch(branchQuery) 
+                        : null;
+                    if (resolvedBranch && resolvedBranch.code) {
+                        resolvedKey = resolvedBranch.code;
+                    } else if (catalog[upper]) {
+                        resolvedKey = upper;
+                    }
                 }
 
                 // Strict branch content: only return specialization if matching branch exists

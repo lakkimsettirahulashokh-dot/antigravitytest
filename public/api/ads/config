@@ -1,0 +1,21 @@
+{
+  "success": true,
+  "config": {
+    "publisherId": "ca-pub-1234567890123456",
+    "enabled": true,
+    "placements": {
+      "dashboard_top": true,
+      "dashboard_sidebar": true,
+      "dashboard_bottom": true,
+      "learnhub_bottom": true,
+      "branch_learning_bottom": true
+    },
+    "slots": {
+      "dashboard_top": "1850538175",
+      "dashboard_sidebar": "1850538175",
+      "dashboard_bottom": "1850538175",
+      "learnhub_bottom": "1850538175",
+      "branch_learning_bottom": "1850538175"
+    }
+  }
+}

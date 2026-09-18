@@ -11,7 +11,7 @@ if (!fs.existsSync(PUBLIC)) {
 }
 
 // 1. Copy static directories
-const dirsToCopy = ['css', 'js', 'assets'];
+const dirsToCopy = ['css', 'js', 'assets', 'data'];
 for (const d of dirsToCopy) {
     const src = path.join(ROOT, d);
     const dest = path.join(PUBLIC, d);
@@ -21,13 +21,14 @@ for (const d of dirsToCopy) {
     }
 }
 
-// 2. Copy root files (HTML, favicon, manifest, etc.)
+// 2. Copy root files (HTML, favicon, manifest, sw.js, etc.)
 const rootFiles = fs.readdirSync(ROOT).filter(f => {
     return f.endsWith('.html') ||
            f === 'favicon.ico' ||
            f === 'manifest.json' ||
            f === 'robots.txt' ||
-           f === 'sitemap.xml';
+           f === 'sitemap.xml' ||
+           f === 'sw.js';
 });
 
 for (const file of rootFiles) {

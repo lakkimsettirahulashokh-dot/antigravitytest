@@ -1,11 +1,14 @@
 /**
  * ==============================================================================
- * BTechPath AI OS - Smart Branch-Specific Learning Controller
+ * BTechPath AI OS — Smart Branch-Specific Learning Controller & Engine
  * File: js/branch-learning.js
- * Description: Renders branch-specific specialized learning content based on
- *              user's canonical profile (ECE -> Chips & Semiconductors,
- *              Automobile -> Engines). Dynamically listens to btech:profile-updated
- *              to switch content instantaneously without page reload or logout.
+ * Description: High-performance, reactive branch-specific learning controller.
+ *              - Real Supabase profile single source of truth
+ *              - Instant live branch & semester switching without refresh or logout
+ *              - Complete cache invalidation & stale request cancellation (AbortController)
+ *              - Zero hardcoded ECE fallback; exact error & empty states
+ *              - 18+ Department normalization mapping
+ *              - Live integration with Three.js Holographic 3D Branch Engine
  * ==============================================================================
  */
 
@@ -16,45 +19,247 @@ const BranchLearning = {
     specialization: null,
     _currentRequestId: 0,
     _currentAbortController: null,
+    _isLoading: false,
+
+    // Exact normalized slug <-> canonical uppercase mapping per specification
+    BRANCH_NORM_MAP: {
+        'ece': 'ECE',
+        'eie': 'EIE',
+        'eee': 'EEE',
+        'cse': 'CSE',
+        'it': 'IT',
+        'ai-ml': 'AIML',
+        'aiml': 'AIML',
+        'ai': 'AIML',
+        'data-science': 'DS',
+        'ds': 'DS',
+        'mechanical': 'MECH',
+        'mech': 'MECH',
+        'automobile': 'AUTO',
+        'automobile engineering': 'AUTO',
+        'auto': 'AUTO',
+        'civil': 'CIVIL',
+        'chemical': 'CHEM',
+        'chem': 'CHEM',
+        'biotechnology': 'BIOTECH',
+        'biotech': 'BIOTECH',
+        'biomedical': 'BIOMED',
+        'biomed': 'BIOMED',
+        'aerospace': 'AERO',
+        'aero': 'AERO',
+        'aeronaut': 'AERO',
+        'mechatronics': 'MECHTRON',
+        'mechtron': 'MECHTRON',
+        'robotics': 'ROBOTICS',
+        'manufacturing': 'MFG',
+        'mfg': 'MFG',
+        'ind': 'IND'
+    },
+
+    // Reverse mapping: canonical uppercase -> normalized slug
+    SLUG_MAP: {
+        'ECE': 'ece',
+        'EIE': 'eie',
+        'EEE': 'eee',
+        'CSE': 'cse',
+        'IT': 'it',
+        'AIML': 'ai-ml',
+        'AI': 'ai-ml',
+        'DS': 'data-science',
+        'MECH': 'mechanical',
+        'AUTO': 'automobile',
+        'CIVIL': 'civil',
+        'CHEM': 'chemical',
+        'BIOTECH': 'biotechnology',
+        'BIOMED': 'biomedical',
+        'AERO': 'aerospace',
+        'AERONAUT': 'aerospace',
+        'MECHTRON': 'mechatronics',
+        'ROBOTICS': 'robotics',
+        'MFG': 'manufacturing',
+        'IND': 'manufacturing'
+    },
+
+    // 3D Holographic Visual metadata descriptions for each branch
+    HOLO_VISUAL_SPECS: {
+        'ECE': {
+            badge: 'Chips & Semiconductors',
+            discipline: 'Solid-State Nanoelectronics & VLSI',
+            title: 'Chips & Semiconductors: 3D Holographic Silicon Die',
+            description: 'Interactive visualization of modern semiconductor packaging, silicon wafer substrate, microscopic PN/CMOS junctions, wire bonds, and nanometer VLSI circuit traces.'
+        },
+        'AUTO': {
+            badge: 'Automotive Engines',
+            discipline: 'Powertrain & Mechanical Propulsion',
+            title: 'Automotive Engines: 3D Holographic IC Engine',
+            description: 'Reciprocating 4-cylinder engine architecture featuring moving pistons, connecting rods, counterweighted crankshaft, overhead camshafts, and dynamic combustion telemetry.'
+        },
+        'MECH': {
+            badge: 'Mechanical Engineering CAD',
+            discipline: 'Kinematics & Advanced Machinery',
+            title: 'CAD Machinery: 3D Planetary Gear Transmission',
+            description: 'Precision mechanical engineering gear train with rotating sun gear, planetary satellites, and carrier ring showcasing gear meshing ratios and torque distribution.'
+        },
+        'EIE': {
+            badge: 'Sensors & Transducers',
+            discipline: 'Industrial Automation & Process Control',
+            title: 'Industrial Instrumentation: 3D RTD Sensor Probe',
+            description: 'Precision industrial transducer probe with threaded hex collar, thermocouple sensing diaphragm, and continuous 4-20mA sine-wave signal telemetry.'
+        },
+        'EEE': {
+            badge: 'Power Systems & Machines',
+            discipline: 'Electromagnetics & Grid Infrastructure',
+            title: 'Electrical Machines: 3D Electromagnetic Stator & Rotor',
+            description: '3-phase AC stator core with concentrated copper windings and high-speed electromagnetic rotor displaying induced magnetic flux lines.'
+        },
+        'CSE': {
+            badge: 'Computer Architecture & Cloud',
+            discipline: 'Distributed Systems & Microservices',
+            title: 'Cloud Architecture: 3D Server Blade Matrix',
+            description: 'Modular high-density server rack node matrix with active processor cores, memory buses, and high-throughput optical interconnect channels.'
+        },
+        'IT': {
+            badge: 'Network & Cloud Infrastructure',
+            discipline: 'Enterprise Networking & Virtualization',
+            title: 'Cloud Infrastructure: 3D Network Blade Matrix',
+            description: 'High-availability server infrastructure featuring packet-routing topology, container cluster blades, and fiber-optic data channels.'
+        },
+        'AIML': {
+            badge: 'Neural Network Architecture',
+            discipline: 'Deep Learning & Cognitive Computing',
+            title: 'AI & ML: 3D Deep Neural Network Graph',
+            description: 'Multi-layer artificial neural network featuring interconnected tensor nodes, synaptic weight connections, and forward-propagating neural impulses.'
+        },
+        'DS': {
+            badge: 'Data Pipelines & Analytics',
+            discipline: 'Big Data & Quantitative Modeling',
+            title: 'Data Science: 3D High-Dimensional Tensor Graph',
+            description: 'Interactive multidimensional data graph displaying feature vector clustering, distributed pipeline nodes, and real-time statistical inference vectors.'
+        },
+        'CIVIL': {
+            badge: 'Structural Engineering',
+            discipline: 'Infrastructure & Finite Element Design',
+            title: 'Structural Engineering: 3D Cable-Stayed Bridge Pylon',
+            description: 'High-tensile bridge pylon with stay cables and space-truss girder deck highlighting compressive loads, tensile stresses, and structural equilibrium.'
+        },
+        'CHEM': {
+            badge: 'Process Plants & Reactors',
+            discipline: 'Chemical Thermodynamics & Kinetics',
+            title: 'Process Engineering: 3D Fractionation Column & Coil',
+            description: 'Fractional distillation column with internal vapor-liquid bubble trays and spiral heat-exchanger condenser coil modeling fluid phase equilibria.'
+        },
+        'BIOTECH': {
+            badge: 'Biotechnology & DNA',
+            discipline: 'Molecular Genetics & Bioprocesses',
+            title: 'Biotechnology: 3D Bioluminescent DNA Double Helix',
+            description: 'Helical polymer of nucleotides winding vertically with glowing base-pair rungs demonstrating molecular genetics and bio-engineering concepts.'
+        },
+        'BIOMED': {
+            badge: 'Biomedical Instrumentation',
+            discipline: 'Medical Devices & Physiological Signals',
+            title: 'Biomedical Engineering: 3D DNA & Bio-Sensor Core',
+            description: 'Dual-strand biometric helix and physiological transducer interface tracking bio-electric signal acquisition and medical telemetry.'
+        },
+        'AERO': {
+            badge: 'Aerospace Propulsion',
+            discipline: 'Gas Dynamics & Turbomachinery',
+            title: 'Aerospace Systems: 3D Axial Jet Engine Turbine',
+            description: 'High-bypass axial flow turbine rotor with aerodynamic bladed compressor discs, aerodynamic center cone, and outer supersonic shroud.'
+        },
+        'MECHTRON': {
+            badge: 'Robotics & Mechatronics',
+            discipline: 'Electro-Mechanical Automation & Control',
+            title: 'Mechatronics: 3D Articulated Robot Arm Manipulator',
+            description: 'Multi-axis industrial robotic manipulator with rotating base turret, articulated shoulder and elbow links, and high-precision servo gripper.'
+        },
+        'ROBOTICS': {
+            badge: 'Industrial Robotics',
+            discipline: 'Autonomous Kinematics & Manipulation',
+            title: 'Robotics Engineering: 3D Articulated Manipulator',
+            description: 'Precision multi-degree-of-freedom robotic manipulator arm illustrating forward kinematics, servo joint limits, and precision trajectory control.'
+        },
+        'MFG': {
+            badge: 'Advanced Manufacturing & CNC',
+            discipline: 'Subtractive & Additive Machining Systems',
+            title: 'Manufacturing: 3D High-Speed CNC Milling Spindle',
+            description: 'High-speed automated CNC milling spindle with precision collet toolholder, carbide cutting tool, and coordinate datum machine grid.'
+        }
+    },
 
     async init() {
         this.bindEvents();
         await this.syncWithCanonicalProfile();
+        
+        // Initialize 3D Hologram stage if Three.js is ready
+        this.init3DHologram();
+
+        // Load the active branch specialization
         await this.loadSpecialization();
     },
 
+    init3DHologram() {
+        try {
+            if (window.Branch3DHologram && typeof Branch3DHologram.init === 'function') {
+                Branch3DHologram.init('branch-hologram-stage');
+                if (this.currentBranch) {
+                    Branch3DHologram.setBranch(this.currentBranch);
+                }
+            }
+        } catch (e) {
+            console.warn('[BranchLearning] 3D Hologram initialization notice:', e);
+        }
+    },
+
+    // --------------------------------------------------------------------------
+    // CANONICAL BRANCH NORMALIZER
+    // --------------------------------------------------------------------------
     normalizeBranch(val) {
         if (!val) return '';
+        const clean = String(val).toLowerCase().trim();
+        if (this.BRANCH_NORM_MAP[clean]) {
+            return this.BRANCH_NORM_MAP[clean];
+        }
         if (typeof BranchSystem !== 'undefined' && BranchSystem.resolveBranch) {
             const resolved = BranchSystem.resolveBranch(val);
-            if (resolved && resolved.code) return resolved.code;
+            if (resolved && resolved.code) return resolved.code.toUpperCase().trim();
         }
         return String(val).toUpperCase().trim();
     },
 
+    toNormalizedSlug(branchCode) {
+        if (!branchCode) return '';
+        const upper = branchCode.toUpperCase().trim();
+        return this.SLUG_MAP[upper] || upper.toLowerCase();
+    },
+
     bindEvents() {
-        // Listen for live canonical profile changes from profile.html or anywhere in TechPath
+        // 1. Reactive Profile Updated Event (Emitted by AuthManager on any branch save)
         window.addEventListener('btech:profile-updated', async (event) => {
-            console.log('[BranchLearning] Reactive profile update event received');
+            console.log('[BranchLearning] Reactive btech:profile-updated event caught');
             const profile = event.detail;
             if (profile) {
                 const rawBranch = profile.department_id || profile.branch || profile.department || '';
                 const newBranch = this.normalizeBranch(rawBranch);
                 const newSem = parseInt(profile.semester || profile.semesterNumber || 1, 10) || 1;
                 
-                this.currentBranch = newBranch;
-                this.currentSemester = newSem;
-                await this.loadSpecialization();
+                // If branch or semester changed, re-sync immediately
+                if (newBranch !== this.currentBranch || newSem !== this.currentSemester) {
+                    this.currentBranch = newBranch;
+                    this.currentSemester = newSem;
+                    this.syncQuickSelects();
+                    await this.loadSpecialization();
+                }
             }
         });
 
-        // Listen on multi-tab BroadcastChannel
+        // 2. Cross-Tab Multi-Window Broadcast Synchronization
         try {
             const channel = new BroadcastChannel('techpath-profile-sync');
             channel.onmessage = async (event) => {
                 if (event.data && (event.data.type === 'PROFILE_UPDATED' || event.data.profile)) {
-                    console.log('[BranchLearning] BroadcastChannel sync received');
+                    console.log('[BranchLearning] BroadcastChannel sync message received');
                     await this.syncWithCanonicalProfile();
+                    this.syncQuickSelects();
                     await this.loadSpecialization();
                 }
             };
@@ -86,53 +291,201 @@ const BranchLearning = {
             this.currentBranch = '';
             this.currentSemester = 1;
         }
+
+        this.syncQuickSelects();
     },
 
-    async loadSpecialization() {
-        const branchCode = this.currentBranch;
-        const requestId = ++this._currentRequestId;
+    syncQuickSelects() {
+        const branchSelect = document.getElementById('branch-quick-select');
+        const semSelect = document.getElementById('semester-quick-select');
+        if (branchSelect && this.currentBranch) {
+            branchSelect.value = this.currentBranch;
+        }
+        if (semSelect && this.currentSemester) {
+            semSelect.value = String(this.currentSemester);
+        }
+    },
 
+    // --------------------------------------------------------------------------
+    // FLOW AFTER BRANCH CHANGE (Mandatory 10-Step Pipeline)
+    // --------------------------------------------------------------------------
+    async changeBranch(newBranchRaw, newSemesterRaw) {
+        const branch = this.normalizeBranch(newBranchRaw);
+        const semester = parseInt(newSemesterRaw || this.currentSemester || 1, 10) || 1;
+
+        console.log(`[BranchLearning] Initiating branch switch: ${this.currentBranch} -> ${branch} (Sem ${semester})`);
+
+        // Step 1: Update internal pointer & UI selector
+        this.currentBranch = branch;
+        this.currentSemester = semester;
+        this.syncQuickSelects();
+
+        // Step 2 & 3: Save branch to Supabase & confirm database update
+        if (typeof AuthManager !== 'undefined' && typeof AuthManager.updateProfile === 'function') {
+            try {
+                const res = await AuthManager.updateProfile({
+                    department: branch,
+                    department_id: branch,
+                    branch: branch,
+                    semester: semester
+                });
+                console.log('[BranchLearning] Supabase profile confirmed updated:', res);
+            } catch (saveErr) {
+                console.warn('[BranchLearning] Supabase direct save warning (will persist locally):', saveErr.message);
+                // Update local storage fallback if network interrupted
+                if (typeof localStorage !== 'undefined') {
+                    const sessionKey = AuthManager.SESSION_KEY || 'TechPath_user_session';
+                    try {
+                        const local = JSON.parse(localStorage.getItem(sessionKey) || '{}');
+                        local.department_id = branch;
+                        local.branch = branch;
+                        local.semester = semester;
+                        localStorage.setItem(sessionKey, JSON.stringify(local));
+                    } catch (e) {}
+                }
+            }
+        }
+
+        // Step 4 & 5: Refetch profile & update canonical frontend user state
+        await this.syncWithCanonicalProfile();
+
+        // Step 6: Clear / Invalidate old branch cache
+        this.clearBranchCache();
+
+        // Step 7: Cancel or ignore in-flight requests
+        this._currentRequestId++;
         if (this._currentAbortController) {
             this._currentAbortController.abort();
         }
         this._currentAbortController = new AbortController();
 
-        // 1. If no branch selected, show explicit empty state immediately
+        // Step 8 & 9: Fetch Branch Learning using the NEW branch & render only new content
+        await this.loadSpecialization();
+    },
+
+    onSelectBranchChange(val) {
+        this.changeBranch(val, this.currentSemester);
+    },
+
+    onSelectSemesterChange(val) {
+        const sem = parseInt(val, 10) || 1;
+        this.changeBranch(this.currentBranch, sem);
+    },
+
+    clearBranchCache() {
+        try {
+            if (typeof localStorage !== 'undefined') {
+                localStorage.removeItem('TechPath_branch_learning_cache');
+            }
+            if (typeof sessionStorage !== 'undefined') {
+                sessionStorage.removeItem(`btech_branch_${this.currentBranch}`);
+                sessionStorage.removeItem('btech_branch_active');
+            }
+        } catch (e) {}
+    },
+
+    // --------------------------------------------------------------------------
+    // LOAD BRANCH SPECIALIZATION (Primary Fetcher)
+    // --------------------------------------------------------------------------
+    async loadSpecialization() {
+        const branchCode = this.currentBranch;
+        const semester = this.currentSemester || 1;
+        const requestId = ++this._currentRequestId;
+
+        // Cancel previous pending fetch
+        if (this._currentAbortController) {
+            this._currentAbortController.abort();
+        }
+        this._currentAbortController = new AbortController();
+
+        // 1. Missing branch state
         if (!branchCode) {
             this.specialization = null;
             this.renderNoBranchState();
             return;
         }
 
-        // 2. Show clear loading state
+        // 2. Loading state
         this.renderLoadingState(branchCode);
 
-        try {
-            const branchParam = encodeURIComponent(branchCode);
-            const semParam = encodeURIComponent(this.currentSemester || 1);
-            const res = await fetch(`/api/branch-learning?branch=${branchParam}&semester=${semParam}`, {
-                signal: this._currentAbortController.signal,
-                headers: { 'Cache-Control': 'no-cache' }
-            });
+        // Update 3D Holographic Visual immediately on new branch selection
+        if (window.Branch3DHologram && typeof Branch3DHologram.setBranch === 'function') {
+            Branch3DHologram.setBranch(branchCode);
+        }
+        this.renderHoloCardMeta(branchCode);
 
-            // Discard stale responses (race-condition protection)
-            if (requestId !== this._currentRequestId) {
-                console.log('[BranchLearning] Stale response ignored for request ID:', requestId);
-                return;
+        try {
+            let specData = null;
+
+            // Strategy A: Direct query to Supabase `branch_learning` table if configured
+            const client = (typeof SupabaseBridge !== 'undefined' && SupabaseBridge.getClient && SupabaseBridge.getClient()) ||
+                           (typeof supabaseClient !== 'undefined' ? supabaseClient : null);
+
+            if (client) {
+                try {
+                    const { data: dbRows, error: dbErr } = await client
+                        .from('branch_learning')
+                        .select('*')
+                        .eq('department', branchCode)
+                        .eq('is_published', true)
+                        .order('display_order', { ascending: true });
+
+                    if (!dbErr && dbRows && dbRows.length > 0) {
+                        specData = this.buildSpecFromDbRows(branchCode, semester, dbRows);
+                    }
+                } catch (e) {}
             }
 
-            if (res.ok) {
-                const data = await res.json();
-                if (data.success && data.specialization && Object.keys(data.specialization).length > 0) {
-                    this.specialization = data.specialization;
-                    this.render();
-                    return;
+            // Strategy B: Call serverless endpoint /api/branch-learning
+            if (!specData) {
+                const branchParam = encodeURIComponent(branchCode);
+                const semParam = encodeURIComponent(semester);
+                const res = await fetch(`/api/branch-learning?branch=${branchParam}&semester=${semParam}`, {
+                    signal: this._currentAbortController.signal,
+                    headers: { 'Cache-Control': 'no-cache' }
+                });
+
+                // Race-condition guard: check if newer request was initiated
+                if (requestId !== this._currentRequestId) return;
+
+                if (res.ok) {
+                    const json = await res.json();
+                    if (json.success && json.specialization && Object.keys(json.specialization).length > 0) {
+                        specData = json.specialization;
+                    }
                 }
             }
 
-            // No specialization mapped for this branch
-            this.specialization = null;
-            this.renderEmptyBranchState(branchCode);
+            // Strategy C: Client-side authoritative catalog fallback (data/branch_learning_catalog.json)
+            if (!specData) {
+                try {
+                    const catalogRes = await fetch('/data/branch_learning_catalog.json', {
+                        signal: this._currentAbortController.signal
+                    });
+                    if (catalogRes.ok) {
+                        const catalog = await catalogRes.json();
+                        if (catalog && catalog[branchCode]) {
+                            specData = JSON.parse(JSON.stringify(catalog[branchCode]));
+                            specData.activeSemester = semester;
+                        }
+                    }
+                } catch (catErr) {
+                    if (catErr.name === 'AbortError') return;
+                }
+            }
+
+            // Race-condition guard
+            if (requestId !== this._currentRequestId) return;
+
+            // Step 9: Render only NEW branch content
+            if (specData) {
+                this.specialization = specData;
+                this.render();
+            } else {
+                this.specialization = null;
+                this.renderEmptyBranchState(branchCode);
+            }
+
         } catch (err) {
             if (err.name === 'AbortError') return;
             if (requestId !== this._currentRequestId) return;
@@ -141,6 +494,43 @@ const BranchLearning = {
         }
     },
 
+    buildSpecFromDbRows(branchCode, semester, rows) {
+        const displayName = this.getBranchDisplayName(branchCode);
+        const modulesMap = {};
+
+        rows.forEach(r => {
+            const subject = r.subject || 'Core Engineering Specialization';
+            if (!modulesMap[subject]) {
+                modulesMap[subject] = {
+                    id: 'mod-' + Object.keys(modulesMap).length,
+                    title: subject,
+                    badge: r.difficulty || 'Core Technical',
+                    semesterRecommendation: [r.semester || semester],
+                    topics: []
+                };
+            }
+            modulesMap[subject].topics.push({
+                id: r.id || r.topic,
+                name: r.title || r.topic,
+                content: r.description || (r.skills ? `Skills: ${r.skills.join(', ')}` : '')
+            });
+        });
+
+        return {
+            branchCode: branchCode,
+            branchName: displayName,
+            specializationTitle: `${displayName} Specialization`,
+            specializationTagline: `Verified engineering syllabus and curriculum for ${displayName}.`,
+            activeSemester: semester,
+            badge: `${branchCode} SPECIALIZATION`,
+            topicsCount: rows.length,
+            modules: Object.values(modulesMap)
+        };
+    },
+
+    // --------------------------------------------------------------------------
+    // TAB MANAGEMENT
+    // --------------------------------------------------------------------------
     switchTab(tabId) {
         this.activeTab = tabId;
         const tabs = ['curriculum', 'projects', 'careers', 'interviews'];
@@ -158,11 +548,14 @@ const BranchLearning = {
         });
     },
 
+    // --------------------------------------------------------------------------
+    // RENDERING
+    // --------------------------------------------------------------------------
     render() {
         const spec = this.specialization;
         if (!spec) return;
 
-        // 1. Update Header & Hero Elements
+        // 1. Update Header & Top Navigation
         const navTitle = document.getElementById('nav-branch-title');
         const headerPill = document.getElementById('header-branch-pill');
         const heroBadge = document.getElementById('hero-badge');
@@ -187,17 +580,39 @@ const BranchLearning = {
         const semPhase = activeSem <= 2 ? 'Fundamentals Phase' : (activeSem <= 5 ? 'Core Architecture Phase' : 'Capstone & Industry Phase');
         if (heroSemBadge) heroSemBadge.textContent = `Semester ${activeSem} • ${spec.semesterPhase || semPhase}`;
 
-        // 2. Render Tab 1: Curriculum Modules
+        // 2. Render Hologram Meta Badge
+        this.renderHoloCardMeta(spec.branchCode);
+
+        // 3. Render Tab 1: Curriculum Modules
         this.renderCurriculum(spec);
 
-        // 3. Render Tab 2: Projects
+        // 4. Render Tab 2: Projects
         this.renderProjects(spec);
 
-        // 4. Render Tab 3: Careers & Roadmap
+        // 5. Render Tab 3: Careers & Roadmap
         this.renderCareers(spec);
 
-        // 5. Render Tab 4: Interviews
+        // 6. Render Tab 4: Technical Interviews
         this.renderInterviews(spec);
+    },
+
+    renderHoloCardMeta(branchCode) {
+        const meta = this.HOLO_VISUAL_SPECS[branchCode] || {
+            badge: `${branchCode} Specialization`,
+            discipline: `${this.getBranchDisplayName(branchCode)} Engineering`,
+            title: `${branchCode}: 3D Holographic Model`,
+            description: `Interactive 3D holographic engineering visualization customized for ${this.getBranchDisplayName(branchCode)}.`
+        };
+
+        const badgeEl = document.getElementById('holo-branch-code-badge');
+        const discEl = document.getElementById('holo-discipline-title');
+        const titleEl = document.getElementById('holo-model-title');
+        const descEl = document.getElementById('holo-model-description');
+
+        if (badgeEl) badgeEl.textContent = `${branchCode} SPEC`;
+        if (discEl) discEl.textContent = meta.discipline;
+        if (titleEl) titleEl.textContent = meta.title;
+        if (descEl) descEl.textContent = meta.description;
     },
 
     renderCurriculum(spec) {
@@ -255,9 +670,8 @@ ${this.formatContent(t.content)}
         const container = document.getElementById('projects-container');
         if (!container) return;
 
-        // Find module 5 project portfolio
         let projectItems = [];
-        spec.modules.forEach(m => {
+        (spec.modules || []).forEach(m => {
             (m.topics || []).forEach(t => {
                 if (t.id.includes('project') || t.name.toLowerCase().includes('project')) {
                     const lines = t.content.split('\n');
@@ -277,7 +691,7 @@ ${this.formatContent(t.content)}
         if (projectItems.length === 0) {
             projectItems = [
                 { title: `${spec.branchCode} Domain Simulator`, description: 'Design a high-precision mathematical simulation modeling key physical principles of this discipline.' },
-                { title: `${spec.branchCode} IoT Telemetry & Monitor`, description: 'Construct a microcontroller-based data-logging pipeline using sensors and cloud analytics.' }
+                { title: `${spec.branchCode} Real-time Telemetry Monitor`, description: 'Construct a microcontroller-based data-logging pipeline using sensors and cloud analytics.' }
             ];
         }
 
@@ -312,7 +726,7 @@ ${this.formatContent(t.content)}
         let skillsText = '';
         let roadmapText = '';
 
-        spec.modules.forEach(m => {
+        (spec.modules || []).forEach(m => {
             (m.topics || []).forEach(t => {
                 if (t.id.includes('role') || t.name.toLowerCase().includes('role')) careerText = t.content;
                 if (t.id.includes('skill') || t.name.toLowerCase().includes('skill')) skillsText = t.content;
@@ -360,7 +774,7 @@ ${this.formatContent(skillsText || 'Mastery of specialized modeling, design veri
         if (!container) return;
 
         let interviewQuestions = [];
-        spec.modules.forEach(m => {
+        (spec.modules || []).forEach(m => {
             (m.topics || []).forEach(t => {
                 if (t.id.includes('interview') || t.name.toLowerCase().includes('interview')) {
                     const raw = t.content;
@@ -383,7 +797,7 @@ ${this.formatContent(skillsText || 'Mastery of specialized modeling, design veri
 
         if (interviewQuestions.length === 0) {
             interviewQuestions = [
-                { question: `What are the primary operational challenges in ${spec.branchName}?`, answer: 'Focus on thermo-mechanical constraints, bandwidth limitations, and materials integrity under stress.' }
+                { question: `What are the primary operational challenges in ${spec.branchName}?`, answer: 'Focus on thermo-mechanical constraints, signal-to-noise ratio, and system-level fault tolerance.' }
             ];
         }
 
@@ -481,6 +895,8 @@ ${this.formatContent(skillsText || 'Mastery of specialized modeling, design veri
             'CIVIL': 'Civil Engineering',
             'EEE': 'Electrical & Electronics Engineering',
             'AIML': 'Artificial Intelligence & Machine Learning',
+            'AI': 'Artificial Intelligence',
+            'DS': 'Data Science',
             'IT': 'Information Technology',
             'CHEM': 'Chemical Engineering',
             'BIOTECH': 'Biotechnology Engineering',
@@ -495,6 +911,9 @@ ${this.formatContent(skillsText || 'Mastery of specialized modeling, design veri
         return map[code] || code;
     },
 
+    // --------------------------------------------------------------------------
+    // EXACT MANDATED ERROR & EMPTY STATES
+    // --------------------------------------------------------------------------
     renderLoadingState(branchCode) {
         const branchName = this.getBranchDisplayName(branchCode);
         const heroTitle = document.getElementById('hero-title');
@@ -504,8 +923,8 @@ ${this.formatContent(skillsText || 'Mastery of specialized modeling, design veri
 
         if (navTitle) navTitle.textContent = `${branchCode || 'Branch'} Learning`;
         if (heroBadge) heroBadge.textContent = 'UPDATING CURRICULUM';
-        if (heroTitle) heroTitle.textContent = `Personalizing for ${branchName}...`;
-        if (heroTagline) heroTagline.textContent = 'Syncing your verified engineering curriculum, projects, and interview questions.';
+        if (heroTitle) heroTitle.textContent = `Loading your Branch Learning…`;
+        if (heroTagline) heroTagline.textContent = `Syncing your verified engineering curriculum and 3D telemetry for ${branchName}.`;
 
         const container = document.getElementById('modules-container');
         if (container) {
@@ -514,8 +933,8 @@ ${this.formatContent(skillsText || 'Mastery of specialized modeling, design veri
                     <div class="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-indigo-500/20 text-indigo-400">
                         <span class="material-symbols-outlined text-2xl animate-spin">progress_activity</span>
                     </div>
-                    <h3 class="text-sm font-bold text-white">Updating your personalized learning…</h3>
-                    <p class="text-xs text-[#A1A7BC]">Retrieving verified ${branchName} specializations, core modules, and capstones.</p>
+                    <h3 class="text-sm font-bold text-white">Loading your Branch Learning…</h3>
+                    <p class="text-xs text-[#A1A7BC]">Retrieving verified ${branchName} curriculum from Supabase.</p>
                 </div>
             `;
         }
@@ -532,8 +951,8 @@ ${this.formatContent(skillsText || 'Mastery of specialized modeling, design veri
         const headerPill = document.getElementById('header-branch-pill');
         if (headerPill) headerPill.textContent = 'Branch Required';
         if (heroBadge) heroBadge.textContent = 'SELECTION REQUIRED';
-        if (heroTitle) heroTitle.textContent = 'Branch Personalization';
-        if (heroTagline) heroTagline.textContent = 'Select your engineering discipline to unlock specialized curriculum, labs, and interview prep.';
+        if (heroTitle) heroTitle.textContent = 'Select your branch to personalize Branch Learning.';
+        if (heroTagline) heroTagline.textContent = 'Choose your engineering discipline below to unlock specialized curriculum, labs, and holographic 3D visuals.';
         if (statTopicsCount) statTopicsCount.textContent = '0 Topics';
 
         document.querySelectorAll('.user-branch-display').forEach(el => {
@@ -548,8 +967,8 @@ ${this.formatContent(skillsText || 'Mastery of specialized modeling, design veri
                         <span class="material-symbols-outlined text-3xl">school</span>
                     </div>
                     <div class="space-y-1">
-                        <h3 class="text-base font-bold text-white">Select your branch in Profile to personalize your learning.</h3>
-                        <p class="text-xs text-[#A1A7BC] leading-relaxed">TechPath customizes your curriculum modules, hardware labs, and mock interviews directly to your engineering discipline.</p>
+                        <h3 class="text-base font-bold text-white">Select your branch to personalize Branch Learning.</h3>
+                        <p class="text-xs text-[#A1A7BC] leading-relaxed">Choose an engineering discipline from the switcher above or update your profile to unlock specialized modules.</p>
                     </div>
                     <a href="profile.html" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold shadow-lg shadow-indigo-600/30 transition-all">
                         <span>Open My Profile</span>
@@ -571,7 +990,7 @@ ${this.formatContent(skillsText || 'Mastery of specialized modeling, design veri
         if (navTitle) navTitle.textContent = `${branchCode} Learning`;
         if (heroBadge) heroBadge.textContent = `${branchCode} CURRICULUM`;
         if (heroTitle) heroTitle.textContent = `${branchName} Curriculum`;
-        if (heroTagline) heroTagline.textContent = `Specialized learning tracks for ${branchName}.`;
+        if (heroTagline) heroTagline.textContent = `No learning content is available for this branch and semester yet.`;
         if (statTopicsCount) statTopicsCount.textContent = '0 Topics';
 
         const container = document.getElementById('modules-container');
@@ -582,7 +1001,7 @@ ${this.formatContent(skillsText || 'Mastery of specialized modeling, design veri
                         <span class="material-symbols-outlined text-3xl">menu_book</span>
                     </div>
                     <div class="space-y-1">
-                        <h3 class="text-base font-bold text-white">No ${branchName} learning resources are currently available.</h3>
+                        <h3 class="text-base font-bold text-white">No learning content is available for this branch and semester yet.</h3>
                         <p class="text-xs text-[#A1A7BC] leading-relaxed">Our academic engineering board is curating specialized modules for this discipline. In the meantime, you can explore core subjects in Learn Hub.</p>
                     </div>
                     <div class="flex items-center justify-center gap-3">
@@ -590,9 +1009,9 @@ ${this.formatContent(skillsText || 'Mastery of specialized modeling, design veri
                             <span>Explore Learn Hub</span>
                             <span class="material-symbols-outlined text-sm">arrow_forward</span>
                         </a>
-                        <a href="profile.html" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#1A2031] hover:bg-[#222B42] text-slate-300 border border-[#2A3147] text-xs font-semibold transition-all">
-                            <span>Change Branch</span>
-                        </a>
+                        <button onclick="BranchLearning.onSelectBranchChange('ECE')" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#1A2031] hover:bg-[#222B42] text-slate-300 border border-[#2A3147] text-xs font-semibold transition-all">
+                            <span>Switch Branch</span>
+                        </button>
                     </div>
                 </div>
             `;
@@ -609,7 +1028,7 @@ ${this.formatContent(skillsText || 'Mastery of specialized modeling, design veri
                         <span class="material-symbols-outlined text-3xl">error_outline</span>
                     </div>
                     <div class="space-y-1">
-                        <h3 class="text-base font-bold text-white">Unable to load ${branchName} learning resources.</h3>
+                        <h3 class="text-base font-bold text-white">Unable to load Branch Learning. Please try again.</h3>
                         <p class="text-xs text-rose-300/80 leading-relaxed font-mono">${this.escapeHtml(errorMessage || 'Network or server error')}</p>
                     </div>
                     <button onclick="BranchLearning.loadSpecialization()" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-rose-600 hover:bg-rose-500 text-white text-xs font-semibold transition-all">
