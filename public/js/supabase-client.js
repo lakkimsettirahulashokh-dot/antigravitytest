@@ -18,12 +18,15 @@
     return;
   }
 
+  const CANONICAL_SUPABASE_URL = 'https://kkdqahqcochicfvkfyan.supabase.co';
+  const CANONICAL_SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtrZHFhaHFjb2NoaWNmdmtmeWFuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODg1MTMyNjEsImV4cCI6MjEwNDA4OTI2MX0.jMTz-nEpA-GfOqrGvYCC22gmZ7oiMe1e6Sf5z7GqDvc';
+
   const SupabaseBridge = {
     client: (typeof window !== 'undefined' && window.supabaseClient) ? window.supabaseClient : null,
     config: {
-      url: null,
-      anonKey: null,
-      appUrl: (typeof window !== 'undefined' && window.location) ? window.location.origin : 'http://localhost:8080'
+      url: CANONICAL_SUPABASE_URL,
+      anonKey: CANONICAL_SUPABASE_ANON_KEY,
+      appUrl: (typeof window !== 'undefined' && window.location) ? window.location.origin : 'https://tech-path-six.vercel.app'
     },
     isInitialized: false,
     _initPromise: null,
@@ -66,7 +69,7 @@
           // Fetch public configuration from backend server /api/config with timeout
           try {
             const controller = typeof AbortController !== 'undefined' ? new AbortController() : null;
-            const timer = controller ? setTimeout(() => controller.abort(), 3500) : null;
+            const timer = controller ? setTimeout(() => controller.abort(), 2500) : null;
             const res = await fetch('/api/config', { signal: controller ? controller.signal : undefined });
             if (timer) clearTimeout(timer);
             if (res.ok) {
@@ -80,19 +83,19 @@
               }
             }
           } catch (e) {
-            console.info('[SupabaseBridge] Server /api/config not reachable or timed out, checking window or local environment.');
+            console.info('[SupabaseBridge] Server /api/config not reachable or timed out, using production canonical credentials.');
           }
 
           // Fallback to window.__ENV__
-          if (!this.config.url && typeof window !== 'undefined' && window.__ENV__?.SUPABASE_URL) {
+          if ((!this.config.url || this.config.url.includes('your-project-id')) && typeof window !== 'undefined' && window.__ENV__?.SUPABASE_URL) {
             this.config.url = window.__ENV__.SUPABASE_URL;
             this.config.anonKey = window.__ENV__.SUPABASE_ANON_KEY;
           }
 
-          // Fallback default
-          if (!this.config.url || this.config.url.includes('your-project-id')) {
-            this.config.url = (typeof window !== 'undefined' && window.location.origin) ? window.location.origin : 'http://localhost:8080';
-            this.config.anonKey = this.config.anonKey && !this.config.anonKey.includes('your-') ? this.config.anonKey : 'btechpath-local-anon-key';
+          // Fallback default to canonical production Supabase
+          if (!this.config.url || this.config.url.includes('your-project-id') || this.config.anonKey === 'btechpath-local-anon-key') {
+            this.config.url = CANONICAL_SUPABASE_URL;
+            this.config.anonKey = CANONICAL_SUPABASE_ANON_KEY;
           }
 
           if (typeof window !== 'undefined' && typeof window.supabase !== 'undefined' && this.config.url && this.config.anonKey) {

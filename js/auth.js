@@ -1,4 +1,4 @@
-﻿/* ==========================================================================
+/* ==========================================================================
    BTechPath AI OS — Real Supabase Authentication & Strict Authorization Engine
    - Real Supabase Google OAuth & Session Restoration
    - Real Supabase Email/Password Sign Up & Sign In with Onboarding Guard
@@ -1079,9 +1079,13 @@ const AuthManager = {
   // REAL GOOGLE OAUTH FLOW
   // ----------------------------------------------------------------------------
   async handleGoogleSSO() {
-    const client = SupabaseBridge.getClient();
+    let client = SupabaseBridge.getClient();
     if (!client || !client.auth) {
-      this.showToast('Supabase authentication client is not available.', 'error');
+      await SupabaseBridge.init();
+      client = SupabaseBridge.getClient();
+    }
+    if (!client || !client.auth) {
+      this.showToast('Supabase authentication client is initializing. Please try again in a moment.', 'error');
       return;
     }
 
@@ -1089,12 +1093,11 @@ const AuthManager = {
     const redirectTarget = window.location.origin + '/auth-callback.html';
 
     try {
-      // 1. Obtain OAuth redirect URL using canonical provider
+      // 1. Invoke Supabase signInWithOAuth for Google provider
       const { data, error } = await client.auth.signInWithOAuth({
         provider: 'google',
         options: {
           redirectTo: redirectTarget,
-          skipBrowserRedirect: true,
           queryParams: {
             access_type: 'offline',
             prompt: 'consent'
@@ -1103,52 +1106,18 @@ const AuthManager = {
       });
 
       if (error) {
-        console.warn('[AuthManager] Google OAuth signInWithOAuth error:', error.message);
-        this.showToast('Google sign-in is temporarily unavailable. Please try again or use email and password.', 'warning');
+        console.warn('[AuthManager] Google OAuth error:', error.message);
+        this.showToast('Google sign-in error: ' + error.message, 'warning');
         return;
       }
 
-      if (!data?.url) {
-        console.warn('[AuthManager] No OAuth authorization URL returned by Supabase.');
-        this.showToast('Google sign-in is temporarily unavailable. Please try again or use email and password.', 'warning');
-        return;
-      }
-
-      // 2. Pre-flight check: verify Supabase backend has Google provider enabled
-      // Prevents browser from navigating to raw JSON error {"code":400,"error_code":"validation_failed","msg":"Unsupported provider: provider is not enabled"}
-      let providerLive = false;
-      try {
-        const probe = await fetch(data.url, {
-          method: 'GET',
-          headers: {
-            'apikey': client.supabaseKey || ''
-          },
-          redirect: 'manual'
-        });
-
-        if (probe.status === 400) {
-          const probeBody = await probe.json().catch(() => null);
-          console.warn('[AuthManager] Supabase Google provider inspection:', probeBody);
-          if (probeBody?.error_code === 'validation_failed' || String(probeBody?.msg).includes('provider is not enabled')) {
-            this.showToast('Google sign-in is temporarily unavailable. Please try again or use email and password.', 'warning');
-            return;
-          }
-        } else {
-          // Status 0, 200, 302, 303 or opaqueredirect signifies valid provider endpoint
-          providerLive = true;
-        }
-      } catch (probeErr) {
-        console.info('[AuthManager] Provider pre-flight inspection notice (network/CORS):', probeErr.message);
-        providerLive = true;
-      }
-
-      // 3. Provider active — navigate to Google OAuth flow
-      if (providerLive && data.url) {
+      // If data.url is returned, navigate to Google authentication
+      if (data?.url) {
         window.location.assign(data.url);
       }
     } catch (err) {
       console.warn('[AuthManager] Google OAuth Exception:', err);
-      this.showToast('Google sign-in is temporarily unavailable. Please try again or use email and password.', 'error');
+      this.showToast('Google sign-in error. Please try again or use email and password.', 'error');
     }
   },
 

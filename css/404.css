@@ -22,20 +22,32 @@
   --btech-muted: #A1A7BC;
 }
 
-/* Base Page Viewport */
+/* Base Page Viewport — Fits 100vh on laptop screens without scroll */
 body.page-404 {
   background-color: var(--btech-bg);
   color: var(--btech-text);
   font-family: 'Plus Jakarta Sans', sans-serif;
+  height: 100vh;
   min-height: 100vh;
+  max-height: 100vh;
   margin: 0;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  overflow-x: hidden;
+  overflow: hidden;
   position: relative;
   user-select: none;
+}
+
+/* Fallback for ultra-short mobile landscape viewports */
+@media (max-height: 520px) {
+  body.page-404 {
+    height: auto;
+    min-height: 100vh;
+    max-height: none;
+    overflow-y: auto;
+  }
 }
 
 /* Subtle Engineering Ambient Canvas Layer */
@@ -52,13 +64,13 @@ body.page-404 {
   z-index: 1;
 }
 
-/* Main Content Container */
+/* Main Content Container — Compact & vertically centered */
 .content-wrapper-404 {
   position: relative;
   z-index: 10;
   width: 100%;
-  max-width: 720px;
-  padding: 24px 20px 40px;
+  max-width: 680px;
+  padding: clamp(6px, 1.2vh, 18px) 20px;
   margin: auto 0;
   display: flex;
   flex-direction: column;
@@ -67,14 +79,14 @@ body.page-404 {
 }
 
 /* ==========================================================================
-   3D PERSPECTIVE STAGE & NUMBERS
+   3D PERSPECTIVE STAGE & NUMBERS — Proportional Laptop Scaling
    ========================================================================== */
 .scene-3d-stage {
   position: relative;
   width: 100%;
-  max-width: 520px;
-  height: 270px;
-  margin: 0 auto 12px;
+  max-width: 480px;
+  height: clamp(170px, 25vh, 230px);
+  margin: 0 auto clamp(6px, 1.2vh, 12px);
   perspective: 1000px;
   transform-style: preserve-3d;
   display: flex;
@@ -97,12 +109,12 @@ body.page-404 {
 /* Floor Shadow Plane */
 .stage-shadow-plane {
   position: absolute;
-  bottom: 24px;
-  width: 380px;
-  height: 48px;
+  bottom: 18px;
+  width: clamp(260px, 40vw, 360px);
+  height: 42px;
   background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.65) 0%, rgba(11, 15, 25, 0) 72%);
   transform: rotateX(85deg) translateZ(-40px);
-  filter: blur(10px);
+  filter: blur(8px);
   pointer-events: none;
 }
 
@@ -113,7 +125,7 @@ body.page-404 {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 18px;
+  gap: clamp(10px, 1.8vw, 18px);
   transform-style: preserve-3d;
 }
 
@@ -122,7 +134,7 @@ body.page-404 {
   position: relative;
   font-family: 'Geist', 'Plus Jakarta Sans', sans-serif;
   font-weight: 900;
-  font-size: 130px;
+  font-size: clamp(75px, 12vh, 110px);
   line-height: 1;
   letter-spacing: -0.04em;
   transform-style: preserve-3d;
@@ -167,11 +179,11 @@ body.page-404 {
    ========================================================================== */
 .robot-companion-wrap {
   position: absolute;
-  top: 10px;
+  top: clamp(2px, 0.8vh, 8px);
   left: 50%;
   transform: translateX(-50%) translateZ(48px);
-  width: 130px;
-  height: 150px;
+  width: clamp(88px, 13vh, 115px);
+  height: clamp(102px, 15vh, 135px);
   transform-style: preserve-3d;
   pointer-events: none;
   animation: robotBreathing 4.5s ease-in-out infinite;
@@ -182,7 +194,7 @@ body.page-404 {
     transform: translateX(-50%) translateZ(48px) translateY(0px);
   }
   50% {
-    transform: translateX(-50%) translateZ(48px) translateY(-8px);
+    transform: translateX(-50%) translateZ(48px) translateY(-6px);
   }
 }
 
@@ -301,12 +313,12 @@ body.page-404 {
    ========================================================================== */
 .label-error-tag {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
+  font-size: clamp(10px, 1.2vh, 11px);
   font-weight: 700;
   letter-spacing: 0.28em;
   color: var(--btech-muted);
   text-transform: uppercase;
-  margin-bottom: 12px;
+  margin-bottom: clamp(6px, 1vh, 10px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -324,20 +336,20 @@ body.page-404 {
 
 .heading-404 {
   font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 42px;
+  font-size: clamp(24px, 3.8vh, 38px);
   font-weight: 800;
-  line-height: 1.15;
+  line-height: 1.18;
   color: var(--btech-text);
   letter-spacing: -0.03em;
-  margin: 0 0 12px;
+  margin: 0 0 clamp(6px, 1vh, 10px);
 }
 
 .message-404 {
-  font-size: 15px;
-  line-height: 1.6;
+  font-size: clamp(13px, 1.6vh, 15px);
+  line-height: 1.5;
   color: var(--btech-muted);
   max-width: 440px;
-  margin: 0 auto 32px;
+  margin: 0 auto clamp(14px, 2.2vh, 26px);
   font-weight: 400;
 }
 
@@ -348,7 +360,7 @@ body.page-404 {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 18px;
+  gap: clamp(12px, 1.5vw, 18px);
   flex-wrap: wrap;
 }
 
@@ -361,9 +373,9 @@ body.page-404 {
   background: #182238;
   color: #FFFFFF;
   border: 1px solid rgba(88, 101, 242, 0.4);
-  padding: 13px 28px;
+  padding: clamp(9px, 1.3vh, 12px) clamp(20px, 2.5vw, 28px);
   border-radius: 9999px;
-  font-size: 14px;
+  font-size: clamp(12.5px, 1.4vh, 14px);
   font-weight: 700;
   letter-spacing: 0.01em;
   text-decoration: none;
@@ -395,7 +407,7 @@ body.page-404 {
 
 .arrow-ico {
   transition: transform 0.2s ease;
-  font-size: 16px;
+  font-size: 15px;
   line-height: 1;
 }
 
@@ -404,9 +416,9 @@ body.page-404 {
   background: transparent;
   border: none;
   color: var(--btech-muted);
-  font-size: 14px;
+  font-size: clamp(12.5px, 1.4vh, 14px);
   font-weight: 600;
-  padding: 12px 18px;
+  padding: clamp(8px, 1.1vh, 11px) 16px;
   border-radius: 9999px;
   cursor: pointer;
   transition: color 0.2s ease, transform 0.2s ease;
@@ -424,6 +436,79 @@ body.page-404 {
 .btn-back-secondary:focus-visible {
   outline: 2px solid rgba(161, 167, 188, 0.5);
   outline-offset: 2px;
+}
+
+/* ==========================================================================
+   LAPTOP & COMPACT HEIGHT VIEWPORT OPTIMIZATIONS
+   ========================================================================== */
+@media (max-height: 800px) {
+  .scene-3d-stage {
+    height: 195px;
+    margin-bottom: 6px;
+  }
+  .glyph-404 {
+    font-size: 88px;
+  }
+  .robot-companion-wrap {
+    width: 95px;
+    height: 110px;
+    top: 4px;
+  }
+  .stage-shadow-plane {
+    width: 290px;
+    bottom: 12px;
+  }
+  .heading-404 {
+    font-size: 28px;
+    margin-bottom: 6px;
+  }
+  .message-404 {
+    font-size: 13.5px;
+    margin-bottom: 18px;
+  }
+}
+
+@media (max-height: 680px) {
+  .content-wrapper-404 {
+    padding-top: 2px;
+    padding-bottom: 8px;
+  }
+  .scene-3d-stage {
+    height: 170px;
+    margin-bottom: 4px;
+  }
+  .glyph-404 {
+    font-size: 76px;
+  }
+  .robot-companion-wrap {
+    width: 82px;
+    height: 96px;
+    top: 2px;
+  }
+  .stage-shadow-plane {
+    width: 250px;
+    bottom: 10px;
+  }
+  .label-error-tag {
+    font-size: 9.5px;
+    margin-bottom: 4px;
+  }
+  .heading-404 {
+    font-size: 24px;
+    margin-bottom: 4px;
+  }
+  .message-404 {
+    font-size: 12.5px;
+    margin-bottom: 14px;
+  }
+  .btn-home-primary {
+    padding: 8px 20px;
+    font-size: 12px;
+  }
+  .btn-back-secondary {
+    padding: 7px 14px;
+    font-size: 12px;
+  }
 }
 
 /* ==========================================================================
