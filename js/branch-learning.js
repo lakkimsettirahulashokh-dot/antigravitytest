@@ -186,6 +186,26 @@ const BranchLearning = {
         }
     },
 
+    BRANCH_LIST: [
+        { code: 'ECE', name: 'Chips & VLSI', icon: 'memory' },
+        { code: 'AUTO', name: 'Auto Engines', icon: 'directions_car' },
+        { code: 'MECH', name: 'Machinery & CAD', icon: 'settings' },
+        { code: 'EIE', name: 'Sensors & Automation', icon: 'tune' },
+        { code: 'EEE', name: 'Power Systems', icon: 'bolt' },
+        { code: 'CSE', name: 'Comp Arch & Cloud', icon: 'terminal' },
+        { code: 'IT', name: 'Cloud Networks', icon: 'hub' },
+        { code: 'AIML', name: 'Neural Nets & AI', icon: 'psychology' },
+        { code: 'DS', name: 'Data Pipelines', icon: 'analytics' },
+        { code: 'CIVIL', name: 'Structural Bridges', icon: 'architecture' },
+        { code: 'CHEM', name: 'Process Plants', icon: 'science' },
+        { code: 'BIOTECH', name: 'DNA & Bio', icon: 'biotech' },
+        { code: 'BIOMED', name: 'Medical Devices', icon: 'monitor_heart' },
+        { code: 'AERO', name: 'Jet Propulsion', icon: 'flight' },
+        { code: 'MECHTRON', name: 'Mechatronics', icon: 'precision_manufacturing' },
+        { code: 'ROBOTICS', name: 'Robotics', icon: 'smart_toy' },
+        { code: 'MFG', name: 'CNC Machining', icon: 'hardware' }
+    ],
+
     async init() {
         this.bindEvents();
         await this.syncWithCanonicalProfile();
@@ -193,8 +213,96 @@ const BranchLearning = {
         // Initialize 3D Hologram stage if Three.js is ready
         this.init3DHologram();
 
+        // Render interactive horizontal branch selector rail
+        this.renderBranchPillsRail();
+
+        // Initialize drag-to-scroll and horizontal rail interaction
+        this.initHorizontalRails();
+
         // Load the active branch specialization
         await this.loadSpecialization();
+    },
+
+    renderBranchPillsRail() {
+        const rail = document.getElementById('branch-pills-rail');
+        if (!rail) return;
+
+        rail.innerHTML = this.BRANCH_LIST.map(b => {
+            const isActive = this.currentBranch === b.code;
+            return `
+                <button type="button" onclick="BranchLearning.onSelectBranchChange('${b.code}')" data-branch-pill="${b.code}" class="branch-pill-item shrink-0 px-3 py-1.5 rounded-xl text-xs font-mono flex items-center gap-1.5 border transition-all cursor-pointer ${isActive ? 'bg-indigo-600/30 text-white border-indigo-500 shadow-md font-bold' : 'bg-[#121826] text-[#A1A7BC] border-[#2A3147] hover:border-indigo-500/40 hover:text-white'}">
+                    <span class="material-symbols-outlined text-sm ${isActive ? 'text-indigo-400' : 'text-[#A1A7BC]'}">${b.icon}</span>
+                    <span>${b.code}</span>
+                </button>
+            `;
+        }).join('');
+    },
+
+    initHorizontalRails() {
+        const rails = document.querySelectorAll('.custom-horizontal-rail, [data-horizontal-rail]');
+        rails.forEach(rail => {
+            if (rail._hasHorizontalInit) return;
+            rail._hasHorizontalInit = true;
+
+            // Non-blocking vertical scroll allowance on mobile
+            rail.style.touchAction = 'pan-y';
+
+            // Desktop Mouse Drag-to-Scroll
+            let isDown = false;
+            let startX = 0;
+            let scrollLeft = 0;
+            let hasMoved = false;
+
+            rail.addEventListener('mousedown', (e) => {
+                if (e.button !== 0) return;
+                isDown = true;
+                hasMoved = false;
+                startX = e.pageX - rail.offsetLeft;
+                scrollLeft = rail.scrollLeft;
+                rail.style.cursor = 'grabbing';
+                rail.style.userSelect = 'none';
+            });
+
+            const onMouseMove = (e) => {
+                if (!isDown) return;
+                const x = e.pageX - rail.offsetLeft;
+                const walk = (x - startX) * 1.6;
+                if (Math.abs(walk) > 4) {
+                    hasMoved = true;
+                }
+                rail.scrollLeft = scrollLeft - walk;
+            };
+
+            const onMouseUp = () => {
+                if (isDown) {
+                    isDown = false;
+                    rail.style.cursor = '';
+                    rail.style.removeProperty('user-select');
+                }
+            };
+
+            window.addEventListener('mousemove', onMouseMove);
+            window.addEventListener('mouseup', onMouseUp);
+
+            // Prevent accidental button trigger when dragging
+            rail.addEventListener('click', (e) => {
+                if (hasMoved) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    hasMoved = false;
+                }
+            }, true);
+
+            // Shift + Wheel or Trackpad horizontal scroll support
+            rail.addEventListener('wheel', (e) => {
+                if (e.shiftKey || Math.abs(e.deltaX) > Math.abs(e.deltaY)) {
+                    rail.scrollLeft += e.deltaX || e.deltaY;
+                    e.preventDefault();
+                }
+                // When scrolling vertically (normal mouse wheel without Shift):
+                // DO NOT preventDefault! Allow normal document vertical page scrolling!
+            }, { passive: false });
+        });
     },
 
     init3DHologram() {
@@ -264,6 +372,25 @@ const BranchLearning = {
                 }
             };
         } catch (e) {}
+
+        // 3. Guaranteed Scroll Restoration (Route changes, modal dismissals, history back/forward)
+        const restorePageScroll = () => {
+            document.body.style.overflow = '';
+            document.documentElement.style.overflow = '';
+            const overlay = document.getElementById('mobile-sidebar-overlay');
+            if (overlay && overlay.classList.contains('hidden')) {
+                document.body.style.overflow = '';
+            }
+        };
+
+        window.addEventListener('pageshow', restorePageScroll);
+        window.addEventListener('popstate', restorePageScroll);
+        window.addEventListener('pagehide', restorePageScroll);
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 768) {
+                restorePageScroll();
+            }
+        }, { passive: true });
     },
 
     async syncWithCanonicalProfile() {
@@ -303,6 +430,23 @@ const BranchLearning = {
         }
         if (semSelect && this.currentSemester) {
             semSelect.value = String(this.currentSemester);
+        }
+
+        // Sync and highlight active pill in the horizontal rail
+        const rail = document.getElementById('branch-pills-rail');
+        if (rail) {
+            rail.querySelectorAll('.branch-pill-item').forEach(pill => {
+                const code = pill.getAttribute('data-branch-pill');
+                const isActive = code === this.currentBranch;
+                if (isActive) {
+                    pill.className = 'branch-pill-item shrink-0 px-3 py-1.5 rounded-xl text-xs font-mono flex items-center gap-1.5 border transition-all cursor-pointer bg-indigo-600/30 text-white border-indigo-500 shadow-md font-bold';
+                    try {
+                        pill.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                    } catch (e) {}
+                } else {
+                    pill.className = 'branch-pill-item shrink-0 px-3 py-1.5 rounded-xl text-xs font-mono flex items-center gap-1.5 border transition-all cursor-pointer bg-[#121826] text-[#A1A7BC] border-[#2A3147] hover:border-indigo-500/40 hover:text-white';
+                }
+            });
         }
     },
 
@@ -546,6 +690,9 @@ const BranchLearning = {
                 if (content) content.classList.add('hidden');
             }
         });
+
+        // Re-initialize rails when switching tabs
+        this.initHorizontalRails();
     },
 
     // --------------------------------------------------------------------------
@@ -594,6 +741,9 @@ const BranchLearning = {
 
         // 6. Render Tab 4: Technical Interviews
         this.renderInterviews(spec);
+
+        // 7. Ensure horizontal rails and non-blocking scroll are initialized
+        this.initHorizontalRails();
     },
 
     renderHoloCardMeta(branchCode) {

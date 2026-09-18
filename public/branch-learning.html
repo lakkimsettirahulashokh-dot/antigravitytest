@@ -39,10 +39,27 @@
     </script>
 
     <style>
+        html {
+            overflow-x: hidden !important;
+            overflow-y: auto !important;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+            max-width: 100%;
+        }
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
             background-color: #07090E;
             color: #F5F7FA;
+            overflow-x: hidden !important;
+            overflow-y: auto !important;
+            min-height: 100vh;
+            min-height: 100dvh;
+            max-width: 100%;
+            -webkit-overflow-scrolling: touch;
+        }
+        main {
+            overflow-y: visible !important;
+            overflow-x: hidden !important;
         }
         .font-mono {
             font-family: 'JetBrains Mono', monospace;
@@ -63,6 +80,32 @@
         .topic-accordion.open .accordion-icon {
             transform: rotate(180deg);
         }
+        /* Custom sleek horizontal rails */
+        .custom-horizontal-rail {
+            overflow-x: auto;
+            overflow-y: hidden;
+            touch-action: pan-y;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(99, 102, 241, 0.35) transparent;
+        }
+        .custom-horizontal-rail::-webkit-scrollbar {
+            height: 5px;
+        }
+        .custom-horizontal-rail::-webkit-scrollbar-track {
+            background: rgba(18, 24, 38, 0.4);
+            border-radius: 9999px;
+        }
+        .custom-horizontal-rail::-webkit-scrollbar-thumb {
+            background: rgba(99, 102, 241, 0.35);
+            border-radius: 9999px;
+        }
+        .custom-horizontal-rail::-webkit-scrollbar-thumb:hover {
+            background: rgba(99, 102, 241, 0.6);
+        }
+        #branch-hologram-stage, #branch-hologram-stage canvas {
+            touch-action: pan-y !important;
+        }
     </style>
 </head>
 <body class="bg-[#07090E] text-[#F5F7FA] min-h-screen flex flex-col md:flex-row antialiased selection:bg-[#5865F2] selection:text-white">
@@ -73,12 +116,12 @@
             <img src="assets/branding/techpath-emblem.png" alt="TechPath" class="h-7 w-auto">
             <span class="font-bold text-sm tracking-tight text-white">TechPath</span>
         </a>
-        <button id="mobile-menu-btn" onclick="const s = document.getElementById('main-sidebar'), o = document.getElementById('mobile-sidebar-overlay'); s.classList.toggle('-translate-x-full'); if (o) o.classList.toggle('hidden');" class="p-2 rounded-lg bg-[#1A2031] text-[#A1A7BC]">
+        <button id="mobile-menu-btn" onclick="const s = document.getElementById('main-sidebar'), o = document.getElementById('mobile-sidebar-overlay'); const isOpening = s.classList.contains('-translate-x-full'); s.classList.toggle('-translate-x-full'); if (o) o.classList.toggle('hidden'); document.body.style.overflow = isOpening ? 'hidden' : '';" class="p-2 rounded-lg bg-[#1A2031] text-[#A1A7BC]">
             <span class="material-symbols-outlined">menu</span>
         </button>
     </div>
 
-    <div id="mobile-sidebar-overlay" onclick="document.getElementById('main-sidebar').classList.add('-translate-x-full'); this.classList.add('hidden');" class="fixed inset-0 bg-black/60 z-30 hidden md:hidden"></div>
+    <div id="mobile-sidebar-overlay" onclick="document.getElementById('main-sidebar').classList.add('-translate-x-full'); this.classList.add('hidden'); document.body.style.overflow = '';" class="fixed inset-0 bg-black/60 z-30 hidden md:hidden"></div>
 
     <!-- SIDEBAR NAVIGATION -->
     <aside id="main-sidebar" class="w-64 bg-[#0B0F19] border-r border-[#2A3147] flex flex-col justify-between shrink-0 z-40 fixed md:sticky md:top-0 md:h-screen inset-y-0 left-0 -translate-x-full md:translate-x-0 transition-transform duration-300">
@@ -238,17 +281,17 @@
             <div id="hologram-visual-card" class="glass-card rounded-3xl p-6 relative overflow-hidden border border-indigo-500/20 bg-gradient-to-b from-[#121826]/90 to-[#0B0F19]/95 shadow-2xl transition-all">
                 <div class="flex flex-col lg:flex-row items-center justify-between gap-6">
                     <!-- 3D WebGL Canvas Stage -->
-                    <div class="relative w-full lg:w-1/2 h-72 sm:h-80 rounded-2xl overflow-hidden bg-[#07090E]/60 border border-indigo-500/20 flex items-center justify-center group">
-                        <div id="branch-hologram-stage" class="w-full h-full relative cursor-grab active:cursor-grabbing"></div>
+                    <div class="relative w-full lg:w-1/2 h-72 sm:h-80 rounded-2xl overflow-hidden bg-[#07090E]/60 border border-indigo-500/20 flex items-center justify-center group" style="touch-action: pan-y;">
+                        <div id="branch-hologram-stage" class="w-full h-full relative cursor-grab active:cursor-grabbing" style="touch-action: pan-y;"></div>
                         <!-- Live Hologram HUD Badges -->
-                        <div class="absolute top-3 left-3 flex items-center gap-2 pointer-events-none">
+                        <div class="absolute top-3 left-3 flex items-center gap-2 pointer-events-none z-10">
                             <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-indigo-500/20 text-indigo-300 border border-indigo-500/40 flex items-center gap-1.5">
                                 <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping"></span>
                                 <span id="holo-status-pill">HOLOGRAPHIC 3D TELEMETRY</span>
                             </span>
                         </div>
-                        <div class="absolute bottom-3 right-3 text-[10px] font-mono text-[#A1A7BC]/70 pointer-events-none">
-                            <span id="holo-rot-hint">Drag / Hover to Inspect Parallax</span>
+                        <div class="absolute bottom-3 right-3 text-[10px] font-mono text-[#A1A7BC]/80 pointer-events-none z-10 bg-[#0B0F19]/70 px-2 py-0.5 rounded-lg border border-[#2A3147]/60 backdrop-blur-sm">
+                            <span id="holo-rot-hint">Drag to Rotate • Pinch / Ctrl+Scroll to Zoom</span>
                         </div>
                     </div>
 
@@ -321,13 +364,24 @@
                                     </select>
                                 </div>
                             </div>
+
+                            <!-- Horizontal Discipline Cards Rail -->
+                            <div class="pt-2 border-t border-[#2A3147]/60">
+                                <div class="text-[10px] font-mono text-[#A1A7BC] mb-1.5 flex items-center justify-between">
+                                    <span>DISCIPLINE QUICK RAIL</span>
+                                    <span class="text-[9px] text-indigo-400 font-mono">Swipe or Drag sideways ➔</span>
+                                </div>
+                                <div id="branch-pills-rail" class="custom-horizontal-rail flex items-center gap-2 pb-1.5 overflow-x-auto select-none" data-horizontal-rail="true">
+                                    <!-- Populated dynamically -->
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
             <!-- Tabbed Navigation Bar -->
-            <div class="flex items-center gap-2 overflow-x-auto pb-2 border-b border-[#2A3147]">
+            <div id="branch-tabs-rail" class="custom-horizontal-rail flex items-center gap-2 overflow-x-auto pb-2 border-b border-[#2A3147] select-none" data-horizontal-rail="true">
                 <button onclick="BranchLearning.switchTab('curriculum')" id="tab-btn-curriculum" class="tab-btn active px-4 py-2.5 rounded-xl text-xs font-semibold flex items-center gap-2 border border-transparent transition-all shrink-0">
                     <span class="material-symbols-outlined text-base">menu_book</span>
                     <span>Curriculum & Core Theory</span>

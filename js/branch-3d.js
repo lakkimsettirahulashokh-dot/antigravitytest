@@ -424,12 +424,6 @@
             this.camera.updateProjectionMatrix();
             this.renderer.setSize(w, h);
         }
-            const h = this.container.clientHeight || 360;
-            if (w === 0 || h === 0) return;
-            this.camera.aspect = w / h;
-            this.camera.updateProjectionMatrix();
-            this.renderer.setSize(w, h);
-        }
 
         // ======================================================================
         // DYNAMIC BRANCH MODEL SWITCHING
@@ -1287,15 +1281,30 @@
 
                 const elapsed = this.clock ? this.clock.getElapsedTime() : 0;
 
-                // Subtle continuous rotation unless reduced motion is active
-                if (!this.prefersReducedMotion && this.activeModelGroup) {
-                    this.activeModelGroup.rotation.y += 0.008;
+                // Smoothly interpolate user interaction state
+                this.userRotationX += (this.targetUserRotX - this.userRotationX) * 0.12;
+                this.userRotationY += (this.targetUserRotY - this.userRotationY) * 0.12;
+                this.panX += (this.targetPanX - this.panX) * 0.12;
+                this.panY += (this.targetPanY - this.panY) * 0.12;
+                this.cameraDistance += (this.targetCameraDistance - this.cameraDistance) * 0.12;
+
+                // Apply Camera Zoom & Pan Position
+                if (this.camera) {
+                    this.camera.position.set(this.panX, this.panY, this.cameraDistance);
+                    this.camera.lookAt(this.panX, this.panY, 0);
                 }
 
-                // Smooth Parallax Lerp
+                // Subtle continuous rotation unless reduced motion is active or user is actively dragging
+                if (this.autoRotate && !this.prefersReducedMotion && !this.isDragging && this.activeModelGroup) {
+                    this.activeModelGroup.rotation.y += 0.006;
+                }
+
+                // Smooth Parallax + User Drag Rotation
                 if (this.activeModelGroup) {
-                    this.activeModelGroup.rotation.x += (this.targetRotationX - this.activeModelGroup.rotation.x) * 0.08;
-                    this.activeModelGroup.rotation.z += (this.targetRotationY - this.activeModelGroup.rotation.z) * 0.08;
+                    this.activeModelGroup.rotation.x = this.userRotationX + (this.targetRotationX * 0.4);
+                    this.activeModelGroup.rotation.y += (this.userRotationY - (this._prevUserRotY || 0));
+                    this.activeModelGroup.rotation.z = (this.targetRotationY * 0.3);
+                    this._prevUserRotY = this.userRotationY;
                 }
 
                 // Run active sub-animations
@@ -1320,17 +1329,26 @@
 
         destroy() {
             this.stop();
+            this.unbindEvents();
             this.clearActiveModel();
             if (this.observer) {
-                this.observer.disconnect();
+                try {
+                    this.observer.disconnect();
+                } catch (e) {}
                 this.observer = null;
             }
             if (this.renderer) {
-                this.renderer.dispose();
+                try {
+                    this.renderer.dispose();
+                } catch (e) {}
                 this.renderer = null;
             }
             if (this.container && this.canvas && this.canvas.parentNode === this.container) {
                 this.container.removeChild(this.canvas);
+            }
+            const toolbar = this.container?.parentElement?.querySelector('.holo-hud-toolbar');
+            if (toolbar) {
+                toolbar.remove();
             }
             this.canvas = null;
             this.scene = null;

@@ -53,6 +53,29 @@
 
             // Animated components state
             this.animatables = [];
+
+            // Interactive Orbit / Zoom / Pan State
+            this.userRotationX = 0;
+            this.userRotationY = 0;
+            this.targetUserRotX = 0;
+            this.targetUserRotY = 0;
+            this.panX = 0;
+            this.panY = 0;
+            this.targetPanX = 0;
+            this.targetPanY = 0;
+            this.cameraDistance = 7.5;
+            this.targetCameraDistance = 7.5;
+            this.minDistance = 3.2;
+            this.maxDistance = 14.0;
+            this.isDragging = false;
+            this.isPanning = false;
+            this.autoRotate = true;
+            this.pointerStartX = 0;
+            this.pointerStartY = 0;
+            this.activePointers = new Map();
+            this.initialPinchDistance = null;
+            this.initialPinchZoom = null;
+            this._cleanupListeners = [];
         }
 
         init(containerId = 'branch-hologram-stage') {
@@ -76,7 +99,7 @@
             // Setup Camera
             const aspect = this.container.clientWidth / (this.container.clientHeight || 360);
             this.camera = new THREE.PerspectiveCamera(45, aspect, 0.1, 100);
-            this.camera.position.set(0, 0, 7.5);
+            this.camera.position.set(0, 0, this.cameraDistance);
 
             // Setup Renderer
             this.renderer = new THREE.WebGLRenderer({
@@ -92,8 +115,13 @@
             this.canvas.style.display = 'block';
             this.canvas.style.width = '100%';
             this.canvas.style.height = '100%';
-            this.canvas.style.pointerEvents = 'none'; // Never block clicks/scrolls
-            this.canvas.setAttribute('aria-hidden', 'true');
+            this.canvas.style.pointerEvents = 'auto'; // Allow interaction
+            // CRITICAL: touch-action pan-y ensures vertical swipe scrolls the page on mobile!
+            this.canvas.style.touchAction = 'pan-y';
+            this.container.style.touchAction = 'pan-y';
+            this.container.setAttribute('tabindex', '0');
+            this.container.setAttribute('role', 'region');
+            this.container.setAttribute('aria-label', 'Interactive 3D Holographic Engineering Model. Drag to rotate, pinch or hold Ctrl+scroll to zoom.');
 
             // Clear old canvas if present
             while (this.container.firstChild) {
@@ -117,39 +145,249 @@
             amberFill.position.set(4, -5, -3);
             this.scene.add(amberFill);
 
-            // Parallax & Window Events
+            // Inject Sleek HUD Control Toolbar if not already present
+            this.injectHUDControls();
+
+            // Parallax & Interactive Events
             this.bindEvents();
 
             // Start Render Loop
             this.start();
         }
 
+        injectHUDControls() {
+            if (!this.container || !this.container.parentElement) return;
+            const parent = this.container.parentElement;
+            if (parent.querySelector('.holo-hud-toolbar')) return;
+
+            const toolbar = document.createElement('div');
+            toolbar.className = 'holo-hud-toolbar absolute top-3 right-3 flex items-center gap-1.5 z-20 pointer-events-auto bg-[#0B0F19]/80 backdrop-blur-md px-2 py-1 rounded-xl border border-indigo-500/30 shadow-lg select-none';
+            toolbar.setAttribute('aria-label', '3D Model View Controls');
+            toolbar.innerHTML = `
+                <button type="button" data-action="zoom-in" title="Zoom In (+)" aria-label="Zoom In" class="w-6 h-6 rounded-lg bg-[#1A2031] hover:bg-indigo-600/30 text-indigo-300 hover:text-white flex items-center justify-center text-xs transition-colors border border-indigo-500/20">
+                    <span class="material-symbols-outlined text-xs leading-none">add</span>
+                </button>
+                <button type="button" data-action="zoom-out" title="Zoom Out (-)" aria-label="Zoom Out" class="w-6 h-6 rounded-lg bg-[#1A2031] hover:bg-indigo-600/30 text-indigo-300 hover:text-white flex items-center justify-center text-xs transition-colors border border-indigo-500/20">
+                    <span class="material-symbols-outlined text-xs leading-none">remove</span>
+                </button>
+                <button type="button" data-action="reset" title="Reset Camera View" aria-label="Reset View" class="w-6 h-6 rounded-lg bg-[#1A2031] hover:bg-indigo-600/30 text-indigo-300 hover:text-white flex items-center justify-center text-xs transition-colors border border-indigo-500/20">
+                    <span class="material-symbols-outlined text-xs leading-none">restart_alt</span>
+                </button>
+                <button type="button" data-action="toggle-rotate" title="Toggle Auto-Rotation" aria-label="Toggle Rotation" class="w-6 h-6 rounded-lg bg-[#1A2031] hover:bg-indigo-600/30 text-indigo-300 hover:text-white flex items-center justify-center text-xs transition-colors border border-indigo-500/20">
+                    <span class="material-symbols-outlined text-xs leading-none rotate-icon">motion_mode</span>
+                </button>
+            `;
+
+            toolbar.addEventListener('click', (e) => {
+                const btn = e.target.closest('button');
+                if (!btn) return;
+                e.stopPropagation();
+                const action = btn.getAttribute('data-action');
+                if (action === 'zoom-in') this.zoomIn();
+                if (action === 'zoom-out') this.zoomOut();
+                if (action === 'reset') this.resetView();
+                if (action === 'toggle-rotate') {
+                    this.autoRotate = !this.autoRotate;
+                    const icon = btn.querySelector('.rotate-icon');
+                    if (icon) icon.textContent = this.autoRotate ? 'motion_mode' : 'pause';
+                }
+            });
+
+            parent.appendChild(toolbar);
+        }
+
+        zoomIn(step = 0.8) {
+            this.targetCameraDistance = Math.max(this.minDistance, this.targetCameraDistance - step);
+        }
+
+        zoomOut(step = 0.8) {
+            this.targetCameraDistance = Math.min(this.maxDistance, this.targetCameraDistance + step);
+        }
+
+        resetView() {
+            this.targetUserRotX = 0;
+            this.targetUserRotY = 0;
+            this.targetPanX = 0;
+            this.targetPanY = 0;
+            this.targetCameraDistance = 7.5;
+            this.targetRotationX = 0;
+            this.targetRotationY = 0;
+        }
+
         bindEvents() {
-            // Mouse & Touch Parallax on container parent
+            // Clean up any existing listeners
+            this.unbindEvents();
+
+            const addSafeListener = (target, type, handler, options) => {
+                target.addEventListener(type, handler, options);
+                this._cleanupListeners.push({ target, type, handler, options });
+            };
+
+            const stage = this.container;
             const trackElement = this.container.parentElement || this.container;
-            
-            trackElement.addEventListener('mousemove', (e) => {
+
+            // 1. Mouse Parallax (subtle tilt when merely hovering, not dragging)
+            const onMouseMove = (e) => {
+                if (this.isDragging || this.isPanning) return;
                 const rect = trackElement.getBoundingClientRect();
                 const x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
                 const y = -(((e.clientY - rect.top) / rect.height) * 2 - 1);
-                this.targetRotationY = x * 0.45;
-                this.targetRotationX = -y * 0.35;
-            }, { passive: true });
+                this.targetRotationY = x * 0.35;
+                this.targetRotationX = -y * 0.25;
+            };
+            addSafeListener(trackElement, 'mousemove', onMouseMove, { passive: true });
 
-            trackElement.addEventListener('mouseleave', () => {
-                this.targetRotationX = 0;
-                this.targetRotationY = 0;
-            }, { passive: true });
+            const onMouseLeave = () => {
+                if (!this.isDragging && !this.isPanning) {
+                    this.targetRotationX = 0;
+                    this.targetRotationY = 0;
+                }
+            };
+            addSafeListener(trackElement, 'mouseleave', onMouseLeave, { passive: true });
 
-            // Window Resize
-            window.addEventListener('resize', () => this.resize(), { passive: true });
+            // 2. Interactive Pointer Drag (Rotate & Pan)
+            const onPointerDown = (e) => {
+                this.activePointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
 
-            // Tab Visibility
-            document.addEventListener('visibilitychange', () => {
+                if (this.activePointers.size === 1) {
+                    // Right mouse button OR holding Shift => Pan mode
+                    if (e.button === 2 || e.shiftKey) {
+                        this.isPanning = true;
+                        this.isDragging = false;
+                    } else if (e.button === 0) { // Left mouse button
+                        this.isDragging = true;
+                        this.isPanning = false;
+                    }
+                    this.pointerStartX = e.clientX;
+                    this.pointerStartY = e.clientY;
+
+                    try {
+                        stage.setPointerCapture(e.pointerId);
+                    } catch (err) {}
+                } else if (this.activePointers.size === 2) {
+                    // Two fingers on mobile / touch screen => Pinch zoom mode
+                    this.isDragging = false;
+                    this.isPanning = false;
+                    const pts = Array.from(this.activePointers.values());
+                    this.initialPinchDistance = Math.hypot(pts[0].x - pts[1].x, pts[0].y - pts[1].y);
+                    this.initialPinchZoom = this.targetCameraDistance;
+                }
+            };
+            addSafeListener(stage, 'pointerdown', onPointerDown, { passive: true });
+
+            const onPointerMove = (e) => {
+                if (!this.activePointers.has(e.pointerId)) return;
+                this.activePointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
+
+                // Multi-touch Pinch Zoom
+                if (this.activePointers.size === 2 && this.initialPinchDistance) {
+                    const pts = Array.from(this.activePointers.values());
+                    const currentDist = Math.hypot(pts[0].x - pts[1].x, pts[0].y - pts[1].y);
+                    if (currentDist > 5 && this.initialPinchDistance > 5) {
+                        const ratio = this.initialPinchDistance / currentDist;
+                        const newZoom = this.initialPinchZoom * ratio;
+                        this.targetCameraDistance = Math.max(this.minDistance, Math.min(this.maxDistance, newZoom));
+                    }
+                    return;
+                }
+
+                if (this.isDragging) {
+                    const dx = e.clientX - this.pointerStartX;
+                    const dy = e.clientY - this.pointerStartY;
+                    this.pointerStartX = e.clientX;
+                    this.pointerStartY = e.clientY;
+
+                    this.targetUserRotY += dx * 0.01;
+                    this.targetUserRotX += dy * 0.01;
+                    // Clamp pitch angle so model doesn't flip upside down
+                    this.targetUserRotX = Math.max(-Math.PI / 2.3, Math.min(Math.PI / 2.3, this.targetUserRotX));
+                } else if (this.isPanning) {
+                    const dx = e.clientX - this.pointerStartX;
+                    const dy = e.clientY - this.pointerStartY;
+                    this.pointerStartX = e.clientX;
+                    this.pointerStartY = e.clientY;
+
+                    this.targetPanX += dx * 0.008;
+                    this.targetPanY -= dy * 0.008;
+                    this.targetPanX = Math.max(-3.5, Math.min(3.5, this.targetPanX));
+                    this.targetPanY = Math.max(-2.5, Math.min(2.5, this.targetPanY));
+                }
+            };
+            addSafeListener(stage, 'pointermove', onPointerMove, { passive: true });
+
+            const endDrag = (e) => {
+                if (e && e.pointerId) {
+                    this.activePointers.delete(e.pointerId);
+                    try {
+                        stage.releasePointerCapture(e.pointerId);
+                    } catch (err) {}
+                }
+                if (this.activePointers.size === 0) {
+                    this.isDragging = false;
+                    this.isPanning = false;
+                    this.initialPinchDistance = null;
+                }
+            };
+            addSafeListener(stage, 'pointerup', endDrag, { passive: true });
+            addSafeListener(stage, 'pointercancel', endDrag, { passive: true });
+            addSafeListener(stage, 'lostpointercapture', endDrag, { passive: true });
+
+            // 3. Wheel Handling
+            // CRITICAL REQUIREMENT: Normal mouse wheel must scroll the page vertically!
+            // Only zoom when Ctrl / Meta / Alt is held (standard map/3D canvas convention).
+            const onWheel = (e) => {
+                if (e.ctrlKey || e.metaKey || e.altKey) {
+                    e.preventDefault(); // Only prevent default when explicitly zooming with modifier
+                    const delta = e.deltaY * 0.004;
+                    this.targetCameraDistance = Math.max(this.minDistance, Math.min(this.maxDistance, this.targetCameraDistance + delta));
+                }
+            };
+            addSafeListener(stage, 'wheel', onWheel, { passive: false });
+
+            // 4. Prevent Context Menu on Right Click (enables right-click panning)
+            const onContextMenu = (e) => {
+                e.preventDefault();
+            };
+            addSafeListener(stage, 'contextmenu', onContextMenu, { passive: false });
+
+            // 5. Double Click: Toggle Zoom / Inspect
+            const onDblClick = () => {
+                if (this.targetCameraDistance > 5.0) {
+                    this.targetCameraDistance = 4.0; // Zoom in close
+                } else {
+                    this.targetCameraDistance = 7.5; // Reset zoom
+                }
+            };
+            addSafeListener(stage, 'dblclick', onDblClick, { passive: true });
+
+            // 6. Keyboard Accessibility (Arrow keys rotate, +/- zoom, R resets)
+            const onKeyDown = (e) => {
+                if (document.activeElement !== stage) return;
+                let handled = false;
+                if (e.key === 'ArrowLeft') { this.targetUserRotY -= 0.15; handled = true; }
+                if (e.key === 'ArrowRight') { this.targetUserRotY += 0.15; handled = true; }
+                if (e.key === 'ArrowUp') { this.targetUserRotX -= 0.15; handled = true; }
+                if (e.key === 'ArrowDown') { this.targetUserRotX += 0.15; handled = true; }
+                if (e.key === '+' || e.key === '=') { this.zoomIn(); handled = true; }
+                if (e.key === '-' || e.key === '_') { this.zoomOut(); handled = true; }
+                if (e.key === 'r' || e.key === 'R') { this.resetView(); handled = true; }
+                if (handled) {
+                    e.preventDefault();
+                }
+            };
+            addSafeListener(stage, 'keydown', onKeyDown, { passive: false });
+
+            // 7. Window Resize
+            const onResize = () => this.resize();
+            addSafeListener(window, 'resize', onResize, { passive: true });
+
+            // 8. Tab Visibility
+            const onVisibilityChange = () => {
                 this.isPaused = document.hidden;
-            });
+            };
+            addSafeListener(document, 'visibilitychange', onVisibilityChange, { passive: true });
 
-            // IntersectionObserver: Pause when off-screen for performance
+            // 9. IntersectionObserver: Pause when off-screen for performance
             if ('IntersectionObserver' in window) {
                 this.observer = new IntersectionObserver((entries) => {
                     entries.forEach(entry => {
@@ -157,6 +395,23 @@
                     });
                 }, { threshold: 0.05 });
                 this.observer.observe(this.container);
+            }
+        }
+
+        unbindEvents() {
+            if (this._cleanupListeners) {
+                this._cleanupListeners.forEach(({ target, type, handler, options }) => {
+                    try {
+                        target.removeEventListener(type, handler, options);
+                    } catch (e) {}
+                });
+                this._cleanupListeners = [];
+            }
+            if (this.observer) {
+                try {
+                    this.observer.disconnect();
+                } catch (e) {}
+                this.observer = null;
             }
         }
 
@@ -1026,15 +1281,30 @@
 
                 const elapsed = this.clock ? this.clock.getElapsedTime() : 0;
 
-                // Subtle continuous rotation unless reduced motion is active
-                if (!this.prefersReducedMotion && this.activeModelGroup) {
-                    this.activeModelGroup.rotation.y += 0.008;
+                // Smoothly interpolate user interaction state
+                this.userRotationX += (this.targetUserRotX - this.userRotationX) * 0.12;
+                this.userRotationY += (this.targetUserRotY - this.userRotationY) * 0.12;
+                this.panX += (this.targetPanX - this.panX) * 0.12;
+                this.panY += (this.targetPanY - this.panY) * 0.12;
+                this.cameraDistance += (this.targetCameraDistance - this.cameraDistance) * 0.12;
+
+                // Apply Camera Zoom & Pan Position
+                if (this.camera) {
+                    this.camera.position.set(this.panX, this.panY, this.cameraDistance);
+                    this.camera.lookAt(this.panX, this.panY, 0);
                 }
 
-                // Smooth Parallax Lerp
+                // Subtle continuous rotation unless reduced motion is active or user is actively dragging
+                if (this.autoRotate && !this.prefersReducedMotion && !this.isDragging && this.activeModelGroup) {
+                    this.activeModelGroup.rotation.y += 0.006;
+                }
+
+                // Smooth Parallax + User Drag Rotation
                 if (this.activeModelGroup) {
-                    this.activeModelGroup.rotation.x += (this.targetRotationX - this.activeModelGroup.rotation.x) * 0.08;
-                    this.activeModelGroup.rotation.z += (this.targetRotationY - this.activeModelGroup.rotation.z) * 0.08;
+                    this.activeModelGroup.rotation.x = this.userRotationX + (this.targetRotationX * 0.4);
+                    this.activeModelGroup.rotation.y += (this.userRotationY - (this._prevUserRotY || 0));
+                    this.activeModelGroup.rotation.z = (this.targetRotationY * 0.3);
+                    this._prevUserRotY = this.userRotationY;
                 }
 
                 // Run active sub-animations
@@ -1059,17 +1329,26 @@
 
         destroy() {
             this.stop();
+            this.unbindEvents();
             this.clearActiveModel();
             if (this.observer) {
-                this.observer.disconnect();
+                try {
+                    this.observer.disconnect();
+                } catch (e) {}
                 this.observer = null;
             }
             if (this.renderer) {
-                this.renderer.dispose();
+                try {
+                    this.renderer.dispose();
+                } catch (e) {}
                 this.renderer = null;
             }
             if (this.container && this.canvas && this.canvas.parentNode === this.container) {
                 this.container.removeChild(this.canvas);
+            }
+            const toolbar = this.container?.parentElement?.querySelector('.holo-hud-toolbar');
+            if (toolbar) {
+                toolbar.remove();
             }
             this.canvas = null;
             this.scene = null;
