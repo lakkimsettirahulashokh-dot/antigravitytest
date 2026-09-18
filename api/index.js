@@ -7,7 +7,7 @@ module.exports = (req, res) => {
     }
 
     // Fast-path /api/config to avoid loading monolithic server bundle
-    if (req.url && (req.url === '/api/config' || req.url.startsWith('/api/config?') || req.url.startsWith('/api/config/'))) {
+    if (req.url && req.url.startsWith('/api/config')) {
         return handleConfig(req, res);
     }
 
