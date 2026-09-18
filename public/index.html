@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <!-- Primary SEO Meta Tags -->
+    <title>TechPath — Learn. Build. Prepare. Grow.</title>
+    <meta name="title" content="TechPath — Learn. Build. Prepare. Grow.">
+    <meta name="description" content="TechPath helps engineering students learn, build projects, prepare for exams and interviews, develop job-ready skills, and plan their career journey with AI.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://TechPath.ai/">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="TechPath">
+    <meta property="og:url" content="https://TechPath.ai/">
+    <meta property="og:title" content="TechPath — Learn. Build. Prepare. Grow.">
+    <meta property="og:description" content="TechPath helps engineering students learn, build projects, prepare for exams and interviews, develop job-ready skills, and plan their career journey with AI.">
+    <meta property="og:image" content="https://TechPath.ai/assets/branding/techpath-og.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="TechPath — Learn. Build. Prepare. Grow.">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://TechPath.ai/">
+    <meta name="twitter:title" content="TechPath — Learn. Build. Prepare. Grow.">
+    <meta name="twitter:description" content="TechPath helps engineering students learn, build projects, prepare for exams and interviews, develop job-ready skills, and plan their career journey with AI.">
+    <meta name="twitter:image" content="https://TechPath.ai/assets/branding/techpath-og.png">
+    <meta name="twitter:image:alt" content="TechPath — Learn. Build. Prepare. Grow.">
+
+    <!-- Favicon & App Icons -->
+    <link rel="icon" type="image/svg+xml" href="assets/branding/favicon.svg">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/branding/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/branding/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/branding/apple-touch-icon.png">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#0B0F19">
+    <!-- Primary SEO Meta Tags -->
+    <!-- Open Graph / Facebook -->
+    <!-- Twitter Card -->
+    <!-- Favicon & App Icons -->
+    <!-- Primary SEO Meta Tags -->
+    <!-- Open Graph / Facebook -->
+    <!-- Twitter Card -->
+    <!-- Favicon & App Icons -->
+    <!-- Primary SEO Meta Tags -->
+    <!-- Open Graph / Facebook -->
+    <!-- Twitter Card -->
+    <!-- Favicon & App Icons -->
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <!-- Favicon & Touch Icons -->
+    <!-- Open Graph / Facebook / LinkedIn -->
+    <!-- Twitter / X -->
+    <link rel="stylesheet" href="css/tailwind.output.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="css/custom.css"/>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://TechPath.ai/#website",
+          "url": "https://TechPath.ai/",
+          "name": "TechPath AI OS",
+          "description": "Learn. Build. Prepare. Grow. From Classroom to Career.",
+          "inLanguage": "en-US"
+        },
+        {
+          "@type": "EducationalOrganization",
+          "@id": "https://TechPath.ai/#organization",
+          "name": "TechPath AI OS",
+          "url": "https://TechPath.ai/",
+          "logo": "https://TechPath.ai/assets/branding/techpath-logo-horizontal.png",
+          "email": "lakkimsettirahulashok@gmail.com",
+          "sameAs": []
+        }
+      ]
+    }
+    </script>
+    <link rel="stylesheet" href="css/motion.css"/>
+    <link rel="stylesheet" href="css/paradrop.css"/>
+    <script src="js/seo-metadata.js"></script>
+
+    <!-- Immediate Authentication Session Detection & Zero-Flicker Startup Splash Guard -->
+    <script>
+        (function() {
+            try {
+                const params = new URLSearchParams(window.location.search);
+                const isExplicitLogout = params.get('logout') === 'true' || sessionStorage.getItem('TechPath_just_logged_out') === 'true';
+
+                if (isExplicitLogout) {
+                    try { sessionStorage.removeItem('TechPath_just_logged_out'); } catch(e) {}
+                    return; // Logged-out user -> render public landing page immediately
+                }
+
+                // Check for existing session token
+                let hasStoredToken = false;
+                if (localStorage.getItem('TechPath_user_session') || localStorage.getItem('btechpath_user_session')) {
+                    hasStoredToken = true;
+                } else {
+                    for (let i = 0; i < localStorage.length; i++) {
+                        const k = localStorage.key(i);
+                        if (k && k.startsWith('sb-') && k.endsWith('-auth-token')) {
+                            try {
+                                const val = localStorage.getItem(k);
+                                if (val && val.includes('access_token')) {
+                                    hasStoredToken = true;
+                                    break;
+                                }
+                            } catch(e) {}
+                        }
+                    }
+                }
+
+                if (!hasStoredToken) {
+                    return; // First-time or unauthenticated visitor -> render landing page immediately
+                }
+
+                // Returning user with potential session -> render splash immediately to avoid landing page flash
+                const splash = document.createElement('div');
+                splash.id = 'auth-splash-loader';
+                splash.style.cssText = 'position:fixed;inset:0;z-index:99999;background:#0B0F19;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#F5F7FA;font-family:system-ui,-apple-system,sans-serif;transition:opacity 0.3s ease;';
+                splash.innerHTML = `
+                    <div id="auth-splash-content" style="display:flex;flex-direction:column;align-items:center;gap:16px;text-align:center;padding:24px;max-width:360px;">
+                        <div style="position:relative;width:56px;height:56px;display:flex;align-items:center;justify-content:center;">
+                            <div style="position:absolute;inset:0;border-radius:18px;border:2px solid rgba(88,101,242,0.3);animation:ping 1.5s cubic-bezier(0,0,0.2,1) infinite;"></div>
+                            <img src="assets/branding/techpath-emblem.png" alt="TechPath" style="width:48px;height:48px;object-fit:contain;position:relative;z-index:1;" />
+                        </div>
+                        <div>
+                            <h3 style="font-size:18px;font-weight:800;letter-spacing:-0.025em;color:#fff;margin:0 0 4px 0;">TechPath</h3>
+                            <p id="auth-splash-status" style="font-size:13px;color:#94A3B8;margin:0;">Preparing your learning journey...</p>
+                        </div>
+                    </div>
+                `;
+                document.documentElement.appendChild(splash);
+
+                // Landing page safety watchdog: guarantee splash never blocks visitors
+                setTimeout(() => {
+                    if (window.AuthManager && typeof window.AuthManager.hideSplashLoader === 'function') {
+                        window.AuthManager.hideSplashLoader();
+                    } else {
+                        const el = document.getElementById('auth-splash-loader');
+                        if (el) {
+                            el.style.opacity = '0';
+                            el.style.pointerEvents = 'none';
+                            setTimeout(() => { el.style.display = 'none'; el.remove(); }, 200);
+                        }
+                    }
+                }, 4000);
+            } catch(e) {}
+        })();
+    </script>
+</head>
+<body class="bg-deep-twilight text-warm-ivory min-h-screen relative overflow-x-hidden antialiased selection:bg-indigo-brand selection:text-white">
+
+    <div class="bg-ambient-glow"></div>
+    <div class="bg-grid-pattern z-0 opacity-20"></div>
+
+    <!-- Navigation Header -->
+    <header class="sticky top-0 z-50 w-full border-b border-subtle bg-deep-twilight/80 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-3 group py-1" aria-label="TechPath Home">
+                <img src="assets/branding/techpath-logo-horizontal.png" alt="TechPath" class="h-8 md:h-9 w-auto object-contain hidden sm:block transition-transform duration-200 group-hover:scale-[1.02]" />
+                <img src="assets/branding/techpath-emblem.png" alt="TechPath" class="h-7 w-auto object-contain sm:hidden" />
+            </a>
+
+            <nav class="hidden lg:flex items-center gap-7 text-sm font-medium text-muted-gray">
+                <a href="#features" class="hover:text-warm-ivory transition-colors">Ecosystem</a>
+                <a href="dashboard.html" class="hover:text-warm-ivory transition-colors">Command Center</a>
+                <a href="study.html" class="hover:text-warm-ivory transition-colors">Study System</a>
+                <a href="skills.html" class="hover:text-warm-ivory transition-colors">Skills</a>
+                <a href="quiz.html" class="hover:text-warm-ivory transition-colors">AI Quiz</a>
+                <a href="planner.html" class="hover:text-warm-ivory transition-colors">Planner</a>
+                <a href="exams.html" class="hover:text-warm-ivory transition-colors">Exams</a>
+                <a href="reviews.html" class="hover:text-warm-ivory transition-colors">Reviews</a>
+                <a href="contact.html" class="hover:text-warm-ivory transition-colors">Contact Us</a>
+                <a href="career.html" class="hover:text-warm-ivory transition-colors flex items-center gap-1.5">
+                    <span>Career</span>
+                    <span class="w-1.5 h-1.5 rounded-full bg-rose-gold"></span>
+                </a>
+            </nav>
+
+            <div class="flex items-center gap-3">
+                <button onclick="App.toggleCommandCenter()" class="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-xl bg-midnight border border-subtle text-xs text-muted-gray hover:text-warm-ivory transition-colors">
+                    <span class="material-symbols-outlined text-sm">search</span>
+                    <kbd class="px-1.5 py-0.5 bg-elevated rounded border border-subtle text-[10px] font-mono">Ctrl+K</kbd>
+                </button>
+                <div id="nav-auth-section" class="flex items-center gap-3">
+                    <a href="login.html" id="nav-signin-btn" class="px-4 py-2 rounded-xl text-xs font-semibold text-muted-gray hover:text-warm-ivory hover:bg-elevated transition-colors">
+                        Sign In
+                    </a>
+                    <a href="start-journey.html" id="nav-signup-btn" class="grad-indigo-btn px-5 py-2.5 rounded-xl text-xs font-bold shadow-lg flex items-center gap-1.5">
+                        <span>Start Your Journey</span>
+                        <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                    </a>
+                </div>
+                <button id="mobile-menu-btn" class="lg:hidden p-2 rounded-lg bg-midnight border border-subtle text-muted-gray hover:text-white" aria-label="Open Navigation">
+                    <span class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Dropdown Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden border-b border-subtle bg-midnight px-6 py-4 space-y-3">
+            <a href="index.html" class="block text-sm text-muted-gray hover:text-white">Home</a>
+            <a href="dashboard.html" class="block text-sm text-muted-gray hover:text-white">Command Center</a>
+            <a href="study.html" class="block text-sm text-muted-gray hover:text-white">Study System</a>
+            <a href="skills.html" class="block text-sm text-muted-gray hover:text-white">Skills</a>
+            <a href="quiz.html" class="block text-sm text-muted-gray hover:text-white">AI Quiz</a>
+            <a href="reviews.html" class="block text-sm text-muted-gray hover:text-white">Reviews</a>
+            <a href="contact.html" class="block text-sm text-muted-gray hover:text-white">Contact Us</a>
+        </div>
+    </header>
+
+    <!-- SECTION 1: 3D HERO EXPERIENCE (Section 8) -->
+    <section class="relative pt-12 pb-20 px-6 max-w-7xl mx-auto overflow-hidden">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+            
+            <!-- Left Hero Copy -->
+            <div class="lg:col-span-6 space-y-6 z-10 text-center lg:text-left">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-elevated border border-subtle text-xs font-mono text-teal-brand">
+                    <span class="w-2 h-2 rounded-full bg-teal-brand animate-pulse"></span>
+                    <span>LEARN • BUILD • PREPARE • GROW</span>
+                </div>
+
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-warm-ivory leading-[1.12]">
+                    From Classroom to Career, <br/>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-400 to-teal-300">
+                        Your Journey Guided by AI.
+                    </span>
+                </h1>
+
+                <p class="text-base text-muted-gray leading-relaxed max-w-xl mx-auto lg:mx-0">
+                    A unified engineering student platform connecting live study tracking, adaptive skill roadmaps, syllabus exam countdowns, project generation, and mock interview coaching into one continuous path.
+                </p>
+
+                <!-- CTAs -->
+                <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+                    <a href="start-journey.html" id="hero-primary-cta" aria-label="Start Your Journey with TechPath" class="grad-indigo-btn w-full sm:w-auto px-8 py-3.5 rounded-2xl text-sm font-bold flex items-center justify-center gap-2 shadow-xl hover:shadow-indigo-500/25 transition-all">
+                        <span>Start Your Journey</span>
+                        <span class="material-symbols-outlined text-lg">arrow_forward</span>
+                    </a>
+                    <a href="learn.html" id="hero-secondary-cta" aria-label="Explore LearnHub engineering curriculum" class="w-full sm:w-auto px-7 py-3.5 rounded-2xl bg-elevated hover:bg-surface-elevated border border-subtle text-sm font-semibold text-warm-ivory flex items-center justify-center gap-2 transition-all">
+                        <span class="material-symbols-outlined text-lg text-indigo-brand">auto_stories</span>
+                        <span>Explore LearnHub</span>
+                    </a>
+                </div>
+
+                <!-- Verified Stats Row -->
+                <div class="grid grid-cols-3 gap-4 pt-6 border-t border-subtle/70 text-left">
+                    <div>
+                        <div class="text-2xl font-bold font-mono text-warm-ivory">11+</div>
+                        <div class="text-xs text-muted-gray">Integrated Modules</div>
+                    </div>
+                    <div>
+                        <div class="text-2xl font-bold font-mono text-teal-brand">100%</div>
+                        <div class="text-xs text-muted-gray">Real Data Calculation</div>
+                    </div>
+                    <div>
+                        <div class="text-2xl font-bold font-mono text-rose-gold">4.0+</div>
+                        <div class="text-xs text-muted-gray">Engineering Tracks</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right 3D Interactive Career Path Structure (Section 8) -->
+            <div class="lg:col-span-6 relative flex items-center justify-center min-h-[440px]">
+                <div class="w-full h-full rounded-3xl bg-midnight/40 border border-subtle/70 p-2 shadow-2xl relative flex items-center justify-center overflow-hidden">
+                    <canvas id="hero-3d-canvas" class="w-full h-[420px] rounded-2xl"></canvas>
+                    <div class="absolute bottom-4 left-6 right-6 flex items-center justify-between text-[11px] font-mono text-muted-gray bg-midnight/80 backdrop-blur-md px-4 py-2 rounded-xl border border-subtle">
+                        <span class="flex items-center gap-1.5 text-warm-ivory">
+                            <span class="w-2 h-2 rounded-full bg-teal-brand"></span>
+                            <span>Interactive Orbital Path</span>
+                        </span>
+                        <span>Drag / Move mouse to rotate 3D depth</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 2: COMPLETE STUDENT ECOSYSTEM (Section 1 & 16) -->
+    <section id="features" class="py-20 px-6 max-w-7xl mx-auto border-t border-subtle/60">
+        <div class="text-center max-w-3xl mx-auto space-y-3 mb-14">
+            <span class="text-xs font-mono text-indigo-brand font-bold uppercase tracking-wider">The Complete Student Ecosystem</span>
+            <h2 class="text-3xl sm:text-4xl font-black text-warm-ivory">Engineered for Academic Mastery & Career Placement</h2>
+            <p class="text-sm text-muted-gray leading-relaxed">
+                Every phase of your engineering degree connects seamlessly into a feedback loop powered by verified user data.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            
+            <!-- Module 1: Study System -->
+            <a href="study.html" class="p-6 rounded-3xl bg-midnight border border-subtle hover:border-teal-brand/60 transition-all group space-y-4 shadow-xl">
+                <div class="w-12 h-12 rounded-2xl bg-teal-brand/10 border border-teal-brand/30 flex items-center justify-center text-teal-brand group-hover:scale-105 transition-transform">
+                    <span class="material-symbols-outlined text-2xl">timer</span>
+                </div>
+                <h3 class="font-bold text-lg text-warm-ivory group-hover:text-teal-brand transition-colors">1. Resilient Study System</h3>
+                <p class="text-xs text-muted-gray leading-relaxed">
+                    Tracks actual elapsed study hours with timestamp math resilient across browser refreshes, tabs, and verified timezone streaks.
+                </p>
+                <div class="flex items-center gap-2 text-xs text-teal-brand font-semibold pt-1">
+                    <span>Open Study System</span>
+                    <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                </div>
+            </a>
+
+            <!-- Module 2: Skill Architecture -->
+            <a href="skills.html" class="p-6 rounded-3xl bg-midnight border border-subtle hover:border-indigo-brand/60 transition-all group space-y-4 shadow-xl">
+                <div class="w-12 h-12 rounded-2xl bg-indigo-brand/10 border border-indigo-brand/30 flex items-center justify-center text-indigo-brand group-hover:scale-105 transition-transform">
+                    <span class="material-symbols-outlined text-2xl">code</span>
+                </div>
+                <h3 class="font-bold text-lg text-warm-ivory group-hover:text-indigo-brand transition-colors">2. Skill Architecture Hub</h3>
+                <p class="text-xs text-muted-gray leading-relaxed">
+                    6 major engineering categories with animated milestone nodes, concept lessons, level assessments, and authentic mastery scores.
+                </p>
+                <div class="flex items-center gap-2 text-xs text-indigo-brand font-semibold pt-1">
+                    <span>Explore Roadmaps</span>
+                    <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                </div>
+            </a>
+
+            <!-- Module 3: Adaptive AI Quiz Engine -->
+            <a href="quiz.html" class="p-6 rounded-3xl bg-midnight border border-subtle hover:border-violet-brand/60 transition-all group space-y-4 shadow-xl">
+                <div class="w-12 h-12 rounded-2xl bg-violet-brand/10 border border-violet-brand/30 flex items-center justify-center text-violet-brand group-hover:scale-105 transition-transform">
+                    <span class="material-symbols-outlined text-2xl">quiz</span>
+                </div>
+                <h3 class="font-bold text-lg text-warm-ivory group-hover:text-violet-brand transition-colors">3. Adaptive AI Quiz Engine</h3>
+                <p class="text-xs text-muted-gray leading-relaxed">
+                    Generate rigorous adaptive quizzes and tests grounded in engineering syllabi with score analytics and weak topic detection.
+                </p>
+                <div class="flex items-center gap-2 text-xs text-violet-brand font-semibold pt-1">
+                    <span>Generate Quiz</span>
+                    <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                </div>
+            </a>
+
+            <!-- Module 4: Daily Planner -->
+            <a href="planner.html" class="p-6 rounded-3xl bg-midnight border border-subtle hover:border-teal-brand/60 transition-all group space-y-4 shadow-xl">
+                <div class="w-12 h-12 rounded-2xl bg-teal-brand/10 border border-teal-brand/30 flex items-center justify-center text-teal-brand group-hover:scale-105 transition-transform">
+                    <span class="material-symbols-outlined text-2xl">calendar_today</span>
+                </div>
+                <h3 class="font-bold text-lg text-warm-ivory group-hover:text-teal-brand transition-colors">4. Daily Planner & Productivity</h3>
+                <p class="text-xs text-muted-gray leading-relaxed">
+                    Categorized tasks (Study, Assignment, Revision, Project) with direct 1-click timer linkage and verified completion rates.
+                </p>
+                <div class="flex items-center gap-2 text-xs text-teal-brand font-semibold pt-1">
+                    <span>Open Planner</span>
+                    <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                </div>
+            </a>
+
+            <!-- Module 5: Exam Tracker -->
+            <a href="exams.html" class="p-6 rounded-3xl bg-midnight border border-subtle hover:border-indigo-brand/60 transition-all group space-y-4 shadow-xl">
+                <div class="w-12 h-12 rounded-2xl bg-indigo-brand/10 border border-indigo-brand/30 flex items-center justify-center text-indigo-brand group-hover:scale-105 transition-transform">
+                    <span class="material-symbols-outlined text-2xl">event_note</span>
+                </div>
+                <h3 class="font-bold text-lg text-warm-ivory group-hover:text-indigo-brand transition-colors">5. Exam Tracker & Countdown</h3>
+                <p class="text-xs text-muted-gray leading-relaxed">
+                    Live countdowns to mid/end semester dates, interactive topic checklists, and algorithmic smart revision schedules.
+                </p>
+                <div class="flex items-center gap-2 text-xs text-indigo-brand font-semibold pt-1">
+                    <span>Track Exams</span>
+                    <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                </div>
+            </a>
+
+            <!-- Module 6: Career Navigator -->
+            <a href="career.html" class="p-6 rounded-3xl bg-midnight border border-subtle hover:border-rose-gold/60 transition-all group space-y-4 shadow-xl">
+                <div class="w-12 h-12 rounded-2xl bg-rose-gold/10 border border-rose-gold/30 flex items-center justify-center text-rose-gold group-hover:scale-105 transition-transform">
+                    <span class="material-symbols-outlined text-2xl">work</span>
+                </div>
+                <h3 class="font-bold text-lg text-warm-ivory group-hover:text-rose-gold transition-colors">6. Career Navigator & Skill Gap</h3>
+                <p class="text-xs text-muted-gray leading-relaxed">
+                    Compares student profile against hiring criteria, detects missing competencies, and calculates true placement readiness.
+                </p>
+                <div class="flex items-center gap-2 text-xs text-rose-gold font-semibold pt-1">
+                    <span>Inspect Career Readiness</span>
+                    <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- SECTION: PARADROP INTERACTIVE ANIMATED DOWNLOAD SHOWCASE -->
+    <section class="py-16 px-6 max-w-4xl mx-auto text-center relative z-10">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-500/10 border border-teal-500/20 text-xs font-mono text-teal-brand tracking-wider mb-4">
+            <span class="w-2 h-2 rounded-full bg-teal-brand animate-pulse"></span>
+            <span>PARADROP — HTML · CSS · JS</span>
+        </div>
+
+        <h2 class="text-3xl md:text-4xl font-extrabold text-warm-ivory mb-2 tracking-tight">Download Button</h2>
+        <p class="text-xs font-mono text-muted-gray mb-10 uppercase tracking-widest">Interactive Engineering Asset Dispatcher</p>
+
+        <!-- The Paradrop Interactive Trigger Card -->
+        <div class="bg-midnight/80 border border-subtle backdrop-blur-xl rounded-3xl p-10 max-w-lg mx-auto shadow-2xl flex flex-col items-center justify-center relative overflow-hidden group">
+            
+            <!-- Animated Trigger -->
+            <button type="button" id="demo-paradrop-btn" class="paradrop-interactive-btn focus:outline-none" aria-label="Download paradrop kit">
+                <svg width="120" height="120" viewBox="0 0 120 120" class="overflow-visible filter drop-shadow-[0_0_15px_rgba(45,212,191,0.35)] transition-transform hover:scale-105 active:scale-95 duration-200 cursor-pointer">
+                    <!-- Background Ring -->
+                    <circle cx="60" cy="60" r="44" fill="none" stroke="rgba(45, 212, 191, 0.2)" stroke-width="3.5" />
+                    <!-- Glowing Cyan/Teal Ring -->
+                    <circle cx="60" cy="60" r="44" fill="none" stroke="#2DD4BF" stroke-width="3.5" class="transition-all duration-300" />
+                    <!-- Centered Downward Arrow -->
+                    <g transform="translate(60, 60)">
+                        <path d="M 0 -12 L 0 12 M -8 4 L 0 12 L 8 4" fill="none" stroke="#2DD4BF" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" />
+                    </g>
+                </svg>
+            </button>
+
+            <!-- File Details & Instruction -->
+            <div class="mt-6 flex flex-col items-center gap-1">
+                <span class="font-mono text-xs font-bold text-warm-ivory tracking-wide">paradrop-kit.txt &nbsp;·&nbsp; 7 KB</span>
+                <span class="text-[10px] font-mono text-muted-gray tracking-wider uppercase pt-2">PRESS IT. THE RING BECOMES THE BAR.</span>
+            </div>
+
+            <script>
+                document.getElementById('demo-paradrop-btn').addEventListener('click', function() {
+                    const kitContent = `========================================================
+TechPath — Paradrop Engineering Kit
+"PRESS IT. THE RING BECOMES THE BAR."
+========================================================
+
+Architecture:
+1. Geometry: The ring unrolls into the bar by blending circular
+   polar coordinates with linear Cartesian coordinates:
+   x = rx + (lineX - rx) * p;
+   y = ry + (lineY - ry) * p;
+
+2. Rig: SVG Parachute canopy deployed with aerodynamic sway
+   sway = Math.sin(elapsed * 0.007) * 8 * (1 - progress);
+
+3. Pacing: Paced byte streaming ensures even fast 7KB files
+   render tactile, cinematic download physics.
+
+Verified in TechPath OS v2.4.0
+Timestamp: ${new Date().toISOString()}
+========================================================`;
+                    const blob = new Blob([kitContent], { type: 'text/plain;charset=utf-8' });
+                    
+                    if (window.Paradrop && window.Paradrop.startDownload) {
+                        window.Paradrop.startDownload({
+                            title: 'Paradrop Engineering Kit',
+                            filename: 'paradrop-kit.txt',
+                            totalBytes: 7168,
+                            minMs: 2000,
+                            onPerformDownload: () => {
+                                const url = URL.createObjectURL(blob);
+                                const a = document.createElement('a');
+                                a.href = url;
+                                a.download = 'paradrop-kit.txt';
+                                a.click();
+                                URL.revokeObjectURL(url);
+                            }
+                        });
+                    }
+                });
+            </script>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-subtle py-12 px-6 max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-xs text-muted-gray">
+        <div class="flex flex-col sm:flex-row items-center gap-3 text-center sm:text-left">
+            <img src="assets/branding/techpath-logo-horizontal.png" alt="TechPath" class="h-6 w-auto object-contain" />
+            <span class="hidden sm:inline text-subtle">•</span>
+            <span class="italic text-warm-ivory/90">"Learn. Build. Prepare. Grow. • From Classroom to Career."</span>
+        </div>
+        <div class="flex flex-wrap items-center justify-center gap-6">
+            <a href="reviews.html" class="hover:text-warm-ivory transition-colors">Reviews</a>
+            <a href="contact.html" class="hover:text-warm-ivory transition-colors">Contact Us</a>
+            <a href="faqs.html" class="hover:text-warm-ivory transition-colors">FAQs</a>
+            <a href="privacy-policy.html" class="hover:text-warm-ivory transition-colors">Privacy Policy</a>
+            <a href="terms.html" class="hover:text-warm-ivory transition-colors">Terms of Use</a>
+            <a href="helpdesk.html" class="hover:text-warm-ivory transition-colors">Helpdesk</a>
+            <a href="admin.html" class="hover:text-warm-ivory transition-colors">Admin Center</a>
+        </div>
+        <div class="text-center sm:text-right">
+            <span>Support: <a href="mailto:lakkimsettirahulashokh@gmail.com" class="text-warm-ivory hover:text-teal-brand transition-colors font-mono">lakkimsettirahulashokh@gmail.com</a></span>
+        </div>
+    </footer>
+
+    <!-- Sticky Mobile CTA -->
+    <div id="sticky-mobile-cta" class="fixed inset-x-0 z-40 p-4 transition-transform duration-300 translate-y-full md:hidden pointer-events-none">
+        <div class="max-w-md mx-auto pointer-events-auto bg-[#121826]/95 backdrop-blur-md border border-[#2A3147] rounded-2xl p-3 shadow-2xl flex items-center justify-between gap-3">
+            <div class="flex items-center gap-2.5 pl-1 min-w-0">
+                <img src="assets/branding/techpath-emblem.png" alt="TechPath" class="w-8 h-8 object-contain shrink-0" />
+                <div class="truncate">
+                    <div class="text-xs font-bold text-[#F5F7FA] truncate">TechPath</div>
+                    <div class="text-[10px] text-[#A1A7BC] truncate">From Classroom to Career</div>
+                </div>
+            </div>
+            <a href="start-journey.html" id="btn-sticky-mobile-cta" aria-label="Start Your Journey with TechPath" class="grad-indigo-btn px-4 py-2.5 rounded-xl text-xs font-bold text-white shrink-0 flex items-center gap-1.5 shadow-lg">
+                <span>Start Your Journey</span>
+                <span class="material-symbols-outlined text-sm">arrow_forward</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/supabase.min.js"></script>
+    <script src="js/supabase-client.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/db.js"></script>
+    <script src="js/hero-3d.js"></script>
+    <script src="js/btech-bg3d.js"></script>
+    <script src="js/motion.js"></script>
+    <script src="js/loading-system.js"></script>
+    <script src="js/cookie-consent.js"></script>
+    <script src="js/analytics.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/paradrop.js"></script>
+
+    <!-- Startup Session Verification & Auto-Routing Controller -->
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const params = new URLSearchParams(window.location.search);
+            const isExplicitLogout = params.get('logout') === 'true' || sessionStorage.getItem('TechPath_just_logged_out') === 'true';
+            const splash = document.getElementById('auth-splash-loader');
+
+            if (isExplicitLogout) {
+                if (splash) splash.remove();
+                return;
+            }
+
+            // Check if user has stored session token
+            let hasStoredToken = Boolean(localStorage.getItem('TechPath_user_session') || localStorage.getItem('btechpath_user_session'));
+            if (!hasStoredToken) {
+                for (let i = 0; i < localStorage.length; i++) {
+                    const k = localStorage.key(i);
+                    if (k && k.startsWith('sb-') && k.endsWith('-auth-token')) {
+                        try {
+                            const val = localStorage.getItem(k);
+                            if (val && val.includes('access_token')) {
+                                hasStoredToken = true;
+                                break;
+                            }
+                        } catch(e) {}
+                    }
+                }
+            }
+
+            if (!hasStoredToken) {
+                if (splash) splash.remove();
+                return;
+            }
+
+            // Stored session present -> verify with server
+            if (window.AuthManager) {
+                try {
+                    const user = await AuthManager.checkSession();
+                    if (user) {
+                        const email = (user.email || '').toLowerCase().trim();
+                        const onboarding = await AuthManager.checkOnboarding(user);
+                        if (AuthManager.isAdminEmail(email) || (onboarding && onboarding.isComplete)) {
+                            window.location.replace('dashboard.html');
+                            return;
+                        } else {
+                            window.location.replace('start-journey.html');
+                            return;
+                        }
+                    } else {
+                        // Stale, expired or revoked session -> fade out splash and reveal landing page
+                        if (window.AuthManager && typeof window.AuthManager.hideSplashLoader === 'function') {
+                            window.AuthManager.hideSplashLoader();
+                        } else if (splash) {
+                            splash.style.opacity = '0';
+                            splash.style.pointerEvents = 'none';
+                            setTimeout(() => { splash.style.display = 'none'; splash.remove(); }, 200);
+                        }
+                    }
+                } catch (e) {
+                    console.warn('[Startup] Session verification note:', e);
+                    if (window.AuthManager && typeof window.AuthManager.hideSplashLoader === 'function') {
+                        window.AuthManager.hideSplashLoader();
+                    } else if (splash) {
+                        splash.style.opacity = '0';
+                        splash.style.pointerEvents = 'none';
+                        setTimeout(() => { splash.style.display = 'none'; splash.remove(); }, 200);
+                    }
+                }
+            } else if (splash) {
+                splash.style.opacity = '0';
+                splash.style.pointerEvents = 'none';
+                setTimeout(() => { splash.style.display = 'none'; splash.remove(); }, 200);
+            }
+        });
+    </script>
+
+    <!-- Sticky Mobile CTA Controller -->
+    <script>
+        (function() {
+            const stickyCta = document.getElementById('sticky-mobile-cta');
+            const stickyBtn = document.getElementById('btn-sticky-mobile-cta');
+            if (!stickyCta) return;
+
+            // Auth resolution for sticky CTA
+            try {
+                if (window.AuthManager && typeof window.AuthManager.getUser === 'function') {
+                    const user = window.AuthManager.getUser();
+                    if (user && stickyBtn) {
+                        stickyBtn.href = 'dashboard.html';
+                        const labelSpan = stickyBtn.querySelector('span');
+                        if (labelSpan) labelSpan.textContent = 'Go to Dashboard';
+                    }
+                }
+            } catch (e) {}
+
+            let isHeroVisible = true;
+            const heroSection = document.querySelector('section');
+
+            function handleScroll() {
+                // Only on mobile
+                if (window.innerWidth >= 768) {
+                    stickyCta.classList.add('translate-y-full');
+                    return;
+                }
+
+                const scrollY = window.scrollY || window.pageYOffset;
+                const heroHeight = heroSection ? heroSection.offsetHeight : 450;
+
+                // Show after user scrolls past 70% of hero
+                if (scrollY > (heroHeight * 0.7)) {
+                    if (isHeroVisible) {
+                        stickyCta.classList.remove('translate-y-full');
+                        stickyCta.classList.add('translate-y-0');
+                        isHeroVisible = false;
+                    }
+                } else {
+                    if (!isHeroVisible) {
+                        stickyCta.classList.remove('translate-y-0');
+                        stickyCta.classList.add('translate-y-full');
+                        isHeroVisible = true;
+                    }
+                }
+            }
+
+            window.addEventListener('scroll', handleScroll, { passive: true });
+            window.addEventListener('resize', handleScroll, { passive: true });
+
+            // Analytics tracking for sticky CTA click
+            if (stickyBtn) {
+                stickyBtn.addEventListener('click', () => {
+                    if (window.TechPathAnalytics && typeof window.TechPathAnalytics.trackEvent === 'function') {
+                        window.TechPathAnalytics.trackEvent('sticky_mobile_cta_click', {
+                            target: stickyBtn.getAttribute('href')
+                        });
+                    }
+                });
+            }
+        })();
+    </script>
+</body>
+</html>

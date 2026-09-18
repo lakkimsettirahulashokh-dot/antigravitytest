@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Offline Mode | TechPath AI OS</title>
+    <meta name="description" content="Offline mode indicator and local study cache tools for TechPath AI OS students.">
+    <link rel="canonical" href="https://techpath.app/offline.html">
+    <meta name="theme-color" content="#0B0F19"/>
+    <meta name="mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+    <link rel="manifest" href="manifest.json"/>
+    <link rel="icon" type="image/svg+xml" href="assets/branding/favicon.svg"/>
+    <link rel="stylesheet" href="css/tailwind.output.css"/>
+    <link rel="stylesheet" href="css/custom.css"/>
+    <link rel="stylesheet" href="css/motion.css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <style>
+        body {
+            background-color: #0B0F19;
+            color: #F5F7FA;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col items-center justify-center p-6 text-center select-none">
+
+    <!-- Ambient glow -->
+    <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+        <div class="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-tr from-[#5865F2]/15 to-transparent rounded-full blur-3xl"></div>
+    </div>
+
+    <main class="relative z-10 max-w-md w-full bg-[#121826] border border-[#2A3147] rounded-3xl p-8 shadow-2xl space-y-6">
+        <div class="w-16 h-16 mx-auto rounded-2xl bg-[#5865F2]/20 border border-[#5865F2]/40 flex items-center justify-center text-[#5865F2]">
+            <span class="material-symbols-outlined text-3xl">wifi_off</span>
+        </div>
+
+        <div class="space-y-2">
+            <span class="inline-block px-3 py-1 rounded-full text-[11px] font-mono font-bold bg-[#1A2031] border border-[#2A3147] text-[#A1A7BC]">
+                OFFLINE PROTOCOL ACTIVE
+            </span>
+            <h1 class="text-2xl font-bold text-[#F5F7FA]">You Are Currently Offline</h1>
+            <p class="text-xs text-[#A1A7BC] leading-relaxed">
+                TechPath is maintaining your session locally. Reconnect to the internet to resume real-time AI doubt solving and cloud synchronization.
+            </p>
+        </div>
+
+        <!-- Offline Capabilities -->
+        <div class="p-4 rounded-2xl bg-[#1A2031] border border-[#2A3147] text-left text-xs space-y-2.5">
+            <div class="flex items-center gap-2 text-[#2DD4BF] font-semibold">
+                <span class="material-symbols-outlined text-sm">offline_pin</span>
+                <span>Available Offline in Browser:</span>
+            </div>
+            <ul class="space-y-1.5 text-[#A1A7BC]">
+                <li class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-xs text-[#5865F2]">check_circle</span>
+                    <span>Cached Study Timer checkpoints</span>
+                </li>
+                <li class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-xs text-[#5865F2]">check_circle</span>
+                    <span>Saved Flashcards & Study Guides</span>
+                </li>
+                <li class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-xs text-[#5865F2]">check_circle</span>
+                    <span>Curriculum Syllabus outlines</span>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="space-y-3">
+            <button onclick="window.location.reload()" class="w-full grad-indigo-btn py-3 px-4 rounded-xl text-xs font-bold shadow-lg flex items-center justify-center gap-2 tap-effect">
+                <span class="material-symbols-outlined text-sm">sync</span>
+                <span>Try Reconnecting Now</span>
+            </button>
+            <a href="dashboard.html" class="block w-full py-2.5 px-4 rounded-xl bg-[#1A2031] border border-[#2A3147] text-xs font-semibold text-[#A1A7BC] hover:text-white transition-colors tap-effect">
+                Return to Local Dashboard
+            </a>
+        </div>
+
+        <div id="connection-status" class="text-[11px] font-mono text-[#A1A7BC] flex items-center justify-center gap-1.5">
+            <span class="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span>
+            <span>Listening for network connection...</span>
+        </div>
+    </main>
+
+    <script>
+        // Automatic reconnection detection
+        window.addEventListener('online', () => {
+            const statusEl = document.getElementById('connection-status');
+            if (statusEl) {
+                statusEl.innerHTML = '<span class="w-2 h-2 rounded-full bg-emerald-500"></span><span class="text-emerald-400">Connection restored! Reloading...</span>';
+            }
+            setTimeout(() => {
+                window.location.reload();
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

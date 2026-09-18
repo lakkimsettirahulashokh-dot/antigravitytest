@@ -1,0 +1,391 @@
+/* ==========================================================================
+   BTechPath AI OS — Husky Guardian & 3D Door Walk-Through Authentication
+   Inspired by: "Den — HTML · CSS · JS (Watch husky eyes! & Sign in is a door)"
+   - Interactive Husky mascot peeking over card with responsive eyes & paws
+   - 3D perspective swinging door button with walking figure transition
+   - Email & Phone Number unified tabs
+   - Mobile-first, zero-lag, fully responsive
+   ========================================================================== */
+
+:root {
+  --auth-bg: #0B0F19;
+  --auth-card: #121826;
+  --auth-border: rgba(42, 49, 71, 0.7);
+  --auth-teal: #2DD4BF;
+  --auth-indigo: #5865F2;
+  --auth-indigo-hover: #4752C4;
+  --auth-door-blue: #2563EB;
+  --auth-door-dark: #1D4ED8;
+  --auth-text: #F5F7FA;
+  --auth-muted: #94A3B8;
+}
+
+/* Card Wrapper with Mascot Anchor */
+.auth-stage-container {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  margin: 70px auto 40px;
+  perspective: 1000px;
+}
+
+/* ==========================================================================
+   1. HUSKY GUARDIAN MASCOT (SVG)
+   ========================================================================== */
+.husky-wrapper {
+  position: absolute;
+  top: -76px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 160px;
+  height: 120px;
+  z-index: 20;
+  pointer-events: none;
+  overflow: visible;
+}
+
+.husky-svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.55));
+}
+
+/* Husky Head & Breathing */
+.husky-head {
+  transform-origin: 80px 75px;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Eyes Tracking & States */
+.husky-pupil {
+  transition: transform 0.1s ease-out;
+  transform-origin: center;
+}
+
+.husky-eye-closed {
+  opacity: 0;
+  transition: opacity 0.18s ease;
+}
+
+.husky-eye-open {
+  opacity: 1;
+  transition: opacity 0.18s ease;
+}
+
+/* Eye Squint / Closed (Password Mode) */
+.husky-svg.covering-eyes .husky-eye-open {
+  opacity: 0;
+}
+
+.husky-svg.covering-eyes .husky-eye-closed {
+  opacity: 1;
+}
+
+/* Paws */
+.husky-paw {
+  transform-origin: center bottom;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Password Focus: Paws Move Up to Cover Eyes! */
+.husky-svg.covering-eyes .husky-paw--left {
+  transform: translate(-4px, -30px) rotate(16deg);
+}
+
+.husky-svg.covering-eyes .husky-paw--right {
+  transform: translate(4px, -30px) rotate(-16deg);
+}
+
+/* Password Peeking (When eye reveal icon clicked) */
+.husky-svg.is-peeking .husky-paw--left {
+  transform: translate(-10px, -18px) rotate(8deg);
+}
+
+.husky-svg.is-peeking .husky-paw--right {
+  transform: translate(12px, -24px) rotate(-12deg);
+}
+
+.husky-svg.is-peeking .husky-eye-left .husky-eye-open {
+  opacity: 1;
+}
+
+.husky-svg.is-peeking .husky-eye-left .husky-eye-closed {
+  opacity: 0;
+}
+
+/* Happy Success State */
+.husky-smile-happy {
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.husky-svg.is-happy .husky-smile-normal {
+  opacity: 0;
+}
+
+.husky-svg.is-happy .husky-smile-happy {
+  opacity: 1;
+}
+
+.husky-svg.is-happy .husky-eye-open {
+  opacity: 0;
+}
+
+.husky-svg.is-happy .husky-eye-closed {
+  opacity: 1;
+}
+
+.husky-svg.is-happy .husky-head {
+  transform: translateY(-4px) rotate(-2deg);
+  animation: huskyWag 0.6s ease-in-out infinite alternate;
+}
+
+@keyframes huskyWag {
+  0% { transform: translateY(-4px) rotate(-3deg); }
+  100% { transform: translateY(-4px) rotate(3deg); }
+}
+
+/* ==========================================================================
+   2. AUTH CARD & INPUTS
+   ========================================================================== */
+.husky-auth-card {
+  position: relative;
+  background: rgba(18, 24, 38, 0.88);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border: 1px solid var(--auth-border);
+  border-radius: 28px;
+  padding: 40px 32px 32px;
+  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.8), 0 0 40px rgba(88, 101, 242, 0.12);
+  z-index: 10;
+}
+
+/* Input Fields */
+.husky-input-field {
+  width: 100%;
+  background: rgba(11, 15, 25, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+  padding: 13px 16px;
+  color: var(--auth-text);
+  font-size: 13px;
+  outline: none;
+  transition: all 0.25s ease;
+}
+
+.husky-input-field:focus {
+  background: rgba(18, 24, 38, 0.95);
+  border-color: var(--auth-indigo);
+  box-shadow: 0 0 0 3px rgba(88, 101, 242, 0.25), 0 0 20px -5px rgba(88, 101, 242, 0.3);
+}
+
+.husky-input-label {
+  display: block;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: #CBD5E1;
+  margin-bottom: 6px;
+}
+
+/* Tabs: Email vs Phone Number */
+.husky-auth-tabs {
+  display: flex;
+  background: rgba(11, 15, 25, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 3px;
+  margin-bottom: 20px;
+}
+
+.husky-auth-tab {
+  flex: 1;
+  text-align: center;
+  padding: 8px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 11px;
+  cursor: pointer;
+  color: var(--auth-muted);
+  border: none;
+  background: transparent;
+  transition: all 0.2s ease;
+}
+
+.husky-auth-tab.is-active {
+  background: rgba(88, 101, 242, 0.25);
+  color: #FFFFFF;
+  border: 1px solid rgba(88, 101, 242, 0.4);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* ==========================================================================
+   3. "SIGN IN IS A DOOR" ANIMATED BUTTON (3D Perspective)
+   ========================================================================== */
+.doorbtn {
+  position: relative;
+  width: 100%;
+  height: 52px;
+  background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 16px;
+  color: #FFFFFF;
+  font-weight: 700;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px 0 24px;
+  cursor: pointer;
+  overflow: hidden;
+  box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.45);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  outline: none;
+}
+
+.doorbtn:hover:not(.dooropen) {
+  background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%);
+  box-shadow: 0 14px 30px -5px rgba(37, 99, 235, 0.6);
+  transform: translateY(-1px);
+}
+
+.doorbtn:active:not(.dooropen) {
+  transform: translateY(1px) scale(0.99);
+}
+
+.doorbtn__label {
+  letter-spacing: 0.01em;
+  transition: opacity 0.2s ease;
+}
+
+/* 3D Door Icon Assembly */
+.dooric {
+  position: relative;
+  width: 28px;
+  height: 38px;
+  perspective: 200px;
+  transform-style: preserve-3d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Door Frame (Backing) */
+.dooric__frame {
+  position: absolute;
+  inset: 0;
+  background: #0F172A;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+/* Door Interior Light Glow */
+.dooric__glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, #67E8F9 0%, #38BDF8 60%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+/* Swinging Door Panel */
+.dooric__panel {
+  position: absolute;
+  inset: 2px;
+  background: linear-gradient(135deg, #60A5FA 0%, #3B82F6 100%);
+  border-radius: 4px;
+  transform-origin: left center;
+  transform: rotateY(0deg);
+  transition: transform 0.42s cubic-bezier(0.34, 1.3, 0.64, 1);
+  box-shadow: inset -2px 0 4px rgba(0, 0, 0, 0.3);
+  backface-visibility: hidden;
+}
+
+/* Door Handle */
+.dooric__panel::after {
+  content: '';
+  position: absolute;
+  right: 4px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 5px;
+  background: #FFFFFF;
+  border-radius: 2px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+/* Person / Stickman walking through */
+.dooric__person {
+  position: absolute;
+  left: 2px;
+  top: 6px;
+  width: 14px;
+  height: 26px;
+  opacity: 0;
+  transform: translateX(-16px);
+  pointer-events: none;
+  transition: transform 0.65s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.5s ease;
+}
+
+.dooric__person svg {
+  width: 100%;
+  height: 100%;
+  stroke: #FFFFFF;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+}
+
+/* ==========================================================================
+   ANIMATION STATES (The Door Swings Open & Stickman Walks In!)
+   ========================================================================== */
+
+/* State 1: The door swings open */
+.doorbtn.dooropen .dooric__panel {
+  transform: rotateY(-72deg);
+}
+
+.doorbtn.dooropen .dooric__glow {
+  opacity: 0.95; /* Bright light */
+}
+
+/* State 2: Legs swing, knees bend */
+@keyframes thighF {
+  0% { transform: rotate(26deg); }
+  50% { transform: rotate(-26deg); }
+  100% { transform: rotate(26deg); }
+}
+
+.doorbtn.walking .dooric__person {
+  opacity: 1;
+}
+
+.doorbtn.walking .leg--front {
+  transform-origin: 6px 14px;
+  animation: thighF 0.44s linear infinite;
+}
+
+.doorbtn.walking .leg--back {
+  transform-origin: 6px 14px;
+  animation: thighF 0.44s linear infinite reverse;
+}
+
+/* State 3: ...then walk on through */
+.doorbtn.out .dooric__person {
+  transform: translateX(36px);
+  opacity: 0;
+}
+
+/* ==========================================================================
+   REDUCED MOTION OVERRIDE
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  .husky-head, .husky-paw, .dooric__panel, .dooric__person {
+    transition: none !important;
+    animation: none !important;
+  }
+}

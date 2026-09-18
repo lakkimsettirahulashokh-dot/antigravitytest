@@ -1,0 +1,1032 @@
+﻿<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <!-- Primary SEO Meta Tags -->
+    <title>Reviews — Student Feedback | TechPath</title>
+    <meta name="title" content="Reviews — Student Feedback | TechPath">
+    <meta name="description" content="Read genuine student feedback About TechPath and share your own experience across study tracking, mock interviews, and career roadmaps.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://TechPath.ai/reviews">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="TechPath">
+    <meta property="og:url" content="https://TechPath.ai/reviews">
+    <meta property="og:title" content="Reviews — Student Feedback | TechPath">
+    <meta property="og:description" content="Read genuine student feedback About TechPath and share your own experience across study tracking, mock interviews, and career roadmaps.">
+    <meta property="og:image" content="https://TechPath.ai/assets/branding/techpath-og.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="TechPath — Learn. Build. Prepare. Grow.">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://TechPath.ai/reviews">
+    <meta name="twitter:title" content="Reviews — Student Feedback | TechPath">
+    <meta name="twitter:description" content="Read genuine student feedback About TechPath and share your own experience across study tracking, mock interviews, and career roadmaps.">
+    <meta name="twitter:image" content="https://TechPath.ai/assets/branding/techpath-og.png">
+    <meta name="twitter:image:alt" content="TechPath — Learn. Build. Prepare. Grow.">
+
+    <!-- Favicon & App Icons -->
+    <link rel="icon" type="image/svg+xml" href="assets/branding/favicon.svg">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/branding/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/branding/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/branding/apple-touch-icon.png">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#0B0F19">
+    <!-- Primary SEO Meta Tags -->
+    <!-- Open Graph / Facebook -->
+    <!-- Twitter Card -->
+    <!-- Favicon & App Icons -->
+    <!-- Primary SEO Meta Tags -->
+    <!-- Open Graph / Facebook -->
+    <!-- Twitter Card -->
+    <!-- Favicon & App Icons -->
+    <!-- Primary SEO Meta Tags -->
+    <!-- Open Graph / Facebook -->
+    <!-- Twitter Card -->
+    <!-- Favicon & App Icons -->
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <link rel="stylesheet" href="css/tailwind.output.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="css/custom.css"/>
+    <link rel="stylesheet" href="css/motion.css"/>
+    <style>
+        .gold-glow {
+            box-shadow: 0 0 25px rgba(246, 193, 119, 0.18);
+        }
+        .review-card {
+            transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease;
+        }
+        .review-card:hover {
+            transform: translateY(-3px);
+            border-color: rgba(246, 193, 119, 0.35);
+            box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px rgba(246, 193, 119, 0.08);
+        }
+        .star-interactive {
+            cursor: pointer;
+            transition: transform 0.15s ease, color 0.15s ease;
+            background: transparent;
+            border: none;
+        }
+        .star-interactive:hover,
+        .star-interactive:focus-visible {
+            transform: scale(1.18);
+            outline: none;
+        }
+
+        /* HARDENED DARK FORM CONTROLS & AUTOFILL OVERRIDES */
+        /* Overrides Tailwind Forms plugin background-color: #fff */
+        #review-modal input,
+        #review-modal textarea,
+        #review-modal select,
+        input[type="text"],
+        input[type="email"],
+        textarea,
+        select {
+            background-color: #1A2031 !important;
+            color: #F5F7FA !important;
+            border-color: #2A3147 !important;
+            caret-color: #F6C177 !important;
+            -webkit-text-fill-color: #F5F7FA !important;
+            color-scheme: dark !important;
+        }
+
+        #review-modal input:focus,
+        #review-modal input:focus-visible,
+        #review-modal input:active,
+        #review-modal textarea:focus,
+        #review-modal textarea:focus-visible,
+        #review-modal textarea:active,
+        #review-modal select:focus,
+        #review-modal select:focus-visible,
+        #review-modal select:active,
+        input[type="text"]:focus,
+        textarea:focus,
+        select:focus {
+            background-color: #1A2031 !important;
+            color: #F5F7FA !important;
+            -webkit-text-fill-color: #F5F7FA !important;
+            border-color: #F6C177 !important;
+            outline: none !important;
+            box-shadow: 0 0 0 2px rgba(246, 193, 119, 0.3) !important;
+            caret-color: #F6C177 !important;
+        }
+
+        #review-modal input::placeholder,
+        #review-modal textarea::placeholder,
+        input::placeholder,
+        textarea::placeholder {
+            color: #A1A7BC !important;
+            opacity: 0.65 !important;
+            -webkit-text-fill-color: #A1A7BC !important;
+        }
+
+        /* WebKit Browser Autofill Hardening */
+        #review-modal input:-webkit-autofill,
+        #review-modal input:-webkit-autofill:hover,
+        #review-modal input:-webkit-autofill:focus,
+        #review-modal textarea:-webkit-autofill,
+        #review-modal textarea:-webkit-autofill:hover,
+        #review-modal textarea:-webkit-autofill:focus,
+        #review-modal select:-webkit-autofill,
+        input:-webkit-autofill,
+        textarea:-webkit-autofill,
+        select:-webkit-autofill {
+            -webkit-text-fill-color: #F5F7FA !important;
+            -webkit-box-shadow: 0 0 0px 1000px #1A2031 inset !important;
+            box-shadow: 0 0 0px 1000px #1A2031 inset !important;
+            transition: background-color 50000s ease-in-out 0s !important;
+            caret-color: #F6C177 !important;
+            font-family: inherit !important;
+        }
+
+        /* Select Options Dropdown */
+        #review-modal select option,
+        select option {
+            background-color: #121826 !important;
+            color: #F5F7FA !important;
+            padding: 8px 12px;
+        }
+        select option:checked,
+        select option:hover {
+            background-color: #1A2031 !important;
+            color: #F6C177 !important;
+        }
+
+        /* Accessible Error State */
+        .form-input-error {
+            border-color: #EF4444 !important;
+            box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.35) !important;
+            background-color: #1A2031 !important;
+            color: #F5F7FA !important;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .review-card, .star-interactive {
+                transition: none !important;
+                transform: none !important;
+            }
+        }
+    </style>
+
+    <script src="js/seo-metadata.js" defer></script>
+</head>
+<body class="bg-[#0B0F19] text-[#F5F7FA] min-h-screen relative overflow-x-hidden antialiased selection:bg-[#5865F2] selection:text-white flex flex-col font-['Plus_Jakarta_Sans',sans-serif]">
+
+    <!-- Ambient background glows -->
+    <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+        <div class="absolute -top-40 right-1/4 w-96 h-96 bg-gradient-to-br from-[#F6C177]/10 to-transparent rounded-full blur-3xl"></div>
+        <div class="absolute top-1/3 -left-20 w-80 h-80 bg-gradient-to-tr from-[#5865F2]/10 to-transparent rounded-full blur-3xl"></div>
+    </div>
+
+    <!-- Navigation Header -->
+    <header class="sticky top-0 z-50 w-full border-b border-[#2A3147] bg-[#0B0F19]/90 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-3 group py-1" aria-label="TechPath Home">
+                <img src="assets/branding/techpath-logo-horizontal.png" alt="TechPath" class="h-8 md:h-9 w-auto object-contain hidden sm:block transition-transform duration-200 group-hover:scale-[1.02]" />
+                <img src="assets/branding/techpath-emblem.png" alt="TechPath" class="h-7 w-auto object-contain sm:hidden" />
+            </a>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden lg:flex items-center gap-7 text-sm font-medium text-[#A1A7BC]">
+                <a href="index.html" class="hover:text-[#F5F7FA] transition-colors">Home</a>
+                <a href="dashboard.html" class="hover:text-[#F5F7FA] transition-colors">Dashboard</a>
+                <a href="learn.html" class="hover:text-[#F5F7FA] transition-colors">LearnHub</a>
+                <a href="ai-notes.html" class="hover:text-[#F5F7FA] transition-colors">AI Notes</a>
+                <a href="projects.html" class="hover:text-[#F5F7FA] transition-colors">Projects</a>
+                <a href="reviews.html" class="text-[#F6C177] font-semibold flex items-center gap-1">
+                    <span>Reviews</span>
+                    <span class="w-1.5 h-1.5 rounded-full bg-[#F6C177]"></span>
+                </a>
+                <a href="contact.html" class="hover:text-[#F5F7FA] transition-colors">Contact Us</a>
+            </nav>
+
+            <!-- User Auth Controls -->
+            <div class="flex items-center gap-3">
+                <div id="nav-auth-section" class="flex items-center gap-3">
+                    <a href="login.html" id="nav-signin-btn" class="px-4 py-2 rounded-xl text-xs font-semibold text-[#A1A7BC] hover:text-[#F5F7FA] hover:bg-[#1A2031] transition-colors">
+                        Sign In
+                    </a>
+                    <a href="start-journey.html" id="nav-signup-btn" class="grad-indigo-btn px-4 py-2 rounded-xl text-xs font-bold shadow-lg flex items-center gap-1.5">
+                        <span>Get Started</span>
+                        <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                    </a>
+                </div>
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="lg:hidden p-2 rounded-lg bg-[#121826] border border-[#2A3147] text-[#A1A7BC] hover:text-white" aria-label="Open Menu">
+                    <span class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Nav Menu Dropdown -->
+        <div id="mobile-menu" class="hidden lg:hidden border-b border-[#2A3147] bg-[#121826] px-6 py-4 space-y-3">
+            <a href="index.html" class="block text-sm text-[#A1A7BC] hover:text-white">Home</a>
+            <a href="dashboard.html" class="block text-sm text-[#A1A7BC] hover:text-white">Dashboard</a>
+            <a href="learn.html" class="block text-sm text-[#A1A7BC] hover:text-white">LearnHub</a>
+            <a href="ai-notes.html" class="block text-sm text-[#A1A7BC] hover:text-white">AI Notes</a>
+            <a href="projects.html" class="block text-sm text-[#A1A7BC] hover:text-white">Projects</a>
+            <a href="reviews.html" class="block text-sm font-semibold text-[#F6C177]">Reviews</a>
+            <a href="contact.html" class="block text-sm text-[#A1A7BC] hover:text-white">Contact Us</a>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 z-10 max-w-7xl mx-auto px-6 py-12 w-full">
+        
+        <!-- Hero Section -->
+        <div class="text-center max-w-3xl mx-auto mb-14">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#1A2031] border border-[#2A3147] text-xs font-mono text-[#F6C177] mb-5">
+                <span class="material-symbols-outlined text-sm text-[#F6C177]" style="font-variation-settings: 'FILL' 1;">star</span>
+                <span>AUTHENTIC STUDENT EXPERIENCES</span>
+            </div>
+            <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#F5F7FA] mb-4">
+                What Students Say About TechPath
+            </h1>
+            <p class="text-base sm:text-lg text-[#A1A7BC] leading-relaxed">
+                Real feedback from students using TechPath to learn, build, prepare, and grow.
+            </p>
+        </div>
+
+        <!-- Stats & Action Header Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-12 items-stretch">
+            
+            <!-- Left: Aggregate Rating Card -->
+            <div class="lg:col-span-4 bg-[#121826] border border-[#2A3147] rounded-3xl p-7 flex flex-col justify-between gold-glow relative overflow-hidden">
+                <div class="flex items-center justify-between mb-4">
+                    <span class="text-xs font-mono uppercase tracking-wider text-[#A1A7BC]">Community Rating</span>
+                    <span class="text-xs font-mono px-2 py-0.5 rounded bg-[#1A2031] text-[#F6C177] border border-[#2A3147]">Verified</span>
+                </div>
+
+                <div class="flex items-baseline gap-4 my-2">
+                    <div id="stat-avg-rating" class="text-5xl sm:text-6xl font-black text-[#F5F7FA]">
+                        0.0
+                    </div>
+                    <div>
+                        <div id="stat-stars-display" class="flex text-[#FBBF24] text-xl" aria-label="Average Star Rating">
+                            <span class="material-symbols-outlined">star</span>
+                            <span class="material-symbols-outlined">star</span>
+                            <span class="material-symbols-outlined">star</span>
+                            <span class="material-symbols-outlined">star</span>
+                            <span class="material-symbols-outlined">star</span>
+                        </div>
+                        <div class="text-xs text-[#A1A7BC] mt-1">
+                            Based on <span id="stat-total-reviews" class="font-bold text-[#F5F7FA]">0</span> approved reviews
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Rating Distribution Bars -->
+                <div class="space-y-2 mt-6 pt-6 border-t border-[#2A3147]/60 text-xs">
+                    <div class="flex items-center gap-3">
+                        <span class="w-10 text-[#A1A7BC] font-mono">5 Stars</span>
+                        <div class="flex-1 h-2 rounded-full bg-[#1A2031] overflow-hidden">
+                            <div id="bar-5" class="h-full bg-gradient-to-r from-[#F6C177] to-[#FBBF24] rounded-full transition-all duration-500" style="width: 0%"></div>
+                        </div>
+                        <span id="count-5" class="w-6 text-right text-[#A1A7BC] font-mono">0</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <span class="w-10 text-[#A1A7BC] font-mono">4 Stars</span>
+                        <div class="flex-1 h-2 rounded-full bg-[#1A2031] overflow-hidden">
+                            <div id="bar-4" class="h-full bg-gradient-to-r from-[#F6C177] to-[#FBBF24] rounded-full transition-all duration-500" style="width: 0%"></div>
+                        </div>
+                        <span id="count-4" class="w-6 text-right text-[#A1A7BC] font-mono">0</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <span class="w-10 text-[#A1A7BC] font-mono">3 Stars</span>
+                        <div class="flex-1 h-2 rounded-full bg-[#1A2031] overflow-hidden">
+                            <div id="bar-3" class="h-full bg-gradient-to-r from-[#F6C177] to-[#FBBF24] rounded-full transition-all duration-500" style="width: 0%"></div>
+                        </div>
+                        <span id="count-3" class="w-6 text-right text-[#A1A7BC] font-mono">0</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <span class="w-10 text-[#A1A7BC] font-mono">2 Stars</span>
+                        <div class="flex-1 h-2 rounded-full bg-[#1A2031] overflow-hidden">
+                            <div id="bar-2" class="h-full bg-gradient-to-r from-[#F6C177] to-[#FBBF24] rounded-full transition-all duration-500" style="width: 0%"></div>
+                        </div>
+                        <span id="count-2" class="w-6 text-right text-[#A1A7BC] font-mono">0</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <span class="w-10 text-[#A1A7BC] font-mono">1 Star</span>
+                        <div class="flex-1 h-2 rounded-full bg-[#1A2031] overflow-hidden">
+                            <div id="bar-1" class="h-full bg-gradient-to-r from-[#F6C177] to-[#FBBF24] rounded-full transition-all duration-500" style="width: 0%"></div>
+                        </div>
+                        <span id="count-1" class="w-6 text-right text-[#A1A7BC] font-mono">0</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: Share Feedback CTA Banner -->
+            <div class="lg:col-span-8 bg-gradient-to-br from-[#121826] to-[#1A2031] border border-[#2A3147] rounded-3xl p-7 flex flex-col justify-between relative overflow-hidden">
+                <div class="max-w-xl">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#F6C177]/10 text-[#F6C177] text-xs font-semibold mb-3 border border-[#F6C177]/20">
+                        <span class="material-symbols-outlined text-xs">edit_square</span>
+                        <span>Student Voice Matters</span>
+                    </div>
+                    <h2 class="text-2xl sm:text-3xl font-bold text-[#F5F7FA] mb-2">
+                        Used TechPath in Your Studies?
+                    </h2>
+                    <p class="text-sm text-[#A1A7BC] leading-relaxed mb-6">
+                        Whether you mastered complex topics with AI Notes, practiced coding in Project Hub, or completed an AI Mock Interview, your honest feedback helps fellow engineering students.
+                    </p>
+                </div>
+
+                <div class="flex flex-wrap items-center gap-4">
+                    <button id="btn-open-review-form" class="px-6 py-3 rounded-2xl bg-gradient-to-r from-[#F6C177] to-[#E5A855] text-[#0B0F19] font-bold text-sm shadow-lg hover:brightness-110 active:scale-95 transition-all flex items-center gap-2">
+                        <span class="material-symbols-outlined text-base">rate_review</span>
+                        <span>Share Your Experience</span>
+                    </button>
+                    <a href="#filters" class="px-5 py-3 rounded-2xl bg-[#121826] border border-[#2A3147] text-xs font-semibold text-[#A1A7BC] hover:text-[#F5F7FA] transition-colors">
+                        Browse Approved Reviews ↓
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Filter & Search Bar -->
+        <div id="filters" class="bg-[#121826] border border-[#2A3147] rounded-2xl p-4 mb-8 flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4">
+            
+            <!-- Rating Filter Buttons -->
+            <div class="flex items-center gap-1.5 overflow-x-auto pb-2 md:pb-0" id="rating-filters-container">
+                <button data-rating="0" class="filter-rating-btn active px-3.5 py-1.5 rounded-xl text-xs font-medium bg-[#1A2031] text-[#F5F7FA] border border-[#2A3147] hover:border-[#F6C177]/40 transition-colors whitespace-nowrap">
+                    All Ratings
+                </button>
+                <button data-rating="5" class="filter-rating-btn px-3.5 py-1.5 rounded-xl text-xs font-medium bg-transparent text-[#A1A7BC] border border-transparent hover:bg-[#1A2031] transition-colors whitespace-nowrap flex items-center gap-1">
+                    <span>5</span> <span class="material-symbols-outlined text-xs text-[#FBBF24]" style="font-variation-settings: 'FILL' 1;">star</span>
+                </button>
+                <button data-rating="4" class="filter-rating-btn px-3.5 py-1.5 rounded-xl text-xs font-medium bg-transparent text-[#A1A7BC] border border-transparent hover:bg-[#1A2031] transition-colors whitespace-nowrap flex items-center gap-1">
+                    <span>4</span> <span class="material-symbols-outlined text-xs text-[#FBBF24]" style="font-variation-settings: 'FILL' 1;">star</span>
+                </button>
+                <button data-rating="3" class="filter-rating-btn px-3.5 py-1.5 rounded-xl text-xs font-medium bg-transparent text-[#A1A7BC] border border-transparent hover:bg-[#1A2031] transition-colors whitespace-nowrap flex items-center gap-1">
+                    <span>3</span> <span class="material-symbols-outlined text-xs text-[#FBBF24]" style="font-variation-settings: 'FILL' 1;">star</span>
+                </button>
+                <button data-rating="2" class="filter-rating-btn px-3.5 py-1.5 rounded-xl text-xs font-medium bg-transparent text-[#A1A7BC] border border-transparent hover:bg-[#1A2031] transition-colors whitespace-nowrap flex items-center gap-1">
+                    <span>2</span> <span class="material-symbols-outlined text-xs text-[#FBBF24]" style="font-variation-settings: 'FILL' 1;">star</span>
+                </button>
+                <button data-rating="1" class="filter-rating-btn px-3.5 py-1.5 rounded-xl text-xs font-medium bg-transparent text-[#A1A7BC] border border-transparent hover:bg-[#1A2031] transition-colors whitespace-nowrap flex items-center gap-1">
+                    <span>1</span> <span class="material-symbols-outlined text-xs text-[#FBBF24]" style="font-variation-settings: 'FILL' 1;">star</span>
+                </button>
+            </div>
+
+            <!-- Feature Filter Dropdown -->
+            <div class="flex items-center gap-3">
+                <label for="filter-feature" class="text-xs text-[#A1A7BC] whitespace-nowrap font-medium">Feature Used:</label>
+                <select id="filter-feature" class="bg-[#1A2031] border border-[#2A3147] rounded-xl text-xs text-[#F5F7FA] px-3 py-2 focus:ring-1 focus:ring-[#F6C177] focus:border-[#F6C177] transition-all">
+                    <option value="All">All Features</option>
+                    <option value="AI Notes">AI Notes</option>
+                    <option value="LearnHub">LearnHub</option>
+                    <option value="AI Doubt Solver">AI Doubt Solver</option>
+                    <option value="AI Mock Interview">AI Mock Interview</option>
+                    <option value="Project Hub">Project Hub</option>
+                    <option value="Skill Hub">Skill Hub</option>
+                    <option value="Resume Builder">Resume Builder</option>
+                    <option value="Exam Tracker">Exam Tracker</option>
+                    <option value="Career">Career</option>
+                    <option value="Internships">Internships</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Reviews Display Grid -->
+        <div id="reviews-container" class="min-h-[250px] relative">
+            <!-- Loading State -->
+            <div id="reviews-loading" class="text-center py-16">
+                <div class="inline-block w-8 h-8 border-2 border-[#F6C177] border-t-transparent rounded-full animate-spin mb-3"></div>
+                <p class="text-sm text-[#A1A7BC]">Loading reviews...</p>
+            </div>
+
+            <!-- Honest Empty State -->
+            <div id="reviews-empty" class="hidden text-center py-20 px-6 bg-[#121826]/60 border border-[#2A3147] rounded-3xl max-w-xl mx-auto">
+                <div class="w-14 h-14 mx-auto mb-4 rounded-2xl bg-[#1A2031] border border-[#2A3147] flex items-center justify-center text-[#F6C177]">
+                    <span class="material-symbols-outlined text-3xl">chat_bubble_outline</span>
+                </div>
+                <h3 class="text-lg font-bold text-[#F5F7FA] mb-2">No reviews yet. Be the first to share your experience.</h3>
+                <p class="text-xs text-[#A1A7BC] max-w-md mx-auto mb-6">
+                    Real reviews are submitted by engineering students and verified by administrators before publication. Share your feedback today!
+                </p>
+                <button onclick="document.getElementById('btn-open-review-form').click()" class="px-5 py-2.5 rounded-xl bg-[#F6C177] text-[#0B0F19] text-xs font-bold hover:brightness-110 transition-all">
+                    Write a Review
+                </button>
+            </div>
+
+            <!-- Error State -->
+            <div id="reviews-error" class="hidden text-center py-16 px-6 bg-[#121826] border border-red-500/30 rounded-3xl max-w-md mx-auto">
+                <span class="material-symbols-outlined text-3xl text-red-400 mb-2">error_outline</span>
+                <p class="text-sm text-red-200 mb-4">Unable to load reviews.</p>
+                <button onclick="ReviewsApp.loadReviews()" class="px-4 py-2 rounded-xl bg-[#1A2031] border border-[#2A3147] text-xs font-semibold text-[#F5F7FA] hover:bg-[#21293D] transition-colors">
+                    Retry
+                </button>
+            </div>
+
+            <!-- Reviews Cards Grid -->
+            <div id="reviews-grid" class="hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+
+            <!-- Verified Public Google Ads Container (Placement: reviews_bottom) -->
+            <div class="mt-14 pt-8 border-t border-[#2A3147]/60 max-w-4xl mx-auto w-full">
+                <ad-banner placement="reviews_bottom" format="horizontal"></ad-banner>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Review Submission Form Modal -->
+    <div id="review-modal" class="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm hidden flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
+        <div class="bg-[#121826] border border-[#2A3147] rounded-3xl w-full max-w-lg p-6 sm:p-8 shadow-2xl relative">
+            
+            <!-- Modal Header -->
+            <div class="flex items-center justify-between pb-4 mb-6 border-b border-[#2A3147]">
+                <div class="flex items-center gap-2.5">
+                    <div class="w-9 h-9 rounded-xl bg-[#F6C177]/15 border border-[#F6C177]/30 flex items-center justify-center text-[#F6C177]">
+                        <span class="material-symbols-outlined text-xl">rate_review</span>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold text-[#F5F7FA]">Submit Your Review</h3>
+                        <p class="text-xs text-[#A1A7BC]">Help us improve TechPath for engineering students</p>
+                    </div>
+                </div>
+                <button id="btn-close-modal" class="p-1.5 rounded-lg text-[#A1A7BC] hover:text-white hover:bg-[#1A2031] transition-colors" aria-label="Close modal">
+                    <span class="material-symbols-outlined text-xl">close</span>
+                </button>
+            </div>
+
+            <!-- Form Body -->
+            <form id="review-form" class="space-y-5">
+                
+                <!-- Rating Picker -->
+                <div>
+                    <label class="block text-xs font-semibold text-[#F5F7FA] mb-2">
+                        Rating <span class="text-red-400">*</span>
+                    </label>
+                    <div class="flex items-center gap-2" id="star-picker-container" role="radiogroup" aria-label="Star Rating">
+                        <button type="button" data-star="1" class="star-interactive p-1 text-[#2A3147] hover:text-[#FBBF24] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F6C177] rounded" aria-label="1 star" role="radio" aria-checked="false">
+                            <span class="material-symbols-outlined text-3xl">star</span>
+                        </button>
+                        <button type="button" data-star="2" class="star-interactive p-1 text-[#2A3147] hover:text-[#FBBF24] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F6C177] rounded" aria-label="2 stars" role="radio" aria-checked="false">
+                            <span class="material-symbols-outlined text-3xl">star</span>
+                        </button>
+                        <button type="button" data-star="3" class="star-interactive p-1 text-[#2A3147] hover:text-[#FBBF24] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F6C177] rounded" aria-label="3 stars" role="radio" aria-checked="false">
+                            <span class="material-symbols-outlined text-3xl">star</span>
+                        </button>
+                        <button type="button" data-star="4" class="star-interactive p-1 text-[#2A3147] hover:text-[#FBBF24] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F6C177] rounded" aria-label="4 stars" role="radio" aria-checked="false">
+                            <span class="material-symbols-outlined text-3xl">star</span>
+                        </button>
+                        <button type="button" data-star="5" class="star-interactive p-1 text-[#2A3147] hover:text-[#FBBF24] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F6C177] rounded" aria-label="5 stars" role="radio" aria-checked="false">
+                            <span class="material-symbols-outlined text-3xl">star</span>
+                        </button>
+                        <span id="star-rating-label" class="text-xs font-mono text-[#F6C177] ml-2">Click to rate</span>
+                    </div>
+                    <input type="hidden" id="form-rating-value" value="0" required/>
+                </div>
+
+                <!-- Feature Used -->
+                <div>
+                    <label for="form-feature" class="block text-xs font-semibold text-[#F5F7FA] mb-1.5">
+                        Feature Used <span class="text-red-400">*</span>
+                    </label>
+                    <select id="form-feature" class="w-full bg-[#1A2031] border border-[#2A3147] rounded-xl text-xs text-[#F5F7FA] px-3.5 py-2.5 focus:outline-none focus:bg-[#1A2031] focus:ring-2 focus:ring-[#F6C177] focus:border-[#F6C177]" required>
+                        <option value="AI Notes">AI Notes</option>
+                        <option value="LearnHub">LearnHub</option>
+                        <option value="AI Doubt Solver">AI Doubt Solver</option>
+                        <option value="AI Mock Interview">AI Mock Interview</option>
+                        <option value="Project Hub">Project Hub</option>
+                        <option value="Skill Hub">Skill Hub</option>
+                        <option value="Resume Builder">Resume Builder</option>
+                        <option value="Exam Tracker">Exam Tracker</option>
+                        <option value="Career">Career</option>
+                        <option value="Internships">Internships</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+
+                <!-- Reviewer Name -->
+                <div>
+                    <div class="flex items-center justify-between mb-1.5">
+                        <label for="form-name" class="text-xs font-semibold text-[#F5F7FA]">Your Name</label>
+                        <span class="text-[11px] text-[#A1A7BC]">Optional (Leave blank to submit anonymously)</span>
+                    </div>
+                    <input type="text" id="form-name" placeholder="e.g. Rahul Sharma" maxlength="80" class="w-full bg-[#1A2031] border border-[#2A3147] rounded-xl text-xs text-[#F5F7FA] px-3.5 py-2.5 placeholder:text-[#A1A7BC]/50 focus:outline-none focus:bg-[#1A2031] focus:ring-2 focus:ring-[#F6C177] focus:border-[#F6C177]"/>
+                </div>
+
+                <!-- Review Text -->
+                <div>
+                    <div class="flex items-center justify-between mb-1.5">
+                        <label for="form-review-text" class="text-xs font-semibold text-[#F5F7FA]">
+                            Review <span class="text-red-400">*</span>
+                        </label>
+                        <span id="char-counter" class="text-[11px] font-mono text-[#A1A7BC]">0 / 1500</span>
+                    </div>
+                    <textarea id="form-review-text" rows="4" maxlength="1500" placeholder="Describe your experience with TechPath. How did it assist your semester exams, interview preparation, or projects?" class="w-full bg-[#1A2031] border border-[#2A3147] rounded-xl text-xs text-[#F5F7FA] p-3.5 placeholder:text-[#A1A7BC]/50 focus:outline-none focus:bg-[#1A2031] focus:ring-2 focus:ring-[#F6C177] focus:border-[#F6C177] resize-none" required></textarea>
+                    <p class="text-[11px] text-[#A1A7BC] mt-1">Minimum 10 characters.</p>
+                </div>
+
+                <!-- Moderation Notice -->
+                <div class="p-3 rounded-xl bg-[#1A2031]/80 border border-[#2A3147] text-[11px] text-[#A1A7BC] flex items-start gap-2">
+                    <span class="material-symbols-outlined text-sm text-[#F6C177] flex-shrink-0 mt-0.5">verified_user</span>
+                    <span>To prevent spam and maintain high-quality engineering feedback, all reviews are reviewed by administrators before public display.</span>
+                </div>
+
+                <!-- Feedback / Status Alert -->
+                <div id="form-feedback-msg" class="hidden p-3 rounded-xl text-xs"></div>
+
+                <!-- Submit Button -->
+                <div class="pt-2 flex items-center justify-end gap-3">
+                    <button type="button" id="btn-cancel-modal" class="px-4 py-2.5 rounded-xl bg-[#1A2031] border border-[#2A3147] text-xs font-medium text-[#A1A7BC] hover:text-white transition-colors">
+                        Cancel
+                    </button>
+                    <button type="submit" id="btn-submit-review" class="px-6 py-2.5 rounded-xl bg-gradient-to-r from-[#F6C177] to-[#E5A855] text-[#0B0F19] text-xs font-bold hover:brightness-110 active:scale-95 transition-all flex items-center gap-1.5 shadow-md">
+                        <span id="btn-submit-text">Submit Review</span>
+                    </button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+    <!-- Toast Notification Container -->
+    <div id="toast-container" class="fixed bottom-6 right-6 z-50 flex flex-col gap-3 pointer-events-none"></div>
+
+    <!-- Production Footer -->
+    <footer class="border-t border-[#2A3147] bg-[#0B0F19] py-12 px-6 mt-auto">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-xs text-[#A1A7BC]">
+            
+            <div class="flex flex-col sm:flex-row items-center gap-3 text-center sm:text-left">
+                <span class="font-bold text-[#F5F7FA] text-sm">TechPath</span>
+                <span class="hidden sm:inline text-[#2A3147]">•</span>
+                <span class="italic text-[#F5F7FA]/90">"Learn. Build. Prepare. Grow. • From Classroom to Career."</span>
+            </div>
+
+            <div class="flex flex-wrap items-center justify-center gap-6">
+                <a href="reviews.html" class="text-[#F6C177] hover:underline font-semibold">Reviews</a>
+                <a href="contact.html" class="hover:text-[#F5F7FA] transition-colors">Contact Us</a>
+                <a href="faqs.html" class="hover:text-[#F5F7FA] transition-colors">FAQs</a>
+                <a href="privacy-policy.html" class="hover:text-[#F5F7FA] transition-colors">Privacy Policy</a>
+                <a href="terms.html" class="hover:text-[#F5F7FA] transition-colors">Terms of Use</a>
+                <a href="helpdesk.html" class="hover:text-[#F5F7FA] transition-colors">Helpdesk</a>
+                <a href="admin.html" class="hover:text-[#F5F7FA] transition-colors">Admin Center</a>
+            </div>
+
+            <div class="text-center sm:text-right">
+                <span class="block text-[#A1A7BC]">Support: <a href="mailto:lakkimsettirahulashokh@gmail.com" class="text-[#F5F7FA] hover:text-[#2DD4BF] transition-colors">lakkimsettirahulashokh@gmail.com</a></span>
+            </div>
+
+        </div>
+    </footer>
+
+    <!-- Frontend Logic -->
+    <script src="js/supabase.min.js"></script>
+    <script src="js/supabase-client.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/ads.js"></script>
+    <script>
+        const ReviewsApp = {
+            approvedReviews: [],
+            activeRatingFilter: 0,
+            activeFeatureFilter: 'All',
+            selectedRating: 0,
+
+            init() {
+                this.bindUI();
+                this.loadReviews();
+                this.checkAuthPrefill();
+            },
+
+            bindUI() {
+                // Mobile menu toggle
+                const mobileBtn = document.getElementById('mobile-menu-btn');
+                const mobileMenu = document.getElementById('mobile-menu');
+                if (mobileBtn && mobileMenu) {
+                    mobileBtn.addEventListener('click', () => {
+                        mobileMenu.classList.toggle('hidden');
+                    });
+                }
+
+                // Modal triggers
+                const openBtn = document.getElementById('btn-open-review-form');
+                const closeBtn = document.getElementById('btn-close-modal');
+                const cancelBtn = document.getElementById('btn-cancel-modal');
+                const modal = document.getElementById('review-modal');
+
+                if (openBtn && modal) {
+                    openBtn.addEventListener('click', () => {
+                        modal.classList.remove('hidden');
+                        document.body.style.overflow = 'hidden';
+                    });
+                }
+                const closeModal = () => {
+                    modal.classList.add('hidden');
+                    document.body.style.overflow = '';
+                };
+                if (closeBtn) closeBtn.addEventListener('click', closeModal);
+                if (cancelBtn) cancelBtn.addEventListener('click', closeModal);
+
+                // Close on backdrop click
+                if (modal) {
+                    modal.addEventListener('click', (e) => {
+                        if (e.target === modal) closeModal();
+                    });
+                }
+
+                // Character counter & error-reset on typing
+                const textarea = document.getElementById('form-review-text');
+                const counter = document.getElementById('char-counter');
+                if (textarea && counter) {
+                    textarea.addEventListener('input', () => {
+                        counter.textContent = `${textarea.value.length} / 1500`;
+                        textarea.classList.remove('form-input-error');
+                    });
+                }
+
+                // Interactive Star Rating in Form with full Accessibility, Focus, and Mobile Tap
+                const stars = document.querySelectorAll('#star-picker-container button');
+                const ratingValueInput = document.getElementById('form-rating-value');
+                const ratingLabel = document.getElementById('star-rating-label');
+                const labels = {
+                    1: '1 Star - Poor',
+                    2: '2 Stars - Fair',
+                    3: '3 Stars - Good',
+                    4: '4 Stars - Very Good',
+                    5: '5 Stars - Excellent'
+                };
+
+                const updateStarsUI = (val, isPreview = false) => {
+                    stars.forEach((btn, idx) => {
+                        const starNum = idx + 1;
+                        const icon = btn.querySelector('span');
+                        if (starNum <= val) {
+                            btn.classList.remove('text-[#2A3147]');
+                            btn.classList.add('text-[#FBBF24]');
+                            icon.style.fontVariationSettings = "'FILL' 1";
+                        } else {
+                            btn.classList.remove('text-[#FBBF24]');
+                            btn.classList.add('text-[#2A3147]');
+                            icon.style.fontVariationSettings = "'FILL' 0";
+                        }
+                        if (!isPreview) {
+                            btn.setAttribute('aria-checked', starNum === this.selectedRating ? 'true' : 'false');
+                        }
+                    });
+                    if (ratingLabel) {
+                        ratingLabel.textContent = labels[val] || (this.selectedRating > 0 ? labels[this.selectedRating] : 'Click to rate');
+                    }
+                };
+
+                stars.forEach((btn) => {
+                    const starNum = parseInt(btn.getAttribute('data-star'), 10);
+                    
+                    // Hover & Pointer Events
+                    btn.addEventListener('mouseenter', () => updateStarsUI(starNum, true));
+                    
+                    // Focus for Keyboard Accessibility
+                    btn.addEventListener('focus', () => updateStarsUI(starNum, true));
+                    btn.addEventListener('blur', () => updateStarsUI(this.selectedRating));
+
+                    // Keyboard Select (Space or Enter)
+                    btn.addEventListener('keydown', (e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                            e.preventDefault();
+                            btn.click();
+                        }
+                    });
+
+                    // Click / Mobile Tap Selection
+                    btn.addEventListener('click', () => {
+                        this.selectedRating = starNum;
+                        ratingValueInput.value = starNum;
+                        updateStarsUI(starNum);
+                        const container = document.getElementById('star-picker-container');
+                        if (container) container.classList.remove('form-input-error');
+                    });
+                });
+
+                const starContainer = document.getElementById('star-picker-container');
+                if (starContainer) {
+                    starContainer.addEventListener('mouseleave', () => {
+                        updateStarsUI(this.selectedRating);
+                    });
+                }
+
+                // Rating filter buttons
+                const filterBtns = document.querySelectorAll('.filter-rating-btn');
+                filterBtns.forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        filterBtns.forEach(b => {
+                            b.classList.remove('active', 'bg-[#1A2031]', 'text-[#F5F7FA]', 'border-[#2A3147]');
+                            b.classList.add('bg-transparent', 'text-[#A1A7BC]', 'border-transparent');
+                        });
+                        btn.classList.add('active', 'bg-[#1A2031]', 'text-[#F5F7FA]', 'border-[#2A3147]');
+                        btn.classList.remove('bg-transparent', 'text-[#A1A7BC]', 'border-transparent');
+                        this.activeRatingFilter = parseInt(btn.getAttribute('data-rating'), 10);
+                        this.renderReviewsList();
+                    });
+                });
+
+                // Feature filter dropdown
+                const featureSelect = document.getElementById('filter-feature');
+                if (featureSelect) {
+                    featureSelect.addEventListener('change', (e) => {
+                        this.activeFeatureFilter = e.target.value;
+                        this.renderReviewsList();
+                    });
+                }
+
+                // Form submit handler
+                const form = document.getElementById('review-form');
+                if (form) {
+                    form.addEventListener('submit', (e) => this.handleSubmit(e));
+                }
+            },
+
+            async checkAuthPrefill() {
+                try {
+                    if (window.AuthManager && typeof window.AuthManager.getUser === 'function') {
+                        const user = await window.AuthManager.getUser();
+                        if (user) {
+                            const nameField = document.getElementById('form-name');
+                            if (nameField && !nameField.value) {
+                                nameField.value = user.user_metadata?.full_name || (user.email ? user.email.split('@')[0] : '');
+                            }
+                        }
+                    }
+                } catch (e) {
+                    console.warn('[Reviews] Auth prefill check skipped:', e.message);
+                }
+            },
+
+            async loadReviews() {
+                const loadingEl = document.getElementById('reviews-loading');
+                const emptyEl = document.getElementById('reviews-empty');
+                const errorEl = document.getElementById('reviews-error');
+                const gridEl = document.getElementById('reviews-grid');
+
+                loadingEl.classList.remove('hidden');
+                emptyEl.classList.add('hidden');
+                errorEl.classList.add('hidden');
+                gridEl.classList.add('hidden');
+
+                try {
+                    const res = await fetch('/api/reviews');
+                    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+                    const data = await res.json();
+
+                    loadingEl.classList.add('hidden');
+
+                    if (data && data.success) {
+                        this.approvedReviews = Array.isArray(data.reviews) ? data.reviews : [];
+                        this.updateSummaryStats(data);
+                        this.renderReviewsList();
+                    } else {
+                        throw new Error(data.error || 'Failed to fetch reviews');
+                    }
+                } catch (err) {
+                    console.error('[Reviews] Error loading reviews:', err);
+                    loadingEl.classList.add('hidden');
+                    errorEl.classList.remove('hidden');
+                }
+            },
+
+            updateSummaryStats(data) {
+                const avgEl = document.getElementById('stat-avg-rating');
+                const totalEl = document.getElementById('stat-total-reviews');
+                const starsDisplay = document.getElementById('stat-stars-display');
+
+                const totalApproved = data.totalApproved || 0;
+                const avg = data.averageRating || 0;
+
+                if (avgEl) avgEl.textContent = avg > 0 ? avg.toFixed(1) : '0.0';
+                if (totalEl) totalEl.textContent = totalApproved;
+
+                if (starsDisplay) {
+                    const fullStars = Math.floor(avg);
+                    const hasHalf = (avg - fullStars) >= 0.5;
+                    let html = '';
+                    for (let i = 1; i <= 5; i++) {
+                        if (i <= fullStars) {
+                            html += '<span class="material-symbols-outlined text-xl" style="font-variation-settings: \'FILL\' 1;">star</span>';
+                        } else if (i === fullStars + 1 && hasHalf) {
+                            html += '<span class="material-symbols-outlined text-xl" style="font-variation-settings: \'FILL\' 1;">star_half</span>';
+                        } else {
+                            html += '<span class="material-symbols-outlined text-xl text-[#2A3147]">star</span>';
+                        }
+                    }
+                    starsDisplay.innerHTML = html;
+                }
+
+                // Update distribution bars
+                const breakdown = data.ratingBreakdown || { 5: 0, 4: 0, 3: 0, 2: 0, 1: 0 };
+                for (let s = 1; s <= 5; s++) {
+                    const count = breakdown[s] || 0;
+                    const pct = totalApproved > 0 ? Math.round((count / totalApproved) * 100) : 0;
+                    const bar = document.getElementById(`bar-${s}`);
+                    const countEl = document.getElementById(`count-${s}`);
+                    if (bar) bar.style.width = `${pct}%`;
+                    if (countEl) countEl.textContent = count;
+                }
+            },
+
+            renderReviewsList() {
+                const emptyEl = document.getElementById('reviews-empty');
+                const gridEl = document.getElementById('reviews-grid');
+
+                let filtered = this.approvedReviews;
+
+                if (this.activeRatingFilter > 0) {
+                    filtered = filtered.filter(r => r.rating === this.activeRatingFilter);
+                }
+                if (this.activeFeatureFilter && this.activeFeatureFilter !== 'All') {
+                    filtered = filtered.filter(r => (r.feature_used || '').toLowerCase() === this.activeFeatureFilter.toLowerCase());
+                }
+
+                if (filtered.length === 0) {
+                    gridEl.classList.add('hidden');
+                    emptyEl.classList.remove('hidden');
+                    return;
+                }
+
+                emptyEl.classList.add('hidden');
+                gridEl.classList.remove('hidden');
+
+                gridEl.innerHTML = filtered.map(review => {
+                    const starsHtml = Array.from({ length: 5 }, (_, i) => {
+                        const filled = i < (review.rating || 5);
+                        return `<span class="material-symbols-outlined text-sm ${filled ? 'text-[#FBBF24]' : 'text-[#2A3147]'}" style="font-variation-settings: 'FILL' ${filled ? 1 : 0};">star</span>`;
+                    }).join('');
+
+                    const safeName = this.escapeHtml(review.name || 'Anonymous Student');
+                    const safeReview = this.escapeHtml(review.review_text || '');
+                    const safeFeature = this.escapeHtml(review.feature_used || 'General');
+                    const formattedDate = review.created_at ? new Date(review.created_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) : 'Recently';
+
+                    return `
+                        <article class="review-card bg-[#121826] border border-[#2A3147] rounded-2xl p-6 flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-center justify-between mb-3">
+                                    <div class="flex items-center gap-1" aria-label="${review.rating} out of 5 stars">
+                                        ${starsHtml}
+                                    </div>
+                                    <span class="text-[11px] font-mono px-2 py-0.5 rounded-full bg-[#1A2031] text-[#2DD4BF] border border-[#2A3147]">
+                                        ${safeFeature}
+                                    </span>
+                                </div>
+                                <p class="text-xs sm:text-sm text-[#F5F7FA]/90 leading-relaxed mb-4">
+                                    "${safeReview}"
+                                </p>
+                            </div>
+                            <div class="flex items-center justify-between pt-4 border-t border-[#2A3147]/60 text-xs text-[#A1A7BC]">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-6 h-6 rounded-full bg-[#1A2031] border border-[#2A3147] flex items-center justify-center text-[10px] font-bold text-[#F6C177]">
+                                        ${safeName.charAt(0).toUpperCase()}
+                                    </div>
+                                    <span class="font-medium text-[#F5F7FA]">${safeName}</span>
+                                </div>
+                                <span class="text-[11px] font-mono">${formattedDate}</span>
+                            </div>
+                        </article>
+                    `;
+                }).join('');
+            },
+
+            async handleSubmit(e) {
+                e.preventDefault();
+                const rating = this.selectedRating;
+                const feature = document.getElementById('form-feature').value;
+                const name = document.getElementById('form-name').value.trim();
+                const reviewText = document.getElementById('form-review-text').value.trim();
+                const feedbackEl = document.getElementById('form-feedback-msg');
+                const submitBtn = document.getElementById('btn-submit-review');
+                const submitText = document.getElementById('btn-submit-text');
+
+                if (!rating || rating < 1 || rating > 5) {
+                    const starContainer = document.getElementById('star-picker-container');
+                    if (starContainer) starContainer.classList.add('form-input-error');
+                    this.showFeedback('Please select a star rating (1–5 stars).', 'error');
+                    return;
+                }
+
+                if (!reviewText || reviewText.length < 10) {
+                    const textarea = document.getElementById('form-review-text');
+                    if (textarea) {
+                        textarea.classList.add('form-input-error');
+                        textarea.focus();
+                    }
+                    this.showFeedback('Review text must be at least 10 characters long.', 'error');
+                    return;
+                }
+
+                // Verify User Authentication
+                let user = null;
+                let token = null;
+                try {
+                    if (window.AuthManager) {
+                        const session = await window.AuthManager.getSession();
+                        user = session?.user || await window.AuthManager.getUser();
+                        token = session?.access_token || localStorage.getItem('btp_auth_token') || null;
+                    }
+                } catch (e) {
+                    console.warn('[Reviews] Auth check error:', e);
+                }
+
+                if (!user) {
+                    this.showFeedback('Please sign in to submit a review. Authentic reviews require a student account.', 'error');
+                    return;
+                }
+
+                // Set Submitting State
+                submitBtn.disabled = true;
+                submitText.textContent = 'Submitting review...';
+                feedbackEl.classList.add('hidden');
+
+                try {
+                    const payload = {
+                        rating,
+                        feature_used: feature,
+                        name: name || user.user_metadata?.full_name || user.email?.split('@')[0] || '',
+                        review_text: reviewText
+                    };
+
+                    const headers = {
+                        'Content-Type': 'application/json'
+                    };
+                    if (token) {
+                        headers['Authorization'] = `Bearer ${token}`;
+                    }
+
+                    const res = await fetch('/api/reviews', {
+                        method: 'POST',
+                        headers,
+                        body: JSON.stringify(payload)
+                    });
+
+                    const result = await res.json();
+
+                    if (res.status === 201 && result.success) {
+                        // Confirm INSERT succeeded before redirecting to Thank You page
+                        submitText.textContent = 'Success! Redirecting...';
+                        window.location.href = 'thank-you.html';
+                        return;
+                    } else {
+                        throw new Error(result.error || 'Failed to submit review. Please try again.');
+                    }
+                } catch (err) {
+                    console.error('[Reviews] Submit error:', err);
+                    // Keep user on page, display clear error message, allow retry, keep written feedback intact
+                    this.showFeedback(err.message || 'Unable to submit review. Please check your connection and retry.', 'error');
+                } finally {
+                    submitBtn.disabled = false;
+                    submitText.textContent = 'Submit Review';
+                }
+            },
+
+            showFeedback(msg, type) {
+                const el = document.getElementById('form-feedback-msg');
+                if (!el) return;
+                el.classList.remove('hidden', 'bg-red-500/15', 'text-red-300', 'border-red-500/30', 'bg-teal-500/15', 'text-teal-300', 'border-teal-500/30');
+                if (type === 'error') {
+                    el.classList.add('bg-red-500/15', 'text-red-300', 'border', 'border-red-500/30');
+                } else {
+                    el.classList.add('bg-teal-500/15', 'text-teal-300', 'border', 'border-teal-500/30');
+                }
+                el.textContent = msg;
+            },
+
+            showToast(msg) {
+                const container = document.getElementById('toast-container');
+                if (!container) return;
+                const toast = document.createElement('div');
+                toast.className = 'px-4 py-3 rounded-2xl bg-[#1A2031] border border-[#2A3147] text-xs text-[#F5F7FA] shadow-2xl flex items-center gap-2 transform transition-all duration-300';
+                toast.innerHTML = `<span class="material-symbols-outlined text-sm text-[#F6C177]">check_circle</span><span>${this.escapeHtml(msg)}</span>`;
+                container.appendChild(toast);
+                setTimeout(() => {
+                    toast.style.opacity = '0';
+                    setTimeout(() => toast.remove(), 300);
+                }, 4000);
+            },
+
+            escapeHtml(str) {
+                if (!str) return '';
+                return str.replace(/[&<>'"]/g, tag => ({
+                    '&': '&amp;',
+                    '<': '&lt;',
+                    '>': '&gt;',
+                    "'": '&#39;',
+                    '"': '&quot;'
+                }[tag] || tag));
+            }
+        };
+
+        document.addEventListener('DOMContentLoaded', () => ReviewsApp.init());
+    </script>
+    <script src="js/loading-system.js"></script>
+    <script src="js/cookie-consent.js"></script>
+    <script src="js/analytics.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/three.min.js"></script>
+    <script src="js/btech-bg3d.js"></script>
+</body>
+</html>

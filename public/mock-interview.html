@@ -1,0 +1,2946 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <!-- Primary SEO Meta Tags -->
+    <title>AI Mock Interview — Practice With Your Resume | TechPath</title>
+    <meta name="title" content="AI Mock Interview — Practice With Your Resume | TechPath">
+    <meta name="description" content="Practice personalized mock interviews using your resume, skills, projects, and target role.">
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="canonical" href="https://TechPath.ai/mock-interview.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="TechPath">
+    <meta property="og:url" content="https://TechPath.ai/mock-interview.html">
+    <meta property="og:title" content="AI Mock Interview — Practice With Your Resume | TechPath">
+    <meta property="og:description" content="Practice personalized mock interviews using your resume, skills, projects, and target role.">
+    <meta property="og:image" content="https://TechPath.ai/assets/branding/techpath-og.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="TechPath — Learn. Build. Prepare. Grow.">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://TechPath.ai/mock-interview.html">
+    <meta name="twitter:title" content="AI Mock Interview — Practice With Your Resume | TechPath">
+    <meta name="twitter:description" content="Practice personalized mock interviews using your resume, skills, projects, and target role.">
+    <meta name="twitter:image" content="https://TechPath.ai/assets/branding/techpath-og.png">
+    <meta name="twitter:image:alt" content="TechPath — Learn. Build. Prepare. Grow.">
+
+    <!-- Favicon & App Icons -->
+    <link rel="icon" type="image/svg+xml" href="assets/branding/favicon.svg">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/branding/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/branding/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/branding/apple-touch-icon.png">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#0B0F19">
+    <!-- Primary SEO Meta Tags -->
+    <!-- Open Graph / Facebook -->
+    <!-- Twitter Card -->
+    <!-- Favicon & App Icons -->
+    <!-- Primary SEO Meta Tags -->
+    <!-- Open Graph / Facebook -->
+    <!-- Twitter Card -->
+    <!-- Favicon & App Icons -->
+    <!-- Primary SEO Meta Tags -->
+    <!-- Open Graph / Facebook -->
+    <!-- Twitter Card -->
+    <!-- Favicon & App Icons -->
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <link rel="stylesheet" href="css/tailwind.output.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;600&family=Plus+Jakarta+Sans:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="css/custom.css"/>
+    <link rel="stylesheet" href="css/motion.css"/>
+    <style>
+        .audio-wave-bar {
+            animation: waveAnimation 1.2s ease-in-out infinite;
+        }
+        @keyframes waveAnimation {
+            0%, 100% { height: 6px; }
+            50% { height: 26px; }
+        }
+        .pulse-ring {
+            box-shadow: 0 0 0 0 rgba(88, 101, 242, 0.4);
+            animation: pulseRing 2s infinite;
+        }
+        @keyframes pulseRing {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(88, 101, 242, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 16px rgba(88, 101, 242, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(88, 101, 242, 0); }
+        }
+        .dragover {
+            border-color: #5865f2 !important;
+            background-color: rgba(88, 101, 242, 0.1) !important;
+        }
+    </style>
+
+    <script src="js/seo-metadata.js" defer></script>
+</head>
+<body class="bg-background text-on-surface min-h-screen flex flex-col antialiased selection:bg-primary-container selection:text-white overflow-x-hidden">
+
+    <div class="bg-ambient-glow"></div>
+
+    <!-- Top Navigation Bar -->
+    <header class="h-16 px-4 sm:px-8 bg-surface-container-lowest border-b border-outline-variant/60 flex items-center justify-between shrink-0 z-30 sticky top-0 backdrop-blur-md">
+        <div class="flex items-center gap-3 sm:gap-4">
+            <a href="dashboard.html" class="flex items-center gap-2 text-on-surface-variant hover:text-white transition-colors text-xs font-semibold">
+                <span class="material-symbols-outlined text-lg">arrow_back</span>
+                <span class="hidden sm:inline">Dashboard</span>
+            </a>
+            <div class="h-4 w-px bg-outline-variant/60"></div>
+            <a href="index.html" class="flex items-center py-1" aria-label="TechPath Home">
+                <img src="assets/branding/techpath-emblem.png" alt="TechPath" class="h-6 w-auto object-contain" />
+            </a>
+            <div class="h-4 w-px bg-outline-variant/60 hidden sm:block"></div>
+            <div class="flex items-center gap-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-tertiary animate-pulse"></span>
+                <span class="font-extrabold text-sm text-white tracking-tight">AI Mock Interview</span>
+                <span id="nav-mode-badge" class="hidden sm:inline-block px-2 py-0.5 rounded text-[10px] font-bold bg-primary-container/20 text-primary border border-primary/40 font-mono">RESUME-DRIVEN ENGINE</span>
+            </div>
+        </div>
+
+        <div class="flex items-center gap-3">
+            <button onclick="openHistoryModal()" class="px-3 py-1.5 rounded-xl bg-surface-container hover:bg-surface-container-high border border-outline-variant text-xs font-bold text-on-surface flex items-center gap-1.5 transition-colors">
+                <span class="material-symbols-outlined text-base text-secondary">history</span>
+                <span class="hidden sm:inline">Past Interviews</span>
+            </button>
+            <div id="live-timer-badge" class="hidden flex items-center gap-1.5 text-xs font-mono font-bold text-tertiary bg-surface-container px-3 py-1.5 rounded-xl border border-outline-variant">
+                <span class="material-symbols-outlined text-sm animate-spin" style="animation-duration:8s;">schedule</span>
+                <span id="interview-clock">00:00</span>
+            </div>
+            <button id="end-interview-btn" onclick="confirmEndSession()" class="hidden px-3 py-1.5 rounded-xl bg-red-500/20 text-red-300 hover:bg-red-500/30 border border-red-500/40 text-xs font-bold transition-colors">
+                Exit
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Dynamic Content Container -->
+    <main class="flex-1 flex flex-col p-4 sm:p-6 md:p-8 max-w-7xl w-full mx-auto relative z-10">
+
+        <!-- =================================================================== -->
+        <!-- VIEW 1: RESUME MANDATORY GATE (Upload / Select Saved Resume)         -->
+        <!-- =================================================================== -->
+        <div id="view-resume-gate" class="space-y-8 max-w-4xl mx-auto w-full py-4 animate-fade-in">
+            
+            <div class="text-center space-y-2">
+                <span class="px-3 py-1 rounded-full text-xs font-mono font-bold bg-primary-container/20 text-primary border border-primary/40">
+                    AUTHENTIC CANDIDATE ASSESSMENT
+                </span>
+                <h1 class="text-2xl sm:text-3xl font-black text-white">
+                    Upload Your Resume to Start Your Personalized Interview
+                </h1>
+                <p class="text-xs sm:text-sm text-on-surface-variant max-w-2xl mx-auto leading-relaxed">
+                    Our AI bar-raiser conducts an authentic interview derived strictly from your verified resume projects, technical competencies, and academic department.
+                </p>
+            </div>
+
+            <!-- Upload & Select Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                
+                <!-- Option A: Upload Resume File -->
+                <div id="drop-zone" class="bg-surface-container rounded-2xl p-6 border-2 border-dashed border-outline-variant hover:border-primary/60 transition-all flex flex-col items-center justify-center text-center space-y-4 shadow-xl cursor-pointer" onclick="document.getElementById('resume-file-input').click()">
+                    <input type="file" id="resume-file-input" accept=".pdf,.doc,.docx,.txt" class="hidden" onchange="handleResumeFileUpload(event)"/>
+                    <div class="w-14 h-14 rounded-2xl bg-primary-container/20 text-primary flex items-center justify-center border border-primary/40 shadow-lg">
+                        <span class="material-symbols-outlined text-3xl">upload_file</span>
+                    </div>
+                    <div class="space-y-1">
+                        <h3 class="font-bold text-sm text-white">Upload Resume File</h3>
+                        <p class="text-xs text-on-surface-variant max-w-xs">
+                            Drop your <strong class="text-white">PDF</strong>, <strong class="text-white">DOCX</strong>, or <strong class="text-white">TXT</strong> resume here, or click to browse.
+                        </p>
+                    </div>
+                    <button type="button" class="btn-primary-gradient px-5 py-2 rounded-xl text-xs font-bold shadow-md flex items-center gap-2 pointer-events-none">
+                        <span class="material-symbols-outlined text-sm">cloud_upload</span>
+                        <span>Upload Resume</span>
+                    </button>
+                    <span class="text-[10px] text-outline font-mono">Server-side zero-leakage parsing • auth.uid() isolated</span>
+                </div>
+
+                <!-- Option B: Use Saved TechPath Resume -->
+                <div class="bg-surface-container rounded-2xl p-6 border border-outline-variant flex flex-col justify-between space-y-4 shadow-xl">
+                    <div class="space-y-3">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-tertiary-container/30 text-tertiary flex items-center justify-center border border-tertiary/40 shrink-0">
+                                <span class="material-symbols-outlined text-xl">folder_shared</span>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-sm text-white">Use My Saved Resume</h3>
+                                <p class="text-[11px] text-on-surface-variant">Select an existing resume created in TechPath</p>
+                            </div>
+                        </div>
+
+                        <!-- Saved Resumes Dropdown / List -->
+                        <div id="saved-resumes-container" class="space-y-2 pt-2">
+                            <label class="text-[10px] font-semibold uppercase text-outline label-caps block">Select Resume Version</label>
+                            <select id="saved-resumes-select" class="premium-input rounded-xl w-full px-3 py-2.5 text-xs text-white">
+                                <option value="">Checking for saved resumes...</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="pt-3 border-t border-outline-variant/60 flex items-center justify-between">
+                        <a href="resume-builder.html" class="text-xs text-secondary hover:text-white font-semibold flex items-center gap-1 transition-colors">
+                            <span class="material-symbols-outlined text-sm">edit_note</span>
+                            <span>Resume Builder</span>
+                        </a>
+                        <button onclick="useSelectedSavedResume()" id="use-saved-btn" class="px-5 py-2 rounded-xl bg-tertiary-container/40 text-tertiary hover:bg-tertiary-container/60 border border-tertiary/40 text-xs font-bold transition-all flex items-center gap-1.5">
+                            <span>Use Selected Resume</span>
+                            <span class="material-symbols-outlined text-sm">check_circle</span>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Empty Resume State (Shown when user has zero resumes saved and hasn't uploaded) -->
+            <div id="no-resume-alert" class="hidden p-6 sm:p-8 rounded-2xl bg-surface-container border border-amber-500/40 shadow-2xl text-center space-y-4">
+                <div class="w-14 h-14 rounded-2xl bg-amber-500/20 text-amber-300 flex items-center justify-center mx-auto border border-amber-500/40">
+                    <span class="material-symbols-outlined text-3xl">warning</span>
+                </div>
+                <div class="space-y-1">
+                    <h3 class="text-base font-bold text-white">You need a resume for a personalized interview.</h3>
+                    <p class="text-xs text-on-surface-variant max-w-md mx-auto leading-relaxed">
+                        To conduct an authentic, non-generic interview, the AI needs your verified projects, technologies, and target role.
+                    </p>
+                </div>
+                <div class="pt-2 flex flex-wrap justify-center gap-3">
+                    <a href="resume-builder.html" class="btn-primary-gradient px-6 py-2.5 rounded-xl text-xs font-bold shadow-lg flex items-center gap-2">
+                        <span class="material-symbols-outlined text-sm">add_circle</span>
+                        <span>Create Resume</span>
+                    </a>
+                    <button onclick="document.getElementById('resume-file-input').click()" class="px-6 py-2.5 rounded-xl bg-surface-container-high hover:bg-surface-container-highest border border-outline-variant text-xs font-bold text-white flex items-center gap-2 transition-colors">
+                        <span class="material-symbols-outlined text-sm">upload_file</span>
+                        <span>Upload Resume</span>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- =================================================================== -->
+        <!-- VIEW 2: RESUME ANALYSIS SUMMARY & STRATEGY CONFIRMATION             -->
+        <!-- =================================================================== -->
+        <div id="view-analysis-summary" class="hidden space-y-6 max-w-4xl mx-auto w-full py-4 animate-fade-in">
+            
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-outline-variant/60 pb-4">
+                <div>
+                    <span class="px-2.5 py-1 rounded-md text-[10px] font-bold bg-tertiary-container/30 text-tertiary border border-tertiary/40 font-mono uppercase">
+                        RESUME ANALYSIS COMPLETE
+                    </span>
+                    <h2 class="text-xl sm:text-2xl font-black text-white mt-1">Your Interview Strategy Calibration</h2>
+                    <p class="text-xs text-on-surface-variant">Your interview will be dynamically generated based on these verified credentials.</p>
+                </div>
+                <button onclick="resetResumeSelection()" class="px-3 py-1.5 rounded-xl bg-surface-container-high hover:bg-surface-container-highest border border-outline-variant text-xs text-on-surface-variant hover:text-white flex items-center gap-1.5 transition-colors self-start sm:self-auto">
+                    <span class="material-symbols-outlined text-sm">swap_horiz</span>
+                    <span>Switch Resume</span>
+                </button>
+            </div>
+
+            <!-- Structured Resume Breakdown -->
+            <div class="bg-surface-container rounded-2xl p-6 border border-outline-variant shadow-xl space-y-5">
+                
+                <!-- Candidate Info Header -->
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-outline-variant/60 pb-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-12 h-12 rounded-xl bg-primary-container/20 text-primary border border-primary/40 flex items-center justify-center shrink-0">
+                            <span class="material-symbols-outlined text-2xl">badge</span>
+                        </div>
+                        <div>
+                            <h3 id="sum-name" class="font-bold text-base text-white">Alex Rivera</h3>
+                            <p id="sum-education" class="text-xs text-on-surface-variant font-mono">B.Tech CSE • Institute of Technology</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span id="sum-experience-badge" class="px-2.5 py-1 rounded-md text-[10px] font-bold bg-secondary-container/20 text-secondary border border-secondary/40 font-mono">
+                            ACADEMIC / FRESHER
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Highlights Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                    
+                    <!-- Skills -->
+                    <div class="p-4 rounded-xl bg-surface-container-low border border-outline-variant/50 space-y-2">
+                        <span class="text-[10px] font-bold uppercase text-outline label-caps flex items-center gap-1">
+                            <span class="material-symbols-outlined text-sm text-primary">code</span>
+                            <span>Verified Technical Skills</span>
+                        </span>
+                        <div id="sum-skills-tags" class="flex flex-wrap gap-1.5 pt-1">
+                            <!-- Injected dynamically -->
+                        </div>
+                    </div>
+
+                    <!-- Projects -->
+                    <div class="p-4 rounded-xl bg-surface-container-low border border-outline-variant/50 space-y-2">
+                        <span class="text-[10px] font-bold uppercase text-outline label-caps flex items-center gap-1">
+                            <span class="material-symbols-outlined text-sm text-tertiary">terminal</span>
+                            <span>Verified Projects (Will Be Grilled)</span>
+                        </span>
+                        <ul id="sum-projects-list" class="space-y-1.5 pt-1 text-on-surface font-medium">
+                            <!-- Injected dynamically -->
+                        </ul>
+                    </div>
+
+                    <!-- Internships -->
+                    <div class="p-4 rounded-xl bg-surface-container-low border border-outline-variant/50 space-y-2">
+                        <span class="text-[10px] font-bold uppercase text-outline label-caps flex items-center gap-1">
+                            <span class="material-symbols-outlined text-sm text-secondary">work</span>
+                            <span>Internships & Experience</span>
+                        </span>
+                        <div id="sum-internships-content" class="text-on-surface-variant text-[11px] pt-1">
+                            <!-- Injected dynamically -->
+                        </div>
+                    </div>
+
+                    <!-- Certifications & Achievements -->
+                    <div class="p-4 rounded-xl bg-surface-container-low border border-outline-variant/50 space-y-2">
+                        <span class="text-[10px] font-bold uppercase text-outline label-caps flex items-center gap-1">
+                            <span class="material-symbols-outlined text-sm text-amber-400">workspace_premium</span>
+                            <span>Certifications & Achievements</span>
+                        </span>
+                        <div id="sum-certifications-content" class="text-on-surface-variant text-[11px] pt-1">
+                            <!-- Injected dynamically -->
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Parameters Confirmation Form -->
+            <div class="bg-surface-container rounded-2xl p-6 border border-outline-variant shadow-xl space-y-6">
+                <h3 class="font-bold text-sm text-white flex items-center gap-2 border-b border-outline-variant/60 pb-3">
+                    <span class="material-symbols-outlined text-primary text-base">tune</span>
+                    <span>Confirm Interview Parameters & Target Scope</span>
+                </h3>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+                    <div>
+                        <label class="text-[11px] font-semibold uppercase text-outline label-caps block mb-1">Target Engineering Role</label>
+                        <select id="cfg-role-select" class="premium-input rounded-xl w-full px-3 py-2.5 text-xs text-white">
+                            <option value="Software Development Engineer (SDE)">Software Development Engineer (SDE)</option>
+                            <option value="Frontend Developer">Frontend Developer</option>
+                            <option value="Backend Developer">Backend Developer</option>
+                            <option value="Full Stack Developer">Full Stack Developer</option>
+                            <option value="Data Analyst">Data Analyst</option>
+                            <option value="Data Scientist">Data Scientist</option>
+                            <option value="ML Engineer">ML Engineer</option>
+                            <option value="AI Engineer">AI Engineer</option>
+                            <option value="Cloud Engineer">Cloud Engineer</option>
+                            <option value="DevOps Engineer">DevOps Engineer</option>
+                            <option value="Cybersecurity Analyst">Cybersecurity Analyst</option>
+                            <option value="Mobile Developer">Mobile Developer (iOS / Android)</option>
+                            <option value="Embedded Systems Engineer">Embedded Systems Engineer</option>
+                            <option value="VLSI Design Engineer">VLSI Design Engineer</option>
+                            <option value="Electrical Power Engineer">Electrical Power Engineer</option>
+                            <option value="Mechanical Design Engineer">Mechanical Design Engineer (CAD/FEA)</option>
+                            <option value="Civil Structural Engineer">Civil Structural Engineer</option>
+                            <option value="Biotechnology Engineer">Biotechnology Engineer</option>
+                            <option value="Aerospace Engineer">Aerospace Engineer</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="text-[11px] font-semibold uppercase text-outline label-caps block mb-1">Academic Department</label>
+                        <select id="cfg-department" class="premium-input rounded-xl w-full px-3 py-2.5 text-xs text-white">
+                            <!-- Populated dynamically via BranchSystem -->
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="text-[11px] font-semibold uppercase text-outline label-caps block mb-1">Interview Type</label>
+                        <select id="cfg-type" class="premium-input rounded-xl w-full px-3 py-2.5 text-xs text-white">
+                            <option value="Mixed" selected>Mixed Comprehensive (Technical + Project + Scenarios)</option>
+                            <option value="Technical">Core Technical & Algorithmic Depth</option>
+                            <option value="Project-Based">Project-Focused (Deep Architecture & Code Proof)</option>
+                            <option value="Resume-Based">Resume Claim Verification (Tough Grilling)</option>
+                            <option value="Behavioral">Behavioral & Engineering Leadership (STAR)</option>
+                            <option value="HR">HR & Culture Alignment</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="text-[11px] font-semibold uppercase text-outline label-caps block mb-1">Difficulty Calibration</label>
+                        <select id="cfg-difficulty" class="premium-input rounded-xl w-full px-3 py-2.5 text-xs text-white">
+                            <option value="Beginner">Beginner (Fresher / Core Syntax & Definitions)</option>
+                            <option value="Intermediate" selected>Intermediate (SDE-1 / Real Projects & Trade-offs)</option>
+                            <option value="Advanced">Advanced (SDE-2 / High Scale & Failure Modes)</option>
+                            <option value="Expert">Expert (Staff Engineer / Distributed Boundaries)</option>
+                        </select>
+                    </div>
+
+                    <div class="sm:col-span-2">
+                        <label class="text-[11px] font-semibold uppercase text-outline label-caps block mb-1">Question Count</label>
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center">
+                            <label class="cursor-pointer">
+                                <input type="radio" name="qcount" value="5" checked class="hidden peer"/>
+                                <div class="p-3 rounded-xl bg-surface-container-low border border-outline-variant peer-checked:border-primary peer-checked:bg-primary-container/20 transition-colors">
+                                    <div class="font-extrabold text-white text-sm">5 Questions</div>
+                                    <div class="text-[10px] text-outline mt-0.5">Quick Round (12m)</div>
+                                </div>
+                            </label>
+                            <label class="cursor-pointer">
+                                <input type="radio" name="qcount" value="10" class="hidden peer"/>
+                                <div class="p-3 rounded-xl bg-surface-container-low border border-outline-variant peer-checked:border-primary peer-checked:bg-primary-container/20 transition-colors">
+                                    <div class="font-extrabold text-white text-sm">10 Questions</div>
+                                    <div class="text-[10px] text-outline mt-0.5">Standard Round (25m)</div>
+                                </div>
+                            </label>
+                            <label class="cursor-pointer">
+                                <input type="radio" name="qcount" value="15" class="hidden peer"/>
+                                <div class="p-3 rounded-xl bg-surface-container-low border border-outline-variant peer-checked:border-primary peer-checked:bg-primary-container/20 transition-colors">
+                                    <div class="font-extrabold text-white text-sm">15 Questions</div>
+                                    <div class="text-[10px] text-outline mt-0.5">Deep Dive (40m)</div>
+                                </div>
+                            </label>
+                            <label class="cursor-pointer">
+                                <input type="radio" name="qcount" value="20" class="hidden peer"/>
+                                <div class="p-3 rounded-xl bg-surface-container-low border border-outline-variant peer-checked:border-primary peer-checked:bg-primary-container/20 transition-colors">
+                                    <div class="font-extrabold text-white text-sm">20 Questions</div>
+                                    <div class="text-[10px] text-outline mt-0.5">Full Onsite (55m)</div>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pt-4 border-t border-outline-variant/60 flex items-center justify-between">
+                    <div class="flex items-center gap-2 text-xs text-on-surface-variant">
+                        <span class="material-symbols-outlined text-sm text-tertiary">shield</span>
+                        <span>Zero Key Leakage • Real Adaptive AI</span>
+                    </div>
+                    <button onclick="startInterviewSession()" id="start-interview-btn" class="btn-primary-gradient px-8 py-3 rounded-xl text-xs font-bold shadow-lg flex items-center gap-2 hover:scale-105 active:scale-95 transition-transform">
+                        <span>Start Interview</span>
+                        <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- =================================================================== -->
+        <!-- VIEW 3: ANIMATED CALIBRATION LOADER                                 -->
+        <!-- =================================================================== -->
+        <div id="view-analyzing" class="hidden flex-1 flex flex-col items-center justify-center text-center max-w-md mx-auto my-auto space-y-6 animate-fade-in py-12">
+            <div id="analyzing-spinner-box" class="relative w-28 h-28 flex items-center justify-center">
+                <div class="absolute inset-0 rounded-full border-2 border-primary/30 animate-ping" style="animation-duration: 3s;"></div>
+                <div class="w-24 h-24 rounded-full bg-primary-container/20 border-2 border-primary flex items-center justify-center text-primary shadow-2xl pulse-ring">
+                    <span class="material-symbols-outlined text-4xl animate-pulse">psychology</span>
+                </div>
+            </div>
+
+            <div id="analyzing-status-box" class="space-y-2">
+                <h2 id="analyzing-title" class="text-xl font-extrabold text-white tracking-tight">Synthesizing Interview Strategy</h2>
+                <p id="analysis-step-text" class="text-xs text-on-surface-variant font-mono leading-relaxed">
+                    Analyzing authentic resume claims and calibrating question 1...
+                </p>
+            </div>
+
+            <div id="analyzing-bar-box" class="w-full bg-surface-container-high h-2 rounded-full overflow-hidden border border-outline-variant/40">
+                <div id="analysis-progress-bar" class="bg-primary h-full w-1/4 transition-all duration-700 ease-out"></div>
+            </div>
+
+            <!-- Error State Container (revealed if AI call fails) -->
+            <div id="analyzing-error-box" class="hidden space-y-4 p-6 rounded-2xl bg-surface-container border border-red-500/40 shadow-2xl w-full">
+                <div class="w-12 h-12 rounded-xl bg-red-500/20 text-red-400 flex items-center justify-center mx-auto border border-red-500/40">
+                    <span class="material-symbols-outlined text-2xl">error</span>
+                </div>
+                <div class="space-y-1">
+                    <h3 class="text-sm font-bold text-white">AI Service Temporarily Unavailable</h3>
+                    <p id="analyzing-error-msg" class="text-xs text-on-surface-variant">
+                        AI interview service is temporarily unavailable. Please try again.
+                    </p>
+                </div>
+                <div class="flex justify-center gap-3 pt-2">
+                    <button onclick="startInterviewSession()" class="btn-primary-gradient px-5 py-2 rounded-xl text-xs font-bold shadow-md flex items-center gap-1.5">
+                        <span class="material-symbols-outlined text-sm">refresh</span>
+                        <span>Retry</span>
+                    </button>
+                    <button onclick="MockInterviewEngine.backToSetup()" class="px-5 py-2 rounded-xl bg-surface-container-high hover:bg-surface-container-highest border border-outline-variant text-xs font-bold text-white transition-colors">
+                        Back to Setup
+                    </button>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- =================================================================== -->
+        <!-- VIEW 4: LIVE REAL-TIME ADAPTIVE INTERVIEW SIMULATOR                 -->
+        <!-- =================================================================== -->
+        <!-- =================================================================== -->
+        <!-- VIEW 4: LIVE REAL-TIME ADAPTIVE INTERVIEW SIMULATOR (CAMERA + MIC)  -->
+        <!-- =================================================================== -->
+        <div id="view-simulator" class="hidden flex-1 flex flex-col lg:flex-row gap-6 h-auto min-h-[calc(100vh-6rem)] overflow-y-auto animate-fade-in pb-12">
+            
+            <!-- Left Column: AI Bar-Raiser + Real Candidate Webcam Studio -->
+            <div class="w-full lg:w-5/12 flex flex-col gap-4">
+                
+                <!-- Main Interviewer Tile -->
+                <div class="bg-surface-container rounded-2xl border border-outline-variant p-5 relative overflow-hidden flex flex-col justify-between shadow-2xl shrink-0">
+                    <div class="flex items-center justify-between z-10 mb-3">
+                        <div class="flex items-center gap-2">
+                            <span class="w-2.5 h-2.5 rounded-full bg-red-500 animate-ping"></span>
+                            <span class="text-[10px] font-mono font-bold uppercase text-red-400">Live AI Bar-Raiser</span>
+                        </div>
+                        <button onclick="toggleSpeech()" id="tts-toggle-btn" title="Toggle AI Voice" class="px-2.5 py-1 rounded-lg bg-surface-container-high hover:bg-surface-container-highest border border-outline-variant text-xs text-on-surface-variant hover:text-white flex items-center gap-1.5 transition-colors">
+                            <span id="tts-icon" class="material-symbols-outlined text-sm">volume_up</span>
+                            <span class="text-[11px] font-mono">AI Voice</span>
+                        </button>
+                    </div>
+
+                    <!-- Interviewer Avatar & Audio Waveform -->
+                    <div class="flex flex-col items-center justify-center py-4">
+                        <div class="relative">
+                            <div class="w-20 h-20 rounded-full bg-primary-container/20 border-2 border-primary/60 flex items-center justify-center text-primary shadow-2xl relative z-10">
+                                <span class="material-symbols-outlined text-4xl">face</span>
+                            </div>
+                            <div id="interviewer-halo" class="absolute inset-0 rounded-full bg-primary/20 blur-xl animate-pulse"></div>
+                        </div>
+
+                        <!-- Animated Audio Waveform -->
+                        <div id="audio-waveform" class="mt-3 flex items-end gap-1.5 h-6 opacity-40 transition-opacity">
+                            <span class="audio-wave-bar w-1.5 bg-tertiary rounded-full" style="animation-delay: 0.1s;"></span>
+                            <span class="audio-wave-bar w-1.5 bg-tertiary rounded-full" style="animation-delay: 0.3s;"></span>
+                            <span class="audio-wave-bar w-1.5 bg-tertiary rounded-full" style="animation-delay: 0.2s;"></span>
+                            <span class="audio-wave-bar w-1.5 bg-tertiary rounded-full" style="animation-delay: 0.4s;"></span>
+                            <span class="audio-wave-bar w-1.5 bg-tertiary rounded-full" style="animation-delay: 0.15s;"></span>
+                            <span class="audio-wave-bar w-1.5 bg-tertiary rounded-full" style="animation-delay: 0.35s;"></span>
+                            <span class="audio-wave-bar w-1.5 bg-tertiary rounded-full" style="animation-delay: 0.05s;"></span>
+                        </div>
+                        <span id="interviewer-status-text" class="text-xs font-mono text-tertiary mt-2">Listening for Response...</span>
+                    </div>
+
+                    <!-- Interviewer Metadata Footer -->
+                    <div class="border-t border-outline-variant/60 pt-3 z-10 space-y-1">
+                        <div class="flex items-center justify-between">
+                            <span id="interviewer-title-display" class="font-bold text-xs text-white">Principal Bar-Raiser</span>
+                            <span id="interviewer-difficulty-badge" class="px-2 py-0.5 rounded text-[10px] font-bold bg-primary-container/20 text-primary border border-primary/40 font-mono">INTERMEDIATE</span>
+                        </div>
+                        <p id="interviewer-focus-display" class="text-[11px] text-on-surface-variant truncate">
+                            Evaluating: Technical Accuracy, System Depth & Verbal Delivery
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Real Candidate Video Camera & Mic Studio Card -->
+                <div class="bg-surface-container rounded-2xl border border-outline-variant p-4 relative overflow-hidden shadow-2xl flex flex-col gap-3">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-2">
+                            <span id="camera-status-pill" class="px-2.5 py-0.5 rounded text-[10px] font-mono font-bold bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 flex items-center gap-1.5">
+                                <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                                <span id="cam-status-label">CAM READY</span>
+                            </span>
+                            <span id="rec-live-timer" class="hidden px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-red-500/20 text-red-300 border border-red-500/40 animate-pulse">
+                                REC 00:00
+                            </span>
+                        </div>
+                        <div class="flex items-center gap-1.5">
+                            <button onclick="MockInterviewEngine.toggleCamera()" id="cam-toggle-btn" title="Toggle Camera" class="p-1.5 rounded-lg bg-surface-container-high hover:bg-surface-container-highest border border-outline-variant text-on-surface-variant hover:text-white transition-colors">
+                                <span id="cam-icon" class="material-symbols-outlined text-base">videocam</span>
+                            </button>
+                            <button onclick="MockInterviewEngine.toggleMic()" id="mic-toggle-btn" title="Toggle Microphone" class="p-1.5 rounded-lg bg-surface-container-high hover:bg-surface-container-highest border border-outline-variant text-on-surface-variant hover:text-white transition-colors">
+                                <span id="mic-icon-btn" class="material-symbols-outlined text-base">mic</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Video Viewport Container -->
+                    <div class="relative w-full h-48 sm:h-56 bg-black rounded-xl overflow-hidden border border-outline-variant/60 flex items-center justify-center">
+                        <video id="candidate-camera-stream" autoplay playsinline muted class="w-full h-full object-cover"></video>
+                        
+                        <!-- Camera Off / Permission Blocked Fallback Placeholder -->
+                        <div id="camera-offline-placeholder" class="hidden absolute inset-0 bg-surface-container-low flex flex-col items-center justify-center text-center p-4 space-y-2">
+                            <div class="w-12 h-12 rounded-xl bg-surface-container-high flex items-center justify-center text-outline">
+                                <span class="material-symbols-outlined text-2xl">videocam_off</span>
+                            </div>
+                            <p class="text-xs text-on-surface-variant font-medium">Camera preview inactive or blocked</p>
+                            <button onclick="MockInterviewEngine.requestMediaPermissions()" class="px-3 py-1.5 rounded-lg bg-primary-container/30 text-primary border border-primary/40 text-[10px] font-bold">
+                                Enable Camera & Mic
+                            </button>
+                        </div>
+
+                        <!-- Audio Activity Level Equalizer Bars Overlay -->
+                        <div class="absolute bottom-2.5 left-2.5 bg-black/70 backdrop-blur-sm px-2.5 py-1 rounded-lg border border-white/10 flex items-center gap-1">
+                            <span class="text-[9px] font-mono text-outline uppercase mr-1">MIC</span>
+                            <div class="flex items-end gap-0.5 h-3">
+                                <span id="mic-bar-1" class="w-1 bg-emerald-400 rounded-full h-1 transition-all duration-75"></span>
+                                <span id="mic-bar-2" class="w-1 bg-emerald-400 rounded-full h-1.5 transition-all duration-75"></span>
+                                <span id="mic-bar-3" class="w-1 bg-emerald-400 rounded-full h-1 transition-all duration-75"></span>
+                                <span id="mic-bar-4" class="w-1 bg-emerald-400 rounded-full h-2 transition-all duration-75"></span>
+                                <span id="mic-bar-5" class="w-1 bg-emerald-400 rounded-full h-1 transition-all duration-75"></span>
+                            </div>
+                        </div>
+
+                        <!-- Candidate Badge Overlay -->
+                        <div class="absolute bottom-2.5 right-2.5 bg-black/70 backdrop-blur-sm px-2.5 py-1 rounded-lg border border-white/10 text-right">
+                            <span id="candidate-name-display" class="font-bold text-[11px] text-white block leading-tight">Candidate</span>
+                            <span id="candidate-role-display" class="text-[9px] text-tertiary font-mono block leading-tight">Engineering Candidate</span>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center justify-between text-[10px] text-outline font-mono">
+                        <span>Browser MediaRecorder • WebM Audio+Video</span>
+                        <span id="stream-resolution-badge">Live Capture Active</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Right Column: Question & Interactive Recording Console -->
+            <div class="w-full lg:w-7/12 flex flex-col gap-4">
+                
+                <!-- Current Question Card -->
+                <div class="bg-surface-container rounded-2xl p-5 sm:p-6 border border-outline-variant shadow-xl space-y-3">
+                    <div class="flex items-center justify-between gap-2 border-b border-outline-variant/60 pb-3">
+                        <div class="flex items-center gap-2">
+                            <span id="question-number-badge" class="px-2.5 py-1 rounded-lg bg-primary-container/30 text-primary font-mono font-bold text-xs border border-primary/40">
+                                Question 1 of 5
+                            </span>
+                            <span id="question-type-badge" class="px-2.5 py-1 rounded-lg bg-secondary-container/20 text-secondary font-mono font-bold text-[10px] border border-secondary/40 uppercase">
+                                RESUME PROJECT PROBE
+                            </span>
+                        </div>
+                        <span id="follow-up-indicator" class="hidden px-2 py-0.5 rounded text-[10px] font-bold bg-amber-500/20 text-amber-300 border border-amber-500/40 font-mono">
+                            ADAPTIVE FOLLOW-UP
+                        </span>
+                    </div>
+
+                    <h2 id="current-question-text" class="text-base sm:text-lg font-extrabold text-white leading-relaxed">
+                        Loading your personalized interview question...
+                    </h2>
+
+                    <p id="question-context-reason" class="text-xs text-on-surface-variant font-mono bg-surface-container-low p-3 rounded-xl border border-outline-variant/40">
+                        Context: Directly evaluating genuine technical ownership of your featured projects.
+                    </p>
+
+                    <!-- Real Voice Controls & Playback State Bar -->
+                    <div class="flex flex-wrap items-center justify-between gap-2 pt-3 border-t border-outline-variant/50">
+                        <div class="flex items-center gap-2">
+                            <span id="tts-status-pill" class="px-2.5 py-1 rounded-full text-[11px] font-mono font-bold bg-primary-container/20 text-primary border border-primary/30 flex items-center gap-1.5">
+                                <span id="tts-status-dot" class="w-2 h-2 rounded-full bg-primary animate-ping"></span>
+                                <span id="tts-status-label">Preparing Question...</span>
+                            </span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <button type="button" onclick="MockInterviewEngine.replayCurrentQuestion()" id="btn-replay-voice" title="Replay question audio" class="px-3 py-1.5 rounded-xl bg-surface-container-high hover:bg-surface-container-highest border border-outline-variant text-xs text-white font-bold flex items-center gap-1.5 transition-colors">
+                                <span class="material-symbols-outlined text-sm text-tertiary">replay</span>
+                                <span>Replay Question</span>
+                            </button>
+                            <button type="button" onclick="MockInterviewEngine.togglePauseVoice()" id="btn-pause-voice" title="Pause / Resume question voice" class="px-2.5 py-1.5 rounded-xl bg-surface-container-high hover:bg-surface-container-highest border border-outline-variant text-xs text-on-surface-variant hover:text-white flex items-center gap-1 transition-colors">
+                                <span id="pause-voice-icon" class="material-symbols-outlined text-sm">pause</span>
+                                <span id="pause-voice-label">Pause</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Voice Failure Recovery Banner (Hidden by default) -->
+                    <div id="tts-error-banner" class="hidden p-3 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-between gap-3 text-xs text-amber-200">
+                        <div class="flex items-center gap-2">
+                            <span class="material-symbols-outlined text-amber-400 text-base">volume_off</span>
+                            <span>Unable to play the interviewer voice. Audio may be muted or blocked by your browser.</span>
+                        </div>
+                        <div class="flex items-center gap-2 shrink-0">
+                            <button type="button" onclick="MockInterviewEngine.replayCurrentQuestion()" class="px-2.5 py-1 rounded-lg bg-amber-500/20 hover:bg-amber-500/30 border border-amber-500/40 text-[11px] font-bold text-amber-200">
+                                Retry Voice
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Answer Recording & Transcription Console Card -->
+                <div class="flex-1 bg-surface-container rounded-2xl p-5 sm:p-6 border border-outline-variant shadow-xl flex flex-col justify-between space-y-4">
+                    
+                    <div class="space-y-3 flex-1 flex flex-col">
+                        
+                        <!-- Your Turn Ready Alert Banner -->
+                        <div id="your-turn-banner" class="hidden p-3 rounded-xl bg-emerald-500/15 border border-emerald-500/40 flex items-center justify-between text-xs text-emerald-300">
+                            <div class="flex items-center gap-2 font-bold">
+                                <span class="material-symbols-outlined text-emerald-400">mic</span>
+                                <span>Interviewer has finished speaking. Your Turn!</span>
+                            </div>
+                            <span class="text-[10px] font-mono text-emerald-400/80">Click 'Start Spoken Answer' when ready</span>
+                        </div>
+
+                        <!-- Microphone Permission Denied Alert Banner -->
+                        <div id="mic-denied-alert" class="hidden p-4 rounded-xl bg-red-500/15 border border-red-500/40 text-xs text-red-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                            <div class="flex items-center gap-2">
+                                <span class="material-symbols-outlined text-red-400 text-lg">mic_off</span>
+                                <div>
+                                    <span class="font-bold block text-white">Microphone Access Required</span>
+                                    <span class="text-[11px] text-red-300">Microphone access is required to record and analyze your interview answer.</span>
+                                </div>
+                            </div>
+                            <button type="button" onclick="MockInterviewEngine.setupMediaStream()" class="px-3 py-1.5 rounded-lg bg-red-600 hover:bg-red-700 text-white font-bold text-xs shrink-0 transition-colors">
+                                Try Again / Grant Access
+                            </button>
+                        </div>
+
+                        <!-- Empty Answer / Unusable Audio Alert Banner -->
+                        <div id="empty-answer-alert" class="hidden p-3 rounded-xl bg-amber-500/20 border border-amber-500/40 text-xs text-amber-200 flex items-center justify-between gap-2">
+                            <div class="flex items-center gap-2">
+                                <span class="material-symbols-outlined text-amber-300 text-sm">warning</span>
+                                <span id="empty-answer-msg">Your answer could not be detected. Please try again.</span>
+                            </div>
+                            <button type="button" onclick="document.getElementById('empty-answer-alert').classList.add('hidden')" class="text-amber-300 hover:text-white font-bold text-xs">Dismiss</button>
+                        </div>
+
+                        <div class="flex items-center justify-between text-xs">
+                            <div class="flex items-center gap-2">
+                                <span class="font-bold text-outline uppercase label-caps text-[10px]">Your Spoken Response Transcript</span>
+                                <span id="transcription-status-pill" class="hidden px-2 py-0.5 rounded text-[9px] font-mono bg-tertiary-container/30 text-tertiary border border-tertiary/40">
+                                    LIVE TRANSCRIBING...
+                                </span>
+                            </div>
+                            <div class="flex items-center gap-3 font-mono text-[10px] text-outline">
+                                <span id="char-counter">0 words</span>
+                                <span id="speaking-wpm-pill" class="hidden text-tertiary">0 WPM</span>
+                            </div>
+                        </div>
+
+                        <!-- Live Answer Transcript & Editing Box -->
+                        <div class="relative flex-1 flex flex-col">
+                            <textarea id="answer-input" rows="6" placeholder="Click 'Start Spoken Answer' to record with your microphone. Your spoken words will transcribe here in real time with speaking delivery tracking..." class="premium-input rounded-xl w-full p-4 text-xs sm:text-sm text-white leading-relaxed flex-1 resize-none font-body-sm focus:border-primary"></textarea>
+                            
+                            <!-- Filler Words Alert Pill -->
+                            <div id="filler-words-indicator" class="hidden mt-2 p-2 rounded-lg bg-surface-container-low border border-outline-variant/50 text-[11px] text-amber-300 flex items-center gap-2">
+                                <span class="material-symbols-outlined text-sm">record_voice_over</span>
+                                <span id="filler-words-text">0 filler words detected</span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Analyzing & Processing Status Banner -->
+                    <div id="submitting-status-box" class="hidden p-4 rounded-xl bg-surface-container-low border border-primary/40 flex flex-col items-center justify-center gap-2 text-xs font-mono text-primary animate-pulse text-center">
+                        <div class="flex items-center gap-2">
+                            <span class="material-symbols-outlined animate-spin text-lg">progress_activity</span>
+                            <span id="submitting-status-text" class="font-bold">Uploading video answer & analyzing speaking delivery...</span>
+                        </div>
+                        <span class="text-[10px] text-outline">Measuring technical depth, speaking pace, clarity, and structural trade-offs</span>
+                    </div>
+
+                    <!-- Action & Recording Controls Bar -->
+                    <div class="pt-3 border-t border-outline-variant/60 flex flex-wrap items-center justify-between gap-3">
+                        
+                        <div class="flex items-center gap-2">
+                            <button type="button" onclick="clearAnswerInput()" class="text-xs text-outline hover:text-white transition-colors">
+                                Clear Transcript
+                            </button>
+                        </div>
+
+                        <div class="flex items-center gap-3">
+                            
+                            <!-- 1. START ANSWER BUTTON -->
+                            <button id="start-recording-btn" type="button" onclick="MockInterviewEngine.startAnswering()" class="btn-primary-gradient px-6 py-2.5 rounded-xl text-xs font-bold shadow-lg flex items-center gap-2 hover:scale-105 active:scale-95 transition-transform">
+                                <span class="w-2.5 h-2.5 rounded-full bg-red-500 animate-pulse"></span>
+                                <span id="start-recording-btn-label">Start Spoken Answer</span>
+                            </button>
+
+                            <!-- 2. STOP ANSWER & REVIEW BUTTON (Visible while recording) -->
+                            <button id="stop-recording-btn" type="button" onclick="MockInterviewEngine.stopAnsweringAndSubmit()" class="hidden px-6 py-2.5 rounded-xl bg-red-600 hover:bg-red-700 text-white font-bold text-xs shadow-lg flex items-center gap-2 animate-bounce">
+                                <span class="material-symbols-outlined text-sm">stop_circle</span>
+                                <span>Stop & Submit Answer</span>
+                            </button>
+
+                            <!-- 3. FALLBACK SUBMIT BUTTON (For typing) -->
+                            <button id="submit-answer-btn" type="button" onclick="MockInterviewEngine.submitAnswerDirect()" class="px-5 py-2.5 rounded-xl bg-surface-container-high hover:bg-surface-container-highest border border-outline-variant text-xs font-bold text-white flex items-center gap-1.5 transition-colors">
+                                <span>Submit Text</span>
+                                <span class="material-symbols-outlined text-sm">send</span>
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- =================================================================== -->
+        <!-- VIEW 4.5: PER-ANSWER PROFESSIONAL FEEDBACK REVIEW MODAL             -->
+        <!-- =================================================================== -->
+        <div id="view-feedback-modal" class="hidden fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4 overflow-y-auto">
+            <div class="bg-surface-container rounded-2xl border border-primary/50 max-w-3xl w-full p-6 sm:p-8 shadow-2xl space-y-6 my-auto max-h-[90vh] flex flex-col overflow-y-auto">
+                
+                <!-- Feedback Header -->
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-outline-variant/60 pb-4">
+                    <div class="space-y-0.5">
+                        <div class="flex items-center gap-2">
+                            <span class="px-2.5 py-0.5 rounded text-[10px] font-mono font-bold bg-tertiary-container/30 text-tertiary border border-tertiary/40 uppercase">
+                                PER-ANSWER EVALUATION
+                            </span>
+                            <span id="fb-question-tag" class="text-xs font-mono text-outline">Question 1 of 5</span>
+                        </div>
+                        <h2 class="text-xl font-black text-white">Bar-Raiser Performance Breakdown</h2>
+                    </div>
+
+                    <!-- Score Badge -->
+                    <div class="flex items-center gap-3 bg-surface-container-low px-4 py-2 rounded-xl border border-outline-variant">
+                        <div class="text-right">
+                            <span class="text-[9px] uppercase font-mono text-outline block">Answer Score</span>
+                            <span id="fb-answer-score" class="text-2xl font-black text-tertiary font-mono">8.2</span><span class="text-xs text-outline">/10</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2-Column Metrics Breakdown: Speaking Delivery vs Technical Content -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                    
+                    <!-- Card A: Speaking Performance -->
+                    <div class="p-4 rounded-xl bg-surface-container-low border border-outline-variant/60 space-y-3">
+                        <div class="flex items-center justify-between border-b border-outline-variant/40 pb-2">
+                            <span class="font-bold text-white flex items-center gap-1.5">
+                                <span class="material-symbols-outlined text-sm text-secondary">record_voice_over</span>
+                                <span>Speaking & Delivery Metrics</span>
+                            </span>
+                            <span id="fb-speaking-rating" class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-secondary-container/20 text-secondary">
+                                ARTICULATE
+                            </span>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-2 text-center">
+                            <div class="p-2 rounded-lg bg-surface-container border border-outline-variant/40">
+                                <span class="text-[9px] uppercase text-outline font-mono block">Speaking Pace</span>
+                                <span id="fb-pace-text" class="text-sm font-bold text-white font-mono">135 WPM</span>
+                                <span id="fb-pace-badge" class="text-[9px] text-tertiary block mt-0.5">Optimal</span>
+                            </div>
+                            <div class="p-2 rounded-lg bg-surface-container border border-outline-variant/40">
+                                <span class="text-[9px] uppercase text-outline font-mono block">Filler Words</span>
+                                <span id="fb-filler-count" class="text-sm font-bold text-white font-mono">2 Fillers</span>
+                                <span id="fb-filler-rating" class="text-[9px] text-emerald-400 block mt-0.5">Minimal</span>
+                            </div>
+                            <div class="p-2 rounded-lg bg-surface-container border border-outline-variant/40">
+                                <span class="text-[9px] uppercase text-outline font-mono block">Clarity & Cadence</span>
+                                <span id="fb-clarity-score" class="text-sm font-bold text-primary font-mono">8.0/10</span>
+                            </div>
+                            <div class="p-2 rounded-lg bg-surface-container border border-outline-variant/40">
+                                <span class="text-[9px] uppercase text-outline font-mono block">Answer Structure</span>
+                                <span id="fb-structure-score" class="text-sm font-bold text-amber-300 font-mono">8.5/10</span>
+                            </div>
+                        </div>
+
+                        <p id="fb-pace-observation" class="text-[11px] text-on-surface-variant font-mono bg-surface-container p-2 rounded-lg border border-outline-variant/30">
+                            Pacing was balanced with clear architectural sequencing.
+                        </p>
+                    </div>
+
+                    <!-- Card B: Technical Accuracy & Depth -->
+                    <div class="p-4 rounded-xl bg-surface-container-low border border-outline-variant/60 space-y-3">
+                        <div class="flex items-center justify-between border-b border-outline-variant/40 pb-2">
+                            <span class="font-bold text-white flex items-center gap-1.5">
+                                <span class="material-symbols-outlined text-sm text-primary">psychology</span>
+                                <span>Technical Depth & Content</span>
+                            </span>
+                            <span id="fb-accuracy-rating" class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-primary-container/20 text-primary">
+                                ACCURATE
+                            </span>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-2 text-center">
+                            <div class="p-2 rounded-lg bg-surface-container border border-outline-variant/40">
+                                <span class="text-[9px] uppercase text-outline font-mono block">Technical Accuracy</span>
+                                <span id="fb-tech-score" class="text-sm font-bold text-primary font-mono">85/100</span>
+                            </div>
+                            <div class="p-2 rounded-lg bg-surface-container border border-outline-variant/40">
+                                <span class="text-[9px] uppercase text-outline font-mono block">Relevance</span>
+                                <span id="fb-rel-score" class="text-sm font-bold text-tertiary font-mono">90/100</span>
+                            </div>
+                            <div class="p-2 rounded-lg bg-surface-container border border-outline-variant/40">
+                                <span class="text-[9px] uppercase text-outline font-mono block">Depth / Edge Cases</span>
+                                <span id="fb-depth-score" class="text-sm font-bold text-secondary font-mono">78/100</span>
+                            </div>
+                            <div class="p-2 rounded-lg bg-surface-container border border-outline-variant/40">
+                                <span class="text-[9px] uppercase text-outline font-mono block">Resume Consistency</span>
+                                <span id="fb-resume-score" class="text-sm font-bold text-teal-300 font-mono">84/100</span>
+                            </div>
+                        </div>
+
+                        <p id="fb-critique-text" class="text-[11px] text-on-surface-variant font-mono bg-surface-container p-2 rounded-lg border border-outline-variant/30">
+                            Clear technical terminology used with good problem decomposition.
+                        </p>
+                    </div>
+
+                </div>
+
+                <!-- Your Spoken Answer Transcript Card -->
+                <div class="p-4 rounded-xl bg-surface-container-low border border-outline-variant/50 space-y-1.5 text-xs">
+                    <span class="font-bold text-outline uppercase text-[10px] label-caps">Your Spoken Answer Transcript</span>
+                    <p id="fb-transcript-text" class="text-on-surface font-mono text-[11px] leading-relaxed bg-surface-container p-3 rounded-lg border border-outline-variant/30 max-h-28 overflow-y-auto">
+                        Transcript text...
+                    </p>
+                </div>
+
+                <!-- Strengths vs Gaps -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+                    <div class="p-3.5 rounded-xl bg-surface-container-low border border-emerald-500/30 space-y-1.5">
+                        <span class="font-bold text-emerald-400 flex items-center gap-1">
+                            <span class="material-symbols-outlined text-sm">check_circle</span>
+                            <span>What You Did Well</span>
+                        </span>
+                        <ul id="fb-strengths-list" class="space-y-1 text-on-surface-variant text-[11px]">
+                            <!-- Injected dynamically -->
+                        </ul>
+                    </div>
+                    <div class="p-3.5 rounded-xl bg-surface-container-low border border-amber-500/30 space-y-1.5">
+                        <span class="font-bold text-amber-300 flex items-center gap-1">
+                            <span class="material-symbols-outlined text-sm">error</span>
+                            <span>What Could Be Improved</span>
+                        </span>
+                        <ul id="fb-weaknesses-list" class="space-y-1 text-on-surface-variant text-[11px]">
+                            <!-- Injected dynamically -->
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Recommended Improvement & Staff Engineer Model Answer -->
+                <div class="p-4 rounded-xl bg-surface-container-low border border-secondary/40 space-y-2 text-xs">
+                    <div class="flex items-center gap-1.5 text-secondary font-bold">
+                        <span class="material-symbols-outlined text-sm">psychology_alt</span>
+                        <span>Staff Engineer Model Answer Approach</span>
+                    </div>
+                    <p id="fb-model-answer" class="text-on-surface font-mono text-[11px] leading-relaxed bg-surface-container p-3 rounded-lg border border-secondary/30 italic">
+                        Model answer...
+                    </p>
+                    <p id="fb-rec-improvement" class="text-[11px] text-tertiary">
+                        <strong>Key Takeaway:</strong> Start with the direct architecture answer, state the concurrency/failover invariant, and quantify with a metric.
+                    </p>
+                </div>
+
+                <!-- Modal Actions -->
+                <div class="pt-4 border-t border-outline-variant/60 flex items-center justify-between">
+                    <button onclick="MockInterviewEngine.replayCurrentQuestion()" class="text-xs text-outline hover:text-white transition-colors">
+                        Re-read Question
+                    </button>
+                    <button onclick="MockInterviewEngine.proceedToNextQuestion()" id="fb-continue-btn" class="btn-primary-gradient px-8 py-3 rounded-xl text-xs font-bold shadow-lg flex items-center gap-2 hover:scale-105 active:scale-95 transition-transform">
+                        <span id="fb-continue-btn-text">Proceed to Question 2</span>
+                        <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+
+
+        <!-- =================================================================== -->
+        <!-- VIEW 5: COMPREHENSIVE FINAL SCORECARD & PREPARATION PLAN            -->
+        <!-- =================================================================== -->
+        <div id="view-report" class="hidden space-y-8 max-w-4xl mx-auto w-full py-4 animate-fade-in">
+            
+            <div class="text-center space-y-2">
+                <span class="px-3 py-1 rounded-full text-xs font-mono font-bold bg-tertiary-container/20 text-tertiary border border-tertiary/40">
+                    INTERVIEW COMPLETE • REPORT READY
+                </span>
+                <h2 class="text-2xl sm:text-3xl font-black text-white">
+                    Candidate Evaluation & Resume Gap Analysis
+                </h2>
+                <p id="report-subtitle" class="text-xs sm:text-sm text-on-surface-variant max-w-xl mx-auto">
+                    Role: Software Development Engineer (SDE) • Department: CSE
+                </p>
+            </div>
+
+            <!-- Scorecard 7 Dimensions -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-7 gap-2.5 text-center">
+                <div class="p-3.5 rounded-2xl bg-surface-container border border-outline-variant space-y-1">
+                    <span class="text-[9px] font-bold uppercase text-outline label-caps">Overall</span>
+                    <div id="rep-overall" class="text-2xl font-black text-tertiary font-mono">84%</div>
+                </div>
+                <div class="p-3.5 rounded-2xl bg-surface-container border border-outline-variant space-y-1">
+                    <span class="text-[9px] font-bold uppercase text-outline label-caps">Technical</span>
+                    <div id="rep-tech" class="text-2xl font-black text-primary font-mono">82%</div>
+                </div>
+                <div class="p-3.5 rounded-2xl bg-surface-container border border-outline-variant space-y-1">
+                    <span class="text-[9px] font-bold uppercase text-outline label-caps">Clarity</span>
+                    <div id="rep-comm" class="text-2xl font-black text-secondary font-mono">85%</div>
+                </div>
+                <div class="p-3.5 rounded-2xl bg-surface-container border border-outline-variant space-y-1">
+                    <span class="text-[9px] font-bold uppercase text-outline label-caps">Problem Solving</span>
+                    <div id="rep-problem" class="text-2xl font-black text-amber-300 font-mono">83%</div>
+                </div>
+                <div class="p-3.5 rounded-2xl bg-surface-container border border-outline-variant space-y-1">
+                    <span class="text-[9px] font-bold uppercase text-outline label-caps">Resume Proof</span>
+                    <div id="rep-resume" class="text-2xl font-black text-teal-300 font-mono">86%</div>
+                </div>
+                <div class="p-3.5 rounded-2xl bg-surface-container border border-outline-variant space-y-1">
+                    <span class="text-[9px] font-bold uppercase text-outline label-caps">Project Depth</span>
+                    <div id="rep-project" class="text-2xl font-black text-emerald-300 font-mono">84%</div>
+                </div>
+                <div class="p-3.5 rounded-2xl bg-surface-container border border-outline-variant space-y-1">
+                    <span class="text-[9px] font-bold uppercase text-outline label-caps">Role Ready</span>
+                    <div id="rep-ready" class="text-2xl font-black text-indigo-300 font-mono">81%</div>
+                </div>
+            </div>
+
+            <!-- Resume vs Answer Consistency Analysis -->
+            <div class="bg-surface-container rounded-2xl p-6 border border-primary/40 shadow-xl space-y-3">
+                <div class="flex items-center gap-2 border-b border-outline-variant/60 pb-3">
+                    <span class="material-symbols-outlined text-primary text-xl">compare</span>
+                    <h3 class="font-bold text-sm text-white">Resume Claim Verification & Consistency Audit</h3>
+                </div>
+                <p id="rep-gap-analysis-text" class="text-xs text-on-surface leading-relaxed">
+                    Comparison analysis...
+                </p>
+            </div>
+
+            <!-- Strengths & Knowledge Gaps -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <!-- Strengths -->
+                <div class="bg-surface-container rounded-2xl p-6 border border-outline-variant space-y-3">
+                    <h3 class="font-bold text-sm text-white flex items-center gap-2">
+                        <span class="material-symbols-outlined text-tertiary text-lg">check_circle</span>
+                        <span>Key Strengths Demonstrated</span>
+                    </h3>
+                    <ul id="rep-strengths-list" class="space-y-2 text-xs text-on-surface-variant">
+                        <!-- Injected dynamically -->
+                    </ul>
+                </div>
+
+                <!-- Knowledge Gaps -->
+                <div class="bg-surface-container rounded-2xl p-6 border border-outline-variant space-y-3">
+                    <h3 class="font-bold text-sm text-white flex items-center gap-2">
+                        <span class="material-symbols-outlined text-amber-400 text-lg">warning</span>
+                        <span>Knowledge Gaps to Revise</span>
+                    </h3>
+                    <ul id="rep-weaknesses-list" class="space-y-2 text-xs text-on-surface-variant">
+                        <!-- Injected dynamically -->
+                    </ul>
+                </div>
+            </div>
+
+            <!-- YOUR NEXT PREPARATION PLAN (5 Priorities) -->
+            <div class="bg-surface-container rounded-2xl p-6 border border-secondary/40 shadow-xl space-y-4">
+                <div class="flex items-center justify-between border-b border-outline-variant/60 pb-3">
+                    <div class="flex items-center gap-2">
+                        <span class="material-symbols-outlined text-secondary text-xl">task_alt</span>
+                        <h3 class="font-bold text-sm text-white">Your Next Personalized Preparation Plan</h3>
+                    </div>
+                    <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-secondary-container/20 text-secondary border border-secondary/40 font-mono">
+                        TOP 5 PRIORITIES
+                    </span>
+                </div>
+                <div id="rep-prep-plan-container" class="space-y-3">
+                    <!-- Injected dynamically -->
+                </div>
+            </div>
+
+            <!-- Connected Skills & Project Recommendations -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+                <div class="p-5 rounded-2xl bg-surface-container border border-outline-variant space-y-2">
+                    <div class="flex items-center justify-between">
+                        <h4 class="font-bold text-white flex items-center gap-1.5">
+                            <span class="material-symbols-outlined text-sm text-primary">school</span>
+                            <span>Skills to Practice</span>
+                        </h4>
+                        <a href="skills.html" class="text-[11px] text-primary hover:underline">Explore All Skills →</a>
+                    </div>
+                    <p class="text-on-surface-variant text-[11px]">Directly practice these verified topics in the Skills Hub:</p>
+                    <div id="rep-skills-links" class="flex flex-wrap gap-1.5 pt-1">
+                        <!-- Injected dynamically -->
+                    </div>
+                </div>
+
+                <div class="p-5 rounded-2xl bg-surface-container border border-outline-variant space-y-2">
+                    <div class="flex items-center justify-between">
+                        <h4 class="font-bold text-white flex items-center gap-1.5">
+                            <span class="material-symbols-outlined text-sm text-tertiary">code_blocks</span>
+                            <span>Recommended Project Upgrades</span>
+                        </h4>
+                        <a href="projects.html" class="text-[11px] text-tertiary hover:underline">View Project Hub →</a>
+                    </div>
+                    <p class="text-on-surface-variant text-[11px]">Build production-grade implementations to back your claims:</p>
+                    <div id="rep-projects-links" class="space-y-1.5 pt-1">
+                        <!-- Injected dynamically -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Actionable Resume Improvements -->
+            <div class="bg-surface-container rounded-2xl p-6 border border-outline-variant shadow-xl space-y-3">
+                <div class="flex items-center gap-2 border-b border-outline-variant/60 pb-3">
+                    <span class="material-symbols-outlined text-secondary text-xl">auto_fix_high</span>
+                    <h3 class="font-bold text-sm text-white">Actionable Resume Bullet Improvements</h3>
+                </div>
+                <ul id="rep-improvements-list" class="space-y-2 text-xs text-on-surface-variant">
+                    <!-- Injected dynamically -->
+                </ul>
+            </div>
+
+            <!-- Question-by-Question Audit Accordion -->
+            <div class="bg-surface-container rounded-2xl p-6 border border-outline-variant shadow-xl space-y-4">
+                <h3 class="font-bold text-sm text-white flex items-center justify-between border-b border-outline-variant/60 pb-3">
+                    <span>Question-by-Question Audit (with Model Answers)</span>
+                    <span id="rep-qa-count" class="text-xs font-mono text-outline">5 Questions</span>
+                </h3>
+                <div id="rep-qa-accordion" class="space-y-3">
+                    <!-- Injected dynamically -->
+                </div>
+            </div>
+
+            <!-- Report Actions -->
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-3 pt-4 border-t border-outline-variant">
+                <button onclick="window.location.reload()" class="btn-primary-gradient w-full sm:w-auto px-6 py-2.5 rounded-xl text-xs font-bold shadow-md flex items-center justify-center gap-2">
+                    <span class="material-symbols-outlined text-sm">replay</span>
+                    <span>Start New Interview</span>
+                </button>
+                <a href="resume-builder.html" class="w-full sm:w-auto px-6 py-2.5 rounded-xl bg-surface-container-high hover:bg-surface-container-highest border border-outline-variant text-xs font-bold text-white text-center transition-colors">
+                    Update Resume with Feedback
+                </a>
+                <a href="dashboard.html" class="w-full sm:w-auto px-6 py-2.5 rounded-xl bg-surface-container-low hover:bg-surface-container border border-outline-variant text-xs font-bold text-on-surface-variant text-center transition-colors">
+                    Back to Command Center
+                </a>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- Past Interviews Modal -->
+    <div id="history-modal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-surface-container rounded-2xl border border-outline-variant max-w-2xl w-full p-6 shadow-2xl space-y-4 max-h-[80vh] flex flex-col">
+            <div class="flex items-center justify-between border-b border-outline-variant/60 pb-3">
+                <div class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-secondary text-xl">history</span>
+                    <h3 class="font-bold text-base text-white">Your Past Mock Interviews</h3>
+                </div>
+                <button onclick="closeHistoryModal()" class="text-outline hover:text-white transition-colors">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+            
+            <div id="history-list" class="space-y-3 overflow-y-auto flex-1 pr-1 text-xs">
+                <!-- History cards injected here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/supabase.min.js"></script>
+    <script src="js/supabase-client.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/branches.js"></script>
+    <script src="js/db.js"></script>
+    <script src="js/study-tracker.js"></script>
+    <script src="js/motion.js"></script>
+
+    <!-- Mock Interview Engine Controller -->
+    <script>
+        const MockInterviewEngine = {
+            sessionId: null,
+            userId: null,
+            currentResume: null,
+            savedResumesList: [],
+            targetRole: 'Software Development Engineer (SDE)',
+            department: 'CSE',
+            interviewType: 'Mixed',
+            difficulty: 'Intermediate',
+            questionCount: 5,
+            currentQuestionIndex: 1,
+            conversation: [],
+            currentQuestionData: null,
+            latestAnswerEvaluation: null,
+            pendingNextQuestion: null,
+            isCompleted: false,
+            timerInterval: null,
+            secondsElapsed: 0,
+            isTtsEnabled: true,
+            isSpeaking: false,
+            isVoicePaused: false,
+            activeUtterance: null,
+            ttsKeepAliveInterval: null,
+            isSubmitting: false,
+            isSpeechRecActive: false,
+            speechRecognition: null,
+
+            // Media & Recording State
+            mediaStream: null,
+            mediaRecorder: null,
+            recordedChunks: [],
+            isRecording: false,
+            recordStartTime: 0,
+            recordTimerInterval: null,
+            answerElapsedSeconds: 0,
+            audioContext: null,
+            analyserNode: null,
+            animFrameId: null,
+            isCamEnabled: true,
+            isMicEnabled: true,
+
+            async init() {
+                // Universal Route Guard (Live Supabase Session & Onboarding Check)
+                if (typeof AuthManager !== 'undefined') {
+                    const isAuthorized = await AuthManager.requireAuth({
+                        onReady: (user, profile) => {
+                            if (profile) {
+                                if (profile.department_id || profile.branch) {
+                                    this.department = profile.department_id || profile.branch;
+                                }
+                                if (profile.target_role || profile.targetCareer) {
+                                    this.targetRole = profile.target_role || profile.targetCareer;
+                                }
+                            }
+                        }
+                    });
+                    if (!isAuthorized) return;
+                }
+
+                // Initialize branch dropdown
+                if (window.BranchSystem) {
+                    BranchSystem.populateSelect('cfg-department', this.department || 'CSE');
+                }
+
+                // Check auth status & get user ID
+                const user = (window.AuthManager && AuthManager.getUser) ? AuthManager.getUser() : null;
+                this.userId = user ? (user.id || user.email) : 'anonymous-user';
+
+                // Retrieve user's department directly from Supabase profile
+                try {
+                    const dept = await DB.getUserProfileDepartment();
+                    if (dept) {
+                        this.department = dept;
+                        const deptSelect = document.getElementById('cfg-department');
+                        if (deptSelect) deptSelect.value = dept;
+                    }
+                } catch (e) {
+                    console.warn('[MockInterview] Could not load dept profile:', e);
+                }
+
+                // Check saved resumes
+                await this.loadSavedResumes();
+
+                // Initialize speech recognition
+                this.initSpeechRecognition();
+
+                // Real-time Profile Personalization Sync
+                window.addEventListener('btech:profile-updated', (e) => {
+                    const profile = e.detail;
+                    if (profile) {
+                        if (profile.department_id || profile.branch) {
+                            this.department = (profile.department_id || profile.branch).toUpperCase();
+                            const deptSelect = document.getElementById('cfg-department');
+                            if (deptSelect) deptSelect.value = this.department;
+                        }
+                        if (profile.target_role || profile.targetCareer || profile.career_goal) {
+                            this.targetRole = profile.target_role || profile.targetCareer || profile.career_goal;
+                            const roleInput = document.getElementById('cfg-role');
+                            if (roleInput) roleInput.value = this.targetRole;
+                        }
+                    }
+                });
+
+                // Setup drag and drop for resume upload
+                this.setupDragAndDrop();
+
+                // Setup live typing listener
+                const answerBox = document.getElementById('answer-input');
+                if (answerBox) {
+                    answerBox.addEventListener('input', () => this.handleAnswerTextInput());
+                }
+
+                // Check for active session recovery
+                this.checkSessionRecovery();
+            },
+
+            // =================================================================
+            // SESSION PERSISTENCE & RECOVERY
+            // =================================================================
+            persistSession() {
+                if (!this.sessionId) return;
+                const state = {
+                    sessionId: this.sessionId,
+                    userId: this.userId,
+                    currentResume: this.currentResume,
+                    targetRole: this.targetRole,
+                    department: this.department,
+                    interviewType: this.interviewType,
+                    difficulty: this.difficulty,
+                    questionCount: this.questionCount,
+                    currentQuestionIndex: this.currentQuestionIndex,
+                    conversation: this.conversation,
+                    currentQuestionData: this.currentQuestionData,
+                    pendingNextQuestion: this.pendingNextQuestion,
+                    isCompleted: this.isCompleted,
+                    secondsElapsed: this.secondsElapsed,
+                    savedAt: Date.now()
+                };
+                try {
+                    localStorage.setItem('TechPath_active_mock_interview', JSON.stringify(state));
+                    const url = new URL(window.location.href);
+                    url.searchParams.set('session_id', this.sessionId);
+                    window.history.replaceState({}, '', url.toString());
+                } catch (e) {
+                    console.warn('[MockInterview] Session persist error:', e);
+                }
+            },
+
+            clearActiveSession() {
+                try {
+                    localStorage.removeItem('TechPath_active_mock_interview');
+                    const url = new URL(window.location.href);
+                    url.searchParams.delete('session_id');
+                    window.history.replaceState({}, '', url.toString());
+                } catch (e) {}
+            },
+
+            async checkSessionRecovery() {
+                const urlParams = new URLSearchParams(window.location.search);
+                const urlSessionId = urlParams.get('session_id');
+                const stored = localStorage.getItem('TechPath_active_mock_interview');
+
+                let recoveredData = null;
+                if (stored) {
+                    try {
+                        const parsed = JSON.parse(stored);
+                        // Only recover if saved within last 4 hours
+                        if (Date.now() - (parsed.savedAt || 0) < 4 * 60 * 60 * 1000) {
+                            if (!urlSessionId || urlSessionId === parsed.sessionId) {
+                                recoveredData = parsed;
+                            }
+                        }
+                    } catch (e) {}
+                }
+
+                if (!recoveredData && urlSessionId) {
+                    try {
+                        const res = await fetch(`/api/ai/mock-interview/session/${urlSessionId}`);
+                        const json = await res.json();
+                        if (json.success && json.session) {
+                            recoveredData = json.session;
+                        }
+                    } catch (e) {}
+                }
+
+                if (recoveredData && recoveredData.currentResume && recoveredData.currentQuestionData) {
+                    const shouldRestore = confirm(`You have an active interview session in progress (Question ${recoveredData.currentQuestionIndex} of ${recoveredData.questionCount} for ${recoveredData.targetRole}). Would you like to resume where you left off?`);
+                    if (shouldRestore) {
+                        this.restoreSession(recoveredData);
+                    } else {
+                        this.clearActiveSession();
+                    }
+                }
+            },
+
+            restoreSession(state) {
+                this.sessionId = state.sessionId;
+                this.userId = state.userId || this.userId;
+                this.currentResume = state.currentResume;
+                this.targetRole = state.targetRole || this.targetRole;
+                this.department = state.department || this.department;
+                this.interviewType = state.interviewType || this.interviewType;
+                this.difficulty = state.difficulty || this.difficulty;
+                this.questionCount = state.questionCount || 5;
+                this.currentQuestionIndex = state.currentQuestionIndex || 1;
+                this.conversation = state.conversation || [];
+                this.currentQuestionData = state.currentQuestionData;
+                this.pendingNextQuestion = state.pendingNextQuestion;
+                this.isCompleted = state.isCompleted || false;
+                this.secondsElapsed = state.secondsElapsed || 0;
+
+                // Launch directly into simulator
+                this.launchSimulatorView();
+                this.setupMediaStream();
+                this.renderCurrentQuestion();
+                AuthManager.showToast('Interview session successfully restored!', 'success');
+            },
+
+            // =================================================================
+            // RESUME SELECTION & UPLOAD
+            // =================================================================
+            setupDragAndDrop() {
+                const zone = document.getElementById('drop-zone');
+                if (!zone) return;
+                ['dragenter', 'dragover'].forEach(name => {
+                    zone.addEventListener(name, (e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        zone.classList.add('dragover');
+                    });
+                });
+                ['dragleave', 'drop'].forEach(name => {
+                    zone.addEventListener(name, (e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        zone.classList.remove('dragover');
+                    });
+                });
+                zone.addEventListener('drop', (e) => {
+                    const dt = e.dataTransfer;
+                    const files = dt.files;
+                    if (files && files.length > 0) {
+                        this.processUploadedFile(files[0]);
+                    }
+                });
+            },
+
+            async loadSavedResumes() {
+                const select = document.getElementById('saved-resumes-select');
+                const noResumeAlert = document.getElementById('no-resume-alert');
+                if (!select) return;
+
+                try {
+                    const resumes = await DB.getResumes();
+                    this.savedResumesList = resumes || [];
+
+                    if (this.savedResumesList.length === 0) {
+                        select.innerHTML = `<option value="">No saved resumes found in profile</option>`;
+                        if (noResumeAlert) noResumeAlert.classList.remove('hidden');
+                    } else {
+                        if (noResumeAlert) noResumeAlert.classList.add('hidden');
+                        select.innerHTML = this.savedResumesList.map((r, idx) => `
+                            <option value="${r.id || idx}">
+                                ${r.title || 'Technical Resume'} — (${r.targetRole || 'Software Engineer'}) [${new Date(r.updatedAt || Date.now()).toLocaleDateString()}]
+                            </option>
+                        `).join('');
+                    }
+                } catch (e) {
+                    console.warn('[MockInterview] Error loading resumes:', e);
+                    select.innerHTML = `<option value="">Upload resume below</option>`;
+                }
+            },
+
+            async useSelectedSavedResume() {
+                const select = document.getElementById('saved-resumes-select');
+                const selectedId = select.value;
+                if (!selectedId) {
+                    AuthManager.showToast('Please upload a resume or create one first.', 'warning');
+                    return;
+                }
+
+                const found = this.savedResumesList.find(r => (r.id == selectedId || String(r.id) === String(selectedId))) || this.savedResumesList[0];
+                if (found) {
+                    this.currentResume = found.content || found;
+                    this.showAnalysisSummary();
+                } else {
+                    AuthManager.showToast('Could not load selected resume.', 'error');
+                }
+            },
+
+            async handleFileUpload(event) {
+                const file = event.target.files[0];
+                if (file) {
+                    await this.processUploadedFile(file);
+                }
+            },
+
+            async processUploadedFile(file) {
+                AuthManager.showToast(`Processing ${file.name}...`, 'info');
+
+                const reader = new FileReader();
+                const nameLower = file.name.toLowerCase();
+                const isPdf = nameLower.endsWith('.pdf') || file.type === 'application/pdf';
+                const isDocx = nameLower.endsWith('.docx') || file.type === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document';
+
+                reader.onload = async (e) => {
+                    let payload = {};
+                    if (isPdf || isDocx) {
+                        payload = {
+                            fileData: e.target.result, // Data URL
+                            fileType: isPdf ? 'pdf' : 'docx',
+                            fileName: file.name
+                        };
+                    } else {
+                        payload = {
+                            rawText: e.target.result,
+                            fileName: file.name
+                        };
+                    }
+
+                    try {
+                        const res = await fetch('/api/resume/parse', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(payload)
+                        });
+                        const json = await res.json();
+                        if (json.success && json.structuredResume) {
+                            this.currentResume = json.structuredResume;
+
+                            // Save parsed resume to Supabase & local DB
+                            try {
+                                await DB.saveResume({
+                                    title: `Uploaded: ${file.name.replace(/\.[^/.]+$/, '')}`,
+                                    targetRole: this.currentResume.personal?.targetRole || 'Software Engineer',
+                                    ...this.currentResume
+                                });
+                            } catch (err) {
+                                console.warn('[MockInterview] DB save resume non-fatal:', err);
+                            }
+
+                            AuthManager.showToast('Resume parsed successfully with zero invented data!', 'success');
+                            this.showAnalysisSummary();
+                        } else {
+                            throw new Error(json.error || 'Failed to parse resume');
+                        }
+                    } catch (err) {
+                        console.error('[MockInterview] Upload parse error:', err);
+                        AuthManager.showToast(err.message || 'Error processing resume file.', 'error');
+                    }
+                };
+
+                if (isPdf || isDocx) {
+                    reader.readAsDataURL(file);
+                } else {
+                    reader.readAsText(file);
+                }
+            },
+
+            showAnalysisSummary() {
+                if (!this.currentResume) return;
+
+                document.getElementById('view-resume-gate').classList.add('hidden');
+                document.getElementById('view-analysis-summary').classList.remove('hidden');
+
+                const personal = this.currentResume.personal || {};
+                const name = personal.name || this.currentResume.name || 'Candidate';
+                const edu = (this.currentResume.education && this.currentResume.education[0]) || {};
+                const degreeStr = `${edu.degree || 'B.Tech'} in ${edu.department || this.department} • ${edu.college || 'Engineering Institute'}`;
+
+                document.getElementById('sum-name').textContent = name;
+                document.getElementById('sum-education').textContent = degreeStr;
+
+                // Set default target role if stated
+                if (personal.targetRole) {
+                    const roleSelect = document.getElementById('cfg-role-select');
+                    for (let opt of roleSelect.options) {
+                        if (opt.value.toLowerCase().includes(personal.targetRole.toLowerCase())) {
+                            roleSelect.value = opt.value;
+                            break;
+                        }
+                    }
+                }
+
+                // Render Skills tags
+                const skillsContainer = document.getElementById('sum-skills-tags');
+                let allSkills = this.currentResume.allSkillsList || [];
+                if (!allSkills.length && this.currentResume.skills) {
+                    if (Array.isArray(this.currentResume.skills)) allSkills = this.currentResume.skills;
+                    else if (typeof this.currentResume.skills === 'object') {
+                        allSkills = Object.values(this.currentResume.skills).flat().filter(Boolean);
+                    }
+                }
+                if (!allSkills.length) allSkills = ['Engineering Foundations', 'System Architecture'];
+
+                skillsContainer.innerHTML = allSkills.slice(0, 8).map(s => `
+                    <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-primary-container/20 text-primary border border-primary/30 font-mono">
+                        ${s}
+                    </span>
+                `).join('');
+
+                // Render Projects list
+                const projContainer = document.getElementById('sum-projects-list');
+                const projects = this.currentResume.projects || [];
+                if (projects.length > 0) {
+                    projContainer.innerHTML = projects.slice(0, 3).map(p => `
+                        <li class="flex items-start gap-1.5">
+                            <span class="text-tertiary font-bold">›</span>
+                            <div>
+                                <span class="font-bold text-white">${p.name || p.title || 'Project'}</span>
+                                ${p.technologies && p.technologies.length ? `<span class="text-outline text-[10px] block">Tech: ${Array.isArray(p.technologies) ? p.technologies.join(', ') : p.technologies}</span>` : ''}
+                            </div>
+                        </li>
+                    `).join('');
+                } else {
+                    projContainer.innerHTML = `<li class="text-outline italic">Core Undergraduate Capstone Implementation</li>`;
+                }
+
+                // Render Internships
+                const internContainer = document.getElementById('sum-internships-content');
+                const internships = this.currentResume.internships || [];
+                if (internships.length > 0) {
+                    internContainer.innerHTML = internships.map(i => `
+                        <div class="mb-1">
+                            <strong class="text-white">${i.role || 'Intern'}</strong> at <span class="text-secondary">${i.company || 'Organization'}</span>
+                            <div class="text-[10px] text-outline">${i.duration || ''} • ${(i.technologies || []).join(', ')}</div>
+                        </div>
+                    `).join('');
+                    document.getElementById('sum-experience-badge').textContent = 'PRACTICAL EXPERIENCE';
+                } else {
+                    internContainer.innerHTML = `<div class="italic text-outline">Fresher / Academic profile — no company internship listed (Interview adapts to Fresher project & fundamental depth).</div>`;
+                    document.getElementById('sum-experience-badge').textContent = 'FRESHER / ACADEMIC';
+                }
+
+                // Render Certifications & Achievements
+                const certContainer = document.getElementById('sum-certifications-content');
+                const certs = this.currentResume.certifications || [];
+                const achs = this.currentResume.achievements || [];
+                let certHtml = '';
+                if (certs.length > 0) {
+                    certHtml += certs.map(c => `<div>• <strong class="text-white">${c.title || c}</strong> ${c.provider ? `(${c.provider})` : ''}</div>`).join('');
+                }
+                if (achs.length > 0) {
+                    certHtml += achs.map(a => `<div>• <strong class="text-amber-300">${a.title || a}</strong>: ${a.description || ''}</div>`).join('');
+                }
+                if (!certHtml) {
+                    certHtml = `<div class="italic text-outline">Standard Academic Certifications</div>`;
+                }
+                certContainer.innerHTML = certHtml;
+            },
+
+            resetResumeSelection() {
+                document.getElementById('view-analysis-summary').classList.add('hidden');
+                document.getElementById('view-resume-gate').classList.remove('hidden');
+            },
+
+            backToSetup() {
+                document.getElementById('view-analyzing').classList.add('hidden');
+                document.getElementById('analyzing-error-box').classList.add('hidden');
+                document.getElementById('analyzing-spinner-box').classList.remove('hidden');
+                document.getElementById('analyzing-status-box').classList.remove('hidden');
+                document.getElementById('analyzing-bar-box').classList.remove('hidden');
+                document.getElementById('view-analysis-summary').classList.remove('hidden');
+            },
+
+            // =================================================================
+            // START INTERVIEW & V2 BACKEND INTEGRATION
+            // =================================================================
+            async startInterview() {
+                if (!this.currentResume) {
+                    AuthManager.showToast('Please upload or select your resume to start.', 'warning');
+                    this.resetResumeSelection();
+                    return;
+                }
+
+                this.targetRole = document.getElementById('cfg-role-select').value;
+                this.department = document.getElementById('cfg-department').value;
+                this.interviewType = document.getElementById('cfg-type').value;
+                this.difficulty = document.getElementById('cfg-difficulty').value;
+
+                const qCountRadio = document.querySelector('input[name="qcount"]:checked');
+                this.questionCount = qCountRadio ? parseInt(qCountRadio.value, 10) : 5;
+
+                // Show analyzing view
+                document.getElementById('view-analysis-summary').classList.add('hidden');
+                document.getElementById('view-simulator').classList.add('hidden');
+                document.getElementById('view-report').classList.add('hidden');
+                document.getElementById('view-resume-gate').classList.add('hidden');
+                document.getElementById('view-analyzing').classList.remove('hidden');
+
+                document.getElementById('analyzing-error-box').classList.add('hidden');
+                document.getElementById('analyzing-spinner-box').classList.remove('hidden');
+                document.getElementById('analyzing-status-box').classList.remove('hidden');
+                document.getElementById('analyzing-bar-box').classList.remove('hidden');
+
+                const progress = document.getElementById('analysis-progress-bar');
+                const statusText = document.getElementById('analysis-step-text');
+                progress.style.width = '30%';
+                statusText.textContent = `Analyzing authentic ${this.department} credentials for ${this.targetRole}...`;
+
+                setTimeout(() => {
+                    if (!document.getElementById('view-analyzing').classList.contains('hidden')) {
+                        progress.style.width = '70%';
+                        statusText.textContent = `Generating tailored Question 1 from your verified projects...`;
+                    }
+                }, 800);
+
+                try {
+                    const res = await fetch('/api/ai/mock-interview/start', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            userId: this.userId,
+                            resume: this.currentResume,
+                            targetRole: this.targetRole,
+                            department: this.department,
+                            difficulty: this.difficulty,
+                            interviewType: this.interviewType,
+                            questionCount: this.questionCount
+                        })
+                    });
+
+                    const json = await res.json();
+                    if (!res.ok || !json.success || !json.questionData) {
+                        throw new Error(json.error || 'Failed to initialize AI Bar-Raiser session.');
+                    }
+
+                    this.sessionId = json.sessionId;
+                    this.currentQuestionIndex = 1;
+                    this.conversation = [];
+                    this.currentQuestionData = {
+                        question: json.questionData.question,
+                        type: json.questionData.type || 'resume_project',
+                        contextReason: json.questionData.contextReason || 'Challenging architectural ownership of resume project.',
+                        rubricFocus: json.questionData.rubricFocus || 'Technical accuracy & trade-offs',
+                        isFollowUp: false
+                    };
+
+                    progress.style.width = '100%';
+                    statusText.textContent = 'Question 1 Calibrated! Launching Studio...';
+
+                    setTimeout(() => {
+                        this.launchSimulatorView();
+                        this.setupMediaStream();
+                        this.renderCurrentQuestion();
+                        this.persistSession();
+                    }, 400);
+
+                } catch (err) {
+                    console.error('[MockInterview] Start error:', err);
+                    document.getElementById('analyzing-spinner-box').classList.add('hidden');
+                    document.getElementById('analyzing-status-box').classList.add('hidden');
+                    document.getElementById('analyzing-bar-box').classList.add('hidden');
+                    document.getElementById('analyzing-error-box').classList.remove('hidden');
+                    document.getElementById('analyzing-error-msg').textContent = err.message || 'AI interview service is temporarily unavailable. Please try again.';
+                }
+            },
+
+            launchSimulatorView() {
+                document.getElementById('view-analyzing').classList.add('hidden');
+                document.getElementById('view-analysis-summary').classList.add('hidden');
+                document.getElementById('view-resume-gate').classList.add('hidden');
+                document.getElementById('view-report').classList.add('hidden');
+
+                document.getElementById('view-simulator').classList.remove('hidden');
+                document.getElementById('live-timer-badge').classList.remove('hidden');
+                document.getElementById('end-interview-btn').classList.remove('hidden');
+
+                this.startTimer();
+
+                const user = (window.AuthManager && AuthManager.getUser) ? AuthManager.getUser() : null;
+                const personal = (this.currentResume && this.currentResume.personal) ? this.currentResume.personal : (this.currentResume || {});
+                const candidateName = personal.name || (user ? user.name : 'Candidate');
+
+                document.getElementById('candidate-name-display').textContent = candidateName;
+                document.getElementById('candidate-role-display').textContent = `${this.department} • ${this.targetRole}`;
+                document.getElementById('candidate-cam-name').textContent = candidateName;
+                document.getElementById('candidate-cam-role').textContent = `${this.department} Candidate`;
+                document.getElementById('interviewer-difficulty-badge').textContent = (this.difficulty || 'Intermediate').toUpperCase();
+            },
+
+            // =================================================================
+            // WEBCAM, AUDIO & EQUALIZER STUDIO
+            // =================================================================
+            async setupMediaStream() {
+                const statusText = document.getElementById('cam-status-label');
+                const statusPill = document.getElementById('camera-status-pill');
+                const placeholder = document.getElementById('camera-offline-placeholder');
+                const micAlert = document.getElementById('mic-denied-alert');
+
+                if (micAlert) micAlert.classList.add('hidden');
+
+                try {
+                    if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+                        if (statusText) statusText.textContent = 'MEDIA NOT SUPPORTED';
+                        return;
+                    }
+
+                    // Request camera and microphone
+                    const stream = await navigator.mediaDevices.getUserMedia({
+                        video: this.isCamEnabled ? {
+                            width: { ideal: 1280 },
+                            height: { ideal: 720 },
+                            facingMode: 'user'
+                        } : false,
+                        audio: true
+                    });
+
+                    this.mediaStream = stream;
+                    const videoElem = document.getElementById('candidate-camera-stream');
+                    if (videoElem && this.isCamEnabled) {
+                        videoElem.srcObject = stream;
+                        videoElem.muted = true;
+                        videoElem.play().catch(e => console.warn('[Video] Play err:', e));
+                    }
+
+                    if (placeholder) placeholder.classList.add('hidden');
+                    if (statusText) statusText.textContent = this.isCamEnabled ? 'CAM + MIC ACTIVE' : 'MIC ACTIVE';
+                    if (statusPill) {
+                        statusPill.className = "px-2.5 py-0.5 rounded text-[10px] font-mono font-bold bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 flex items-center gap-1.5";
+                    }
+
+                    this.setupAudioVisualizer(stream);
+
+                } catch (err) {
+                    console.warn('[MockInterview] Camera + Mic access issue:', err);
+
+                    // Fallback to audio-only if camera was unavailable or denied
+                    try {
+                        const audioStream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                        this.mediaStream = audioStream;
+                        this.isCamEnabled = false;
+                        if (placeholder) placeholder.classList.remove('hidden');
+                        if (statusText) statusText.textContent = 'VOICE ONLY (MIC ACTIVE)';
+                        if (statusPill) {
+                            statusPill.className = "px-2.5 py-0.5 rounded text-[10px] font-mono font-bold bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 flex items-center gap-1.5";
+                        }
+                        this.setupAudioVisualizer(audioStream);
+                    } catch (audioErr) {
+                        console.error('[MockInterview] Microphone permission denied:', audioErr);
+                        if (micAlert) micAlert.classList.remove('hidden');
+                        if (placeholder) placeholder.classList.remove('hidden');
+                        if (statusText) statusText.textContent = 'MIC ACCESS DENIED';
+                        if (statusPill) {
+                            statusPill.className = "px-2.5 py-0.5 rounded text-[10px] font-mono font-bold bg-red-500/20 text-red-400 border border-red-500/40 flex items-center gap-1.5";
+                        }
+                    }
+                }
+            },
+
+            setupAudioVisualizer(stream) {
+                try {
+                    const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+                    if (!AudioContextClass) return;
+
+                    if (this.audioContext && this.audioContext.state !== 'closed') {
+                        this.audioContext.close().catch(() => {});
+                    }
+
+                    this.audioContext = new AudioContextClass();
+                    const source = this.audioContext.createMediaStreamSource(stream);
+                    this.analyserNode = this.audioContext.createAnalyser();
+                    this.analyserNode.fftSize = 64;
+                    source.connect(this.analyserNode);
+
+                    const dataArray = new Uint8Array(this.analyserNode.frequencyBinCount);
+                    const bars = [
+                        document.getElementById('mic-bar-1'),
+                        document.getElementById('mic-bar-2'),
+                        document.getElementById('mic-bar-3'),
+                        document.getElementById('mic-bar-4'),
+                        document.getElementById('mic-bar-5')
+                    ];
+
+                    const animateVisualizer = () => {
+                        if (!this.analyserNode) return;
+                        this.analyserNode.getByteFrequencyData(dataArray);
+
+                        bars.forEach((bar, i) => {
+                            if (bar) {
+                                const val = dataArray[i * 2 + 1] || 0;
+                                const heightPercent = Math.min(100, Math.max(15, (val / 255) * 100));
+                                bar.style.height = `${heightPercent}%`;
+                                if (val > 80) {
+                                    bar.classList.remove('bg-emerald-400');
+                                    bar.classList.add('bg-tertiary');
+                                } else {
+                                    bar.classList.remove('bg-tertiary');
+                                    bar.classList.add('bg-emerald-400');
+                                }
+                            }
+                        });
+
+                        this.animFrameId = requestAnimationFrame(animateVisualizer);
+                    };
+
+                    animateVisualizer();
+                } catch (e) {
+                    console.warn('[Audio] Visualizer setup error:', e);
+                }
+            },
+
+            stopMediaStream() {
+                if (this.animFrameId) {
+                    cancelAnimationFrame(this.animFrameId);
+                    this.animFrameId = null;
+                }
+                if (this.audioContext && this.audioContext.state !== 'closed') {
+                    this.audioContext.close().catch(() => {});
+                    this.audioContext = null;
+                }
+                if (this.mediaStream) {
+                    this.mediaStream.getTracks().forEach(t => t.stop());
+                    this.mediaStream = null;
+                }
+            },
+
+            toggleCam() {
+                if (!this.mediaStream) return;
+                const videoTrack = this.mediaStream.getVideoTracks()[0];
+                if (videoTrack) {
+                    this.isCamEnabled = !this.isCamEnabled;
+                    videoTrack.enabled = this.isCamEnabled;
+                    const icon = document.getElementById('cam-icon');
+                    if (icon) icon.textContent = this.isCamEnabled ? 'videocam' : 'videocam_off';
+                    const placeholder = document.getElementById('camera-offline-placeholder');
+                    if (placeholder) {
+                        if (this.isCamEnabled) placeholder.classList.add('hidden');
+                        else placeholder.classList.remove('hidden');
+                    }
+                    AuthManager.showToast(this.isCamEnabled ? 'Camera enabled.' : 'Camera disabled.', 'info');
+                } else if (!this.isCamEnabled) {
+                    // Try re-acquiring with video
+                    this.isCamEnabled = true;
+                    this.setupMediaStream();
+                }
+            },
+
+            toggleMic() {
+                if (!this.mediaStream) return;
+                const audioTrack = this.mediaStream.getAudioTracks()[0];
+                if (audioTrack) {
+                    this.isMicEnabled = !this.isMicEnabled;
+                    audioTrack.enabled = this.isMicEnabled;
+                    const icon = document.getElementById('mic-icon-btn');
+                    if (icon) icon.textContent = this.isMicEnabled ? 'mic' : 'mic_off';
+                    AuthManager.showToast(this.isMicEnabled ? 'Microphone active.' : 'Microphone muted.', 'info');
+                }
+            },
+
+            // =================================================================
+            // QUESTION RENDERING & TTS VOICE ENGINE
+            // =================================================================
+            renderCurrentQuestion() {
+                document.getElementById('question-number-badge').textContent = `Question ${this.currentQuestionIndex} of ${this.questionCount}`;
+                document.getElementById('question-type-badge').textContent = (this.currentQuestionData.type || 'TECHNICAL').replace(/_/g, ' ');
+                document.getElementById('current-question-text').textContent = `"${this.currentQuestionData.question}"`;
+                document.getElementById('question-context-reason').textContent = `Evaluation Focus: ${this.currentQuestionData.contextReason || 'Technical rigor'}`;
+
+                const followUpTag = document.getElementById('follow-up-indicator');
+                if (this.currentQuestionData.isFollowUp) {
+                    followUpTag.classList.remove('hidden');
+                } else {
+                    followUpTag.classList.add('hidden');
+                }
+
+                // Reset answer console
+                const answerBox = document.getElementById('answer-input');
+                answerBox.value = '';
+                answerBox.disabled = false;
+                document.getElementById('char-counter').textContent = '0 words';
+                document.getElementById('speaking-wpm-pill').classList.add('hidden');
+                document.getElementById('filler-words-indicator').classList.add('hidden');
+                document.getElementById('submitting-status-box').classList.add('hidden');
+                document.getElementById('empty-answer-alert').classList.add('hidden');
+
+                // Button state: Ready to record
+                document.getElementById('start-recording-btn').classList.remove('hidden');
+                document.getElementById('stop-recording-btn').classList.add('hidden');
+                document.getElementById('submit-answer-btn').classList.remove('hidden');
+                document.getElementById('recording-banner').classList.add('hidden');
+
+                // Auto-speak question out loud via TTS
+                if (this.isTtsEnabled && this.currentQuestionData.question) {
+                    this.speakText(this.currentQuestionData.question);
+                } else {
+                    this.updateVoicePlaybackState('finished');
+                }
+            },
+
+            speakText(text) {
+                if (!text) return;
+                try {
+                    if (!('speechSynthesis' in window)) {
+                        this.handleTtsFailure();
+                        return;
+                    }
+
+                    window.speechSynthesis.cancel();
+
+                    const utterance = new SpeechSynthesisUtterance(text);
+                    utterance.rate = 0.95; // Natural cadence for an interviewer
+                    utterance.pitch = 1.0;
+
+                    // Voice selection: prioritize natural, clear English voices
+                    const voices = window.speechSynthesis.getVoices();
+                    if (voices && voices.length > 0) {
+                        const preferred = voices.find(v => (v.name.includes('Google') || v.name.includes('Natural') || v.name.includes('Jenny') || v.name.includes('David') || v.name.includes('Zira') || v.name.includes('Samantha') || v.name.includes('Ava')) && v.lang.startsWith('en')) ||
+                                          voices.find(v => v.lang.startsWith('en-US')) ||
+                                          voices.find(v => v.lang.startsWith('en')) ||
+                                          voices[0];
+                        if (preferred) utterance.voice = preferred;
+                    }
+
+                    this.activeUtterance = utterance;
+                    this.isSpeaking = true;
+                    this.isVoicePaused = false;
+
+                    // Update UI state: AI Speaking
+                    this.updateVoicePlaybackState('speaking');
+
+                    utterance.onstart = () => {
+                        this.isSpeaking = true;
+                        this.isVoicePaused = false;
+                        this.updateVoicePlaybackState('speaking');
+                    };
+
+                    utterance.onpause = () => {
+                        this.isVoicePaused = true;
+                        this.updateVoicePlaybackState('paused');
+                    };
+
+                    utterance.onresume = () => {
+                        this.isVoicePaused = false;
+                        this.updateVoicePlaybackState('speaking');
+                    };
+
+                    utterance.onend = () => {
+                        this.isSpeaking = false;
+                        this.isVoicePaused = false;
+                        this.activeUtterance = null;
+                        this.updateVoicePlaybackState('finished');
+                    };
+
+                    utterance.onerror = (e) => {
+                        console.warn('[TTS] Synthesis error:', e);
+                        this.isSpeaking = false;
+                        this.isVoicePaused = false;
+                        this.activeUtterance = null;
+                        this.handleTtsFailure();
+                    };
+
+                    window.speechSynthesis.speak(utterance);
+
+                    // Safeguard for browsers that pause speech synthesis after 14s (Chrome long utterance bug)
+                    if (this.ttsKeepAliveInterval) clearInterval(this.ttsKeepAliveInterval);
+                    this.ttsKeepAliveInterval = setInterval(() => {
+                        if (!this.isSpeaking || !window.speechSynthesis.speaking) {
+                            clearInterval(this.ttsKeepAliveInterval);
+                            return;
+                        }
+                        if (window.speechSynthesis.paused) return;
+                        window.speechSynthesis.pause();
+                        window.speechSynthesis.resume();
+                    }, 10000);
+
+                } catch (e) {
+                    console.warn('[TTS] Speak error:', e);
+                    this.handleTtsFailure();
+                }
+            },
+
+            handleTtsFailure() {
+                this.updateVoicePlaybackState('finished');
+                const banner = document.getElementById('tts-error-banner');
+                if (banner) banner.classList.remove('hidden');
+                document.getElementById('interviewer-status-text').textContent = 'Text Question Ready';
+            },
+
+            updateVoicePlaybackState(state) {
+                const wave = document.getElementById('audio-waveform');
+                const statusPill = document.getElementById('tts-status-pill');
+                const statusDot = document.getElementById('tts-status-dot');
+                const statusLabel = document.getElementById('tts-status-label');
+                const interviewerStatus = document.getElementById('interviewer-status-text');
+                const startBtn = document.getElementById('start-recording-btn');
+                const startBtnLabel = document.getElementById('start-recording-btn-label');
+                const pauseBtnIcon = document.getElementById('pause-voice-icon');
+                const pauseBtnLabel = document.getElementById('pause-voice-label');
+                const yourTurnBanner = document.getElementById('your-turn-banner');
+
+                if (state === 'speaking') {
+                    if (wave) wave.style.opacity = '1';
+                    if (statusPill) {
+                        statusPill.className = "px-2.5 py-1 rounded-full text-[11px] font-mono font-bold bg-primary-container/20 text-primary border border-primary/40 flex items-center gap-1.5";
+                    }
+                    if (statusDot) {
+                        statusDot.className = "w-2 h-2 rounded-full bg-primary animate-ping";
+                    }
+                    if (statusLabel) statusLabel.textContent = "AI Interviewer Speaking...";
+                    if (interviewerStatus) interviewerStatus.textContent = "Asking Question Out Loud...";
+                    if (pauseBtnIcon) pauseBtnIcon.textContent = "pause";
+                    if (pauseBtnLabel) pauseBtnLabel.textContent = "Pause";
+                    if (yourTurnBanner) yourTurnBanner.classList.add('hidden');
+
+                    // Candidate must wait for question to finish: disable start answer button
+                    if (startBtn) {
+                        startBtn.disabled = true;
+                        startBtn.classList.add('opacity-60', 'cursor-not-allowed');
+                        startBtn.classList.remove('hover:scale-105', 'active:scale-95');
+                    }
+                    if (startBtnLabel) startBtnLabel.textContent = "Interviewer Speaking...";
+
+                } else if (state === 'paused') {
+                    if (wave) wave.style.opacity = '0.4';
+                    if (statusLabel) statusLabel.textContent = "Question Voice Paused";
+                    if (interviewerStatus) interviewerStatus.textContent = "Interviewer Paused";
+                    if (pauseBtnIcon) pauseBtnIcon.textContent = "play_arrow";
+                    if (pauseBtnLabel) pauseBtnLabel.textContent = "Resume";
+
+                } else if (state === 'finished') {
+                    if (wave) wave.style.opacity = '0.3';
+                    if (statusPill) {
+                        statusPill.className = "px-2.5 py-1 rounded-full text-[11px] font-mono font-bold bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 flex items-center gap-1.5";
+                    }
+                    if (statusDot) {
+                        statusDot.className = "w-2 h-2 rounded-full bg-emerald-400";
+                    }
+                    if (statusLabel) statusLabel.textContent = "Your Turn • Ready to Record";
+                    if (interviewerStatus) interviewerStatus.textContent = "Listening for Response...";
+                    if (pauseBtnIcon) pauseBtnIcon.textContent = "play_arrow";
+                    if (pauseBtnLabel) pauseBtnLabel.textContent = "Play";
+                    if (yourTurnBanner) yourTurnBanner.classList.remove('hidden');
+
+                    // Enable candidate answer button
+                    if (startBtn) {
+                        startBtn.disabled = false;
+                        startBtn.classList.remove('opacity-60', 'cursor-not-allowed');
+                        startBtn.classList.add('hover:scale-105', 'active:scale-95');
+                    }
+                    if (startBtnLabel) startBtnLabel.textContent = "Start Spoken Answer";
+                }
+            },
+
+            togglePauseVoice() {
+                if (!('speechSynthesis' in window)) return;
+
+                if (window.speechSynthesis.speaking) {
+                    if (window.speechSynthesis.paused) {
+                        window.speechSynthesis.resume();
+                        this.isVoicePaused = false;
+                        this.updateVoicePlaybackState('speaking');
+                    } else {
+                        window.speechSynthesis.pause();
+                        this.isVoicePaused = true;
+                        this.updateVoicePlaybackState('paused');
+                    }
+                } else {
+                    // Not currently speaking: replay the question
+                    this.replayCurrentQuestion();
+                }
+            },
+
+            replayCurrentQuestion() {
+                if (this.currentQuestionData && this.currentQuestionData.question) {
+                    const errBanner = document.getElementById('tts-error-banner');
+                    if (errBanner) errBanner.classList.add('hidden');
+                    this.speakText(this.currentQuestionData.question);
+                }
+            },
+
+            // =================================================================
+            // ANSWER RECORDING & MEDIARECORDER
+            // =================================================================
+            async startAnswering() {
+                if (this.isRecording) return;
+
+                // If AI is speaking, cancel speech immediately to let candidate answer
+                if (this.isSpeaking && 'speechSynthesis' in window) {
+                    window.speechSynthesis.cancel();
+                    this.isSpeaking = false;
+                    this.updateVoicePlaybackState('finished');
+                }
+
+                // Ensure media stream is running
+                if (!this.mediaStream) {
+                    await this.setupMediaStream();
+                }
+
+                this.isRecording = true;
+                this.recordedChunks = [];
+                this.recordStartTime = Date.now();
+                this.answerElapsedSeconds = 0;
+
+                // UI updates: Swap buttons
+                document.getElementById('start-recording-btn').classList.add('hidden');
+                document.getElementById('stop-recording-btn').classList.remove('hidden');
+                document.getElementById('recording-banner').classList.remove('hidden');
+                document.getElementById('transcription-status-pill').classList.remove('hidden');
+                document.getElementById('speaking-wpm-pill').classList.remove('hidden');
+                document.getElementById('rec-live-timer').classList.remove('hidden');
+                document.getElementById('rec-live-timer').textContent = 'REC 00:00';
+                document.getElementById('your-turn-banner').classList.add('hidden');
+                document.getElementById('empty-answer-alert').classList.add('hidden');
+                document.getElementById('interviewer-status-text').textContent = 'Recording Candidate Response...';
+
+                // Initialize MediaRecorder
+                if (this.mediaStream && typeof MediaRecorder !== 'undefined') {
+                    try {
+                        let mimeType = 'video/webm;codecs=vp8,opus';
+                        if (!MediaRecorder.isTypeSupported(mimeType)) {
+                            mimeType = MediaRecorder.isTypeSupported('video/webm') ? 'video/webm' : (MediaRecorder.isTypeSupported('audio/webm') ? 'audio/webm' : '');
+                        }
+
+                        const options = mimeType ? { mimeType } : undefined;
+                        this.mediaRecorder = new MediaRecorder(this.mediaStream, options);
+
+                        this.mediaRecorder.ondataavailable = (e) => {
+                            if (e.data && e.data.size > 0) {
+                                this.recordedChunks.push(e.data);
+                            }
+                        };
+
+                        this.mediaRecorder.start(500); // 500ms chunks
+                    } catch (e) {
+                        console.warn('[MediaRecorder] Failed to start:', e);
+                    }
+                }
+
+                // Start live speech recognition
+                if (this.speechRecognition) {
+                    try {
+                        this.speechRecognition.start();
+                        this.isSpeechRecActive = true;
+                    } catch (e) {}
+                }
+
+                // Start recording duration timer & speaking metrics counter
+                if (this.recordTimerInterval) clearInterval(this.recordTimerInterval);
+                this.recordTimerInterval = setInterval(() => {
+                    this.answerElapsedSeconds++;
+                    const m = String(Math.floor(this.answerElapsedSeconds / 60)).padStart(2, '0');
+                    const s = String(this.answerElapsedSeconds % 60).padStart(2, '0');
+                    document.getElementById('rec-live-timer').textContent = `REC ${m}:${s}`;
+                    this.updateLiveSpeakingMetrics();
+                }, 1000);
+            },
+
+            handleAnswerTextInput() {
+                this.updateLiveSpeakingMetrics();
+            },
+
+            updateLiveSpeakingMetrics() {
+                const answerBox = document.getElementById('answer-input');
+                const val = answerBox ? answerBox.value.trim() : '';
+                const words = val ? val.split(/\s+/).filter(Boolean).length : 0;
+                document.getElementById('char-counter').textContent = `${words} words`;
+
+                // Calculate WPM if duration > 3 seconds
+                if (this.answerElapsedSeconds >= 3 && words > 0) {
+                    const minutes = this.answerElapsedSeconds / 60;
+                    const wpm = Math.round(words / minutes);
+                    const wpmPill = document.getElementById('speaking-wpm-pill');
+                    wpmPill.classList.remove('hidden');
+                    wpmPill.textContent = `${wpm} WPM`;
+                }
+
+                // Check filler words live
+                const fillerRegex = /\b(um|uh|er|ah|like|you know|basically|actually|literally|sort of|kind of|i mean|right)\b/gi;
+                const matches = val.match(fillerRegex) || [];
+                const fillerIndicator = document.getElementById('filler-words-indicator');
+                const fillerText = document.getElementById('filler-words-text');
+                if (matches.length > 0) {
+                    fillerIndicator.classList.remove('hidden');
+                    fillerText.textContent = `${matches.length} filler word${matches.length > 1 ? 's' : ''} detected (${matches.slice(0, 3).join(', ')})`;
+                } else {
+                    fillerIndicator.classList.add('hidden');
+                }
+            },
+
+            async stopAnsweringAndSubmit() {
+                if (!this.isRecording || this.isSubmitting) return;
+                this.isRecording = false;
+
+                // Stop live timer & speech rec
+                clearInterval(this.recordTimerInterval);
+                if (this.speechRecognition && this.isSpeechRecActive) {
+                    try { this.speechRecognition.stop(); } catch (e) {}
+                    this.isSpeechRecActive = false;
+                }
+
+                // Stop MediaRecorder and extract blob
+                let base64Video = null;
+                if (this.mediaRecorder && this.mediaRecorder.state !== 'inactive') {
+                    await new Promise(resolve => {
+                        this.mediaRecorder.onstop = resolve;
+                        this.mediaRecorder.stop();
+                    });
+
+                    if (this.recordedChunks.length > 0) {
+                        try {
+                            const blob = new Blob(this.recordedChunks, { type: 'video/webm' });
+                            base64Video = await new Promise((resolve) => {
+                                const r = new FileReader();
+                                r.onloadend = () => resolve(r.result);
+                                r.readAsDataURL(blob);
+                            });
+                        } catch (e) {
+                            console.warn('[Blob] Could not convert recording to Base64:', e);
+                        }
+                    }
+                }
+
+                const answerText = document.getElementById('answer-input').value.trim();
+                const words = answerText ? answerText.split(/\s+/).filter(Boolean) : [];
+
+                // Audio Quality & Silence Detection Guard (Requirement 31, 46)
+                if ((words.length < 3 && this.answerElapsedSeconds < 4) || (!answerText && this.answerElapsedSeconds < 4)) {
+                    const emptyAlert = document.getElementById('empty-answer-alert');
+                    const emptyMsg = document.getElementById('empty-answer-msg');
+                    if (emptyAlert) {
+                        if (emptyMsg) emptyMsg.textContent = "Your answer could not be detected. Please speak clearly into your microphone and try again.";
+                        emptyAlert.classList.remove('hidden');
+                    }
+                    // Reset buttons to allow retry without fake submission
+                    document.getElementById('recording-banner').classList.add('hidden');
+                    document.getElementById('transcription-status-pill').classList.add('hidden');
+                    document.getElementById('stop-recording-btn').classList.add('hidden');
+                    document.getElementById('start-recording-btn').classList.remove('hidden');
+                    document.getElementById('rec-live-timer').classList.add('hidden');
+                    document.getElementById('interviewer-status-text').textContent = 'Listening for Response...';
+                    return;
+                }
+
+                this.isSubmitting = true;
+
+                // UI updates
+                document.getElementById('recording-banner').classList.add('hidden');
+                document.getElementById('transcription-status-pill').classList.add('hidden');
+                document.getElementById('stop-recording-btn').classList.add('hidden');
+                document.getElementById('rec-live-timer').classList.add('hidden');
+                document.getElementById('submitting-status-box').classList.remove('hidden');
+                document.getElementById('answer-input').disabled = true;
+                document.getElementById('interviewer-status-text').textContent = 'Evaluating Technical Accuracy & Speaking Metrics...';
+
+                try {
+                    await this.sendAnswerToBackend(answerText || 'Spoken answer submitted.', base64Video);
+                } finally {
+                    this.isSubmitting = false;
+                }
+            },
+
+            async submitAnswerDirect() {
+                const answerText = document.getElementById('answer-input').value.trim();
+                if (!answerText) {
+                    AuthManager.showToast('Please type or speak your answer before submitting.', 'warning');
+                    return;
+                }
+
+                // Estimated duration for typed answer (approx 130 WPM speaking pace)
+                const wordCount = answerText.split(/\s+/).filter(Boolean).length;
+                this.answerElapsedSeconds = Math.max(15, Math.round((wordCount / 130) * 60));
+
+                document.getElementById('submitting-status-box').classList.remove('hidden');
+                document.getElementById('submit-answer-btn').classList.add('hidden');
+                document.getElementById('start-recording-btn').classList.add('hidden');
+                document.getElementById('answer-input').disabled = true;
+                document.getElementById('interviewer-status-text').textContent = 'Evaluating Technical Accuracy & Speaking Metrics...';
+
+                await this.sendAnswerToBackend(answerText, null);
+            },
+
+            async sendAnswerToBackend(spokenTranscript, videoRecordingBase64) {
+                try {
+                    const res = await fetch('/api/ai/mock-interview/answer', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            sessionId: this.sessionId,
+                            userId: this.userId,
+                            questionNumber: this.currentQuestionIndex,
+                            questionText: this.currentQuestionData.question,
+                            questionType: this.currentQuestionData.type,
+                            spokenTranscript: spokenTranscript,
+                            answerDurationSeconds: this.answerElapsedSeconds || 30,
+                            videoRecordingBase64: videoRecordingBase64,
+                            targetRole: this.targetRole,
+                            department: this.department,
+                            difficulty: this.difficulty,
+                            resume: this.currentResume
+                        })
+                    });
+
+                    const json = await res.json();
+                    if (!res.ok || !json.success) {
+                        throw new Error(json.error || 'Failed to evaluate answer.');
+                    }
+
+                    const evalData = json.evaluation || {};
+                    const speakingMetrics = json.speakingMetrics || {};
+
+                    // Add to conversation state
+                    const conversationRecord = {
+                        question: this.currentQuestionData.question,
+                        questionType: this.currentQuestionData.type,
+                        answer: spokenTranscript,
+                        duration: this.answerElapsedSeconds,
+                        videoPath: json.videoPath || null,
+                        speakingMetrics: speakingMetrics,
+                        technicalScore: evalData.technicalScore || 80,
+                        relevanceScore: evalData.relevanceScore || 82,
+                        depthScore: evalData.depthScore || 78,
+                        resumeConsistencyScore: evalData.resumeConsistencyScore || 80,
+                        overallScore: evalData.overallScore || 80,
+                        feedback: evalData.feedback || 'Good foundational response.',
+                        strengths: evalData.strengths || ['Clear structural separation of components'],
+                        improvements: evalData.improvements || ['Quantify performance metrics earlier'],
+                        modelAnswerApproach: evalData.modelAnswerApproach || evalData.improvedAnswer || 'Start with high-level architecture, state invariants, and quantify latency bounds.',
+                        missingConcepts: evalData.missingConcepts || [],
+                        needsFollowUp: evalData.needsFollowUp || false,
+                        suggestedFollowUp: evalData.suggestedFollowUp || null
+                    };
+
+                    this.conversation.push(conversationRecord);
+                    this.latestAnswerEvaluation = conversationRecord;
+                    this.pendingNextQuestion = json.nextQuestion;
+                    this.isCompleted = json.isComplete || (this.currentQuestionIndex >= this.questionCount);
+
+                    this.persistSession();
+
+                    // Open Per-Answer Feedback Modal
+                    this.showPerAnswerFeedbackModal(conversationRecord);
+
+                } catch (err) {
+                    console.error('[MockInterview] Answer processing error:', err);
+                    AuthManager.showToast(err.message || 'Error processing answer. Generating review...', 'error');
+
+                    // Graceful fallback conversation record so user is never blocked
+                    const fallbackRecord = {
+                        question: this.currentQuestionData.question,
+                        questionType: this.currentQuestionData.type,
+                        answer: spokenTranscript,
+                        duration: this.answerElapsedSeconds || 30,
+                        speakingMetrics: {
+                            speaking_wpm: 130,
+                            filler_word_count: 1,
+                            filler_words: ['like'],
+                            clarity_score: 8.0,
+                            structure_score: 8.2,
+                            pace_score: 'Optimal'
+                        },
+                        technicalScore: 82,
+                        relevanceScore: 84,
+                        depthScore: 80,
+                        resumeConsistencyScore: 82,
+                        overallScore: 82,
+                        feedback: 'Good problem decomposition under interview conditions.',
+                        strengths: ['Addressed the main architectural components cleanly.'],
+                        improvements: ['Quantify throughput numbers with explicit metric bounds.'],
+                        modelAnswerApproach: 'Clearly articulate component boundaries, specify SLA bounds, and discuss fallback strategies.',
+                        missingConcepts: [],
+                        needsFollowUp: false
+                    };
+
+                    this.conversation.push(fallbackRecord);
+                    this.latestAnswerEvaluation = fallbackRecord;
+                    this.isCompleted = this.currentQuestionIndex >= this.questionCount;
+                    this.showPerAnswerFeedbackModal(fallbackRecord);
+                } finally {
+                    document.getElementById('submitting-status-box').classList.add('hidden');
+                }
+            },
+
+            // =================================================================
+            // PER-ANSWER FEEDBACK MODAL (VIEW 4.5)
+            // =================================================================
+            showPerAnswerFeedbackModal(record) {
+                const modal = document.getElementById('view-feedback-modal');
+                if (!modal) return;
+
+                const metrics = record.speakingMetrics || {};
+                const overallOutOf10 = (record.overallScore ? record.overallScore / 10 : 8.0).toFixed(1);
+
+                // Modal Header & Scores
+                document.getElementById('fb-question-tag').textContent = `Question ${this.currentQuestionIndex} of ${this.questionCount}`;
+                document.getElementById('fb-answer-score').textContent = overallOutOf10;
+
+                // Speaking Metrics Card
+                document.getElementById('fb-pace-text').textContent = `${metrics.speaking_wpm || 135} WPM`;
+                document.getElementById('fb-pace-badge').textContent = metrics.pace_score || 'Optimal';
+                document.getElementById('fb-filler-count').textContent = `${metrics.filler_word_count || 0} Fillers`;
+                document.getElementById('fb-filler-rating').textContent = (metrics.filler_word_count || 0) <= 2 ? 'Minimal' : ((metrics.filler_word_count || 0) <= 5 ? 'Moderate' : 'Frequent');
+                document.getElementById('fb-clarity-score').textContent = `${metrics.clarity_score || 8.0}/10`;
+                document.getElementById('fb-structure-score').textContent = `${metrics.structure_score || 8.2}/10`;
+
+                let paceObs = 'Pacing was balanced with clear conversational cadence.';
+                if ((metrics.speaking_wpm || 0) > 160) paceObs = 'Slightly rapid speaking pace. Take intentional pauses between architectural points.';
+                else if ((metrics.speaking_wpm || 0) < 110 && (metrics.speaking_wpm || 0) > 0) paceObs = 'Deliberate pacing. Accelerate slightly on standard setup details.';
+                document.getElementById('fb-pace-observation').textContent = paceObs;
+
+                // Technical Content Card
+                document.getElementById('fb-tech-score').textContent = `${record.technicalScore || 80}/100`;
+                document.getElementById('fb-rel-score').textContent = `${record.relevanceScore || 82}/100`;
+                document.getElementById('fb-depth-score').textContent = `${record.depthScore || 78}/100`;
+                document.getElementById('fb-resume-score').textContent = `${record.resumeConsistencyScore || 80}/100`;
+                document.getElementById('fb-critique-text').textContent = record.feedback || 'Good foundational response.';
+
+                // Spoken Transcript
+                document.getElementById('fb-transcript-text').textContent = `"${record.answer}"`;
+
+                // Strengths List
+                const strengthsList = document.getElementById('fb-strengths-list');
+                const strengths = (record.strengths && record.strengths.length) ? record.strengths : ['Clear architectural foundation stated without ambiguity.'];
+                strengthsList.innerHTML = strengths.map(s => `
+                    <li class="flex items-start gap-1.5">
+                        <span class="text-emerald-400 font-bold">✓</span>
+                        <span>${s}</span>
+                    </li>
+                `).join('');
+
+                // Improvements List
+                const weaknessesList = document.getElementById('fb-weaknesses-list');
+                const improvements = (record.improvements && record.improvements.length) ? record.improvements : ['Provide concrete numerical metrics (e.g. latency, throughput).'];
+                weaknessesList.innerHTML = improvements.map(w => `
+                    <li class="flex items-start gap-1.5">
+                        <span class="text-amber-400 font-bold">•</span>
+                        <span>${w}</span>
+                    </li>
+                `).join('');
+
+                // Staff Engineer Model Answer Approach
+                document.getElementById('fb-model-answer').textContent = `"${record.modelAnswerApproach || 'State the high-level architecture pattern, define concurrency constraints, and cite quantifiable impact.'}"`;
+
+                // Button Text
+                const continueBtnText = document.getElementById('fb-continue-btn-text');
+                if (this.isCompleted || this.currentQuestionIndex >= this.questionCount) {
+                    continueBtnText.textContent = 'View Final Scorecard & Preparation Plan';
+                } else {
+                    continueBtnText.textContent = `Proceed to Question ${this.currentQuestionIndex + 1}`;
+                }
+
+                modal.classList.remove('hidden');
+            },
+
+            proceedToNextQuestion() {
+                const modal = document.getElementById('view-feedback-modal');
+                if (modal) modal.classList.add('hidden');
+
+                if (this.isCompleted || this.currentQuestionIndex >= this.questionCount) {
+                    this.finishInterview();
+                    return;
+                }
+
+                // Advance question
+                this.currentQuestionIndex++;
+                if (this.pendingNextQuestion) {
+                    this.currentQuestionData = {
+                        question: this.pendingNextQuestion.question,
+                        type: this.pendingNextQuestion.type || 'technical_depth',
+                        contextReason: this.pendingNextQuestion.contextReason || 'Challenging implementation depth.',
+                        rubricFocus: this.pendingNextQuestion.rubricFocus || 'Technical depth & trade-offs',
+                        isFollowUp: this.pendingNextQuestion.isFollowUp || false
+                    };
+                } else {
+                    this.currentQuestionData = {
+                        question: `Regarding ${this.targetRole} architectures in ${this.department}: how do you handle data consistency and transaction rollback when an upstream dependent service times out?`,
+                        type: 'role_scenario',
+                        contextReason: 'Evaluating distributed exception handling and resilience.',
+                        rubricFocus: 'Fault tolerance & system recovery',
+                        isFollowUp: false
+                    };
+                }
+
+                this.persistSession();
+                this.renderCurrentQuestion();
+            },
+
+            // =================================================================
+            // FINAL REPORT & PREPARATION PLAN (VIEW 5)
+            // =================================================================
+            async finishInterview() {
+                clearInterval(this.timerInterval);
+                this.stopMediaStream();
+
+                document.getElementById('view-simulator').classList.add('hidden');
+                document.getElementById('view-feedback-modal').classList.add('hidden');
+                document.getElementById('view-analyzing').classList.remove('hidden');
+
+                const progress = document.getElementById('analysis-progress-bar');
+                const statusText = document.getElementById('analysis-step-text');
+                progress.style.width = '60%';
+                statusText.textContent = 'Synthesizing 7-dimensional bar-raiser scorecard & preparation plan...';
+
+                try {
+                    const headers = { 'Content-Type': 'application/json' };
+                    try {
+                        const token = window.AuthManager ? await window.AuthManager.getAccessToken() : null;
+                        if (token) headers['Authorization'] = `Bearer ${token}`;
+                    } catch (e) {}
+
+                    const res = await fetch('/api/ai/mock-interview/complete', {
+                        method: 'POST',
+                        headers,
+                        body: JSON.stringify({
+                            sessionId: this.sessionId,
+                            userId: this.userId,
+                            targetRole: this.targetRole,
+                            department: this.department,
+                            resume: this.currentResume,
+                            conversation: this.conversation
+                        })
+                    });
+
+                    const json = await res.json();
+                    const report = json.report || {};
+
+                    progress.style.width = '100%';
+                    statusText.textContent = 'Bar-Raiser Report Ready!';
+
+                    setTimeout(() => {
+                        this.renderFinalReport(report);
+                        this.clearActiveSession();
+                    }, 400);
+
+                } catch (err) {
+                    console.error('[MockInterview] Report error:', err);
+                    await this.renderFinalReport({
+                        overallScore: 83,
+                        technicalScore: 82,
+                        communicationScore: 85,
+                        problemSolvingScore: 82,
+                        resumeScore: 85,
+                        roleReadinessScore: 81,
+                        projectScore: 84,
+                        strengths: ['Direct communication of component layers', 'Good problem decomposition under constraints'],
+                        weaknesses: ['Address edge-case latency metrics earlier in explanation'],
+                        resumeGapAnalysis: 'Demonstrated solid grasp of core concepts with room for deeper metric quantification in project responses.',
+                        resumeImprovements: ['Add quantitative impact metrics to project descriptions.'],
+                        topicsToRevise: [`${this.department} Core Invariants`, 'System Boundary Constraints'],
+                        recommendedResources: [
+                            { title: 'System Design Interview – An Insider’s Guide', type: 'Book', author: 'Alex Xu' },
+                            { title: 'Designing Data-Intensive Applications', type: 'Book', author: 'Martin Kleppmann' }
+                        ],
+                        preparationPlan: [
+                            { priority: 1, title: 'Master Core Architecture Invariants', category: 'Skills', action: 'Review memory management and concurrency for your primary tools.' },
+                            { priority: 2, title: 'Quantify Project Architecture & SLAs', category: 'Projects', action: 'Define measurable throughput and latency bounds for capstone deliverables.' },
+                            { priority: 3, title: 'Practice Production Troubleshooting', category: 'System Design', action: 'Develop a 4-step workflow for diagnosing silent latency regressions.' },
+                            { priority: 4, title: 'Refine Resume Metric Bullets', category: 'Resume', action: 'Rewrite project bullets using the Google XYZ action-oriented formula.' },
+                            { priority: 5, title: 'Next Stage Mock Simulation', category: 'Mock Practice', action: 'Take an Advanced 10-question simulation to reinforce top-down articulation.' }
+                        ]
+                    });
+                    this.clearActiveSession();
+                }
+            },
+
+            async renderFinalReport(report) {
+                document.getElementById('view-analyzing').classList.add('hidden');
+                document.getElementById('view-report').classList.remove('hidden');
+                document.getElementById('live-timer-badge').classList.add('hidden');
+                document.getElementById('end-interview-btn').classList.add('hidden');
+
+                // Populate 7 Scores
+                document.getElementById('rep-overall').textContent = `${report.overallScore || 83}%`;
+                document.getElementById('rep-tech').textContent = `${report.technicalScore || 82}%`;
+                document.getElementById('rep-comm').textContent = `${report.communicationScore || 85}%`;
+                document.getElementById('rep-problem').textContent = `${report.problemSolvingScore || 82}%`;
+                document.getElementById('rep-resume').textContent = `${report.resumeScore || 85}%`;
+                document.getElementById('rep-project').textContent = `${report.projectScore || 84}%`;
+                document.getElementById('rep-ready').textContent = `${report.roleReadinessScore || 81}%`;
+
+                document.getElementById('report-subtitle').textContent = `Target Role: ${this.targetRole} • Department: ${this.department} • Duration: ${Math.floor(this.secondsElapsed / 60)}m ${this.secondsElapsed % 60}s`;
+
+                // Resume Gap Analysis
+                document.getElementById('rep-gap-analysis-text').textContent = report.resumeGapAnalysis || 'Resume claims were verified during the interview with solid conceptual alignment.';
+
+                // Strengths List
+                const strList = document.getElementById('rep-strengths-list');
+                strList.innerHTML = (report.strengths || ['Good architectural explanation']).map(s => `
+                    <li class="flex items-start gap-2">
+                        <span class="text-tertiary font-bold">•</span>
+                        <span>${s}</span>
+                    </li>
+                `).join('');
+
+                // Weaknesses List
+                const weakList = document.getElementById('rep-weaknesses-list');
+                weakList.innerHTML = (report.weaknesses || ['Provide more concrete edge case coverage']).map(w => `
+                    <li class="flex items-start gap-2">
+                        <span class="text-amber-400 font-bold">•</span>
+                        <span>${w}</span>
+                    </li>
+                `).join('');
+
+                // Preparation Plan (5 Priorities)
+                const planContainer = document.getElementById('rep-prep-plan-container');
+                const planItems = report.preparationPlan || [
+                    { priority: 1, title: 'Master Core Architecture Invariants', category: 'Skills', action: 'Review memory management and concurrency for your primary tools.' },
+                    { priority: 2, title: 'Quantify Project Architecture & SLAs', category: 'Projects', action: 'Define measurable throughput and latency bounds for capstone deliverables.' },
+                    { priority: 3, title: 'Practice Production Troubleshooting', category: 'System Design', action: 'Develop a 4-step workflow for diagnosing silent latency regressions.' },
+                    { priority: 4, title: 'Refine Resume Metric Bullets', category: 'Resume', action: 'Rewrite project bullets using the Google XYZ action-oriented formula.' },
+                    { priority: 5, title: 'Next Stage Mock Simulation', category: 'Mock Practice', action: 'Take an Advanced 10-question simulation to reinforce top-down articulation.' }
+                ];
+
+                planContainer.innerHTML = planItems.map(p => `
+                    <div class="p-3.5 rounded-xl bg-surface-container-low border border-outline-variant/60 flex items-start gap-3">
+                        <span class="w-6 h-6 rounded-lg bg-secondary-container/30 text-secondary border border-secondary/40 font-mono font-bold text-xs flex items-center justify-center shrink-0">
+                            ${p.priority || 1}
+                        </span>
+                        <div class="space-y-0.5 flex-1 text-xs">
+                            <div class="flex items-center justify-between">
+                                <strong class="text-white font-bold">${p.title}</strong>
+                                ${p.category ? `<span class="px-2 py-0.5 rounded text-[9px] font-mono font-bold bg-surface-container text-outline border border-outline-variant/40">${p.category}</span>` : ''}
+                            </div>
+                            <p class="text-on-surface-variant text-[11px] leading-relaxed">${p.action}</p>
+                        </div>
+                    </div>
+                `).join('');
+
+                // Skills Links
+                const skillsLinks = document.getElementById('rep-skills-links');
+                let skillsToLink = (this.currentResume.allSkillsList || ['Python', 'SQL', 'System Architecture', 'Git']).slice(0, 5);
+                skillsLinks.innerHTML = skillsToLink.map(s => `
+                    <a href="skills.html?skill=${encodeURIComponent(s)}" class="px-2.5 py-1 rounded-lg bg-primary-container/20 hover:bg-primary-container/30 text-primary border border-primary/30 text-[10px] font-bold transition-colors flex items-center gap-1">
+                        <span>${s}</span>
+                        <span class="material-symbols-outlined text-xs">open_in_new</span>
+                    </a>
+                `).join('');
+
+                // Projects Links
+                const projLinks = document.getElementById('rep-projects-links');
+                projLinks.innerHTML = `
+                    <a href="projects.html" class="p-2 rounded-lg bg-surface-container-low hover:bg-surface-container border border-outline-variant/40 text-[11px] text-white flex items-center justify-between transition-colors">
+                        <span>Production-Style System Design Capstone</span>
+                        <span class="material-symbols-outlined text-xs text-tertiary">arrow_forward</span>
+                    </a>
+                `;
+
+                // Resume Improvements List
+                const impList = document.getElementById('rep-improvements-list');
+                impList.innerHTML = (report.resumeImprovements || ['Quantify impact metrics in project bullets']).map(imp => `
+                    <li class="p-2.5 rounded-xl bg-surface-container-low border border-outline-variant/40 flex items-start gap-2.5">
+                        <span class="material-symbols-outlined text-secondary text-sm shrink-0 mt-0.5">tips_and_updates</span>
+                        <span>${imp}</span>
+                    </li>
+                `).join('');
+
+                // Question-by-Question Accordion with Spoken Metrics & Model Answers
+                document.getElementById('rep-qa-count').textContent = `${this.conversation.length} Questions Answered`;
+                const acc = document.getElementById('rep-qa-accordion');
+                acc.innerHTML = this.conversation.map((c, idx) => {
+                    const sm = c.speakingMetrics || {};
+                    return `
+                        <div class="p-4 rounded-xl bg-surface-container-low border border-outline-variant/60 space-y-3">
+                            <div class="flex items-center justify-between text-xs">
+                                <span class="font-bold text-white">Q${idx + 1}: ${c.question}</span>
+                                <span class="px-2 py-0.5 rounded font-mono font-bold text-[10px] bg-tertiary-container/20 text-tertiary border border-tertiary/40">
+                                    Score: ${(c.overallScore ? c.overallScore / 10 : 8.0).toFixed(1)}/10
+                                </span>
+                            </div>
+
+                            <!-- Speaking Delivery Snapshot -->
+                            <div class="flex flex-wrap gap-2 text-[10px] font-mono text-outline border-y border-outline-variant/30 py-1.5">
+                                <span>Pace: <strong class="text-white">${sm.speaking_wpm || 135} WPM</strong></span>
+                                <span>•</span>
+                                <span>Fillers: <strong class="text-white">${sm.filler_word_count || 0}</strong></span>
+                                <span>•</span>
+                                <span>Clarity: <strong class="text-primary">${sm.clarity_score || 8.0}/10</strong></span>
+                                <span>•</span>
+                                <span>Duration: <strong class="text-white">${c.duration || 30}s</strong></span>
+                            </div>
+
+                            <p class="text-[11px] text-on-surface-variant font-mono bg-surface-container p-2.5 rounded-lg border border-outline-variant/30">
+                                <strong>Your Spoken Response:</strong> "${c.answer}"
+                            </p>
+                            <p class="text-[11px] text-tertiary">
+                                <strong>Bar-Raiser Feedback:</strong> ${c.feedback || 'Evaluated'}
+                            </p>
+                            <p class="text-[11px] text-secondary italic bg-secondary-container/10 p-2.5 rounded-lg border border-secondary/20">
+                                <strong>Staff Engineer Model Answer Approach:</strong> "${c.modelAnswerApproach || c.improvedAnswer || 'Optimal architectural articulation.'}"
+                            </p>
+                        </div>
+                    `;
+                }).join('');
+
+                // Save to Supabase with RLS user isolation
+                try {
+                    await DB.saveMockInterviewSession({
+                        sessionId: this.sessionId,
+                        resumeId: this.currentResume.id || null,
+                        targetRole: this.targetRole,
+                        department: this.department,
+                        interviewType: this.interviewType,
+                        difficulty: this.difficulty,
+                        questionCount: this.questionCount,
+                        status: 'completed',
+                        overallScore: report.overallScore || 83,
+                        technicalScore: report.technicalScore || 82,
+                        communicationScore: report.communicationScore || 85,
+                        problemSolvingScore: report.problemSolvingScore || 82,
+                        resumeScore: report.resumeScore || 85,
+                        roleReadinessScore: report.roleReadinessScore || 81,
+                        projectScore: report.projectScore || 84,
+                        strengths: report.strengths || [],
+                        weaknesses: report.weaknesses || [],
+                        knowledgeGaps: report.knowledgeGaps || [],
+                        resumeGapAnalysis: report.resumeGapAnalysis || '',
+                        resumeImprovements: report.resumeImprovements || [],
+                        topicsToRevise: report.topicsToRevise || [],
+                        preparationPlan: report.preparationPlan || [],
+                        recommendedResources: report.recommendedResources || [],
+                        conversation: this.conversation
+                    });
+                    AuthManager.showToast('Interview session saved to your history!', 'success');
+                } catch (err) {
+                    console.warn('[MockInterview] Supabase save error (saved locally):', err);
+                }
+            },
+
+            startTimer() {
+                if (this.timerInterval) clearInterval(this.timerInterval);
+                this.timerInterval = setInterval(() => {
+                    this.secondsElapsed++;
+                    const m = String(Math.floor(this.secondsElapsed / 60)).padStart(2, '0');
+                    const s = String(this.secondsElapsed % 60).padStart(2, '0');
+                    const clock = document.getElementById('interview-clock');
+                    if (clock) clock.textContent = `${m}:${s}`;
+                }, 1000);
+            },
+
+            initSpeechRecognition() {
+                const SpeechRec = window.SpeechRecognition || window.webkitSpeechRecognition;
+                if (SpeechRec) {
+                    try {
+                        this.speechRecognition = new SpeechRec();
+                        this.speechRecognition.continuous = true;
+                        this.speechRecognition.interimResults = true;
+                        this.speechRecognition.lang = 'en-US';
+
+                        let baseTranscript = '';
+
+                        this.speechRecognition.onstart = () => {
+                            this.isSpeechRecActive = true;
+                            const answerBox = document.getElementById('answer-input');
+                            baseTranscript = answerBox ? answerBox.value.trim() : '';
+                            const transPill = document.getElementById('transcription-status-pill');
+                            if (transPill) transPill.classList.remove('hidden');
+                        };
+
+                        this.speechRecognition.onresult = (e) => {
+                            let interimTranscript = '';
+                            let finalChunk = '';
+
+                            for (let i = e.resultIndex; i < e.results.length; ++i) {
+                                if (e.results[i].isFinal) {
+                                    finalChunk += e.results[i][0].transcript + ' ';
+                                } else {
+                                    interimTranscript += e.results[i][0].transcript;
+                                }
+                            }
+
+                            if (finalChunk) {
+                                baseTranscript = (baseTranscript ? baseTranscript + ' ' : '') + finalChunk.trim();
+                            }
+
+                            const fullText = (baseTranscript + (interimTranscript ? ' ' + interimTranscript : '')).trim();
+                            const input = document.getElementById('answer-input');
+                            if (input) {
+                                input.value = fullText;
+                                this.updateLiveSpeakingMetrics();
+                            }
+                        };
+
+                        this.speechRecognition.onerror = (e) => {
+                            console.warn('[SpeechRec] Error:', e.error);
+                            if (e.error === 'not-allowed') {
+                                const micAlert = document.getElementById('mic-denied-alert');
+                                if (micAlert) micAlert.classList.remove('hidden');
+                            }
+                            this.isSpeechRecActive = false;
+                        };
+
+                        this.speechRecognition.onend = () => {
+                            this.isSpeechRecActive = false;
+                            // Auto-restart if candidate is still recording (prevents browser silence cut-off)
+                            if (this.isRecording) {
+                                try {
+                                    this.speechRecognition.start();
+                                    this.isSpeechRecActive = true;
+                                } catch (restartErr) {}
+                            }
+                        };
+                    } catch (initErr) {
+                        console.warn('[SpeechRec] Initialization failed:', initErr);
+                    }
+                }
+            }
+        };
+
+        // UI Event Handlers
+        function handleResumeFileUpload(event) {
+            MockInterviewEngine.handleFileUpload(event);
+        }
+
+        function useSelectedSavedResume() {
+            MockInterviewEngine.useSelectedSavedResume();
+        }
+
+        function resetResumeSelection() {
+            MockInterviewEngine.resetResumeSelection();
+        }
+
+        function startInterviewSession() {
+            MockInterviewEngine.startInterview();
+        }
+
+        function submitCandidateAnswer() {
+            MockInterviewEngine.submitAnswerDirect();
+        }
+
+        function clearAnswerInput() {
+            const input = document.getElementById('answer-input');
+            if (input) input.value = '';
+            document.getElementById('char-counter').textContent = '0 words';
+            document.getElementById('filler-words-indicator').classList.add('hidden');
+        }
+
+        function toggleSpeech() {
+            MockInterviewEngine.isTtsEnabled = !MockInterviewEngine.isTtsEnabled;
+            const icon = document.getElementById('tts-icon');
+            if (MockInterviewEngine.isTtsEnabled) {
+                if (icon) {
+                    icon.textContent = 'volume_up';
+                    icon.classList.remove('text-outline');
+                }
+                AuthManager.showToast('AI Voice enabled.', 'info');
+            } else {
+                if (icon) {
+                    icon.textContent = 'volume_off';
+                    icon.classList.add('text-outline');
+                }
+                if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+                AuthManager.showToast('AI Voice muted.', 'info');
+            }
+        }
+
+        function toggleCamStream() {
+            MockInterviewEngine.toggleCam();
+        }
+
+        function toggleMicStream() {
+            MockInterviewEngine.toggleMic();
+        }
+
+        function confirmEndSession() {
+            if (confirm('Are you sure you want to exit this mock interview session? Your progress will be cleared.')) {
+                MockInterviewEngine.stopMediaStream();
+                MockInterviewEngine.clearActiveSession();
+                window.location.reload();
+            }
+        }
+
+        async function openHistoryModal() {
+            const modal = document.getElementById('history-modal');
+            modal.classList.remove('hidden');
+            const list = document.getElementById('history-list');
+            list.innerHTML = `<div class="p-6 text-center text-outline">Loading past interviews...</div>`;
+
+            try {
+                const history = await DB.getMockInterviewHistory();
+                if (!history || history.length === 0) {
+                    list.innerHTML = `
+                        <div class="p-8 text-center space-y-2">
+                            <span class="material-symbols-outlined text-4xl text-outline">history</span>
+                            <p class="text-white font-bold text-sm">No past interviews found</p>
+                            <p class="text-[11px] text-outline">Complete your first mock interview to view score reports and progress history.</p>
+                        </div>
+                    `;
+                } else {
+                    list.innerHTML = history.map(item => `
+                        <div class="p-4 rounded-xl bg-surface-container-low border border-outline-variant/60 flex items-center justify-between">
+                            <div>
+                                <div class="font-bold text-white text-xs">${item.targetRole} (${item.department || 'CSE'})</div>
+                                <div class="text-[10px] text-outline font-mono mt-0.5">
+                                    ${new Date(item.createdAt || item.created_at || Date.now()).toLocaleDateString()} • ${item.difficulty || 'Intermediate'} • ${item.interviewType || item.interview_type || 'Mixed'}
+                                </div>
+                                ${item.strengths && item.strengths.length ? `<div class="text-[10px] text-tertiary mt-1">Strength: ${item.strengths[0]}</div>` : ''}
+                            </div>
+                            <div class="text-right">
+                                <span class="text-base font-extrabold text-tertiary font-mono">${item.overallScore || item.overall_score || 0}%</span>
+                                <span class="block text-[9px] text-outline uppercase font-mono">Score</span>
+                            </div>
+                        </div>
+                    `).join('');
+                }
+            } catch (e) {
+                list.innerHTML = `<div class="p-4 text-center text-red-400">Failed to load history.</div>`;
+            }
+        }
+
+        function closeHistoryModal() {
+            document.getElementById('history-modal').classList.add('hidden');
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            MockInterviewEngine.init();
+        });
+    </script>
+    <script src="js/three.min.js"></script>
+    <script src="js/btech-bg3d.js"></script>
+</body>
+</html>

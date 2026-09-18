@@ -1,0 +1,631 @@
+/* ==========================================================================
+   BTechPath AI OS - Official Design System & Theme Engine
+   Single Source of Truth Palette:
+   - Deep Twilight:   #0B0F19 (Main Background)
+   - Midnight Surface: #121826 (Secondary Background)
+   - Elevated Surface: #1A2031 (Card / Surface)
+   - Primary Indigo:   #5865F2 (Primary Action)
+   - Soft Violet:      #7C5CFF (AI / Highlights)
+   - Teal Accent:      #2DD4BF (Success / Progress)
+   - Rose Gold:        #F6C177 (Premium Highlights)
+   - Warm Ivory:       #F5F7FA (Primary Text)
+   - Muted Gray:       #A1A7BC (Secondary Text)
+   - Border Subtle:    #2A3147 (Border Subtle)
+   ========================================================================== */
+
+:root {
+  /* Core Foundation */
+  --bg-main: #0B0F19;
+  --bg-secondary: #121826;
+  --surface-card: #1A2031;
+  --surface-elevated: #21293D;
+  --surface-hover: #263047;
+
+  /* Primary Brand & AI */
+  --color-indigo: #5865F2;
+  --color-violet: #7C5CFF;
+  --color-violet-light: #B388FF;
+  --color-teal: #2DD4BF;
+  --color-rose-gold: #F6C177;
+  --color-rose-gold-dark: #F49D5A;
+
+  /* Typography & Borders */
+  --text-primary: #F5F7FA;
+  --text-secondary: #A1A7BC;
+  --text-muted: #6B7280;
+  --border-subtle: #2A3147;
+  --border-strong: #3B4461;
+
+  /* Semantic Feedback */
+  --semantic-success: #22C55E;
+  --semantic-warning: #F59E0B;
+  --semantic-error: #EF4444;
+  --semantic-blue: #3B82F6;
+  --semantic-purple: #8B5CF6;
+  --semantic-cyan: #06B6D4;
+
+  /* Gradients */
+  --grad-indigo: linear-gradient(135deg, #5865F2 0%, #7C5CFF 100%);
+  --grad-ai: linear-gradient(135deg, #7C5CFF 0%, #B388FF 100%);
+  --grad-teal: linear-gradient(135deg, #2DD4BF 0%, #06B6DA 100%);
+  --grad-premium: linear-gradient(135deg, #F6C177 0%, #F49D5A 100%);
+  --grad-dark-card: linear-gradient(180deg, rgba(26, 32, 49, 0.95) 0%, rgba(18, 24, 38, 0.98) 100%);
+  --grad-glow: radial-gradient(circle at 50% 0%, rgba(124, 92, 255, 0.12) 0%, transparent 70%);
+
+  /* Tailwind Compatibility Mappings */
+  --color-surface: var(--bg-main);
+  --color-surface-dim: var(--bg-main);
+  --color-surface-bright: var(--surface-hover);
+  --color-surface-container-lowest: var(--bg-main);
+  --color-surface-container-low: var(--bg-secondary);
+  --color-surface-container: var(--surface-card);
+  --color-surface-container-high: var(--surface-elevated);
+  --color-surface-container-highest: var(--surface-hover);
+  --color-on-surface: var(--text-primary);
+  --color-on-surface-variant: var(--text-secondary);
+  --color-outline: var(--border-strong);
+  --color-outline-variant: var(--border-subtle);
+  --color-primary: #bec2ff;
+  --color-primary-container: var(--color-indigo);
+  --color-secondary: var(--color-violet);
+  --color-secondary-container: #4816CB;
+  --color-tertiary: var(--color-teal);
+  --color-tertiary-container: #008476;
+}
+
+/* Base resets & typography */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.font-mono-ui {
+  font-family: 'Geist', 'JetBrains Mono', monospace;
+}
+
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined', sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Palette Utility Classes */
+.bg-deep-twilight { background-color: var(--bg-main); }
+.bg-midnight-surface { background-color: var(--bg-secondary); }
+.bg-elevated-surface { background-color: var(--surface-card); }
+.bg-surface-elevated { background-color: var(--surface-elevated); }
+.border-subtle { border-color: var(--border-subtle); }
+.border-strong { border-color: var(--border-strong); }
+.text-warm-ivory { color: var(--text-primary); }
+.text-muted-gray { color: var(--text-secondary); }
+.text-indigo-brand { color: var(--color-indigo); }
+.text-violet-brand { color: var(--color-violet); }
+.text-teal-brand { color: var(--color-teal); }
+.text-rose-gold { color: var(--color-rose-gold); }
+
+/* Gradient Utilities */
+.grad-indigo-btn {
+  background: var(--grad-indigo);
+  color: #ffffff;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.grad-indigo-btn:hover {
+  filter: brightness(1.1);
+  box-shadow: 0 8px 24px rgba(88, 101, 242, 0.35);
+  transform: translateY(-1px);
+}
+
+.grad-ai-badge {
+  background: var(--grad-ai);
+  color: #0B0F19;
+  font-weight: 700;
+}
+
+.grad-teal-badge {
+  background: var(--grad-teal);
+  color: #0B0F19;
+  font-weight: 700;
+}
+
+.grad-premium-badge {
+  background: var(--grad-premium);
+  color: #0B0F19;
+  font-weight: 700;
+}
+
+.card-gradient-surface {
+  background: var(--grad-dark-card);
+  border: 1px solid var(--border-subtle);
+}
+
+/* Real 3D Engineering Environment Canvas */
+.btech-3d-bg-canvas,
+#btech-3d-bg-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+  display: block;
+}
+
+/* Deactivate flat 2D AI blobs in favor of Real 3D Environment */
+.bg-ambient-glow {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.bg-grid-pattern {
+  display: none !important;
+}
+
+/* Ensure all page content and containers sit in proper 3D layering above canvas */
+header, main, section, aside, footer, .auth-glass-card, .tilt-card, [data-tilt] {
+  position: relative;
+  z-index: 10;
+}
+
+/* Form Inputs & Dark Theme Hardening across ALL states */
+.premium-input {
+  background-color: var(--surface-card) !important;
+  border: 1px solid var(--border-subtle) !important;
+  color: var(--text-primary) !important;
+  border-radius: 0.5rem;
+  padding: 0.625rem 0.875rem;
+  font-size: 0.875rem;
+  transition: all 0.2s ease;
+  caret-color: var(--color-indigo) !important;
+  -webkit-text-fill-color: var(--text-primary) !important;
+  color-scheme: dark !important;
+}
+.premium-input:focus,
+.premium-input:focus-visible,
+.premium-input:active {
+  border-color: var(--color-violet) !important;
+  box-shadow: 0 0 0 3px rgba(124, 92, 255, 0.22) !important;
+  outline: none !important;
+  background-color: var(--surface-card) !important;
+  color: var(--text-primary) !important;
+  -webkit-text-fill-color: var(--text-primary) !important;
+}
+.premium-input::placeholder {
+  color: var(--text-secondary) !important;
+  opacity: 0.7 !important;
+}
+
+/* ==========================================================================
+   Universal Form Controls & Autofill Protection
+   Overrides browser defaults and Tailwind Forms plugin resets.
+   Guarantees all inputs stay #1A2031 with #F5F7FA ivory text while typing.
+   ========================================================================== */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="search"],
+input[type="number"],
+input[type="tel"],
+input[type="url"],
+input:not([type]),
+textarea,
+select {
+  background-color: #1A2031 !important;
+  color: #F5F7FA !important;
+  border-color: #2A3147 !important;
+  caret-color: #5865F2 !important;
+  -webkit-text-fill-color: #F5F7FA !important;
+  color-scheme: dark !important;
+}
+
+/* Hover State */
+input[type="text"]:hover,
+input[type="email"]:hover,
+input[type="password"]:hover,
+input[type="search"]:hover,
+input[type="number"]:hover,
+input[type="tel"]:hover,
+input[type="url"]:hover,
+input:not([type]):hover,
+textarea:hover,
+select:hover {
+  background-color: #1A2031 !important;
+  border-color: #3B4461 !important;
+  color: #F5F7FA !important;
+}
+
+/* Focus, Typing, and Active States - STRICTLY DARK, NEVER TURNS WHITE */
+input[type="text"]:focus,
+input[type="text"]:focus-visible,
+input[type="text"]:active,
+input[type="email"]:focus,
+input[type="email"]:focus-visible,
+input[type="password"]:focus,
+input[type="password"]:focus-visible,
+input[type="search"]:focus,
+input[type="number"]:focus,
+input:not([type]):focus,
+textarea:focus,
+textarea:focus-visible,
+textarea:active,
+select:focus,
+select:focus-visible,
+select:active {
+  background-color: #1A2031 !important;
+  color: #F5F7FA !important;
+  -webkit-text-fill-color: #F5F7FA !important;
+  border-color: #5865F2 !important;
+  outline: none !important;
+  box-shadow: 0 0 0 2px rgba(88, 101, 242, 0.3) !important;
+  caret-color: #5865F2 !important;
+}
+
+/* Placeholders across all engines */
+input::placeholder,
+textarea::placeholder {
+  color: #A1A7BC !important;
+  opacity: 0.65 !important;
+  -webkit-text-fill-color: #A1A7BC !important;
+}
+
+/* Selection highlight inside inputs */
+input::selection,
+textarea::selection {
+  background-color: #5865F2 !important;
+  color: #FFFFFF !important;
+  -webkit-text-fill-color: #FFFFFF !important;
+}
+
+/* Dropdown <option> elements inside <select> */
+select option {
+  background-color: #121826 !important;
+  color: #F5F7FA !important;
+  padding: 8px 12px;
+}
+select option:checked,
+select option:hover {
+  background-color: #1A2031 !important;
+  color: #F6C177 !important;
+}
+
+/* WebKit Browser Autofill (Chrome, Edge, Safari, Opera) */
+/* Employs box-shadow inset hack to prevent browser white/yellow flash */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-text-fill-color: #F5F7FA !important;
+  -webkit-box-shadow: 0 0 0px 1000px #1A2031 inset !important;
+  box-shadow: 0 0 0px 1000px #1A2031 inset !important;
+  transition: background-color 50000s ease-in-out 0s !important;
+  caret-color: #F5F7FA !important;
+  font-family: inherit !important;
+}
+
+/* Firefox Autofill */
+input:-moz-autofill,
+textarea:-moz-autofill,
+select:-moz-autofill {
+  background-color: #1A2031 !important;
+  color: #F5F7FA !important;
+  border-color: #2A3147 !important;
+  filter: none !important;
+}
+
+/* Disabled State */
+input:disabled,
+textarea:disabled,
+select:disabled {
+  background-color: #121826 !important;
+  color: #6B7280 !important;
+  -webkit-text-fill-color: #6B7280 !important;
+  border-color: #2A3147 !important;
+  cursor: not-allowed !important;
+  opacity: 0.65;
+}
+
+/* Accessible Validation Error State */
+.input-error,
+input.error-state,
+textarea.error-state,
+input.border-red-500,
+textarea.border-red-500 {
+  border-color: #EF4444 !important;
+  box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.25) !important;
+  background-color: #1A2031 !important;
+  color: #F5F7FA !important;
+  -webkit-text-fill-color: #F5F7FA !important;
+}
+
+/* Toast Notifications Container */
+#toast-container {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 99999;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  pointer-events: none;
+}
+
+.toast {
+  pointer-events: auto;
+  min-width: 320px;
+  max-width: 440px;
+  padding: 14px 18px;
+  border-radius: 12px;
+  background-color: var(--surface-card);
+  border: 1px solid var(--border-subtle);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  animation: toast-in 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  transition: all 0.2s ease;
+}
+.toast.toast-success { border-left: 4px solid var(--color-teal); }
+.toast.toast-error { border-left: 4px solid var(--semantic-error); }
+.toast.toast-info { border-left: 4px solid var(--color-indigo); }
+.toast.toast-warning { border-left: 4px solid var(--semantic-warning); }
+
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Command Center Modal */
+#command-center-modal {
+  animation: modal-fade-in 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes modal-fade-in {
+  from { opacity: 0; transform: scale(0.97) translateY(-8px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-main);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-subtle);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--border-strong);
+}
+
+/* 3D Circular Progress Depth */
+.progress-ring-circle {
+  transition: stroke-dashoffset 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+}
+
+/* Respect Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ==========================================================================
+   PRODUCTION RESPONSIVE & MOBILE BREAKPOINT ENHANCEMENTS
+   ========================================================================== */
+
+/* 1. Global Viewport & Horizontal Overflow Protection */
+html {
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+body {
+  max-width: 100%;
+  position: relative;
+  min-height: 100%;
+}
+
+@supports not (overflow: clip) {
+  html {
+    overflow-x: hidden;
+  }
+}
+
+:root {
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --cookie-banner-offset: 0px;
+}
+
+/* 2. Mobile Touch Target Ergonomics */
+@media (max-width: 767px) {
+  button, 
+  a.grad-indigo-btn, 
+  .btn-touch-target,
+  input[type="button"],
+  input[type="submit"] {
+    min-height: 44px;
+  }
+
+  /* Prevent text sizing bugs on iOS orientation change */
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+}
+
+/* 3. Dark Mode Browser Autofill Styling */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-text-fill-color: #F5F7FA !important;
+  -webkit-box-shadow: 0 0 0px 1000px #1A2031 inset !important;
+  border-color: #2A3147 !important;
+  transition: background-color 5000s ease-in-out 0s;
+  caret-color: #2DD4BF;
+}
+
+/* 4. Skeleton Shimmer & Loading State System */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.skeleton-shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(26, 32, 49, 0.8) 0%,
+    rgba(42, 49, 71, 0.9) 50%,
+    rgba(26, 32, 49, 0.8) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.8s ease-in-out infinite;
+  border-radius: 0.75rem;
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.spinner-brand {
+  border-radius: 50%;
+  border: 2.5px solid rgba(88, 101, 242, 0.2);
+  border-top-color: #5865F2;
+  border-right-color: #2DD4BF;
+  animation: spin-slow 0.8s linear infinite;
+}
+
+/* 5. Sticky Mobile CTA Dynamic Position */
+#sticky-mobile-cta {
+  bottom: calc(var(--cookie-banner-offset, 0px) + var(--safe-bottom, 0px));
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), bottom 0.25s ease-out;
+}
+
+/* 6. TechPath Official Branding & Responsive Logo Display */
+.sidebar-logo-full {
+  display: block;
+}
+
+.sidebar-logo-compact {
+  display: none;
+}
+
+/* On collapsed sidebar, show only the emblem; on expanded sidebar, show complete branding */
+#main-sidebar.collapsed .sidebar-logo-full,
+aside.collapsed .sidebar-logo-full,
+[data-sidebar-collapsed="true"] .sidebar-logo-full,
+#main-sidebar.w-16 .sidebar-logo-full,
+#main-sidebar.w-20 .sidebar-logo-full {
+  display: none !important;
+}
+
+#main-sidebar.collapsed .sidebar-logo-compact,
+aside.collapsed .sidebar-logo-compact,
+[data-sidebar-collapsed="true"] .sidebar-logo-compact,
+#main-sidebar.w-16 .sidebar-logo-compact,
+#main-sidebar.w-20 .sidebar-logo-compact {
+  display: block !important;
+}
+
+/* Ensure logo images maintain crisp rendering across display densities */
+img[src*="techpath-logo"],
+img[src*="techpath-emblem"] {
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  backface-visibility: hidden;
+  max-width: 100%;
+}
+
+/* 7. Comprehensive Overflow & Native Scrolling Engine */
+.overflow-auto { overflow: auto; }
+.overflow-hidden { overflow: hidden; }
+.overflow-clip { overflow: clip; }
+.overflow-visible { overflow: visible; }
+.overflow-scroll { overflow: scroll; }
+
+.overflow-x-auto { overflow-x: auto; }
+.overflow-y-auto { overflow-y: auto; }
+.overflow-x-hidden { overflow-x: hidden; }
+.overflow-y-hidden { overflow-y: hidden; }
+.overflow-x-clip { overflow-x: clip; }
+.overflow-y-clip { overflow-y: clip; }
+.overflow-x-visible { overflow-x: visible; }
+.overflow-y-visible { overflow-y: visible; }
+.overflow-x-scroll { overflow-x: scroll; }
+.overflow-y-scroll { overflow-y: scroll; }
+
+/* Responsive breakpoints for panel layouts */
+@media (min-width: 768px) {
+  .md\:overflow-hidden { overflow: hidden; }
+  .md\:overflow-auto { overflow: auto; }
+  .md\:overflow-y-auto { overflow-y: auto; }
+  .md\:overflow-x-auto { overflow-x: auto; }
+}
+
+@media (min-width: 1024px) {
+  .lg\:overflow-hidden { overflow: hidden; }
+  .lg\:overflow-auto { overflow: auto; }
+  .lg\:overflow-y-auto { overflow-y: auto; }
+  .lg\:overflow-x-auto { overflow-x: auto; }
+}
+
+/* Momentum Touch Scrolling for Mobile Devices */
+.overflow-y-auto,
+.overflow-x-auto,
+.overflow-auto {
+  -webkit-overflow-scrolling: touch;
+}
+
+

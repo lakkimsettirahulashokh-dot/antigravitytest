@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <!-- Primary SEO Meta Tags -->
+    <title>Start Your Journey | TechPath</title>
+    <meta name="title" content="Start Your Journey | TechPath">
+    <meta name="description" content="Begin your personalized engineering journey with guided onboarding, university curriculum alignment, and customized skill pathways.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://TechPath.ai/start-journey">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="TechPath">
+    <meta property="og:url" content="https://TechPath.ai/start-journey">
+    <meta property="og:title" content="Start Your Journey | TechPath">
+    <meta property="og:description" content="Begin your personalized engineering journey with guided onboarding, university curriculum alignment, and customized skill pathways.">
+    <meta property="og:image" content="https://TechPath.ai/assets/branding/techpath-og.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="TechPath — Learn. Build. Prepare. Grow.">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://TechPath.ai/start-journey">
+    <meta name="twitter:title" content="Start Your Journey | TechPath">
+    <meta name="twitter:description" content="Begin your personalized engineering journey with guided onboarding, university curriculum alignment, and customized skill pathways.">
+    <meta name="twitter:image" content="https://TechPath.ai/assets/branding/techpath-og.png">
+    <meta name="twitter:image:alt" content="TechPath — Learn. Build. Prepare. Grow.">
+
+    <!-- Favicon & App Icons -->
+    <link rel="icon" type="image/svg+xml" href="assets/branding/favicon.svg">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/branding/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/branding/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/branding/apple-touch-icon.png">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#0B0F19">
+    <!-- Primary SEO Meta Tags -->
+    <!-- Open Graph / Facebook -->
+    <!-- Twitter Card -->
+    <!-- Favicon & App Icons -->
+    <!-- Primary SEO Meta Tags -->
+    <!-- Open Graph / Facebook -->
+    <!-- Twitter Card -->
+    <!-- Favicon & App Icons -->
+    <!-- Primary SEO Meta Tags -->
+    <!-- Open Graph / Facebook -->
+    <!-- Twitter Card -->
+    <!-- Favicon & App Icons -->
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <!-- Tailwind CSS -->
+    <link rel="stylesheet" href="css/tailwind.output.css">
+    
+    <!-- Google Fonts & Material Symbols -->
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="css/custom.css"/>
+    <link rel="stylesheet" href="css/motion.css"/>
+    <style>
+        .premium-input {
+            background-color: #121826;
+            border: 1px solid #2A3147;
+            color: #F5F7FA;
+            transition: all 0.2s ease;
+        }
+        .premium-input:focus {
+            border-color: #5865F2;
+            box-shadow: 0 0 0 2px rgba(88, 101, 242, 0.25);
+            outline: none;
+        }
+        .role-chip.selected {
+            background-color: rgba(88, 101, 242, 0.2);
+            border-color: #5865F2;
+            color: #ffffff;
+        }
+        .semester-pill.selected {
+            background-color: #5865F2;
+            color: #ffffff;
+            font-weight: 700;
+            border-color: #5865F2;
+            box-shadow: 0 4px 12px rgba(88, 101, 242, 0.35);
+        }
+    </style>
+
+    <script src="js/seo-metadata.js" defer></script>
+</head>
+<body class="bg-main-bg text-warm-ivory min-h-screen flex flex-col justify-between p-4 sm:p-6 relative overflow-x-hidden antialiased selection:bg-indigo-brand selection:text-white font-body-md">
+
+    <!-- Ambient background glows -->
+    <div class="fixed top-0 left-1/4 w-96 h-96 bg-indigo-brand/10 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="fixed bottom-0 right-1/4 w-96 h-96 bg-teal-brand/10 rounded-full blur-3xl pointer-events-none"></div>
+
+    <!-- Header -->
+    <header class="w-full max-w-4xl mx-auto py-4 flex items-center justify-between relative z-20">
+        <a href="index.html" class="flex items-center gap-3 group py-1" aria-label="TechPath Home">
+                <img src="assets/branding/techpath-logo-horizontal.png" alt="TechPath" class="h-8 md:h-9 w-auto object-contain hidden sm:block transition-transform duration-200 group-hover:scale-[1.02]" />
+                <img src="assets/branding/techpath-emblem.png" alt="TechPath" class="h-7 w-auto object-contain sm:hidden" />
+            </a>
+        <div class="flex items-center gap-3">
+            <span id="user-email-badge" class="text-xs font-mono text-muted-gray bg-elevated px-3 py-1.5 rounded-xl border border-subtle-border">Loading user...</span>
+            <button onclick="AuthManager.logout()" class="text-xs text-muted-gray hover:text-white transition-colors flex items-center gap-1">
+                <span class="material-symbols-outlined text-sm">logout</span>
+                <span>Sign Out</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="w-full max-w-3xl mx-auto my-auto relative z-10 py-6">
+        <div class="bg-midnight border border-subtle-border rounded-3xl p-6 sm:p-10 space-y-8 shadow-2xl backdrop-blur-md">
+            
+            <!-- Hero Title & Subtitle (Strict User Requirement) -->
+            <div class="text-center space-y-2 border-b border-subtle-border/60 pb-6">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-bold bg-indigo-brand/20 text-indigo-brand border border-indigo-brand/30 mb-2">
+                    <span class="w-2 h-2 rounded-full bg-teal-brand animate-pulse"></span>
+                    <span>STUDENT ONBOARDING</span>
+                </div>
+                <h1 class="text-3xl sm:text-4xl font-black text-white tracking-tight">Start Your Journey</h1>
+                <p class="text-sm sm:text-base text-muted-gray max-w-lg mx-auto">"Let's personalize TechPath for you."</p>
+            </div>
+
+            <form id="start-journey-form" onsubmit="handleStartJourneySubmit(event)" class="space-y-6">
+                
+                <!-- 1. Full Name (Required) -->
+                <div class="space-y-1.5">
+                    <label class="text-xs font-bold text-warm-ivory uppercase tracking-wider flex items-center justify-between">
+                        <span>Full Name <span class="text-indigo-brand">*</span></span>
+                        <span class="text-[11px] text-muted-gray font-normal">Personalizes greetings & study notes</span>
+                    </label>
+                    <div class="relative">
+                        <span class="material-symbols-outlined absolute left-3.5 top-3 text-muted-gray text-lg">badge</span>
+                        <input 
+                            id="sj-name" 
+                            type="text" 
+                            required 
+                            placeholder="e.g. Alex Rivera" 
+                            class="premium-input w-full pl-10 pr-4 py-2.5 rounded-xl text-sm font-medium"
+                        />
+                    </div>
+                </div>
+
+                <!-- 2. Department / Engineering Discipline (Required, Searchable 40+ Catalog) -->
+                <div class="space-y-1.5">
+                    <div class="flex items-center justify-between">
+                        <label class="text-xs font-bold text-warm-ivory uppercase tracking-wider">
+                            Department / Engineering Discipline <span class="text-indigo-brand">*</span>
+                        </label>
+                        <span id="discipline-count-badge" class="text-[10px] font-mono px-2 py-0.5 rounded bg-indigo-brand/10 text-indigo-brand border border-indigo-brand/30">
+                            40+ Active Catalogs
+                        </span>
+                    </div>
+
+                    <!-- Department Live Search Filter -->
+                    <div class="relative mb-2">
+                        <span class="material-symbols-outlined absolute left-3.5 top-2.5 text-muted-gray text-sm">search</span>
+                        <input 
+                            id="dept-search-input" 
+                            type="text" 
+                            placeholder="Type to filter departments (e.g. CSE, VLSI, Civil, Mechanical, Biotech, AI)..." 
+                            class="premium-input w-full pl-9 pr-3 py-2 rounded-xl text-xs text-warm-ivory font-mono"
+                        />
+                    </div>
+
+                    <select 
+                        id="sj-department" 
+                        required 
+                        onchange="handleDepartmentChange(this.value)"
+                        class="premium-input w-full text-xs font-medium rounded-xl p-3"
+                    >
+                        <!-- Populated dynamically via BranchSystem -->
+                    </select>
+                    <p class="text-[11px] text-muted-gray flex items-center gap-1 pt-1">
+                        <span class="material-symbols-outlined text-xs text-teal-brand">verified</span>
+                        <span>Directly drives LearnHub videos, projects, skill architecture, and mock interviews.</span>
+                    </p>
+                </div>
+
+                <!-- 3. Current Semester Selection (Required, Sem 1 through Sem 8) -->
+                <div class="space-y-2">
+                    <div class="flex items-center justify-between">
+                        <label class="text-xs font-bold text-warm-ivory uppercase tracking-wider">
+                            Current Semester <span class="text-indigo-brand">*</span>
+                        </label>
+                        <span id="academic-year-display" class="text-[11px] font-mono text-teal-brand font-bold">
+                            Academic Year: 2nd Year (Sophomore)
+                        </span>
+                    </div>
+                    
+                    <!-- 8 Semester Selection Grid -->
+                    <div class="grid grid-cols-4 sm:grid-cols-8 gap-2" id="semester-selector-grid">
+                        <button type="button" onclick="selectSemester(1)" class="semester-pill py-2.5 rounded-xl text-xs font-mono border border-subtle-border bg-elevated hover:bg-surface-high transition-all text-center">Sem 1</button>
+                        <button type="button" onclick="selectSemester(2)" class="semester-pill py-2.5 rounded-xl text-xs font-mono border border-subtle-border bg-elevated hover:bg-surface-high transition-all text-center">Sem 2</button>
+                        <button type="button" onclick="selectSemester(3)" class="semester-pill py-2.5 rounded-xl text-xs font-mono border border-subtle-border bg-elevated hover:bg-surface-high transition-all text-center">Sem 3</button>
+                        <button type="button" onclick="selectSemester(4)" class="semester-pill selected py-2.5 rounded-xl text-xs font-mono border border-subtle-border bg-elevated hover:bg-surface-high transition-all text-center">Sem 4</button>
+                        <button type="button" onclick="selectSemester(5)" class="semester-pill py-2.5 rounded-xl text-xs font-mono border border-subtle-border bg-elevated hover:bg-surface-high transition-all text-center">Sem 5</button>
+                        <button type="button" onclick="selectSemester(6)" class="semester-pill py-2.5 rounded-xl text-xs font-mono border border-subtle-border bg-elevated hover:bg-surface-high transition-all text-center">Sem 6</button>
+                        <button type="button" onclick="selectSemester(7)" class="semester-pill py-2.5 rounded-xl text-xs font-mono border border-subtle-border bg-elevated hover:bg-surface-high transition-all text-center">Sem 7</button>
+                        <button type="button" onclick="selectSemester(8)" class="semester-pill py-2.5 rounded-xl text-xs font-mono border border-subtle-border bg-elevated hover:bg-surface-high transition-all text-center">Sem 8</button>
+                    </div>
+                    <input type="hidden" id="sj-semester" value="4"/>
+                </div>
+
+                <!-- 4. Optional Career Aspiration & Target Role -->
+                <div class="space-y-2 pt-2 border-t border-subtle-border/40">
+                    <div class="flex items-center justify-between">
+                        <label class="text-xs font-bold text-muted-gray uppercase tracking-wider">
+                            Target Career / Role <span class="text-[10px] text-muted-gray/80 font-normal">(Optional)</span>
+                        </label>
+                        <span class="text-[10px] text-indigo-brand font-mono">Calibrates Recommendations</span>
+                    </div>
+                    <div id="role-chips-container" class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs">
+                        <!-- Populated dynamically based on department -->
+                    </div>
+                    <input type="hidden" id="sj-target-role" value="Software Development Engineer (SDE)"/>
+                </div>
+
+                <!-- 5. Additional Optional Calibration (Skill Level & Career Goal) -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs pt-2">
+                    <div class="space-y-1.5">
+                        <label class="font-bold text-muted-gray uppercase text-[11px]">Skill Level</label>
+                        <select id="sj-skill-level" class="premium-input w-full rounded-xl py-2 px-3 text-xs">
+                            <option value="Beginner">Beginner (Foundations & Core Coding)</option>
+                            <option value="Intermediate" selected>Intermediate (Practicing DSA & Projects)</option>
+                            <option value="Advanced">Advanced (Systems, Competitive & Research)</option>
+                        </select>
+                    </div>
+                    <div class="space-y-1.5">
+                        <label class="font-bold text-muted-gray uppercase text-[11px]">Primary Career Goal</label>
+                        <select id="sj-career-goal" class="premium-input w-full rounded-xl py-2 px-3 text-xs">
+                            <option value="Top Tier Product Tech" selected>Top Tier Product Tech (FAANG / Unicorns)</option>
+                            <option value="High-Growth Startup">High-Growth Tech Startup</option>
+                            <option value="Core Engineering Specialist">Core Industrial & Engineering Specialist</option>
+                            <option value="Higher Studies & Research">Higher Studies & Research (GATE/MS/PhD)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Submission Status Alert (if error occurs) -->
+                <div id="onboarding-error-alert" class="hidden p-4 rounded-2xl bg-red-500/10 border border-red-500/30 text-xs text-red-200 flex items-center gap-3">
+                    <span class="material-symbols-outlined text-red-400 text-lg shrink-0">error</span>
+                    <span id="onboarding-error-message">Unable to save your profile. Please try again.</span>
+                </div>
+
+                <!-- Primary Action Button -->
+                <div class="pt-4">
+                    <button 
+                        type="submit" 
+                        id="btn-start-journey" 
+                        class="w-full py-3.5 px-6 rounded-2xl bg-gradient-to-r from-indigo-brand via-[#6875f5] to-teal-brand text-white font-bold text-sm shadow-xl shadow-indigo-brand/25 flex items-center justify-center gap-2 hover:opacity-95 active:scale-[0.99] transition-all"
+                    >
+                        <span>Launch TechPath</span>
+                        <span class="material-symbols-outlined text-lg">rocket_launch</span>
+                    </button>
+                </div>
+
+            </form>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center text-xs text-muted-gray py-4 relative z-20">
+        TechPath • Intelligent Academic Personalization & Autonomous Engineering Companion
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/supabase.min.js"></script>
+    <script src="js/supabase-client.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/branches.js"></script>
+    <script src="js/app.js"></script>
+
+    <script>
+        let currentSemester = 4;
+        let selectedRole = 'Software Development Engineer (SDE)';
+
+        document.addEventListener('DOMContentLoaded', async () => {
+            // Guard: Must be signed in. If already completed, go to dashboard.
+            const isAuthorized = await AuthManager.requireAuth({
+                onReady: (user, profile) => {
+                    const emailBadge = document.getElementById('user-email-badge');
+                    if (emailBadge && user.email) {
+                        emailBadge.textContent = user.email;
+                    }
+                    const nameInput = document.getElementById('sj-name');
+                    if (nameInput) {
+                        nameInput.value = profile?.full_name || profile?.name || user.user_metadata?.full_name || '';
+                    }
+                }
+            });
+
+            if (!isAuthorized) return;
+
+            // Initialize Branch Catalog (40+ engineering disciplines)
+            if (window.BranchSystem) {
+                BranchSystem.init();
+                const branchSel = document.getElementById('sj-department');
+                BranchSystem.populateSelect(branchSel, 'CSE');
+
+                const countBadge = document.getElementById('discipline-count-badge');
+                if (countBadge) {
+                    countBadge.textContent = `${BranchSystem.getActiveBranches().length} Disciplines Available`;
+                }
+
+                // Live search filter for department
+                const searchInput = document.getElementById('dept-search-input');
+                if (searchInput) {
+                    searchInput.addEventListener('input', (e) => {
+                        const query = e.target.value.trim();
+                        if (!query) {
+                            BranchSystem.populateSelect(branchSel, branchSel.value);
+                            return;
+                        }
+                        const matched = BranchSystem.searchBranches(query);
+                        if (matched.length > 0) {
+                            branchSel.innerHTML = matched.map(b => 
+                                `<option value="${b.code}">B.Tech — ${b.name} (${b.code}) [${b.category}]</option>`
+                            ).join('');
+                            branchSel.selectedIndex = 0;
+                            handleDepartmentChange(branchSel.value);
+                        } else {
+                            const opt = document.createElement('option');
+                            opt.value = '';
+                            opt.textContent = `No matching discipline found for "${query}"`;
+                            branchSel.innerHTML = '';
+                            branchSel.appendChild(opt);
+                        }
+                    });
+                }
+
+                handleDepartmentChange(branchSel.value || 'CSE');
+            }
+
+            selectSemester(4);
+        });
+
+        function handleDepartmentChange(deptCode) {
+            if (!deptCode || !window.BranchSystem) return;
+            const branchObj = BranchSystem.getBranch(deptCode);
+            const careers = BranchSystem.getBranchCareers(deptCode) || [];
+
+            const container = document.getElementById('role-chips-container');
+            if (container && careers.length > 0) {
+                selectedRole = careers[0];
+                document.getElementById('sj-target-role').value = selectedRole;
+
+                container.innerHTML = careers.slice(0, 4).map((role, idx) => `
+                    <div 
+                        onclick="selectRole('${role.replace(/'/g, "\\'")}', this)" 
+                        class="role-chip p-3 rounded-xl border border-subtle-border bg-elevated/70 cursor-pointer flex items-center justify-between transition-all ${idx === 0 ? 'selected' : 'hover:border-indigo-brand/60'}"
+                    >
+                        <div>
+                            <div class="font-bold text-xs text-white">${role}</div>
+                            <div class="text-[10px] text-muted-gray">${branchObj ? branchObj.name : 'Engineering Role'}</div>
+                        </div>
+                        <span class="material-symbols-outlined text-sm ${idx === 0 ? 'text-teal-brand' : 'text-muted-gray'}">
+                            ${idx === 0 ? 'check_circle' : 'radio_button_unchecked'}
+                        </span>
+                    </div>
+                `).join('');
+            }
+        }
+
+        function selectRole(role, cardEl) {
+            selectedRole = role;
+            document.getElementById('sj-target-role').value = role;
+
+            document.querySelectorAll('.role-chip').forEach(el => {
+                el.classList.remove('selected');
+                const icon = el.querySelector('.material-symbols-outlined');
+                if (icon) {
+                    icon.textContent = 'radio_button_unchecked';
+                    icon.className = 'material-symbols-outlined text-sm text-muted-gray';
+                }
+            });
+
+            if (cardEl) {
+                cardEl.classList.add('selected');
+                const icon = cardEl.querySelector('.material-symbols-outlined');
+                if (icon) {
+                    icon.textContent = 'check_circle';
+                    icon.className = 'material-symbols-outlined text-sm text-teal-brand';
+                }
+            }
+        }
+
+        function selectSemester(sem) {
+            currentSemester = sem;
+            document.getElementById('sj-semester').value = sem;
+
+            const yearNum = Math.min(4, Math.max(1, Math.ceil(sem / 2)));
+            const yearLabels = {
+                1: '1st Year (Freshman Fundamentals)',
+                2: '2nd Year (Core Engineering Foundations)',
+                3: '3rd Year (Junior Pre-Placement & Advanced Modules)',
+                4: '4th Year (Senior Capstone & Industry Placement)'
+            };
+
+            const yearDisplay = document.getElementById('academic-year-display');
+            if (yearDisplay) {
+                yearDisplay.textContent = `Academic Year: ${yearLabels[yearNum] || `${yearNum}th Year`}`;
+            }
+
+            const pills = document.querySelectorAll('.semester-pill');
+            pills.forEach((p, idx) => {
+                if (idx + 1 === sem) {
+                    p.className = 'semester-pill selected py-2.5 rounded-xl text-xs font-mono border border-indigo-brand bg-indigo-brand text-white font-bold text-center';
+                } else {
+                    p.className = 'semester-pill py-2.5 rounded-xl text-xs font-mono border border-subtle-border bg-elevated hover:bg-surface-high transition-all text-muted-gray text-center';
+                }
+            });
+        }
+
+        async function handleStartJourneySubmit(event) {
+            event.preventDefault();
+            const btn = document.getElementById('btn-start-journey');
+            const errAlert = document.getElementById('onboarding-error-alert');
+            const errMsg = document.getElementById('onboarding-error-message');
+
+            errAlert.classList.add('hidden');
+
+            const name = document.getElementById('sj-name').value.trim();
+            const department = document.getElementById('sj-department').value;
+            const semester = parseInt(document.getElementById('sj-semester').value, 10);
+            const year = Math.min(4, Math.max(1, Math.ceil(semester / 2)));
+            const targetRole = document.getElementById('sj-target-role').value;
+            const skillLevel = document.getElementById('sj-skill-level').value;
+            const careerGoal = document.getElementById('sj-career-goal').value;
+
+            if (!name) {
+                AuthManager.showToast('Please enter your full name.', 'error');
+                return;
+            }
+            if (!department) {
+                AuthManager.showToast('Please select your engineering department.', 'error');
+                return;
+            }
+
+            btn.disabled = true;
+            btn.innerHTML = `
+                <span class="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></span>
+                <span>Saving Profile to Supabase...</span>
+            `;
+
+            try {
+                // Save profile using authenticated auth.uid()
+                const result = await AuthManager.saveOnboardingProfile({
+                    name,
+                    department,
+                    semester,
+                    year,
+                    targetRole,
+                    skillLevel,
+                    careerGoal
+                });
+
+                if (result.success) {
+                    AuthManager.showToast(`🎉 Welcome aboard, ${name.split(' ')[0]}! Track configured for ${department} • Sem ${semester}.`, 'success');
+                    btn.innerHTML = `
+                        <span class="material-symbols-outlined text-lg text-teal-brand">check_circle</span>
+                        <span>Profile Saved! Opening Dashboard...</span>
+                    `;
+                    setTimeout(() => {
+                        window.location.replace('dashboard.html');
+                    }, 500);
+                } else {
+                    throw new Error('Database save verification failed.');
+                }
+            } catch (err) {
+                console.error('[StartJourney Error]:', err);
+                btn.disabled = false;
+                btn.innerHTML = `
+                    <span>Launch TechPath</span>
+                    <span class="material-symbols-outlined text-lg">rocket_launch</span>
+                `;
+                errMsg.textContent = err.message || 'Unable to save your profile. Please try again.';
+                errAlert.classList.remove('hidden');
+                AuthManager.showToast('Unable to save your profile. Please try again.', 'error');
+            }
+        }
+    </script>
+</body>
+</html>

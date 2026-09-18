@@ -1,0 +1,499 @@
+/* ==========================================================================
+   BTechPath AI OS — Dimensional 404 Experience Stylesheet
+   - True 3D perspective stage with smooth parallax
+   - Extruded multi-layer 404 typography
+   - Interactive companion robot with cursor-responsive eyes & head tilt
+   - Interrupted learning conduit & floating ambient data sparks
+   - Mobile-responsive & reduced-motion compliant
+   ========================================================================== */
+
+:root {
+  --btech-bg: #0B0F19;
+  --btech-midnight: #121826;
+  --btech-elevated: #1A2031;
+  --btech-border: rgba(42, 49, 71, 0.6);
+  --btech-indigo: #5865F2;
+  --btech-indigo-glow: rgba(88, 101, 242, 0.35);
+  --btech-violet: #7C5CFF;
+  --btech-teal: #2DD4BF;
+  --btech-teal-glow: rgba(45, 212, 191, 0.35);
+  --btech-rose: #F6C177;
+  --btech-text: #F5F7FA;
+  --btech-muted: #A1A7BC;
+}
+
+/* Base Page Viewport */
+body.page-404 {
+  background-color: var(--btech-bg);
+  color: var(--btech-text);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  min-height: 100vh;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  overflow-x: hidden;
+  position: relative;
+  user-select: none;
+}
+
+/* Subtle Engineering Ambient Canvas Layer */
+.ambient-bg-grid {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image: 
+    radial-gradient(circle at 50% 35%, rgba(88, 101, 242, 0.08) 0%, transparent 65%),
+    linear-gradient(rgba(59, 68, 97, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(59, 68, 97, 0.08) 1px, transparent 1px);
+  background-size: 100% 100%, 48px 48px, 48px 48px;
+  background-position: center, center, center;
+  z-index: 1;
+}
+
+/* Main Content Container */
+.content-wrapper-404 {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 720px;
+  padding: 24px 20px 40px;
+  margin: auto 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* ==========================================================================
+   3D PERSPECTIVE STAGE & NUMBERS
+   ========================================================================== */
+.scene-3d-stage {
+  position: relative;
+  width: 100%;
+  max-width: 520px;
+  height: 270px;
+  margin: 0 auto 12px;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.scene-3d-rig {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  will-change: transform;
+  transition: transform 0.12s cubic-bezier(0.2, 0, 0, 1);
+}
+
+/* Floor Shadow Plane */
+.stage-shadow-plane {
+  position: absolute;
+  bottom: 24px;
+  width: 380px;
+  height: 48px;
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.65) 0%, rgba(11, 15, 25, 0) 72%);
+  transform: rotateX(85deg) translateZ(-40px);
+  filter: blur(10px);
+  pointer-events: none;
+}
+
+/* 404 Number Container */
+.numbers-layer {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  transform-style: preserve-3d;
+}
+
+/* Dimensional Glyphs */
+.glyph-404 {
+  position: relative;
+  font-family: 'Geist', 'Plus Jakarta Sans', sans-serif;
+  font-weight: 900;
+  font-size: 130px;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  transform-style: preserve-3d;
+  display: inline-block;
+  color: #1E293B;
+  text-shadow: 
+    0 1px 0 #334155,
+    0 2px 0 #1E293B,
+    0 3px 0 #0F172A,
+    0 4px 0 #090E1A,
+    0 8px 24px rgba(0, 0, 0, 0.7);
+}
+
+.glyph-404.left-four {
+  transform: rotateY(12deg) translateZ(-10px);
+  color: #242F48;
+}
+
+.glyph-404.center-zero {
+  transform: translateZ(16px);
+  color: #2B3857;
+  position: relative;
+}
+
+.glyph-404.right-four {
+  transform: rotateY(-12deg) translateZ(-10px);
+  color: #242F48;
+}
+
+/* SVG Dimensional Bevel Overlays */
+.glyph-overlay-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: visible;
+}
+
+/* ==========================================================================
+   THE BTECHPATH COMPANION ROBOT (Sitting on center '0')
+   ========================================================================== */
+.robot-companion-wrap {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%) translateZ(48px);
+  width: 130px;
+  height: 150px;
+  transform-style: preserve-3d;
+  pointer-events: none;
+  animation: robotBreathing 4.5s ease-in-out infinite;
+}
+
+@keyframes robotBreathing {
+  0%, 100% {
+    transform: translateX(-50%) translateZ(48px) translateY(0px);
+  }
+  50% {
+    transform: translateX(-50%) translateZ(48px) translateY(-8px);
+  }
+}
+
+.robot-svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  filter: drop-shadow(0 12px 18px rgba(0, 0, 0, 0.65));
+}
+
+/* Robot Head Assembly with Interactive Rotation */
+.robot-head-group {
+  transform-origin: 65px 65px;
+  transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* OLED Visor Eyes Tracking */
+.robot-pupil {
+  transition: transform 0.1s ease-out;
+  transform-origin: center;
+}
+
+/* Subtle Antenna Hologram Question Mark */
+.holo-question {
+  animation: holoPulse 2.8s ease-in-out infinite;
+  transform-origin: 90px 18px;
+}
+
+@keyframes holoPulse {
+  0%, 100% {
+    opacity: 0.35;
+    transform: translateY(0) scale(0.95);
+  }
+  50% {
+    opacity: 0.9;
+    transform: translateY(-4px) scale(1.05);
+    filter: drop-shadow(0 0 6px rgba(45, 212, 191, 0.8));
+  }
+}
+
+/* Dangling Magnetic Boots inside '0' */
+.robot-boots-group {
+  animation: bootDangle 3.6s ease-in-out infinite alternate;
+  transform-origin: 65px 105px;
+}
+
+@keyframes bootDangle {
+  0% { transform: rotate(-2deg); }
+  100% { transform: rotate(2deg); }
+}
+
+/* ==========================================================================
+   INTERRUPTED LEARNING CONDUIT / WIRE
+   ========================================================================== */
+.interrupted-conduit-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: visible;
+  transform: translateZ(28px);
+}
+
+.conduit-path-active {
+  stroke: url(#conduitGrad);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  fill: none;
+  stroke-dasharray: 4 3;
+  animation: conduitFlow 1.5s linear infinite;
+  filter: drop-shadow(0 0 6px var(--btech-teal-glow));
+}
+
+@keyframes conduitFlow {
+  from { stroke-dashoffset: 28; }
+  to { stroke-dashoffset: 0; }
+}
+
+.conduit-break-spark {
+  animation: sparkFlicker 1.8s steps(2, start) infinite;
+}
+
+@keyframes sparkFlicker {
+  0%, 100% { opacity: 0.9; transform: scale(1); }
+  45% { opacity: 0.2; transform: scale(0.6); }
+  50% { opacity: 1; transform: scale(1.3); }
+  75% { opacity: 0.5; }
+}
+
+/* ==========================================================================
+   FLOATING AMBIENT DATA PARTICLES
+   ========================================================================== */
+.data-particle {
+  position: absolute;
+  border-radius: 50%;
+  background: var(--btech-teal);
+  box-shadow: 0 0 8px var(--btech-teal);
+  pointer-events: none;
+  opacity: 0.6;
+  animation: floatParticle 6s ease-in-out infinite;
+}
+
+.p1 { width: 4px; height: 4px; top: 25%; left: 16%; animation-duration: 5.2s; animation-delay: 0s; }
+.p2 { width: 3px; height: 3px; top: 18%; right: 22%; animation-duration: 6.8s; animation-delay: 1.2s; }
+.p3 { width: 5px; height: 5px; bottom: 35%; right: 14%; animation-duration: 4.8s; animation-delay: 2.1s; background: var(--btech-violet); box-shadow: 0 0 8px var(--btech-violet); }
+.p4 { width: 3px; height: 3px; bottom: 42%; left: 24%; animation-duration: 7.2s; animation-delay: 0.8s; }
+
+@keyframes floatParticle {
+  0%, 100% { transform: translateY(0) translateX(0); opacity: 0.3; }
+  50% { transform: translateY(-16px) translateX(8px); opacity: 0.85; }
+}
+
+/* ==========================================================================
+   TYPOGRAPHY & HIERARCHY (Matches Reference)
+   ========================================================================== */
+.label-error-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  color: var(--btech-muted);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  opacity: 0.85;
+}
+
+.label-error-tag::before,
+.label-error-tag::after {
+  content: '';
+  width: 24px;
+  height: 1px;
+  background: rgba(161, 167, 188, 0.4);
+}
+
+.heading-404 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 42px;
+  font-weight: 800;
+  line-height: 1.15;
+  color: var(--btech-text);
+  letter-spacing: -0.03em;
+  margin: 0 0 12px;
+}
+
+.message-404 {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--btech-muted);
+  max-width: 440px;
+  margin: 0 auto 32px;
+  font-weight: 400;
+}
+
+/* ==========================================================================
+   BUTTONS: "Take me home →" & "Go back"
+   ========================================================================== */
+.actions-row-404 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+/* Primary Pill Button */
+.btn-home-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: #182238;
+  color: #FFFFFF;
+  border: 1px solid rgba(88, 101, 242, 0.4);
+  padding: 13px 28px;
+  border-radius: 9999px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  box-shadow: 0 10px 25px -6px rgba(0, 0, 0, 0.6), 0 0 20px -3px rgba(88, 101, 242, 0.25);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  outline: none;
+}
+
+.btn-home-primary:hover {
+  background: var(--btech-indigo);
+  border-color: var(--btech-indigo);
+  box-shadow: 0 14px 32px -4px rgba(88, 101, 242, 0.5);
+  transform: translateY(-2px);
+}
+
+.btn-home-primary:hover .arrow-ico {
+  transform: translateX(4px);
+}
+
+.btn-home-primary:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.btn-home-primary:focus-visible {
+  outline: 2px solid var(--btech-teal);
+  outline-offset: 3px;
+}
+
+.arrow-ico {
+  transition: transform 0.2s ease;
+  font-size: 16px;
+  line-height: 1;
+}
+
+/* Secondary Action Button */
+.btn-back-secondary {
+  background: transparent;
+  border: none;
+  color: var(--btech-muted);
+  font-size: 14px;
+  font-weight: 600;
+  padding: 12px 18px;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: color 0.2s ease, transform 0.2s ease;
+  outline: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.btn-back-secondary:hover {
+  color: var(--btech-text);
+  transform: translateX(-2px);
+}
+
+.btn-back-secondary:focus-visible {
+  outline: 2px solid rgba(161, 167, 188, 0.5);
+  outline-offset: 2px;
+}
+
+/* ==========================================================================
+   MOBILE RESPONSIVENESS
+   ========================================================================== */
+@media (max-width: 640px) {
+  .scene-3d-stage {
+    height: 220px;
+    margin-bottom: 6px;
+  }
+  
+  .glyph-404 {
+    font-size: 96px;
+  }
+
+  .robot-companion-wrap {
+    width: 105px;
+    height: 125px;
+    top: 6px;
+  }
+
+  .stage-shadow-plane {
+    width: 280px;
+    bottom: 16px;
+  }
+
+  .heading-404 {
+    font-size: 30px;
+  }
+
+  .message-404 {
+    font-size: 13.5px;
+    margin-bottom: 26px;
+  }
+
+  .actions-row-404 {
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+  }
+
+  .btn-home-primary {
+    width: 100%;
+    max-width: 280px;
+  }
+
+  .btn-back-secondary {
+    width: 100%;
+    max-width: 280px;
+    justify-content: center;
+  }
+}
+
+/* ==========================================================================
+   PREFERS-REDUCED-MOTION OVERRIDES
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  .scene-3d-rig,
+  .robot-companion-wrap,
+  .robot-boots-group,
+  .holo-question,
+  .data-particle,
+  .conduit-path-active,
+  .conduit-break-spark {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+  }
+
+  .robot-companion-wrap {
+    transform: translateX(-50%) !important;
+  }
+}

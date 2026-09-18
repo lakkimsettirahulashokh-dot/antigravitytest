@@ -1,0 +1,43 @@
+﻿@import "tailwindcss";
+@plugin "@tailwindcss/forms";
+@plugin "@tailwindcss/container-queries";
+
+/* ============================================================
+   BTechPath AI OS — Custom Design System Tokens (Tailwind v4)
+   Replaces the inline tailwind.config theme extension blocks
+   that were used with the CDN. These @theme variables generate
+   all the bg-*, text-*, border-* utility classes used across
+   every HTML page without requiring the CDN runtime.
+   ============================================================ */
+
+@theme {
+  /* Core Background Surfaces */
+  --color-main-bg: #0B0F19;
+  --color-deep-twilight: #0B0F19;
+  --color-midnight: #121826;
+  --color-elevated: #1A2031;
+  --color-surface-high: #21293D;
+  --color-surface-card: #1A2031;
+  --color-surface-container-high: #21293D;
+  --color-surface-container-highest: #2A3147;
+
+  /* Brand Colors */
+  --color-indigo-brand: #5865F2;
+  --color-violet-brand: #7C5CFF;
+  --color-teal-brand: #2DD4BF;
+  --color-rose-gold: #F6C177;
+  --color-gold-brand: #F59E0B;
+  --color-copper-brand: #EF4444;
+  --color-sage-brand: #22C55E;
+  --color-forest-card: #1A2A1F;
+  --color-forest-border: #2A4A2F;
+
+  /* Text & Border */
+  --color-warm-ivory: #F5F7FA;
+  --color-muted-gray: #A1A7BC;
+  --color-subtle-border: #2A3147;
+  --color-border-subtle: #2A3147;
+
+  /* Ambient Glow (used as background gradient element) */
+  --color-ambient-glow: rgba(88, 101, 242, 0.06);
+}

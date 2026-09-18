@@ -7,7 +7,7 @@
     "dev": "node server.js",
     "start": "node server.js",
     "build:css": "node node_modules/@tailwindcss/cli/dist/index.mjs -i css/tailwind.input.css -o css/tailwind.output.css --minify",
-    "build": "node -e \"const fs=require('fs'); const files=fs.readdirSync('.').filter(f=>f.endsWith('.html')); console.log('Validating TechPath production assets...'); files.forEach(f=>console.log('  [OK] Verified: '+f)); console.log('Build Succeeded: '+files.length+' Production HTML Pages Ready.');\"",
+    "build": "node scripts/build_public.js",
     "preview": "node server.js"
   },
   "keywords": [

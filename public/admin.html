@@ -1,0 +1,2013 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <!-- Primary SEO Meta Tags -->
+    <title>Admin Console | TechPath</title>
+    <meta name="title" content="Admin Console | TechPath">
+    <meta name="description" content="Administrative management console for TechPath curriculum and verified educational content.">
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="canonical" href="https://TechPath.ai/admin.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="TechPath">
+    <meta property="og:url" content="https://TechPath.ai/admin.html">
+    <meta property="og:title" content="Admin Console | TechPath">
+    <meta property="og:description" content="Administrative management console for TechPath curriculum and verified educational content.">
+    <meta property="og:image" content="https://TechPath.ai/assets/branding/techpath-og.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="TechPath — Learn. Build. Prepare. Grow.">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://TechPath.ai/admin.html">
+    <meta name="twitter:title" content="Admin Console | TechPath">
+    <meta name="twitter:description" content="Administrative management console for TechPath curriculum and verified educational content.">
+    <meta name="twitter:image" content="https://TechPath.ai/assets/branding/techpath-og.png">
+    <meta name="twitter:image:alt" content="TechPath — Learn. Build. Prepare. Grow.">
+
+    <!-- Favicon & App Icons -->
+    <link rel="icon" type="image/svg+xml" href="assets/branding/favicon.svg">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/branding/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/branding/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/branding/apple-touch-icon.png">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#0B0F19">
+    <!-- Primary SEO Meta Tags -->
+    <!-- Open Graph / Facebook -->
+    <!-- Twitter Card -->
+    <!-- Favicon & App Icons -->
+    <!-- Primary SEO Meta Tags -->
+    <!-- Open Graph / Facebook -->
+    <!-- Twitter Card -->
+    <!-- Favicon & App Icons -->
+    <!-- Primary SEO Meta Tags -->
+    <!-- Open Graph / Facebook -->
+    <!-- Twitter Card -->
+    <!-- Favicon & App Icons -->
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <!-- Secure Admin Guard: Hides all content until server-verified JWT confirms admin role -->
+    <style id="admin-content-shield">
+        /* Hide entire body until admin authorization is confirmed */
+        body > *:not(#admin-auth-gate) { display: none !important; }
+    </style>
+    <div id="admin-auth-gate" style="position:fixed;inset:0;z-index:99999;background:#0B0F19;display:flex;align-items:center;justify-content:center;text-align:center;font-family:system-ui,-apple-system,sans-serif;">
+        <div id="admin-gate-content" style="padding:40px;">
+            <div style="width:56px;height:56px;border-radius:16px;background:rgba(99,102,241,0.15);border:1px solid rgba(99,102,241,0.4);display:flex;align-items:center;justify-content:center;font-size:28px;margin:0 auto 16px auto;">🔐</div>
+            <h2 style="font-size:18px;font-weight:800;color:#fff;margin:0 0 8px 0;">Verifying Admin Authorization</h2>
+            <p style="font-size:12px;color:#64748b;margin:0;">Checking your credentials with the server…</p>
+        </div>
+    </div>
+    <script>
+    // Secure async admin gate — server JWT verification, never trusts localStorage
+    (function() {
+        'use strict';
+        var GATE_TIMEOUT_MS = 12000;
+        var gateTimer = null;
+
+        function showDenied(message) {
+            clearTimeout(gateTimer);
+            var gate = document.getElementById('admin-gate-content');
+            if (!gate) return;
+            gate.innerHTML = [
+                '<div style="width:56px;height:56px;border-radius:16px;background:rgba(244,63,94,0.1);border:1px solid rgba(244,63,94,0.3);display:flex;align-items:center;justify-content:center;font-size:28px;margin:0 auto 16px auto;">\u26d4<\/div>',
+                '<h2 style="font-size:18px;font-weight:800;color:#fff;margin:0 0 8px 0;">403 Forbidden<\/h2>',
+                '<p style="font-size:12px;color:#94a3b8;line-height:1.6;margin:0 0 20px 0;max-width:320px;">' + (message || 'Access denied. Administrator authorization required.') + '<\/p>',
+                '<a href="login.html?redirect=admin.html" style="display:inline-block;padding:10px 24px;background:linear-gradient(135deg,#6366f1,#8b5cf6);color:#fff;text-decoration:none;border-radius:10px;font-size:12px;font-weight:700;">Sign In as Administrator<\/a>'
+            ].join('');
+            // Redirect after 3 seconds
+            setTimeout(function() { window.location.href = 'login.html?redirect=admin.html'; }, 3000);
+        }
+
+        function revealAdminPage() {
+            clearTimeout(gateTimer);
+            var shield = document.getElementById('admin-content-shield');
+            if (shield) shield.remove();
+            var gate = document.getElementById('admin-auth-gate');
+            if (gate) gate.remove();
+        }
+
+        // Fail-safe: if verification takes too long, deny
+        gateTimer = setTimeout(function() {
+            showDenied('Session verification timed out. Please sign in again.');
+        }, GATE_TIMEOUT_MS);
+
+        // Wait for all scripts to load then verify
+        window.addEventListener('load', async function() {
+            try {
+                // 1. AuthManager must exist (loaded via app.js / auth.js)
+                if (typeof AuthManager === 'undefined' || !AuthManager.verifyAdminStatus) {
+                    showDenied('Authentication system not available.');
+                    return;
+                }
+
+                // 2. Must have a live Supabase session
+                var user = await AuthManager.checkSession();
+                if (!user) {
+                    showDenied('No active session. Please sign in.');
+                    return;
+                }
+
+                // 3. Server-verified JWT admin check (the authoritative decision)
+                var adminStatus = await AuthManager.verifyAdminStatus();
+                if (!adminStatus.authorized) {
+                    showDenied('Access denied. This portal is restricted to platform administrators.');
+                    return;
+                }
+
+                // 4. All checks passed — reveal the admin portal
+                revealAdminPage();
+            } catch (err) {
+                showDenied('Authorization error. Please sign in again.');
+            }
+        });
+    })();
+    </script>
+
+    <link rel="stylesheet" href="css/tailwind.output.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;600&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="css/custom.css"/>
+    <link rel="stylesheet" href="css/motion.css"/>
+</head>
+<body class="bg-background text-on-surface min-h-screen flex antialiased selection:bg-primary-container selection:text-white">
+
+    <div class="bg-ambient-glow"></div>
+
+    <!-- Sidebar Navigation -->
+    <aside id="main-sidebar" class="w-64 bg-surface-container-lowest border-r border-outline-variant/60 flex flex-col justify-between shrink-0 z-40 fixed md:static inset-y-0 left-0 -translate-x-full md:translate-x-0 transition-transform duration-300">
+        <div>
+            <div class="h-20 px-6 flex items-center justify-between border-b border-outline-variant/50">
+                <a href="index.html" class="flex items-center gap-3 group py-1" aria-label="TechPath Home">
+                    <div class="sidebar-logo-full flex items-center gap-2">
+                        <img src="assets/branding/techpath-logo-horizontal.png" alt="TechPath" class="h-8 w-auto object-contain transition-transform duration-200 group-hover:scale-[1.02]" />
+                        <span class="text-secondary font-mono text-xs px-1.5 py-0.5 rounded bg-surface-container font-bold">Admin</span>
+                    </div>
+                    <img src="assets/branding/techpath-emblem.png" alt="TechPath" class="sidebar-logo-compact h-8 w-auto object-contain hidden" />
+                </a>
+            </div>
+            <div class="p-4 space-y-1 text-sm font-medium">
+                <div class="px-3 py-2 text-[11px] font-bold uppercase tracking-wider text-outline label-caps">Core Workspace</div>
+                <a href="dashboard.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-surface-variant hover:text-white hover:bg-surface-container transition-colors">
+                    <span class="material-symbols-outlined text-xl">dashboard</span>
+                    <span>Command Center</span>
+                </a>
+                <a href="internships.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-surface-variant hover:text-white hover:bg-surface-container transition-colors">
+                    <span class="material-symbols-outlined text-xl">work</span>
+                    <span>Student Opportunities</span>
+                </a>
+                <a href="learn.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-surface-variant hover:text-white hover:bg-surface-container transition-colors">
+                    <span class="material-symbols-outlined text-xl">menu_book</span>
+                    <span>Learn Hub</span>
+                </a>
+                <a href="onboarding.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-surface-variant hover:text-white hover:bg-surface-container transition-colors">
+                    <span class="material-symbols-outlined text-xl">person_add</span>
+                    <span>Onboarding Wizard</span>
+                </a>
+
+                <div class="pt-4 px-3 py-2 text-[11px] font-bold uppercase tracking-wider text-outline label-caps">Administration Controls</div>
+                <a href="#section-jobs" class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:text-white hover:bg-surface-container transition-colors text-xs">
+                    <span class="material-symbols-outlined text-base text-primary">post_add</span>
+                    <span>Job Management</span>
+                </a>
+                <a href="#section-videos" class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:text-white hover:bg-surface-container transition-colors text-xs">
+                    <span class="material-symbols-outlined text-base text-tertiary">smart_display</span>
+                    <span>Video Lectures</span>
+                </a>
+                <a href="#section-branches" class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:text-white hover:bg-surface-container transition-colors text-xs">
+                    <span class="material-symbols-outlined text-base text-secondary">tune</span>
+                    <span>Discipline Matrix</span>
+                </a>
+                <a href="#section-students" class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:text-white hover:bg-surface-container transition-colors text-xs">
+                    <span class="material-symbols-outlined text-base text-amber-400">group</span>
+                    <span>Student Cohorts</span>
+                </a>
+                <a href="#section-reviews" class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:text-white hover:bg-surface-container transition-colors text-xs">
+                    <span class="material-symbols-outlined text-base text-[#F6C177]">rate_review</span>
+                    <span>Review Moderation</span>
+                    <span id="badge-pending-reviews" class="hidden ml-auto px-1.5 py-0.5 rounded-full text-[10px] font-mono bg-[#F6C177]/20 text-[#F6C177]">0</span>
+                </a>
+                <a href="#section-contacts" class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:text-white hover:bg-surface-container transition-colors text-xs">
+                    <span class="material-symbols-outlined text-base text-[#2DD4BF]">mail</span>
+                    <span>Contact Inquiries</span>
+                    <span id="badge-new-messages" class="hidden ml-auto px-1.5 py-0.5 rounded-full text-[10px] font-mono bg-[#2DD4BF]/20 text-[#2DD4BF]">0</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="p-4 border-t border-outline-variant/50">
+            <div class="bg-surface-container-low border border-outline-variant/60 rounded-xl p-3 flex items-center justify-between">
+                <div class="flex items-center gap-2.5 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80" alt="Admin Avatar" class="w-9 h-9 rounded-lg object-cover border border-secondary/40"/>
+                    <div class="truncate">
+                        <div class="text-xs font-bold text-white truncate">Rahul Ashok</div>
+                        <div class="text-[10px] text-secondary truncate font-mono">rahulashokhlakkimsetty@gmail.com</div>
+                    </div>
+                </div>
+                <button onclick="AuthManager.logout()" title="Log Out" class="p-1.5 rounded-lg text-on-surface-variant hover:text-error hover:bg-surface-container-highest transition-colors">
+                    <span class="material-symbols-outlined text-lg">logout</span>
+                </button>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Admin Main Body -->
+    <div class="flex-1 flex flex-col min-w-0 h-screen overflow-y-auto">
+        <header class="h-20 px-8 border-b border-outline-variant/50 bg-surface/80 backdrop-blur-md flex items-center justify-between sticky top-0 z-30">
+            <div>
+                <h1 class="text-xl font-extrabold text-white flex items-center gap-2">
+                    <span>Platform Administration Terminal</span>
+                    <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-secondary-container/30 text-secondary border border-secondary/40">ADMIN ONLY</span>
+                </h1>
+                <p class="text-xs text-on-surface-variant">Manage department jobs, curriculum videos, 45+ engineering disciplines, and student cohorts</p>
+            </div>
+            <div class="flex items-center gap-3">
+                <span class="px-3 py-1 rounded-full text-xs font-bold bg-tertiary-container/30 text-tertiary border border-tertiary/40 flex items-center gap-1.5">
+                    <span class="w-2 h-2 rounded-full bg-tertiary animate-pulse"></span>
+                    <span>SECURE ACCESS VERIFIED</span>
+                </span>
+            </div>
+        </header>
+
+        <main class="p-8 max-w-7xl w-full mx-auto space-y-10">
+            
+            <!-- Global Metrics Overview -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 perspective-container">
+                <div data-tilt class="bg-surface-container rounded-xl p-5 border border-outline-variant border-glow-hover">
+                    <div class="text-xs text-on-surface-variant font-bold uppercase label-caps">Total Registered Students</div>
+                    <div data-counter="45820" class="text-3xl font-extrabold text-white mt-1 font-mono">45,820</div>
+                    <div class="text-xs text-tertiary mt-2 font-mono">+842 enrolled this week</div>
+                </div>
+                <div data-tilt class="bg-surface-container rounded-xl p-5 border border-outline-variant border-glow-hover">
+                    <div class="text-xs text-on-surface-variant font-bold uppercase label-caps">Active Opportunity Posts</div>
+                    <div id="stat-job-count" class="text-3xl font-extrabold text-primary mt-1 font-mono">8</div>
+                    <div class="text-xs text-on-surface-variant mt-2 font-mono">Branch-isolated listings</div>
+                </div>
+                <div data-tilt class="bg-surface-container rounded-xl p-5 border border-outline-variant border-glow-hover">
+                    <div class="text-xs text-on-surface-variant font-bold uppercase label-caps">Active Disciplines</div>
+                    <div id="stat-branch-count" class="text-3xl font-extrabold text-secondary mt-1 font-mono">46</div>
+                    <div class="text-xs text-secondary mt-2 font-mono">Full B.Tech catalog</div>
+                </div>
+                <div data-tilt class="bg-surface-container rounded-xl p-5 border border-outline-variant border-glow-hover">
+                    <div class="text-xs text-on-surface-variant font-bold uppercase label-caps">Curriculum Video Modules</div>
+                    <div id="stat-video-count" class="text-3xl font-extrabold text-tertiary mt-1 font-mono">5</div>
+                    <div class="text-xs text-tertiary mt-2 font-mono">NPTEL & MIT OpenCourse</div>
+                </div>
+            </div>
+
+            <!-- ================================================================= -->
+            <!-- SECTION 1: OPPORTUNITY & JOB MANAGEMENT (Branch-Isolated)        -->
+            <!-- ================================================================= -->
+            <div id="section-jobs" class="bg-surface-container rounded-2xl border border-outline-variant p-6 shadow-xl space-y-6">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-outline-variant/60 pb-4">
+                    <div>
+                        <h2 class="text-base font-bold text-white flex items-center gap-2">
+                            <span class="material-symbols-outlined text-primary">work</span>
+                            <span>Opportunity Management (Internships & Jobs)</span>
+                        </h2>
+                        <p class="text-xs text-on-surface-variant mt-0.5">
+                            Post and manage opportunities with precise branch tagging. Students only see roles tagged for their department.
+                        </p>
+                    </div>
+                    <button onclick="toggleJobForm()" id="toggle-job-form-btn" class="btn-primary-gradient px-4 py-2 rounded-xl text-xs font-bold flex items-center gap-1.5 shadow-md shrink-0">
+                        <span class="material-symbols-outlined text-sm">add_circle</span>
+                        <span>Post New Opportunity</span>
+                    </button>
+                </div>
+
+                <!-- Create Job Form (Toggleable) -->
+                <form id="create-job-form" onsubmit="handleCreateJob(event)" class="hidden p-5 rounded-xl bg-surface-container-low border border-primary/30 space-y-4 tab-transition">
+                    <h3 class="text-sm font-bold text-white flex items-center gap-2">
+                        <span class="material-symbols-outlined text-primary text-base">edit_note</span>
+                        <span>Create Verified Opportunity Post</span>
+                    </h3>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
+                        <div>
+                            <label class="text-[11px] font-semibold text-outline uppercase label-caps">Company Name</label>
+                            <input id="job-company" type="text" placeholder="e.g. Google, NVIDIA, L&T" required class="premium-input rounded-lg w-full px-3 py-2 text-xs text-white mt-1"/>
+                        </div>
+                        <div>
+                            <label class="text-[11px] font-semibold text-outline uppercase label-caps">Role / Job Title</label>
+                            <input id="job-title" type="text" placeholder="e.g. Robotics & Perception Intern" required class="premium-input rounded-lg w-full px-3 py-2 text-xs text-white mt-1"/>
+                        </div>
+                        <div>
+                            <label class="text-[11px] font-semibold text-outline uppercase label-caps">Job Type</label>
+                            <select id="job-type" class="premium-input rounded-lg w-full px-3 py-2 text-xs text-white mt-1">
+                                <option value="Internship">Internship</option>
+                                <option value="Full-time">Full-time</option>
+                                <option value="Part-time">Part-time</option>
+                                <option value="Contract">Contract</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="text-[11px] font-semibold text-outline uppercase label-caps">Location</label>
+                            <input id="job-location" type="text" placeholder="e.g. Bangalore / Remote" class="premium-input rounded-lg w-full px-3 py-2 text-xs text-white mt-1"/>
+                        </div>
+                        <div>
+                            <label class="text-[11px] font-semibold text-outline uppercase label-caps">Stipend / CTC</label>
+                            <input id="job-stipend" type="text" placeholder="e.g. ₹1,20,000 / month" class="premium-input rounded-lg w-full px-3 py-2 text-xs text-white mt-1"/>
+                        </div>
+                        <div>
+                            <label class="text-[11px] font-semibold text-outline uppercase label-caps">Application Deadline</label>
+                            <input id="job-deadline" type="date" required class="premium-input rounded-lg w-full px-3 py-2 text-xs text-white mt-1"/>
+                        </div>
+                        <div class="sm:col-span-2">
+                            <label class="text-[11px] font-semibold text-outline uppercase label-caps">Official Application Portal URL</label>
+                            <input id="job-url" type="url" placeholder="https://careers.company.com/job/123" required class="premium-input rounded-lg w-full px-3 py-2 text-xs text-white mt-1"/>
+                        </div>
+                        <div>
+                            <label class="text-[11px] font-semibold text-outline uppercase label-caps">Key Competencies (comma separated)</label>
+                            <input id="job-skills" type="text" placeholder="C++, PyTorch, ROS, CUDA" class="premium-input rounded-lg w-full px-3 py-2 text-xs text-white mt-1"/>
+                        </div>
+                    </div>
+
+                    <!-- Multi-Department Selector -->
+                    <div>
+                        <div class="flex items-center justify-between mb-2">
+                            <label class="text-[11px] font-semibold text-outline uppercase label-caps">
+                                Target Eligible Departments (Select one or more)
+                            </label>
+                            <div class="flex items-center gap-2 text-[11px]">
+                                <button type="button" onclick="selectDeptGroup('all')" class="text-primary hover:underline">Select All</button>
+                                <span>•</span>
+                                <button type="button" onclick="selectDeptGroup('computing')" class="text-primary hover:underline">Computing & AI</button>
+                                <span>•</span>
+                                <button type="button" onclick="selectDeptGroup('electrical')" class="text-primary hover:underline">Electrical/VLSI</button>
+                                <span>•</span>
+                                <button type="button" onclick="selectDeptGroup('mech')" class="text-primary hover:underline">Mechanical</button>
+                                <span>•</span>
+                                <button type="button" onclick="selectDeptGroup('civil')" class="text-primary hover:underline">Civil</button>
+                                <span>•</span>
+                                <button type="button" onclick="selectDeptGroup('clear')" class="text-on-surface-variant hover:underline">Clear</button>
+                            </div>
+                        </div>
+                        <div id="job-departments-grid" class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-2 max-h-48 overflow-y-auto p-3 rounded-xl bg-surface-container border border-outline-variant/60 text-xs">
+                            <!-- Injected dynamically from branches -->
+                        </div>
+                    </div>
+
+                    <div class="flex items-center justify-end gap-3 pt-2 border-t border-outline-variant/40">
+                        <button type="button" onclick="toggleJobForm()" class="px-4 py-2 rounded-lg bg-surface-container-high text-on-surface-variant text-xs font-semibold">
+                            Cancel
+                        </button>
+                        <button type="submit" class="btn-primary-gradient px-6 py-2 rounded-xl text-xs font-bold shadow-md">
+                            Publish Opportunity to Target Departments
+                        </button>
+                    </div>
+                </form>
+
+                <!-- Live Opportunities Table -->
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-xs">
+                        <thead class="bg-surface-container-high text-outline uppercase label-caps border-b border-outline-variant">
+                            <tr>
+                                <th class="px-5 py-3">Company & Role</th>
+                                <th class="px-5 py-3">Eligible Departments</th>
+                                <th class="px-5 py-3">Stipend</th>
+                                <th class="px-5 py-3">Deadline</th>
+                                <th class="px-5 py-3">Status</th>
+                                <th class="px-5 py-3 text-right">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="admin-jobs-table-body" class="divide-y divide-outline-variant/40">
+                            <!-- Injected dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- ================================================================= -->
+            <!-- SECTION 2: CURRICULUM VIDEOS MANAGEMENT                          -->
+            <!-- ================================================================= -->
+            <div id="section-videos" class="bg-surface-container rounded-2xl border border-outline-variant p-6 shadow-xl space-y-6">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-outline-variant/60 pb-4">
+                    <div>
+                        <h2 class="text-base font-bold text-white flex items-center gap-2">
+                            <span class="material-symbols-outlined text-tertiary">smart_display</span>
+                            <span>Curriculum Video Lecture Management</span>
+                        </h2>
+                        <p class="text-xs text-on-surface-variant mt-0.5">
+                            Connect accredited YouTube lectures (NPTEL, MIT, Stanford) directly to engineering departments and semesters.
+                        </p>
+                    </div>
+                    <button onclick="openCreateVideoForm()" id="toggle-video-form-btn" class="px-4 py-2 rounded-xl bg-tertiary-container/30 border border-tertiary/40 text-tertiary hover:bg-tertiary-container/50 text-xs font-bold flex items-center gap-1.5 shadow-md shrink-0">
+                        <span class="material-symbols-outlined text-sm">video_call</span>
+                        <span>Link Lecture Video</span>
+                    </button>
+                </div>
+
+                <!-- Create / Edit Video Form (Toggleable) -->
+                <form id="create-video-form" onsubmit="handleCreateOrUpdateVideo(event)" class="hidden p-6 rounded-2xl bg-surface-container-low border border-tertiary/30 space-y-5 tab-transition shadow-xl">
+                    <input type="hidden" id="vid-edit-id" value=""/>
+                    <div class="flex items-center justify-between border-b border-outline-variant/50 pb-3">
+                        <h3 id="vid-form-title" class="text-sm font-bold text-white flex items-center gap-2">
+                            <span class="material-symbols-outlined text-tertiary text-base">video_library</span>
+                            <span>Register Curriculum Video Resource</span>
+                        </h3>
+                        <span id="vid-form-badge" class="px-2.5 py-0.5 rounded text-[10px] font-mono font-bold bg-tertiary/20 text-tertiary border border-tertiary/30">
+                            NEW ENTRY
+                        </span>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
+                        <div class="sm:col-span-2">
+                            <label class="text-[11px] font-semibold text-outline uppercase label-caps">Lecture Title *</label>
+                            <input id="vid-title" type="text" placeholder="e.g. Operating Systems: Process Synchronization & Deadlocks" required class="premium-input rounded-lg w-full px-3 py-2 text-xs text-white mt-1"/>
+                        </div>
+                        <div>
+                            <label class="text-[11px] font-semibold text-outline uppercase label-caps">Video Provider</label>
+                            <select id="vid-provider" class="premium-input rounded-lg w-full px-3 py-2 text-xs text-white mt-1">
+                                <option value="youtube" selected>YouTube Embed</option>
+                                <option value="vimeo">Vimeo Player</option>
+                                <option value="mp4">Direct MP4 Video</option>
+                                <option value="direct">Direct Web Player</option>
+                            </select>
+                        </div>
+                        <div class="sm:col-span-2">
+                            <label class="text-[11px] font-semibold text-outline uppercase label-caps">Video URL * (YouTube / Vimeo / MP4)</label>
+                            <input id="vid-url" type="url" placeholder="https://www.youtube.com/watch?v=..." required class="premium-input rounded-lg w-full px-3 py-2 text-xs text-white mt-1"/>
+                        </div>
+                        <div>
+                            <label class="text-[11px] font-semibold text-outline uppercase label-caps">Custom Thumbnail URL (Optional)</label>
+                            <input id="vid-thumbnail" type="url" placeholder="Auto-derived if empty" class="premium-input rounded-lg w-full px-3 py-2 text-xs text-white mt-1"/>
+                        </div>
+                        <div class="sm:col-span-3">
+                            <label class="text-[11px] font-semibold text-outline uppercase label-caps">Description & Learning Outcomes</label>
+                            <textarea id="vid-description" rows="2" placeholder="Key syllabus theorems, mathematical derivations, or practical concepts covered..." class="premium-input rounded-lg w-full px-3 py-2 text-xs text-white mt-1"></textarea>
+                        </div>
+                        <div>
+                            <label class="text-[11px] font-semibold text-outline uppercase label-caps">Subject Name *</label>
+                            <input id="vid-subject" type="text" placeholder="e.g. Operating Systems" required class="premium-input rounded-lg w-full px-3 py-2 text-xs text-white mt-1"/>
+                        </div>
+                        <div>
+                            <label class="text-[11px] font-semibold text-outline uppercase label-caps">Topic / Concept *</label>
+                            <input id="vid-topic" type="text" placeholder="e.g. Process Synchronization" required class="premium-input rounded-lg w-full px-3 py-2 text-xs text-white mt-1"/>
+                        </div>
+                        <div>
+                            <label class="text-[11px] font-semibold text-outline uppercase label-caps">Syllabus Unit</label>
+                            <input id="vid-unit" type="text" placeholder="e.g. Unit 2: Process Management" class="premium-input rounded-lg w-full px-3 py-2 text-xs text-white mt-1"/>
+                        </div>
+                        <div>
+                            <label class="text-[11px] font-semibold text-outline uppercase label-caps">Instructor / University</label>
+                            <input id="vid-instructor" type="text" placeholder="e.g. Prof. P. K. Biswas (IIT KGP)" class="premium-input rounded-lg w-full px-3 py-2 text-xs text-white mt-1"/>
+                        </div>
+                        <div>
+                            <label class="text-[11px] font-semibold text-outline uppercase label-caps">Duration</label>
+                            <input id="vid-duration" type="text" placeholder="e.g. 45:00" class="premium-input rounded-lg w-full px-3 py-2 text-xs text-white mt-1"/>
+                        </div>
+                        <div>
+                            <label class="text-[11px] font-semibold text-outline uppercase label-caps">Difficulty Level</label>
+                            <select id="vid-difficulty" class="premium-input rounded-lg w-full px-3 py-2 text-xs text-white mt-1">
+                                <option value="Beginner">Beginner</option>
+                                <option value="Intermediate" selected>Intermediate</option>
+                                <option value="Advanced">Advanced</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Multi-Semester Selector -->
+                    <div class="space-y-2 pt-2 border-t border-outline-variant/40">
+                        <div class="flex items-center justify-between">
+                            <label class="text-[11px] font-semibold text-outline uppercase label-caps">
+                                Target Curriculum Semesters (Select one or more) *
+                            </label>
+                            <div class="flex items-center gap-2 text-[11px]">
+                                <button type="button" onclick="selectVideoSemGroup('all')" class="text-tertiary hover:underline">All Semesters (1-8)</button>
+                                <span>•</span>
+                                <button type="button" onclick="selectVideoSemGroup('lower')" class="text-tertiary hover:underline">Sem 1-4</button>
+                                <span>•</span>
+                                <button type="button" onclick="selectVideoSemGroup('upper')" class="text-tertiary hover:underline">Sem 5-8</button>
+                                <span>•</span>
+                                <button type="button" onclick="selectVideoSemGroup('clear')" class="text-on-surface-variant hover:underline">Clear</button>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-4 sm:grid-cols-8 gap-2 p-3 rounded-xl bg-surface-container border border-outline-variant/60 text-xs">
+                            <label class="flex items-center gap-1.5 p-1 rounded hover:bg-surface-container-high cursor-pointer"><input type="checkbox" name="video-sem" value="1" class="rounded border-outline-variant text-tertiary focus:ring-tertiary"/><span class="font-mono text-[11px]">Sem 1</span></label>
+                            <label class="flex items-center gap-1.5 p-1 rounded hover:bg-surface-container-high cursor-pointer"><input type="checkbox" name="video-sem" value="2" class="rounded border-outline-variant text-tertiary focus:ring-tertiary"/><span class="font-mono text-[11px]">Sem 2</span></label>
+                            <label class="flex items-center gap-1.5 p-1 rounded hover:bg-surface-container-high cursor-pointer"><input type="checkbox" name="video-sem" value="3" class="rounded border-outline-variant text-tertiary focus:ring-tertiary"/><span class="font-mono text-[11px]">Sem 3</span></label>
+                            <label class="flex items-center gap-1.5 p-1 rounded hover:bg-surface-container-high cursor-pointer"><input type="checkbox" name="video-sem" value="4" class="rounded border-outline-variant text-tertiary focus:ring-tertiary" checked/><span class="font-mono text-[11px] font-bold text-white">Sem 4</span></label>
+                            <label class="flex items-center gap-1.5 p-1 rounded hover:bg-surface-container-high cursor-pointer"><input type="checkbox" name="video-sem" value="5" class="rounded border-outline-variant text-tertiary focus:ring-tertiary"/><span class="font-mono text-[11px]">Sem 5</span></label>
+                            <label class="flex items-center gap-1.5 p-1 rounded hover:bg-surface-container-high cursor-pointer"><input type="checkbox" name="video-sem" value="6" class="rounded border-outline-variant text-tertiary focus:ring-tertiary"/><span class="font-mono text-[11px]">Sem 6</span></label>
+                            <label class="flex items-center gap-1.5 p-1 rounded hover:bg-surface-container-high cursor-pointer"><input type="checkbox" name="video-sem" value="7" class="rounded border-outline-variant text-tertiary focus:ring-tertiary"/><span class="font-mono text-[11px]">Sem 7</span></label>
+                            <label class="flex items-center gap-1.5 p-1 rounded hover:bg-surface-container-high cursor-pointer"><input type="checkbox" name="video-sem" value="8" class="rounded border-outline-variant text-tertiary focus:ring-tertiary"/><span class="font-mono text-[11px]">Sem 8</span></label>
+                        </div>
+                    </div>
+
+                    <!-- Multi-Department Selector -->
+                    <div class="space-y-2 pt-2 border-t border-outline-variant/40">
+                        <div class="flex items-center justify-between">
+                            <label class="text-[11px] font-semibold text-outline uppercase label-caps">
+                                Target Eligible Departments (Select one or more) *
+                            </label>
+                            <div class="flex items-center gap-2 text-[11px]">
+                                <button type="button" onclick="selectVideoDeptGroup('common')" class="text-teal-300 font-bold hover:underline">Common / All Engg</button>
+                                <span>•</span>
+                                <button type="button" onclick="selectVideoDeptGroup('computing')" class="text-tertiary hover:underline">Computing & AI</button>
+                                <span>•</span>
+                                <button type="button" onclick="selectVideoDeptGroup('electrical')" class="text-tertiary hover:underline">Electrical/VLSI</button>
+                                <span>•</span>
+                                <button type="button" onclick="selectVideoDeptGroup('mech')" class="text-tertiary hover:underline">Mechanical</button>
+                                <span>•</span>
+                                <button type="button" onclick="selectVideoDeptGroup('civil')" class="text-tertiary hover:underline">Civil</button>
+                                <span>•</span>
+                                <button type="button" onclick="selectVideoDeptGroup('clear')" class="text-on-surface-variant hover:underline">Clear</button>
+                            </div>
+                        </div>
+                        <div id="video-departments-grid" class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-2 max-h-40 overflow-y-auto p-3 rounded-xl bg-surface-container border border-outline-variant/60 text-xs">
+                            <!-- Injected dynamically -->
+                        </div>
+                    </div>
+
+                    <!-- Publishing Controls -->
+                    <div class="grid grid-cols-1 sm:grid-cols-4 gap-4 pt-2 border-t border-outline-variant/40 text-xs items-center">
+                        <label class="flex items-center gap-2 cursor-pointer">
+                            <input type="checkbox" id="vid-is-common" class="rounded border-outline-variant text-teal-300 focus:ring-teal-300"/>
+                            <span class="font-bold text-teal-300">Common Content (All Engg)</span>
+                        </label>
+                        <label class="flex items-center gap-2 cursor-pointer">
+                            <input type="checkbox" id="vid-published" checked class="rounded border-outline-variant text-tertiary focus:ring-tertiary"/>
+                            <span class="font-bold text-white">Publish Immediately</span>
+                        </label>
+                        <label class="flex items-center gap-2 cursor-pointer">
+                            <input type="checkbox" id="vid-featured" class="rounded border-outline-variant text-primary focus:ring-primary"/>
+                            <span class="font-bold text-white">Featured Lecture</span>
+                        </label>
+                        <div class="flex items-center gap-2">
+                            <span class="text-[11px] font-semibold text-outline uppercase label-caps">Sort Order:</span>
+                            <input type="number" id="vid-sort-order" value="1" min="0" max="99" class="premium-input rounded-lg w-20 px-2 py-1 text-xs text-white"/>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center justify-end gap-3 pt-3 border-t border-outline-variant/40">
+                        <button type="button" onclick="toggleVideoForm()" class="px-4 py-2 rounded-lg bg-surface-container-high text-on-surface-variant text-xs font-semibold">
+                            Cancel
+                        </button>
+                        <button type="submit" id="vid-submit-btn" class="px-6 py-2 rounded-xl bg-tertiary-container text-white font-bold text-xs shadow-md">
+                            Add Lecture to Curriculum Feed
+                        </button>
+                    </div>
+                </form>
+
+                <!-- Live Videos Table -->
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-xs">
+                        <thead class="bg-surface-container-high text-outline uppercase label-caps border-b border-outline-variant">
+                            <tr>
+                                <th class="px-5 py-3">Lecture & Subject</th>
+                                <th class="px-5 py-3">Semesters</th>
+                                <th class="px-5 py-3">Eligible Departments</th>
+                                <th class="px-5 py-3">Instructor / Channel</th>
+                                <th class="px-5 py-3">Status</th>
+                                <th class="px-5 py-3 text-right">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="admin-videos-table-body" class="divide-y divide-outline-variant/40">
+                            <!-- Injected dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- ================================================================= -->
+            <!-- SECTION 3: ACADEMIC DISCIPLINES MATRIX (45+ Branches)           -->
+            <!-- ================================================================= -->
+            <div id="section-branches" class="bg-surface-container rounded-2xl border border-outline-variant p-6 shadow-xl space-y-6">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-outline-variant/60 pb-4">
+                    <div>
+                        <h2 class="text-base font-bold text-white flex items-center gap-2">
+                            <span class="material-symbols-outlined text-secondary">tune</span>
+                            <span>Engineering Disciplines Directory (45+ Branches)</span>
+                        </h2>
+                        <p class="text-xs text-on-surface-variant mt-0.5">
+                            Toggle active status across all student portals, or register custom institutional degrees.
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <input id="admin-branch-search" type="text" placeholder="Search branches..." class="premium-input rounded-xl px-3 py-1.5 text-xs text-white" oninput="renderBranchesTable()"/>
+                    </div>
+                </div>
+
+                <!-- Register Custom Branch Form -->
+                <form onsubmit="handleAdminAddBranch(event)" class="p-4 rounded-xl bg-surface-container-low border border-outline-variant grid grid-cols-1 sm:grid-cols-4 gap-3 text-xs">
+                    <div>
+                        <label class="text-[10px] font-semibold text-outline uppercase label-caps">Branch Code</label>
+                        <input id="cb-code" type="text" placeholder="e.g. ROBOTICS" required class="premium-input rounded-lg w-full px-3 py-1.5 text-xs text-white mt-1"/>
+                    </div>
+                    <div class="sm:col-span-2">
+                        <label class="text-[10px] font-semibold text-outline uppercase label-caps">Degree Name</label>
+                        <input id="cb-name" type="text" placeholder="e.g. Robotics & Autonomous Systems" required class="premium-input rounded-lg w-full px-3 py-1.5 text-xs text-white mt-1"/>
+                    </div>
+                    <div>
+                        <label class="text-[10px] font-semibold text-outline uppercase label-caps">Category</label>
+                        <select id="cb-cat" class="premium-input rounded-lg w-full px-3 py-1.5 text-xs text-white mt-1">
+                            <option value="Computing">Computing</option>
+                            <option value="Electrical">Electrical</option>
+                            <option value="Mechanical">Mechanical</option>
+                            <option value="Civil">Civil</option>
+                            <option value="Chemical">Chemical</option>
+                            <option value="Biotech">Biotech</option>
+                            <option value="Aerospace">Aerospace</option>
+                            <option value="Specialized">Specialized</option>
+                        </select>
+                    </div>
+                    <div class="sm:col-span-4 flex justify-end">
+                        <button type="submit" class="btn-primary-gradient px-4 py-2 rounded-xl text-xs font-bold shadow-md">
+                            Register Branch in Matrix
+                        </button>
+                    </div>
+                </form>
+
+                <!-- Disciplines Table -->
+                <div class="overflow-x-auto max-h-96">
+                    <table class="w-full text-left text-xs">
+                        <thead class="bg-surface-container-high text-outline uppercase label-caps border-b border-outline-variant sticky top-0">
+                            <tr>
+                                <th class="px-5 py-3">Code</th>
+                                <th class="px-5 py-3">Discipline Name</th>
+                                <th class="px-5 py-3">Category</th>
+                                <th class="px-5 py-3">Platform Status</th>
+                                <th class="px-5 py-3 text-right">Toggle Active</th>
+                            </tr>
+                        </thead>
+                        <tbody id="admin-branches-table-body" class="divide-y divide-outline-variant/40">
+                            <!-- Injected dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- ================================================================= -->
+            <!-- SECTION 4: STUDENT COHORTS & REVIEWS                             -->
+            <!-- ================================================================= -->
+            <div id="section-students" class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <!-- Students Directory -->
+                <div class="bg-surface-container rounded-2xl border border-outline-variant p-6 shadow-xl space-y-4">
+                    <div class="flex items-center justify-between border-b border-outline-variant/60 pb-3">
+                        <h3 class="text-sm font-bold text-white flex items-center gap-2">
+                            <span class="material-symbols-outlined text-primary text-base">group</span>
+                            <span>Student Cohorts Directory</span>
+                        </h3>
+                        <span class="text-xs font-mono text-tertiary">Live Sync</span>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="p-3.5 rounded-xl bg-surface-container-low border border-outline-variant flex items-center justify-between text-xs">
+                            <div class="flex items-center gap-3">
+                                <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=60&auto=format&fit=crop&q=80" alt="Avatar" class="w-8 h-8 rounded-lg object-cover"/>
+                                <div>
+                                    <div class="font-bold text-white">Alex Rivera</div>
+                                    <div class="text-[10px] text-on-surface-variant font-mono">AIML • Semester 6</div>
+                                </div>
+                            </div>
+                            <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-primary-container/20 text-primary border border-primary/30">ACTIVE</span>
+                        </div>
+                        <div class="p-3.5 rounded-xl bg-surface-container-low border border-outline-variant flex items-center justify-between text-xs">
+                            <div class="flex items-center gap-3">
+                                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=60&auto=format&fit=crop&q=80" alt="Avatar" class="w-8 h-8 rounded-lg object-cover"/>
+                                <div>
+                                    <div class="font-bold text-white">Priya Sharma</div>
+                                    <div class="text-[10px] text-on-surface-variant font-mono">ECE • Semester 5</div>
+                                </div>
+                            </div>
+                            <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-tertiary-container/20 text-tertiary border border-tertiary/30">ACTIVE</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review Moderation Queue -->
+                <div class="bg-surface-container rounded-2xl border border-outline-variant p-6 shadow-xl space-y-4">
+                    <div class="flex items-center justify-between border-b border-outline-variant/60 pb-3">
+                        <h3 class="text-sm font-bold text-white flex items-center gap-2">
+                            <span class="material-symbols-outlined text-amber-400 text-base">rate_review</span>
+                            <span>Review Moderation Queue</span>
+                        </h3>
+                        <span class="text-xs text-amber-400 font-mono">1 Pending</span>
+                    </div>
+                    <div class="p-4 rounded-xl bg-surface-container-low border border-outline-variant space-y-2 text-xs">
+                        <div class="flex items-center justify-between">
+                            <strong class="text-white">Arjun Nair (CSE)</strong>
+                            <span class="text-amber-400">⭐⭐⭐⭐⭐</span>
+                        </div>
+                        <p class="text-on-surface-variant text-[11px] leading-relaxed">
+                            "The in-browser code editor and 3D flashcards helped me prepare for my Amazon SDE-1 coding round without getting overwhelmed."
+                        </p>
+                        <div class="flex items-center justify-end gap-2 pt-1">
+                            <button onclick="AuthManager.showToast('Review approved!', 'success'); this.closest('.p-4').remove();" class="px-3 py-1 rounded bg-tertiary-container/30 text-tertiary hover:bg-tertiary-container text-[11px] font-bold">
+                                Approve
+                            </button>
+                            <button onclick="AuthManager.showToast('Review rejected.', 'info'); this.closest('.p-4').remove();" class="px-3 py-1 rounded bg-red-500/20 text-red-300 hover:bg-red-500/30 text-[11px] font-bold">
+                                Reject
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ================================================================= -->
+            <!-- SECTION 5: STUDENT REVIEW MODERATION                            -->
+            <!-- ================================================================= -->
+            <div id="section-reviews" class="bg-surface-container rounded-2xl border border-outline-variant p-6 shadow-xl space-y-6">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-outline-variant/60 pb-4">
+                    <div>
+                        <h2 class="text-base font-bold text-white flex items-center gap-2">
+                            <span class="material-symbols-outlined text-[#F6C177]">rate_review</span>
+                            <span>Student Review Moderation</span>
+                        </h2>
+                        <p class="text-xs text-on-surface-variant mt-0.5">
+                            Moderate student reviews before they appear publicly on /reviews. Real database records only.
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-2 text-xs">
+                        <span class="px-2.5 py-1 rounded-lg bg-amber-500/20 text-amber-300 border border-amber-500/30 font-mono text-[11px]">
+                            <span id="stat-admin-pending-revs">0</span> Pending Moderation
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Review Filter Controls -->
+                <div class="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3 text-xs">
+                    <!-- Status Filter Tabs -->
+                    <div class="flex items-center gap-1 overflow-x-auto" id="admin-review-status-tabs">
+                        <button onclick="filterAdminReviews('all')" class="admin-rev-tab active px-3 py-1.5 rounded-lg bg-surface-container-high text-white font-medium">
+                            All (<span id="rev-tab-all-count">0</span>)
+                        </button>
+                        <button onclick="filterAdminReviews('pending')" class="admin-rev-tab px-3 py-1.5 rounded-lg text-on-surface-variant hover:text-white">
+                            Pending (<span id="rev-tab-pending-count">0</span>)
+                        </button>
+                        <button onclick="filterAdminReviews('approved')" class="admin-rev-tab px-3 py-1.5 rounded-lg text-on-surface-variant hover:text-white">
+                            Approved (<span id="rev-tab-approved-count">0</span>)
+                        </button>
+                        <button onclick="filterAdminReviews('rejected')" class="admin-rev-tab px-3 py-1.5 rounded-lg text-on-surface-variant hover:text-white">
+                            Rejected (<span id="rev-tab-rejected-count">0</span>)
+                        </button>
+                    </div>
+
+                    <!-- Search and Feature Filters -->
+                    <div class="flex items-center gap-2">
+                        <select id="admin-rev-feature-filter" onchange="filterAdminReviews()" class="premium-input rounded-lg px-2.5 py-1.5 text-xs text-white">
+                            <option value="all">All Features</option>
+                            <option value="AI Notes">AI Notes</option>
+                            <option value="LearnHub">LearnHub</option>
+                            <option value="AI Doubt Solver">AI Doubt Solver</option>
+                            <option value="AI Mock Interview">AI Mock Interview</option>
+                            <option value="Project Hub">Project Hub</option>
+                            <option value="Skill Hub">Skill Hub</option>
+                            <option value="Resume Builder">Resume Builder</option>
+                            <option value="Exam Tracker">Exam Tracker</option>
+                            <option value="Career">Career</option>
+                            <option value="Internships">Internships</option>
+                            <option value="Other">Other</option>
+                        </select>
+                        <input id="admin-rev-search" type="text" placeholder="Search reviews..." oninput="filterAdminReviews()" class="premium-input rounded-lg px-3 py-1.5 text-xs text-white w-44"/>
+                    </div>
+                </div>
+
+                <!-- Reviews Table -->
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-xs">
+                        <thead class="bg-surface-container-high text-outline uppercase label-caps border-b border-outline-variant">
+                            <tr>
+                                <th class="px-4 py-3">Reviewer</th>
+                                <th class="px-4 py-3">Rating</th>
+                                <th class="px-4 py-3">Review</th>
+                                <th class="px-4 py-3">Feature</th>
+                                <th class="px-4 py-3">Date</th>
+                                <th class="px-4 py-3">Status</th>
+                                <th class="px-4 py-3 text-right">Moderation Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="admin-reviews-table-body" class="divide-y divide-outline-variant/40">
+                            <!-- Injected dynamically -->
+                        </tbody>
+                    </table>
+                    <div id="admin-reviews-empty" class="hidden text-center py-10 text-on-surface-variant text-xs">
+                        <span class="material-symbols-outlined text-2xl text-outline mb-1 block">inbox</span>
+                        No reviews found matching current filter.
+                    </div>
+                </div>
+            </div>
+
+            <!-- ================================================================= -->
+            <!-- SECTION 6: CONTACT INQUIRIES & MESSAGES                         -->
+            <!-- ================================================================= -->
+            <div id="section-contacts" class="bg-surface-container rounded-2xl border border-outline-variant p-6 shadow-xl space-y-6">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-outline-variant/60 pb-4">
+                    <div>
+                        <h2 class="text-base font-bold text-white flex items-center gap-2">
+                            <span class="material-symbols-outlined text-[#2DD4BF]">mail</span>
+                            <span>Contact Messages & Inquiries</span>
+                        </h2>
+                        <p class="text-xs text-on-surface-variant mt-0.5">
+                            Manage user questions, issues, and inquiries submitted via the /contact page.
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-2 text-xs">
+                        <span class="px-2.5 py-1 rounded-lg bg-teal-500/20 text-teal-300 border border-teal-500/30 font-mono text-[11px]">
+                            <span id="stat-admin-new-msgs">0</span> New Inquiries
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Contact Filter Controls -->
+                <div class="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3 text-xs">
+                    <!-- Status Filter Tabs -->
+                    <div class="flex items-center gap-1 overflow-x-auto" id="admin-contact-status-tabs">
+                        <button onclick="filterAdminContacts('all')" class="admin-msg-tab active px-3 py-1.5 rounded-lg bg-surface-container-high text-white font-medium">
+                            All (<span id="msg-tab-all-count">0</span>)
+                        </button>
+                        <button onclick="filterAdminContacts('new')" class="admin-msg-tab px-3 py-1.5 rounded-lg text-on-surface-variant hover:text-white">
+                            New (<span id="msg-tab-new-count">0</span>)
+                        </button>
+                        <button onclick="filterAdminContacts('in_progress')" class="admin-msg-tab px-3 py-1.5 rounded-lg text-on-surface-variant hover:text-white">
+                            In Progress (<span id="msg-tab-progress-count">0</span>)
+                        </button>
+                        <button onclick="filterAdminContacts('resolved')" class="admin-msg-tab px-3 py-1.5 rounded-lg text-on-surface-variant hover:text-white">
+                            Resolved (<span id="msg-tab-resolved-count">0</span>)
+                        </button>
+                        <button onclick="filterAdminContacts('closed')" class="admin-msg-tab px-3 py-1.5 rounded-lg text-on-surface-variant hover:text-white">
+                            Closed (<span id="msg-tab-closed-count">0</span>)
+                        </button>
+                    </div>
+
+                    <!-- Search and Category Filters -->
+                    <div class="flex items-center gap-2">
+                        <select id="admin-msg-category-filter" onchange="filterAdminContacts()" class="premium-input rounded-lg px-2.5 py-1.5 text-xs text-white">
+                            <option value="all">All Categories</option>
+                            <option value="General Question">General Question</option>
+                            <option value="Technical Issue">Technical Issue</option>
+                            <option value="AI Notes">AI Notes</option>
+                            <option value="LearnHub">LearnHub</option>
+                            <option value="AI Mock Interview">AI Mock Interview</option>
+                            <option value="Resume Builder">Resume Builder</option>
+                            <option value="Project Hub">Project Hub</option>
+                            <option value="Career / Jobs">Career / Jobs</option>
+                            <option value="Account / Login">Account / Login</option>
+                            <option value="Feedback">Feedback</option>
+                            <option value="Other">Other</option>
+                        </select>
+                        <input id="admin-msg-search" type="text" placeholder="Search inquiries..." oninput="filterAdminContacts()" class="premium-input rounded-lg px-3 py-1.5 text-xs text-white w-44"/>
+                    </div>
+                </div>
+
+                <!-- Messages Table -->
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-xs">
+                        <thead class="bg-surface-container-high text-outline uppercase label-caps border-b border-outline-variant">
+                            <tr>
+                                <th class="px-4 py-3">Sender</th>
+                                <th class="px-4 py-3">Category</th>
+                                <th class="px-4 py-3">Subject</th>
+                                <th class="px-4 py-3">Date</th>
+                                <th class="px-4 py-3">Status</th>
+                                <th class="px-4 py-3 text-right">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="admin-contacts-table-body" class="divide-y divide-outline-variant/40">
+                            <!-- Injected dynamically -->
+                        </tbody>
+                    </table>
+                    <div id="admin-contacts-empty" class="hidden text-center py-10 text-on-surface-variant text-xs">
+                        <span class="material-symbols-outlined text-2xl text-outline mb-1 block">mail_lock</span>
+                        No contact messages found.
+                    </div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- Contact Message Details Modal -->
+    <div id="contact-details-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="bg-surface-container border border-outline-variant rounded-2xl w-full max-w-lg p-6 space-y-4 shadow-2xl">
+            <div class="flex items-center justify-between border-b border-outline-variant/50 pb-3">
+                <div class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-[#2DD4BF] text-xl">mark_email_read</span>
+                    <h3 class="text-sm font-bold text-white">Contact Inquiry Details</h3>
+                </div>
+                <button onclick="closeContactModal()" class="text-on-surface-variant hover:text-white p-1 rounded">
+                    <span class="material-symbols-outlined text-lg">close</span>
+                </button>
+            </div>
+
+            <div class="space-y-3 text-xs">
+                <div>
+                    <span class="text-outline uppercase text-[10px] block font-mono">From</span>
+                    <div class="text-white font-semibold" id="modal-msg-sender"></div>
+                    <a href="#" id="modal-msg-email" class="text-secondary hover:underline font-mono text-[11px]"></a>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <span class="text-outline uppercase text-[10px] block font-mono">Category</span>
+                        <span id="modal-msg-category" class="px-2 py-0.5 rounded bg-surface-container-high text-white text-[11px]"></span>
+                    </div>
+                    <div>
+                        <span class="text-outline uppercase text-[10px] block font-mono">Submitted</span>
+                        <span id="modal-msg-date" class="text-on-surface-variant font-mono text-[11px]"></span>
+                    </div>
+                </div>
+
+                <div>
+                    <span class="text-outline uppercase text-[10px] block font-mono">Subject</span>
+                    <div id="modal-msg-subject" class="text-white font-bold"></div>
+                </div>
+
+                <div>
+                    <span class="text-outline uppercase text-[10px] block font-mono">Message</span>
+                    <div id="modal-msg-body" class="p-3 rounded-xl bg-surface-container-low border border-outline-variant text-on-surface whitespace-pre-wrap leading-relaxed max-h-48 overflow-y-auto"></div>
+                </div>
+
+                <div>
+                    <label class="text-outline uppercase text-[10px] block font-mono mb-1">Status & Triage</label>
+                    <div class="flex items-center gap-2">
+                        <select id="modal-msg-status" class="premium-input rounded-lg px-2.5 py-1.5 text-xs text-white flex-1">
+                            <option value="new">New</option>
+                            <option value="in_progress">In Progress</option>
+                            <option value="resolved">Resolved</option>
+                            <option value="closed">Closed</option>
+                        </select>
+                        <button id="btn-save-msg-status" onclick="saveContactModalStatus()" class="btn-primary-gradient px-4 py-1.5 rounded-lg text-xs font-bold">
+                            Update
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/supabase.min.js"></script>
+    <script src="js/supabase-client.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/db.js"></script>
+    <script src="js/branches.js"></script>
+    <script src="js/motion.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+        let adminJobs = [];
+        let adminVideos = [];
+        let adminBranches = [];
+        let adminReviews = [];
+        let adminContacts = [];
+        let activeAdminRevStatus = 'all';
+        let activeAdminMsgStatus = 'all';
+        let currentSelectedMsg = null;
+
+        // ======================================================================
+        // adminFetch() — Secure Admin API Helper
+        //
+        // Wraps all admin API calls to automatically include:
+        //   Authorization: Bearer <supabase-jwt>
+        //
+        // Replaces all X-Admin-Email headers and adminEmail body fields.
+        // This ensures every admin operation is authenticated via real JWT.
+        // ======================================================================
+        async function adminFetch(url, options = {}) {
+            const client = (typeof SupabaseBridge !== 'undefined') ? SupabaseBridge.getClient() : null;
+            const sessionData = client ? (await client.auth.getSession()).data?.session : null;
+            const authToken = sessionData?.access_token || null;
+
+            if (!authToken) {
+                AuthManager.showToast('Admin session expired. Please log in again.', 'error');
+                setTimeout(() => { window.location.replace('login.html?redirect=admin.html'); }, 1500);
+                throw new Error('No admin session token available.');
+            }
+
+            // Inject Authorization header; never add X-Admin-Email or adminEmail
+            const headers = {
+                'Content-Type': 'application/json',
+                ...(options.headers || {}),
+                'Authorization': `Bearer ${authToken}`
+            };
+            // Remove any legacy insecure headers if they somehow appear
+            delete headers['X-Admin-Email'];
+            delete headers['x-admin-email'];
+
+            return fetch(url, { ...options, headers });
+        }
+
+        document.addEventListener('DOMContentLoaded', async () => {
+            // Strict Authorization verification (now async + server-verified)
+            const isAuthorized = await AuthManager.requireAdmin();
+            if (!isAuthorized) return;
+
+
+            await BranchSystem.loadFromSupabase();
+            adminBranches = BranchSystem.getAllBranches();
+
+            renderJobDeptCheckboxes();
+            renderVideoDeptCheckboxes();
+            renderBranchesTable();
+
+            await loadAdminData();
+        });
+
+        function toggleJobForm() {
+            const form = document.getElementById('create-job-form');
+            form.classList.toggle('hidden');
+        }
+
+        function toggleVideoForm() {
+            const form = document.getElementById('create-video-form');
+            form.classList.toggle('hidden');
+        }
+
+        function renderJobDeptCheckboxes() {
+            const container = document.getElementById('job-departments-grid');
+            if (!container) return;
+            const branches = BranchSystem.getAllBranches();
+            container.innerHTML = branches.map(b => `
+                <label class="flex items-center gap-1.5 p-1 rounded hover:bg-surface-container-high cursor-pointer">
+                    <input type="checkbox" name="job-dept" value="${b.code}" class="rounded border-outline-variant text-primary focus:ring-primary" ${['CSE', 'IT', 'AIML'].includes(b.code) ? 'checked' : ''}/>
+                    <span class="font-mono text-[11px] truncate" title="${b.name}">${b.code}</span>
+                </label>
+            `).join('');
+        }
+
+        function renderVideoDeptCheckboxes(selectedDepts = ['CSE', 'IT', 'AIML']) {
+            const container = document.getElementById('video-departments-grid');
+            if (!container) return;
+            const branches = BranchSystem.getAllBranches();
+            const upperSelected = (selectedDepts || []).map(d => String(d).toUpperCase());
+
+            let html = `
+                <label class="flex items-center gap-1.5 p-1.5 rounded bg-teal-500/10 border border-teal-500/30 hover:bg-teal-500/20 cursor-pointer col-span-2">
+                    <input type="checkbox" name="video-dept" value="COMMON" class="rounded border-teal-500/40 text-teal-400 focus:ring-teal-400" ${upperSelected.includes('COMMON') ? 'checked' : ''}/>
+                    <span class="font-bold text-[11px] text-teal-300">★ COMMON (All Engineering)</span>
+                </label>
+            `;
+
+            html += branches.map(b => `
+                <label class="flex items-center gap-1.5 p-1 rounded hover:bg-surface-container-high cursor-pointer">
+                    <input type="checkbox" name="video-dept" value="${b.code}" class="rounded border-outline-variant text-tertiary focus:ring-tertiary" ${upperSelected.includes(b.code) ? 'checked' : ''}/>
+                    <span class="font-mono text-[11px] truncate" title="${b.name}">${b.code}</span>
+                </label>
+            `).join('');
+            container.innerHTML = html;
+        }
+
+        function selectVideoDeptGroup(group) {
+            const checkboxes = document.querySelectorAll('input[name="video-dept"]');
+            const computing = ['CSE', 'AIML', 'AIDS', 'IT', 'CSIT', 'CYBER', 'SE', 'CLOUD', 'BLOCK', 'IOT', 'DS'];
+            const electrical = ['ECE', 'EEE', 'EIE', 'VLSI', 'TELECOM', 'POWER', 'EMBEDDED'];
+            const mech = ['MECH', 'ROBOTICS', 'MECHATRONICS', 'AUTO', 'PROD', 'MANUFACT', 'THERMAL'];
+            const civil = ['CIVIL', 'STRUCT', 'ENV', 'TRANS', 'GEO', 'CONST', 'URBAN'];
+
+            checkboxes.forEach(cb => {
+                if (group === 'common') cb.checked = (cb.value === 'COMMON');
+                else if (group === 'all') cb.checked = true;
+                else if (group === 'clear') cb.checked = false;
+                else if (group === 'computing') cb.checked = computing.includes(cb.value);
+                else if (group === 'electrical') cb.checked = electrical.includes(cb.value);
+                else if (group === 'mech') cb.checked = mech.includes(cb.value);
+                else if (group === 'civil') cb.checked = civil.includes(cb.value);
+            });
+        }
+
+        function selectVideoSemGroup(group) {
+            const checkboxes = document.querySelectorAll('input[name="video-sem"]');
+            checkboxes.forEach(cb => {
+                const val = parseInt(cb.value, 10);
+                if (group === 'all') cb.checked = true;
+                else if (group === 'lower') cb.checked = val >= 1 && val <= 4;
+                else if (group === 'upper') cb.checked = val >= 5 && val <= 8;
+                else if (group === 'clear') cb.checked = false;
+            });
+        }
+
+        function selectDeptGroup(group) {
+            const checkboxes = document.querySelectorAll('input[name="job-dept"]');
+            const computing = ['CSE', 'AIML', 'AIDS', 'IT', 'CSIT', 'CYBER', 'SE', 'CLOUD', 'BLOCK', 'IOT', 'DS'];
+            const electrical = ['ECE', 'EEE', 'EIE', 'VLSI', 'TELECOM', 'POWER', 'EMBEDDED'];
+            const mech = ['MECH', 'ROBOTICS', 'MECHATRONICS', 'AUTO', 'PROD', 'MANUFACT', 'THERMAL'];
+            const civil = ['CIVIL', 'STRUCT', 'ENV', 'TRANS', 'GEO', 'CONST', 'URBAN'];
+
+            checkboxes.forEach(cb => {
+                if (group === 'all') cb.checked = true;
+                else if (group === 'clear') cb.checked = false;
+                else if (group === 'computing') cb.checked = computing.includes(cb.value);
+                else if (group === 'electrical') cb.checked = electrical.includes(cb.value);
+                else if (group === 'mech') cb.checked = mech.includes(cb.value);
+                else if (group === 'civil') cb.checked = civil.includes(cb.value);
+            });
+        }
+
+        async function loadAdminData() {
+            try {
+                // Fetch Jobs
+                const jobsRes = await adminFetch('jobs?all=true');
+                if (jobsRes.ok) {
+                    const data = await jobsRes.json();
+                    if (data.success && Array.isArray(data.jobs)) {
+                        adminJobs = data.jobs;
+                        renderJobsTable();
+                        document.getElementById('stat-job-count').textContent = adminJobs.length;
+                    }
+                }
+
+                // Fetch Videos
+                const vidsRes = await adminFetch('videos?all=true');
+                if (vidsRes.ok) {
+                    const data = await vidsRes.json();
+                    if (data.success && Array.isArray(data.videos)) {
+                        adminVideos = data.videos;
+                        renderVideosTable();
+                        document.getElementById('stat-video-count').textContent = adminVideos.length;
+                    }
+                }
+
+                // Fetch Student Reviews
+                await loadReviewsAdmin();
+
+                // Fetch Contact Inquiries
+                await loadContactsAdmin();
+            } catch (err) {
+                console.warn('[Admin] Error loading admin collections:', err);
+            }
+        }
+
+        function renderJobsTable() {
+            const tbody = document.getElementById('admin-jobs-table-body');
+            if (!tbody) return;
+
+            if (adminJobs.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="6" class="px-5 py-6 text-center text-on-surface-variant">No opportunities recorded.</td></tr>`;
+                return;
+            }
+
+            tbody.innerHTML = adminJobs.map(job => {
+                const depts = Array.isArray(job.departments) ? job.departments : [];
+                return `
+                    <tr class="hover:bg-surface-container-high/40 transition-colors">
+                        <td class="px-5 py-3.5">
+                            <strong class="text-white block font-bold">${job.company}</strong>
+                            <span class="text-on-surface-variant text-[11px]">${job.title} (${job.location || 'Remote'})</span>
+                        </td>
+                        <td class="px-5 py-3.5">
+                            <div class="flex flex-wrap gap-1 max-w-xs">
+                                ${depts.slice(0, 4).map(d => `<span class="px-1.5 py-0.5 rounded text-[10px] font-mono bg-surface-container text-primary border border-primary/30">${d}</span>`).join('')}
+                                ${depts.length > 4 ? `<span class="text-[10px] font-mono text-outline">+${depts.length - 4} more</span>` : ''}
+                            </div>
+                        </td>
+                        <td class="px-5 py-3.5 font-mono text-tertiary">${job.stipend || 'Competitive'}</td>
+                        <td class="px-5 py-3.5 font-mono text-outline">${job.application_deadline || 'Open'}</td>
+                        <td class="px-5 py-3.5">
+                            <span class="px-2 py-0.5 rounded text-[10px] font-bold ${job.is_active ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40' : 'bg-red-500/20 text-red-300 border border-red-500/40'}">
+                                ${job.is_active ? 'LIVE' : 'PAUSED'}
+                            </span>
+                        </td>
+                        <td class="px-5 py-3.5 text-right space-x-2">
+                            <button onclick="toggleJobActive('${job.id}')" class="text-primary hover:text-white font-semibold text-[11px]">
+                                ${job.is_active ? 'Pause' : 'Activate'}
+                            </button>
+                            <button onclick="deleteJob('${job.id}')" class="text-red-400 hover:text-red-300 font-semibold text-[11px]">
+                                Delete
+                            </button>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        function renderVideosTable() {
+            const tbody = document.getElementById('admin-videos-table-body');
+            if (!tbody) return;
+
+            if (adminVideos.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="6" class="px-5 py-6 text-center text-on-surface-variant">No curriculum lectures recorded.</td></tr>`;
+                return;
+            }
+
+            tbody.innerHTML = adminVideos.map(v => {
+                const depts = Array.isArray(v.departments) ? v.departments : [];
+                const sems = Array.isArray(v.semesters) ? v.semesters : (v.semester_number ? [v.semester_number] : [1]);
+                const isPublished = v.is_published !== false;
+                const isFeatured = Boolean(v.is_featured);
+
+                return `
+                    <tr class="hover:bg-surface-container-high/40 transition-colors">
+                        <td class="px-5 py-3.5">
+                            <strong class="text-white block font-bold text-xs">${v.title}</strong>
+                            <div class="text-on-surface-variant text-[11px] flex items-center gap-1.5 mt-0.5">
+                                <span class="text-tertiary font-medium">${v.subject || 'Engineering'}</span>
+                                <span>•</span>
+                                <span>${v.topic || 'General'}</span>
+                                ${isFeatured ? '<span class="px-1.5 py-0.2 rounded text-[9px] font-bold bg-amber-500/20 text-amber-300 border border-amber-500/40">FEATURED</span>' : ''}
+                            </div>
+                        </td>
+                        <td class="px-5 py-3.5">
+                            <div class="flex flex-wrap gap-1 max-w-xs">
+                                ${sems.map(s => `<span class="px-1.5 py-0.5 rounded text-[10px] font-mono bg-surface-container text-tertiary border border-tertiary/30">Sem ${s}</span>`).join('')}
+                            </div>
+                        </td>
+                        <td class="px-5 py-3.5">
+                            <div class="flex flex-wrap gap-1 max-w-xs">
+                                ${depts.map(d => `<span class="px-1.5 py-0.5 rounded text-[10px] font-mono ${d === 'COMMON' ? 'bg-teal-500/20 text-teal-300 border border-teal-500/40 font-bold' : 'bg-surface-container text-primary border border-primary/30'}">${d}</span>`).join('')}
+                            </div>
+                        </td>
+                        <td class="px-5 py-3.5 text-on-surface-variant font-mono text-[11px]">
+                            <div>${v.instructor || v.channel_title || 'NPTEL'}</div>
+                            <div class="text-[10px] text-outline capitalize">${v.provider || 'youtube'} • ${v.duration || '45m'}</div>
+                        </td>
+                        <td class="px-5 py-3.5">
+                            <button onclick="toggleVideoPublish('${v.id}')" title="Click to toggle status" class="px-2 py-0.5 rounded text-[10px] font-bold cursor-pointer transition-transform hover:scale-105 ${isPublished ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40' : 'bg-amber-500/20 text-amber-300 border border-amber-500/40'}">
+                                ${isPublished ? 'PUBLISHED' : 'DRAFT'}
+                            </button>
+                        </td>
+                        <td class="px-5 py-3.5 text-right space-x-2">
+                            <button onclick="openEditVideoForm('${v.id}')" class="text-tertiary hover:text-white font-semibold text-[11px]">
+                                Edit
+                            </button>
+                            <button onclick="deleteVideo('${v.id}')" class="text-red-400 hover:text-red-300 font-semibold text-[11px]">
+                                Delete
+                            </button>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        function renderBranchesTable() {
+            const tbody = document.getElementById('admin-branches-table-body');
+            const searchVal = (document.getElementById('admin-branch-search')?.value || '').toLowerCase().trim();
+            if (!tbody) return;
+
+            let filtered = adminBranches;
+            if (searchVal) {
+                filtered = adminBranches.filter(b => b.code.toLowerCase().includes(searchVal) || b.name.toLowerCase().includes(searchVal) || b.category.toLowerCase().includes(searchVal));
+            }
+
+            document.getElementById('stat-branch-count').textContent = adminBranches.filter(b => b.is_active !== false).length;
+
+            tbody.innerHTML = filtered.map(b => `
+                <tr class="hover:bg-surface-container-high/40 transition-colors">
+                    <td class="px-5 py-3 font-mono font-bold text-white">${b.code}</td>
+                    <td class="px-5 py-3 text-on-surface">${b.name}</td>
+                    <td class="px-5 py-3 text-outline font-mono">${b.category}</td>
+                    <td class="px-5 py-3">
+                        <span class="px-2 py-0.5 rounded text-[10px] font-bold ${b.is_active !== false ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40' : 'bg-red-500/20 text-red-300 border border-red-500/40'}">
+                            ${b.is_active !== false ? 'ACTIVE' : 'DISABLED'}
+                        </span>
+                    </td>
+                    <td class="px-5 py-3 text-right">
+                        <button onclick="toggleBranchActive('${b.code}')" class="px-3 py-1 rounded-lg ${b.is_active !== false ? 'bg-red-500/20 text-red-300 hover:bg-red-500/30' : 'bg-emerald-500/20 text-emerald-300 hover:bg-emerald-500/30'} text-[11px] font-bold transition-colors">
+                            ${b.is_active !== false ? 'Disable' : 'Enable'}
+                        </button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        // Action Handlers
+        async function handleCreateJob(e) {
+            e.preventDefault();
+            const checkedDepts = Array.from(document.querySelectorAll('input[name="job-dept"]:checked')).map(cb => cb.value);
+            if (checkedDepts.length === 0) {
+                AuthManager.showToast('Please select at least one eligible department.', 'warning');
+                return;
+            }
+
+            const skillsRaw = document.getElementById('job-skills').value.trim();
+            const payload = {
+                company: document.getElementById('job-company').value.trim(),
+                title: document.getElementById('job-title').value.trim(),
+                job_type: document.getElementById('job-type').value,
+                location: document.getElementById('job-location').value.trim() || 'Remote',
+                stipend: document.getElementById('job-stipend').value.trim() || 'Competitive',
+                application_deadline: document.getElementById('job-deadline').value,
+                portal_url: document.getElementById('job-url').value.trim(),
+                requirements: skillsRaw ? skillsRaw.split(',').map(s => s.trim()).filter(Boolean) : ['Foundations'],
+                departments: checkedDepts
+            };
+
+            const user = AuthManager.getUser();
+            const res = await adminFetch('jobs', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ ...payload })
+            });
+
+            if (res.ok) {
+                AuthManager.showToast('Opportunity published and isolated to selected departments!', 'success');
+                toggleJobForm();
+                await loadAdminData();
+            } else {
+                AuthManager.showToast('Failed to post opportunity.', 'error');
+            }
+        }
+
+        async function toggleJobActive(jobId) {
+            const user = AuthManager.getUser();
+            const res = await adminFetch(`/api/jobs/${jobId}/toggle`, {
+                method: 'PATCH',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ })
+            });
+            if (res.ok) {
+                AuthManager.showToast('Job status toggled.', 'info');
+                await loadAdminData();
+            }
+        }
+
+        async function deleteJob(jobId) {
+            if (!confirm('Are you sure you want to delete this opportunity?')) return;
+            const user = AuthManager.getUser();
+            const res = await adminFetch(`/api/jobs/${jobId}`, {
+                method: 'DELETE',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ })
+            });
+            if (res.ok) {
+                AuthManager.showToast('Opportunity removed.', 'info');
+                await loadAdminData();
+            }
+        }
+
+        function openCreateVideoForm() {
+            document.getElementById('vid-edit-id').value = '';
+            document.getElementById('vid-form-title').innerHTML = '<span class="material-symbols-outlined text-tertiary text-base">video_library</span><span>Register Curriculum Video Resource</span>';
+            document.getElementById('vid-form-badge').textContent = 'NEW ENTRY';
+            document.getElementById('vid-form-badge').className = 'px-2.5 py-0.5 rounded text-[10px] font-mono font-bold bg-tertiary/20 text-tertiary border border-tertiary/30';
+            document.getElementById('vid-submit-btn').textContent = 'Add Lecture to Curriculum Feed';
+
+            document.getElementById('vid-title').value = '';
+            document.getElementById('vid-url').value = '';
+            document.getElementById('vid-thumbnail').value = '';
+            document.getElementById('vid-description').value = '';
+            document.getElementById('vid-subject').value = '';
+            document.getElementById('vid-topic').value = '';
+            document.getElementById('vid-unit').value = '';
+            document.getElementById('vid-instructor').value = '';
+            document.getElementById('vid-duration').value = '45:00';
+            document.getElementById('vid-difficulty').value = 'Intermediate';
+            document.getElementById('vid-provider').value = 'youtube';
+            if (document.getElementById('vid-is-common')) document.getElementById('vid-is-common').checked = false;
+            document.getElementById('vid-published').checked = true;
+            document.getElementById('vid-featured').checked = false;
+            document.getElementById('vid-sort-order').value = '1';
+
+            renderVideoDeptCheckboxes(['CSE', 'IT', 'AIML']);
+            selectVideoSemGroup('clear');
+            const sem4 = document.querySelector('input[name="video-sem"][value="4"]');
+            if (sem4) sem4.checked = true;
+
+            const form = document.getElementById('create-video-form');
+            form.classList.remove('hidden');
+            form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function openEditVideoForm(videoId) {
+            const vid = adminVideos.find(v => v.id === videoId);
+            if (!vid) return;
+
+            document.getElementById('vid-edit-id').value = vid.id;
+            document.getElementById('vid-form-title').innerHTML = '<span class="material-symbols-outlined text-primary text-base">edit</span><span>Edit Curriculum Video Resource</span>';
+            document.getElementById('vid-form-badge').textContent = 'EDITING';
+            document.getElementById('vid-form-badge').className = 'px-2.5 py-0.5 rounded text-[10px] font-mono font-bold bg-primary/20 text-primary border border-primary/30';
+            document.getElementById('vid-submit-btn').textContent = 'Update Curriculum Lecture';
+
+            document.getElementById('vid-title').value = vid.title || '';
+            document.getElementById('vid-url').value = vid.video_url || vid.youtube_url || '';
+            document.getElementById('vid-thumbnail').value = vid.thumbnail_url || '';
+            document.getElementById('vid-description').value = vid.description || '';
+            document.getElementById('vid-subject').value = vid.subject || '';
+            document.getElementById('vid-topic').value = vid.topic || '';
+            document.getElementById('vid-unit').value = vid.unit || '';
+            document.getElementById('vid-instructor').value = vid.instructor || vid.channel_title || '';
+            document.getElementById('vid-duration').value = vid.duration || '45:00';
+            document.getElementById('vid-difficulty').value = vid.difficulty || 'Intermediate';
+            document.getElementById('vid-provider').value = vid.provider || 'youtube';
+            if (document.getElementById('vid-is-common')) {
+                document.getElementById('vid-is-common').checked = Boolean(vid.is_common || (vid.departments && vid.departments.includes('COMMON')));
+            }
+            document.getElementById('vid-published').checked = vid.is_published !== false;
+            document.getElementById('vid-featured').checked = Boolean(vid.is_featured);
+            document.getElementById('vid-sort-order').value = vid.sort_order || 1;
+
+            const depts = Array.isArray(vid.departments) ? vid.departments : [];
+            renderVideoDeptCheckboxes(depts);
+
+            const sems = (Array.isArray(vid.semesters) ? vid.semesters : (vid.semester_number ? [vid.semester_number] : [1])).map(Number);
+            const semBoxes = document.querySelectorAll('input[name="video-sem"]');
+            semBoxes.forEach(cb => {
+                cb.checked = sems.includes(parseInt(cb.value, 10));
+            });
+
+            const form = document.getElementById('create-video-form');
+            form.classList.remove('hidden');
+            form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        async function handleCreateOrUpdateVideo(e) {
+            e.preventDefault();
+            const editId = document.getElementById('vid-edit-id').value;
+            const isCommon = document.getElementById('vid-is-common') ? document.getElementById('vid-is-common').checked : false;
+            let checkedDepts = Array.from(document.querySelectorAll('input[name="video-dept"]:checked')).map(cb => cb.value);
+            let checkedSems = Array.from(document.querySelectorAll('input[name="video-sem"]:checked')).map(cb => parseInt(cb.value, 10));
+
+            // Strict Validation (Requirement 12)
+            if (!isCommon && (checkedDepts.length === 0 || checkedSems.length === 0)) {
+                AuthManager.showToast('Select at least one department and semester, or mark this video as Common Content.', 'warning');
+                return;
+            }
+
+            if (isCommon && checkedDepts.length === 0) {
+                checkedDepts = ['COMMON', 'ALL'];
+            }
+            if (isCommon && checkedSems.length === 0) {
+                checkedSems = [1, 2, 3, 4, 5, 6, 7, 8];
+            }
+
+            const user = AuthManager.getUser();
+            const payload = {
+                title: document.getElementById('vid-title').value.trim(),
+                video_url: document.getElementById('vid-url').value.trim(),
+                provider: document.getElementById('vid-provider').value,
+                thumbnail_url: document.getElementById('vid-thumbnail').value.trim(),
+                description: document.getElementById('vid-description').value.trim(),
+                subject: document.getElementById('vid-subject').value.trim(),
+                topic: document.getElementById('vid-topic').value.trim(),
+                unit: document.getElementById('vid-unit').value.trim(),
+                instructor: document.getElementById('vid-instructor').value.trim() || 'University Lecture Series',
+                duration: document.getElementById('vid-duration').value.trim() || '45:00',
+                difficulty: document.getElementById('vid-difficulty').value,
+                is_common: isCommon,
+                departments: checkedDepts,
+                semesters: checkedSems,
+                semester_number: checkedSems[0] || 1,
+                is_published: document.getElementById('vid-published').checked,
+                is_featured: document.getElementById('vid-featured').checked,
+                sort_order: parseInt(document.getElementById('vid-sort-order').value || '1', 10)
+            };
+
+            const url = editId ? `/api/videos/${editId}` : '/api/videos';
+            const method = editId ? 'PUT' : 'POST';
+
+            const res = await fetch(url, {
+                method,
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+
+            if (res.ok) {
+                AuthManager.showToast(editId ? 'Curriculum lecture updated successfully!' : 'Curriculum video published successfully!', 'success');
+                toggleVideoForm();
+                await loadAdminData();
+            } else {
+                const errData = await res.json().catch(() => ({}));
+                AuthManager.showToast(errData.error || 'Failed to save curriculum lecture.', 'error');
+            }
+        }
+
+        async function toggleVideoPublish(videoId) {
+            const vid = adminVideos.find(v => v.id === videoId);
+            if (!vid) return;
+            const newStatus = !(vid.is_published !== false);
+            const user = AuthManager.getUser();
+
+            const res = await adminFetch(`/api/videos/${videoId}`, {
+                method: 'PATCH',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ is_published: newStatus })
+            });
+
+            if (res.ok) {
+                AuthManager.showToast(`Lecture marked as ${newStatus ? 'PUBLISHED' : 'DRAFT'}.`, 'info');
+                await loadAdminData();
+            }
+        }
+
+        async function deleteVideo(videoId) {
+            if (!confirm('Delete this curriculum video lecture?')) return;
+            const user = AuthManager.getUser();
+            const res = await adminFetch(`/api/videos/${videoId}`, {
+                method: 'DELETE',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ })
+            });
+            if (res.ok) {
+                AuthManager.showToast('Video removed from curriculum.', 'info');
+                await loadAdminData();
+            }
+        }
+
+        async function toggleBranchActive(branchCode) {
+            const user = AuthManager.getUser();
+            const res = await adminFetch(`/api/branches/${branchCode}/toggle`, {
+                method: 'PATCH',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ })
+            });
+            if (res.ok) {
+                const b = adminBranches.find(br => br.code === branchCode);
+                if (b) b.is_active = !b.is_active;
+                renderBranchesTable();
+                AuthManager.showToast(`Branch ${branchCode} status updated.`, 'info');
+            }
+        }
+
+        function handleAdminAddBranch(e) {
+            e.preventDefault();
+            const code = document.getElementById('cb-code').value.trim().toUpperCase();
+            const name = document.getElementById('cb-name').value.trim();
+            const cat = document.getElementById('cb-cat').value;
+
+            BranchSystem.addCustomBranch({
+                code: code,
+                name: name,
+                category: cat,
+                icon: 'school',
+                is_active: true
+            });
+
+            adminBranches = BranchSystem.getAllBranches();
+            renderBranchesTable();
+            renderJobDeptCheckboxes();
+            renderVideoDeptCheckboxes();
+
+            document.getElementById('cb-code').value = '';
+            document.getElementById('cb-name').value = '';
+            AuthManager.showToast(`Branch ${code} (${name}) registered successfully!`, 'success');
+        }
+
+        // =====================================================================
+        // ADMIN: REVIEW MODERATION HANDLERS
+        // =====================================================================
+
+        async function loadReviewsAdmin() {
+            const user = AuthManager.getUser();
+            if (!user) return;
+
+            try {
+                const res = await adminFetch('reviews/admin', {
+                    headers: {}
+                });
+
+                if (res.ok) {
+                    const data = await res.json();
+                    if (data.success && Array.isArray(data.reviews)) {
+                        adminReviews = data.reviews;
+                        
+                        // Update badge and tab counters
+                        const pending = data.stats?.pending || adminReviews.filter(r => r.status === 'pending').length;
+                        const approved = data.stats?.approved || adminReviews.filter(r => r.status === 'approved').length;
+                        const rejected = data.stats?.rejected || adminReviews.filter(r => r.status === 'rejected').length;
+
+                        const pendingBadge = document.getElementById('badge-pending-reviews');
+                        if (pendingBadge) {
+                            pendingBadge.textContent = pending;
+                            pendingBadge.classList.toggle('hidden', pending === 0);
+                        }
+
+                        const statPending = document.getElementById('stat-admin-pending-revs');
+                        if (statPending) statPending.textContent = pending;
+
+                        const tabAll = document.getElementById('rev-tab-all-count');
+                        const tabPending = document.getElementById('rev-tab-pending-count');
+                        const tabApproved = document.getElementById('rev-tab-approved-count');
+                        const tabRejected = document.getElementById('rev-tab-rejected-count');
+
+                        if (tabAll) tabAll.textContent = adminReviews.length;
+                        if (tabPending) tabPending.textContent = pending;
+                        if (tabApproved) tabApproved.textContent = approved;
+                        if (tabRejected) tabRejected.textContent = rejected;
+
+                        renderAdminReviewsTable();
+                    }
+                }
+            } catch (err) {
+                console.warn('[Admin] Error loading reviews:', err);
+            }
+        }
+
+        function filterAdminReviews(status) {
+            if (status) {
+                activeAdminRevStatus = status;
+                const tabs = document.querySelectorAll('#admin-review-status-tabs .admin-rev-tab');
+                tabs.forEach(tab => {
+                    const isActive = tab.getAttribute('onclick').includes(`'${status}'`);
+                    tab.classList.toggle('active', isActive);
+                    tab.classList.toggle('bg-surface-container-high', isActive);
+                    tab.classList.toggle('text-white', isActive);
+                    tab.classList.toggle('text-on-surface-variant', !isActive);
+                });
+            }
+            renderAdminReviewsTable();
+        }
+
+        function renderAdminReviewsTable() {
+            const tbody = document.getElementById('admin-reviews-table-body');
+            const emptyEl = document.getElementById('admin-reviews-empty');
+            if (!tbody) return;
+
+            const featureFilter = (document.getElementById('admin-rev-feature-filter')?.value || 'all').toLowerCase();
+            const search = (document.getElementById('admin-rev-search')?.value || '').toLowerCase().trim();
+
+            let filtered = adminReviews;
+
+            if (activeAdminRevStatus !== 'all') {
+                filtered = filtered.filter(r => (r.status || 'pending').toLowerCase() === activeAdminRevStatus);
+            }
+
+            if (featureFilter !== 'all') {
+                filtered = filtered.filter(r => (r.feature_used || '').toLowerCase() === featureFilter);
+            }
+
+            if (search) {
+                filtered = filtered.filter(r =>
+                    (r.name || '').toLowerCase().includes(search) ||
+                    (r.review_text || '').toLowerCase().includes(search)
+                );
+            }
+
+            if (filtered.length === 0) {
+                tbody.innerHTML = '';
+                if (emptyEl) emptyEl.classList.remove('hidden');
+                return;
+            }
+
+            if (emptyEl) emptyEl.classList.add('hidden');
+
+            tbody.innerHTML = filtered.map(r => {
+                const stars = '★'.repeat(r.rating || 5) + '☆'.repeat(Math.max(0, 5 - (r.rating || 5)));
+                const dateStr = r.created_at ? new Date(r.created_at).toLocaleDateString() : 'Recent';
+                const status = (r.status || 'pending').toLowerCase();
+                
+                let statusBadge = '';
+                if (status === 'approved') {
+                    statusBadge = '<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/40">APPROVED</span>';
+                } else if (status === 'rejected') {
+                    statusBadge = '<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-red-500/20 text-red-300 border border-red-500/40">REJECTED</span>';
+                } else {
+                    statusBadge = '<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-500/20 text-amber-300 border border-amber-500/40">PENDING</span>';
+                }
+
+                const featuredBadge = r.is_featured
+                    ? `<button onclick="toggleFeatureReviewAdmin('${r.id}', true)" title="Unfeature review" class="p-1 rounded text-[#FBBF24] hover:text-white"><span class="material-symbols-outlined text-base" style="font-variation-settings: 'FILL' 1;">star</span></button>`
+                    : `<button onclick="toggleFeatureReviewAdmin('${r.id}', false)" title="Feature review" class="p-1 rounded text-outline hover:text-[#FBBF24]"><span class="material-symbols-outlined text-base">star</span></button>`;
+
+                return `
+                    <tr class="hover:bg-surface-container-high/40 transition-colors">
+                        <td class="px-4 py-3 font-semibold text-white">
+                            ${escapeHtml(r.name || 'Anonymous Student')}
+                            ${r.user_id ? '<span class="ml-1 text-[9px] font-mono text-secondary px-1 rounded bg-secondary-container/20">UID</span>' : ''}
+                        </td>
+                        <td class="px-4 py-3 font-mono text-[#FBBF24]">${stars}</td>
+                        <td class="px-4 py-3 max-w-xs text-on-surface-variant text-[11px] leading-relaxed">
+                            <span class="line-clamp-2" title="${escapeHtml(r.review_text)}">"${escapeHtml(r.review_text)}"</span>
+                        </td>
+                        <td class="px-4 py-3">
+                            <span class="px-2 py-0.5 rounded bg-surface-container text-[#2DD4BF] text-[10px] font-mono border border-outline-variant">
+                                ${escapeHtml(r.feature_used || 'Other')}
+                            </span>
+                        </td>
+                        <td class="px-4 py-3 font-mono text-outline text-[11px]">${dateStr}</td>
+                        <td class="px-4 py-3 whitespace-nowrap">
+                            <div class="flex items-center gap-1.5">
+                                ${statusBadge}
+                                ${featuredBadge}
+                            </div>
+                        </td>
+                        <td class="px-4 py-3 text-right space-x-1 whitespace-nowrap">
+                            ${status !== 'approved' ? `<button onclick="moderateReviewAdmin('${r.id}', 'approved')" class="px-2.5 py-1 rounded bg-emerald-500/20 text-emerald-300 hover:bg-emerald-500/30 text-[11px] font-bold">Approve</button>` : ''}
+                            ${status !== 'rejected' ? `<button onclick="moderateReviewAdmin('${r.id}', 'rejected')" class="px-2.5 py-1 rounded bg-red-500/20 text-red-300 hover:bg-red-500/30 text-[11px] font-bold">Reject</button>` : ''}
+                            <button onclick="deleteReviewAdmin('${r.id}')" title="Delete Review" class="p-1 rounded hover:bg-red-500/20 text-outline hover:text-red-300">
+                                <span class="material-symbols-outlined text-sm">delete</span>
+                            </button>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        async function moderateReviewAdmin(id, status) {
+            const user = AuthManager.getUser();
+            if (!user) return;
+
+            try {
+                const res = await adminFetch(`/api/reviews/admin/${id}`, {
+                    method: 'PATCH',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ status })
+                });
+
+                if (res.ok) {
+                    AuthManager.showToast(`Review marked as ${status.toUpperCase()}!`, 'success');
+                    await loadReviewsAdmin();
+                } else {
+                    const err = await res.json().catch(() => ({}));
+                    AuthManager.showToast(err.error || 'Failed to update review status.', 'error');
+                }
+            } catch (e) {
+                AuthManager.showToast('Network error updating review.', 'error');
+            }
+        }
+
+        async function toggleFeatureReviewAdmin(id, currentFeatured) {
+            const user = AuthManager.getUser();
+            if (!user) return;
+
+            try {
+                const res = await adminFetch(`/api/reviews/admin/${id}`, {
+                    method: 'PATCH',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ is_featured: !currentFeatured })
+                });
+
+                if (res.ok) {
+                    AuthManager.showToast(!currentFeatured ? 'Review featured on top!' : 'Review unfeatured.', 'info');
+                    await loadReviewsAdmin();
+                }
+            } catch (e) {
+                AuthManager.showToast('Failed to toggle featured state.', 'error');
+            }
+        }
+
+        async function deleteReviewAdmin(id) {
+            if (!confirm('Are you sure you want to permanently delete this review?')) return;
+            const user = AuthManager.getUser();
+            if (!user) return;
+
+            try {
+                const res = await adminFetch(`/api/reviews/admin/${id}`, {
+                    method: 'DELETE',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ })
+                });
+
+                if (res.ok) {
+                    AuthManager.showToast('Review deleted permanently.', 'info');
+                    await loadReviewsAdmin();
+                }
+            } catch (e) {
+                AuthManager.showToast('Failed to delete review.', 'error');
+            }
+        }
+
+        // =====================================================================
+        // ADMIN: CONTACT MESSAGES HANDLERS
+        // =====================================================================
+
+        async function loadContactsAdmin() {
+            const user = AuthManager.getUser();
+            if (!user) return;
+
+            try {
+                const res = await adminFetch('contact/admin', {
+                    headers: {}
+                });
+
+                if (res.ok) {
+                    const data = await res.json();
+                    if (data.success && Array.isArray(data.messages)) {
+                        adminContacts = data.messages;
+
+                        const newCount = data.stats?.new || adminContacts.filter(m => m.status === 'new').length;
+                        const inProg = data.stats?.in_progress || adminContacts.filter(m => m.status === 'in_progress').length;
+                        const resolved = data.stats?.resolved || adminContacts.filter(m => m.status === 'resolved').length;
+                        const closed = data.stats?.closed || adminContacts.filter(m => m.status === 'closed').length;
+
+                        const newBadge = document.getElementById('badge-new-messages');
+                        if (newBadge) {
+                            newBadge.textContent = newCount;
+                            newBadge.classList.toggle('hidden', newCount === 0);
+                        }
+
+                        const statNew = document.getElementById('stat-admin-new-msgs');
+                        if (statNew) statNew.textContent = newCount;
+
+                        const tabAll = document.getElementById('msg-tab-all-count');
+                        const tabNew = document.getElementById('msg-tab-new-count');
+                        const tabProg = document.getElementById('msg-tab-progress-count');
+                        const tabResolved = document.getElementById('msg-tab-resolved-count');
+                        const tabClosed = document.getElementById('msg-tab-closed-count');
+
+                        if (tabAll) tabAll.textContent = adminContacts.length;
+                        if (tabNew) tabNew.textContent = newCount;
+                        if (tabProg) tabProg.textContent = inProg;
+                        if (tabResolved) tabResolved.textContent = resolved;
+                        if (tabClosed) tabClosed.textContent = closed;
+
+                        renderAdminContactsTable();
+                    }
+                }
+            } catch (err) {
+                console.warn('[Admin] Error loading contact messages:', err);
+            }
+        }
+
+        function filterAdminContacts(status) {
+            if (status) {
+                activeAdminMsgStatus = status;
+                const tabs = document.querySelectorAll('#admin-contact-status-tabs .admin-msg-tab');
+                tabs.forEach(tab => {
+                    const isActive = tab.getAttribute('onclick').includes(`'${status}'`);
+                    tab.classList.toggle('active', isActive);
+                    tab.classList.toggle('bg-surface-container-high', isActive);
+                    tab.classList.toggle('text-white', isActive);
+                    tab.classList.toggle('text-on-surface-variant', !isActive);
+                });
+            }
+            renderAdminContactsTable();
+        }
+
+        function renderAdminContactsTable() {
+            const tbody = document.getElementById('admin-contacts-table-body');
+            const emptyEl = document.getElementById('admin-contacts-empty');
+            if (!tbody) return;
+
+            const categoryFilter = (document.getElementById('admin-msg-category-filter')?.value || 'all').toLowerCase();
+            const search = (document.getElementById('admin-msg-search')?.value || '').toLowerCase().trim();
+
+            let filtered = adminContacts;
+
+            if (activeAdminMsgStatus !== 'all') {
+                filtered = filtered.filter(m => (m.status || 'new').toLowerCase() === activeAdminMsgStatus);
+            }
+
+            if (categoryFilter !== 'all') {
+                filtered = filtered.filter(m => (m.category || '').toLowerCase() === categoryFilter);
+            }
+
+            if (search) {
+                filtered = filtered.filter(m =>
+                    (m.name || '').toLowerCase().includes(search) ||
+                    (m.email || '').toLowerCase().includes(search) ||
+                    (m.subject || '').toLowerCase().includes(search) ||
+                    (m.message || '').toLowerCase().includes(search)
+                );
+            }
+
+            if (filtered.length === 0) {
+                tbody.innerHTML = '';
+                if (emptyEl) emptyEl.classList.remove('hidden');
+                return;
+            }
+
+            if (emptyEl) emptyEl.classList.add('hidden');
+
+            tbody.innerHTML = filtered.map(m => {
+                const dateStr = m.created_at ? new Date(m.created_at).toLocaleDateString() : 'Recent';
+                const status = (m.status || 'new').toLowerCase();
+
+                let statusBadge = '';
+                if (status === 'new') {
+                    statusBadge = '<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-teal-500/20 text-teal-300 border border-teal-500/40">NEW</span>';
+                } else if (status === 'in_progress') {
+                    statusBadge = '<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-500/20 text-amber-300 border border-amber-500/40">IN PROGRESS</span>';
+                } else if (status === 'resolved') {
+                    statusBadge = '<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/40">RESOLVED</span>';
+                } else {
+                    statusBadge = '<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-surface-container-high text-outline border border-outline-variant">CLOSED</span>';
+                }
+
+                return `
+                    <tr class="hover:bg-surface-container-high/40 transition-colors">
+                        <td class="px-4 py-3">
+                            <strong class="text-white block font-semibold">${escapeHtml(m.name)}</strong>
+                            <a href="mailto:${escapeHtml(m.email)}" class="text-secondary text-[11px] font-mono hover:underline">${escapeHtml(m.email)}</a>
+                        </td>
+                        <td class="px-4 py-3">
+                            <span class="px-2 py-0.5 rounded bg-surface-container text-[#2DD4BF] text-[10px] font-mono border border-outline-variant">
+                                ${escapeHtml(m.category || 'General')}
+                            </span>
+                        </td>
+                        <td class="px-4 py-3 max-w-xs">
+                            <div class="font-medium text-white truncate" title="${escapeHtml(m.subject)}">${escapeHtml(m.subject)}</div>
+                            <div class="text-[11px] text-on-surface-variant truncate">${escapeHtml(m.message)}</div>
+                        </td>
+                        <td class="px-4 py-3 font-mono text-outline text-[11px]">${dateStr}</td>
+                        <td class="px-4 py-3 whitespace-nowrap">${statusBadge}</td>
+                        <td class="px-4 py-3 text-right space-x-1 whitespace-nowrap">
+                            <button onclick="openContactModal('${m.id}')" class="px-2.5 py-1 rounded bg-secondary-container/20 text-secondary hover:bg-secondary-container/30 text-[11px] font-bold">
+                                View
+                            </button>
+                            ${status === 'new' ? `<button onclick="updateContactStatusAdmin('${m.id}', 'in_progress')" class="px-2 py-1 rounded bg-amber-500/20 text-amber-300 hover:bg-amber-500/30 text-[10px] font-semibold">Triage</button>` : ''}
+                            ${status !== 'resolved' ? `<button onclick="updateContactStatusAdmin('${m.id}', 'resolved')" class="px-2 py-1 rounded bg-emerald-500/20 text-emerald-300 hover:bg-emerald-500/30 text-[10px] font-semibold">Resolve</button>` : ''}
+                            <button onclick="deleteContactAdmin('${m.id}')" title="Delete Inquiry" class="p-1 rounded hover:bg-red-500/20 text-outline hover:text-red-300">
+                                <span class="material-symbols-outlined text-sm">delete</span>
+                            </button>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        function openContactModal(id) {
+            const msg = adminContacts.find(m => m.id === id);
+            if (!msg) return;
+            currentSelectedMsg = msg;
+
+            document.getElementById('modal-msg-sender').textContent = msg.name;
+            const emailLink = document.getElementById('modal-msg-email');
+            emailLink.textContent = msg.email;
+            emailLink.href = `mailto:${msg.email}?subject=Re: ${encodeURIComponent(msg.subject)}`;
+            document.getElementById('modal-msg-category').textContent = msg.category;
+            document.getElementById('modal-msg-date').textContent = msg.created_at ? new Date(msg.created_at).toLocaleString() : 'Recent';
+            document.getElementById('modal-msg-subject').textContent = msg.subject;
+            document.getElementById('modal-msg-body').textContent = msg.message;
+            document.getElementById('modal-msg-status').value = msg.status || 'new';
+
+            const modal = document.getElementById('contact-details-modal');
+            modal.classList.remove('hidden');
+        }
+
+        function closeContactModal() {
+            const modal = document.getElementById('contact-details-modal');
+            if (modal) modal.classList.add('hidden');
+            currentSelectedMsg = null;
+        }
+
+        async function saveContactModalStatus() {
+            if (!currentSelectedMsg) return;
+            const newStatus = document.getElementById('modal-msg-status').value;
+            await updateContactStatusAdmin(currentSelectedMsg.id, newStatus);
+            closeContactModal();
+        }
+
+        async function updateContactStatusAdmin(id, status) {
+            // Get real Supabase Bearer token for authenticated admin API call
+            const client = SupabaseBridge ? SupabaseBridge.getClient() : null;
+            const sessionData = client ? (await client.auth.getSession()).data?.session : null;
+            const authToken = sessionData?.access_token || null;
+            if (!authToken) {
+                AuthManager.showToast('Session expired. Please log in again.', 'error');
+                return;
+            }
+
+            try {
+                const res = await adminFetch(`/api/contact/admin/${id}`, {
+                    method: 'PATCH',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${authToken}`
+                    },
+                    body: JSON.stringify({ status })
+                });
+
+                if (res.ok) {
+                    AuthManager.showToast(`Message marked as ${status.toUpperCase()}!`, 'success');
+                    await loadContactsAdmin();
+                } else {
+                    const err = await res.json().catch(() => ({}));
+                    AuthManager.showToast(err.error || 'Failed to update message status.', 'error');
+                }
+            } catch (e) {
+                AuthManager.showToast('Network error updating message status.', 'error');
+            }
+        }
+
+        async function deleteContactAdmin(id) {
+            if (!confirm('Are you sure you want to delete this contact message?')) return;
+            // Get real Supabase Bearer token for authenticated admin API call
+            const client = SupabaseBridge ? SupabaseBridge.getClient() : null;
+            const sessionData = client ? (await client.auth.getSession()).data?.session : null;
+            const authToken = sessionData?.access_token || null;
+            if (!authToken) {
+                AuthManager.showToast('Session expired. Please log in again.', 'error');
+                return;
+            }
+
+            try {
+                const res = await adminFetch(`/api/contact/admin/${id}`, {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${authToken}`
+                    },
+                    body: JSON.stringify({})
+                });
+
+                if (res.ok) {
+                    AuthManager.showToast('Contact inquiry deleted.', 'info');
+                    await loadContactsAdmin();
+                }
+            } catch (e) {
+                AuthManager.showToast('Failed to delete contact inquiry.', 'error');
+            }
+        }
+
+        function escapeHtml(str) {
+            if (!str) return '';
+            return String(str).replace(/[&<>'"]/g, tag => ({
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                "'": '&#39;',
+                '"': '&quot;'
+            }[tag] || tag));
+        }
+    </script>
+</body>
+</html>
+
+
+
+
